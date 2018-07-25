@@ -1,3 +1,6 @@
+### Under Construction
+<img src="static/img/under-construction.gif" width="150px" />
+
 # Schedule
 
 Breakfast arrives on Thursday and Friday mornings at 09:00.
