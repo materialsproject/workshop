@@ -1,0 +1,4 @@
+pymatgen
+atomate
+maggma
+matminer
