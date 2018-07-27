@@ -34,8 +34,9 @@ Fri morning
 * 12:30-13:30 lunch
 
 Fri afternoon (Breakout sessions)
-* 13:30-13:45 catch-up/debugging
-* 13:45-15:00 TBA based on participant polling: Breakout sessions
+* 13:30-14:45 TBA based on participant polling: Breakout sessions
+* 14:45-15:00 coffee break
+* 15:00-16:15 TBA based on participant polling: Breakout sessions
 * 1: [Contributing data to MP](mpcontribs/mpcontribs.ipynb)
 * 2: [Analysis of high-throughput workflow results using mongo and maggma](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 * 3: [Materials data science using matminer and scikit-learn](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
