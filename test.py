@@ -14,21 +14,26 @@ EXCLUDE_NBS = {
 }
 module_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 
+EXPECTED_ERRORS = {
+    "lessons/python_primer/5 - Lists.ipynb": 2, # Exception examples
+    "lessons/python_primer/8 - Writing Functions.ipynb": 1, # Fill in example
+}
+
 class NotebookTest(unittest.TestCase):
     def setUp(self):
         # Get all ipynb files
         all_nbs = set(glob("lessons/**/*.ipynb"))
         # for path in all_nbs:
-        self.nb_paths = [path for path in all_nbs 
+        self.nb_paths = [path for path in all_nbs
                          if not any([path.startswith(e) for e in EXCLUDE_NBS])]
         self.nb_paths = sorted(self.nb_paths)
-        self.nb_paths = [os.path.join(module_dir, path) for path in self.nb_paths]
 
     def test_nbs(self):
         for path in self.nb_paths:
-            nb, errors = _notebook_run(path)
-            self.assertIsNone(errors, "Errors in nb {} found: {}".format(
-                path, errors))
+            nb, errors = _notebook_run(os.path.join(module_dir, path))
+            expected_errors = EXPECTED_ERRORS.get(path, 0)
+            self.assertEqual(len(errors), expected_errors,
+                             msg="Errors in nb {} found: {}".format(path, errors))
 
 
 def _notebook_run(path):
@@ -49,6 +54,7 @@ def _notebook_run(path):
     with tempfile.NamedTemporaryFile(suffix=".ipynb") as fout:
         args = ["jupyter", "nbconvert", "--to", "notebook", "--execute",
                 "--ExecutePreprocessor.timeout=300",
+                "--ExecutePreprocessor.allow_errors=True",
                 "--output", fout.name, path]
         subprocess.check_call(args)
 

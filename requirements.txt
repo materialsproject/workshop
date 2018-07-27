@@ -2,3 +2,4 @@ pymatgen
 atomate
 maggma
 matminer
+graphviz
