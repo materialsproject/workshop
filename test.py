@@ -6,13 +6,23 @@ import os
 import nbformat
 
 
+# Put any notebooks to be excluded here
+
+EXCLUDE_NBS = {
+    "lessons/atomate",
+    "lessons/pymatgen"
+}
+module_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+
 class NotebookTest(unittest.TestCase):
     def setUp(self):
         # Get all ipynb files
         all_nbs = set(glob("lessons/**/*.ipynb"))
-        # Put any notebooks to be excluded here
-        excluded = set()
-        self.nb_paths = all_nbs - excluded
+        # for path in all_nbs:
+        self.nb_paths = [path for path in all_nbs 
+                         if not any([path.startswith(e) for e in EXCLUDE_NBS])]
+        self.nb_paths = sorted(self.nb_paths)
+        self.nb_paths = [os.path.join(module_dir, path) for path in self.nb_paths]
 
     def test_nbs(self):
         for path in self.nb_paths:
