@@ -1,6 +1,10 @@
 ### Under Construction
 <img src="static/img/under-construction.gif" width="150px" />
 
+# Before the Workshop
+
+Please review our [website walkthrough](https://www.youtube.com/watch?v=Mg9AgpwoArQ) video (approx. 40 minutes) so that you understand basic techniques for searching and layout of information. This way, we can avoid such a walkthrough during the workshop and spend more time on interactive instruction and exercises.
+
 # Schedule
 
 Breakfast arrives on Thursday and Friday mornings at 09:00.
@@ -15,7 +19,7 @@ Wed morning -- Python/Jupyter primer (optional)
 
 Thu morning
 * 09:30-09:45 Intro
-* 09:45-11:00 Web site - walk through apps and material detail pages
+* 09:45-11:00 Web site - example usage
 * 11:00-11:15 coffee break
 * 11:15-12:30 Pymatgen core use – going over useful functionality
 * 12:30-13:30 lunch
