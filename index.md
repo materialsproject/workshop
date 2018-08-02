@@ -5,6 +5,11 @@
 
 Please review our [website walkthrough](https://www.youtube.com/watch?v=Mg9AgpwoArQ) video (approx. 40 minutes) so that you understand basic techniques for searching and layout of information. This way, we can avoid such a walkthrough during the workshop and spend more time on interactive instruction and exercises.
 
+# Getting here
+The workshop is located in 190 Doe Library on the UC Berkeley campus. Doe Library is the central library, adjacent to the beautiful Memorial Glade.
+
+<img src="static/img/doe-floorplan-1.jpg" alt="floorplan and bathroom location">
+
 # Schedule
 
 Breakfast arrives on Thursday and Friday mornings at 09:00.
