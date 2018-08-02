@@ -12,5 +12,6 @@ if __name__ == "__main__":
         version='2018.07.27',
         install_requires=["pymatgen", "jupyter"],
         description='Repository for workshop code',
-        package_data={"mp_workshop.data.data_files": ["*.json"]}
+        package_data={"mp_workshop.data.data_files": ["*.json"]},
+        python_requires='>=3.6',
     )
