@@ -19,11 +19,11 @@ Breakfast arrives on Thursday and Friday mornings at 09:00.
 
 Wed morning -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
-* 10:00-10:15 Built-in functions and libraries; getting help
-* 10:15-10:55 Control flow: conditionals, for loops
-* 10:55-11:10 (break)
-* 11:10-11:50 Data structures: lists and dictionaries
-* 11:50-12:30 Data collection: comprehensions, writing functions
+* 13:30-13:45 Built-in functions and libraries; getting help
+* 13:45-13:55 Control flow: conditionals, for loops
+* 13:55-14:10 (break)
+* 14:10-14:50 Data structures: lists and dictionaries
+* 14:50-14:30 Data collection: comprehensions, writing functions
 
 Thu morning
 * 09:30-09:45 Intro
