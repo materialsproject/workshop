@@ -53,3 +53,10 @@ Fri afternoon (Breakout sessions)
 The workshop is located in 190 Doe Library on the UC Berkeley campus. Doe Library is the central library, adjacent to the beautiful Memorial Glade.
 
 <img src="static/img/doe-floorplan-1.jpg" alt="floorplan and bathroom location">
+
+The most convienient parking garage nearby is the [Stadium Parking Garage](https://lots.impark.com/imp#details=37,386) (also known as Maxwell Garage) on the east (uphill) edge of campus at 2175 Gayley Road, with a daily (up to 10 hrs) rate of $15. A walking route from the garage to 190 Doe Library is shown below. 
+<img src="static/img/parking.png" alt="parking at Stadium Parking Garage (aka Maxwell Garage)">
+
+From the Downtown Berkeley BART station, there is a lovely walk through the Eucalyptus Grove on the west end of campus and past the iconic Valley Life Sciences Building up to the Memorial Glade and Doe Library.
+
+<img src="static/img/walk-from-bart.png" alt="walk from BART to Doe Library">
