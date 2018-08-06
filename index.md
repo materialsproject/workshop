@@ -1,24 +1,24 @@
-# Materials Project Workshop 2018
+## Materials Project Workshop 2018
 
-This page is under construction. See you soon!
+* [Before the workshop](#before-the-workshop)
+* [Schedule](#schedule)
+* [Getting Here](#getting-here)
 
-<img src="static/img/under-construction.gif" width="150px" />
-
-## Before the Workshop
+### Before the Workshop
 
 Please review our [website walkthrough](https://www.youtube.com/watch?v=Mg9AgpwoArQ) video (approx. 40 minutes) so that you understand basic techniques for searching and layout of information. This way, we can avoid such a walkthrough during the workshop and spend more time on interactive instruction and exercises.
 
-## Schedule
+### Schedule
 
 Breakfast arrives on Thursday and Friday mornings at 09:00.
 
-Wed morning -- Python/Jupyter primer (optional)
+Wed afternoon -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
 * 13:30-13:45 Built-in functions and libraries; getting help
-* 13:45-13:55 Control flow: conditionals, for loops
-* 13:55-14:10 (break)
-* 14:10-14:50 Data structures: lists and dictionaries
-* 14:50-14:30 Data collection: comprehensions, writing functions
+* 13:45-14:30 Control flow: conditionals, for loops
+* 14:30-15:00 (break)
+* 15:00-15:45 Data structures: lists and dictionaries
+* 15:45-16:30 Data collection: comprehensions, writing functions
 
 Thu morning
 * 09:30-09:45 Intro
@@ -49,14 +49,18 @@ Fri afternoon (Breakout sessions)
 * 3: Materials data science using matminer and scikit-learn
 * 4: Milestones in materials design - a walkthrough of past MP discoveries
 
-## Getting here
+### Getting here
 The workshop is located in 190 Doe Library on the UC Berkeley campus. Doe Library is the central library, adjacent to the beautiful Memorial Glade.
 
-<img src="static/img/doe-floorplan-1.jpg" alt="floorplan and bathroom location">
+<img src="static/img/doe-floorplan-1.jpg" alt="floorplan and bathroom location"
+     style="margin: 2em 0; width=800px">
 
 The most convienient parking garage nearby is the [Stadium Parking Garage](https://lots.impark.com/imp#details=37,386) (also known as Maxwell Garage) on the east (uphill) edge of campus at 2175 Gayley Road, with a daily (up to 10 hrs) rate of $15. A walking route from the garage to 190 Doe Library is shown below. 
-<img src="static/img/parking.png" alt="parking at Stadium Parking Garage (aka Maxwell Garage)">
+
+<img src="static/img/parking.png" alt="parking at Stadium Parking Garage (aka Maxwell Garage)"
+     style="margin: 2em 0; width=800px">
 
 From the Downtown Berkeley BART station, there is a lovely walk through the Eucalyptus Grove on the west end of campus and past the iconic Valley Life Sciences Building up to the Memorial Glade and Doe Library.
 
-<img src="static/img/walk-from-bart.png" alt="walk from BART to Doe Library">
+<img src="static/img/walk-from-bart.png" alt="walk from BART to Doe Library"
+     style="margin: 2em 0; width=800px">
