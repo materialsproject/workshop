@@ -1,8 +1,13 @@
 """
 Module containing helper code for the atomate lesson
 """
-
+import os.path
 from graphviz import Digraph
+
+
+
+si_struct_opt_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_structure_opt")
+
 
 def wf_to_graph(workflow):
     """
