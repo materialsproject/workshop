@@ -1,8 +1,16 @@
 """
 Module containing helper code for the atomate lesson
 """
-
+import os.path
 from graphviz import Digraph
+
+
+
+si_struct_opt_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_structure_opt")
+si_static_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_static")
+si_nscf_line_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_nscf_line")
+si_nscf_uniform_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_nscf_uniform")
+
 
 def wf_to_graph(workflow):
     """
