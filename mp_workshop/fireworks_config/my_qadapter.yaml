@@ -4,5 +4,5 @@ rocket_launch: rlaunch -c /home/jovyan/work/workshop-2018/mp_workshop/fireworks_
 nodes: 1
 walltime: 24:00:00
 job_name: null
-queue: regular
 logdir: null
+pre_rocket: export PATH=/opt/conda/bin:$PATH
