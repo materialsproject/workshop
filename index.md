@@ -33,7 +33,7 @@ Wed afternoon -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
 * 13:30-13:45 Built-in functions and libraries; getting help
 * 13:45-14:30 Control flow: conditionals, for loops
-* 14:30-15:00 (break)
+* 14:30-15:00 break -- coffee and refreshments served
 * 15:00-15:45 Data structures: lists and dictionaries
 * 15:45-16:30 Data collection: comprehensions, writing functions
 
