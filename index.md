@@ -62,7 +62,7 @@ Fri afternoon (Breakout sessions)
 * 14:45-15:00 coffee break
 * 15:00-16:15 TBA based on participant polling: Breakout sessions
 * 1: Contributing data to MP
-* 2: Analysis of high-throughput workflow results using mongo and maggma
+* 2: Setting up your own MP-style database for data management and analysis
 * 3: Materials data science using matminer and scikit-learn
 * 4: Milestones in materials design - a walkthrough of past MP discoveries
 
