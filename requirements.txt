@@ -3,3 +3,4 @@ atomate
 maggma
 matminer
 graphviz
+jupyter
