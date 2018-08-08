@@ -14,4 +14,4 @@
 
 <img src="static/img/warning.png" alt="WARNING" width="75px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
 
-<span style="font-size: 24px; margin-top: 3em">[Back to home page](https://workshop.materialsproject.org/)</span>
+<button style="margin-top: 3em"><a style="font-size: 24px;" href="https://workshop.materialsproject.org/">Back to home page</a></button>
