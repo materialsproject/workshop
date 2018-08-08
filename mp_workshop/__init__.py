@@ -9,7 +9,7 @@ def get_viewer_link(structure, host="https://viewer.materialsproject.org"):
     import webbrowser
     import urllib.parse
     payload = structure.to_json().encode('utf-8')
-    payload = zlib.compress(payload, level=9)
+    payload = zlib.compress(payload)
     payload = base64.urlsafe_b64encode(payload).decode('ascii')
     payload = "?structure={}".format(payload)
     url = urllib.parse.urljoin(host, payload)
