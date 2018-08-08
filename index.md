@@ -29,7 +29,7 @@ You can now follow along in your notebook with the Python primer videos. There i
 All activities are in [190 Doe Library](#getting-here).
 Breakfast arrives on Thursday and Friday mornings at 09:00.
 
-Etherpad for sharing code snippets / exercise answers / asking for help discreetly during the workshop: [https://pad.carpentries.org/mpworkshop](https://pad.carpentries.org/mpworkshop).
+Etherpad for sharing code snippets / exercise answers / asking for help discreetly during the workshop: [https://etherpad.wikimedia.org/p/mpworkshop](https://etherpad.wikimedia.org/p/mpworkshop).
 
 Wed afternoon -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
