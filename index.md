@@ -20,7 +20,7 @@ To follow along with the primer videos above, you may:
     <img src="static/img/new-py3-notebook.png" alt="selecting Python 3 from the New button dropdown"
          width="400px">
 
-You can now follow along in your notebook with the Python primer videos. There is a **User Inerface Tour** option in the **Help** menu at the top of your new notebook to get you familiar with the Jupyter notebook interface for writing, editing, and executing Python code in cells.
+You can now follow along in your notebook with the Python primer videos. There is a **User Interface Tour** option in the **Help** menu at the top of your new notebook to get you familiar with the Jupyter notebook interface for writing, editing, and executing Python code in cells.
 
 <img src="static/img/warning.png" alt="WARNING" width="75px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
 
@@ -41,7 +41,7 @@ Thu morning
 * 09:30-09:45 Intro
 * 09:45-11:00 Web site - example usage
 * 11:00-11:15 coffee break
-* 11:15-12:30 Pymatgen core use – going over useful functionality
+* 11:15-12:30 Pymatgen core use – going over foundations and useful functionality
 * 12:30-13:30 lunch
 
 Thu afternoon
