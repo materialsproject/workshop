@@ -13,3 +13,5 @@
 6. Make sure you have one pink and one yellow/green sticky note. This is for sticking on the top of your laptop to indicate to us that you are done with an exercise / ready to move on (green) or you are working on an exercise / need help (pink).
 
 <img src="static/img/warning.png" alt="WARNING" width="75px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
+
+<span style="font-size: 24px; margin-top: 3em">[Back to home page](https://workshop.materialsproject.org/)</span>
