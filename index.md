@@ -22,7 +22,7 @@ To follow along with the primer videos above, you may:
 
 You can now follow along in your notebook with the Python primer videos. There is a **User Inerface Tour** option in the **Help** menu at the top of your new notebook to get you familiar with the Jupyter notebook interface for writing, editing, and executing Python code in cells.
 
-<img src="static/img/warning.png" alt="WARNING" style="width:150px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
+<img src="static/img/warning.png" alt="WARNING" width="75px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
 
 ### Schedule
 
