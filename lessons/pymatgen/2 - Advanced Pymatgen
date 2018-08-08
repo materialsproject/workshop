@@ -1,0 +1,649 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Materials Project Workshop – August 8–10 2018, Berkeley, California\\n\",\n",
+    "#### Link to notebook: http://workshop.materialsproject.org/pymatgen/core/pymatgen_core.ipynb"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Pymatgen Adventures\n",
+    "\n",
+    "\n",
+    "This notebook will go over advanced pymatgen functionalities. We will build upon the core concepts in the introduction to pymatgen and use Mateirals Project data to perform materials analysis.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## 1. Building a phase diagram\n",
+    "Using the information we've learn about MPRester and Pymatgen, let's discuss an example of building a phase diagram. We are going to make the phase diagrams for Nickel, Oxygen and all of their combinations. \n",
+    "\n",
+    "Since, we will be plotting a phase diagram in a jupyter-notebook, we can run a command so that they show up a little cleaner:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "%matplotlib inline"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Pymatgen has a built in interface to the Materials Project called the MPRester. This simplifies the process of getting data and transforming it into pymatgen objects so that we can jump right into performing analysis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "from pymatgen import MPRester\n",
+    "mpr = MPRester()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, let's use the MPRester to get all phase diagram entries in the Ni-O chemical system"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "system = [\"Ni\", \"O\"]\n",
+    "entries = mpr.get_entries_in_chemsys(system)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Total Entries: \", len(entries),\"\\n\\n\")\n",
+    "\n",
+    "print(entries[0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Next, we use these entries to create a Phase Diagram and plot it. The plot below will show the formation energy vs the fraction of compound"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pymatgen.analysis.phase_diagram import PhaseDiagram\n",
+    "from pymatgen.analysis.phase_diagram import PDPlotter\n",
+    "\n",
+    "\n",
+    "pd = PhaseDiagram(entries)\n",
+    "plotter = PDPlotter(pd)\n",
+    "plotter.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice that not all the entries were plotted. We have compounds at the terminal compositions (the elements), and two in between. This is a compositional phase diagram. Since we used Materials Project data, which is computed using Density Functional Theory (DFT) at 0K, we have produced a 0K Phase diagram."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "What if we want to see the full phase diagram with all the unstable entries?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "plotter = PDPlotter(pd,show_unstable=True)\n",
+    "plotter.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, we see all the compositions including those that are unstable"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "### 1.1 Add our own Entry into the phase diagram\n",
+    "\n",
+    "The phase diagram is a usefull tool to understand phase stability. Often we want to take MP data and see what the phase stability of our own calculated materials are. We start off by making an entry for our \"computed\" material"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "from pymatgen.entries.computed_entries import ComputedEntry\n",
+    "\n",
+    "my_entry = ComputedEntry(composition=\"Ni4O2\",\n",
+    "                  energy=-28,\n",
+    "                  parameters={\"potcar_symbols\": ['pbe Ni_pv', 'pbe O'],\n",
+    "                              \"hubbards\":{'Ni': 6.2, 'O': 0.0}},\n",
+    "                  data={\"oxide_type\":\"oxide\"})\n",
+    "\n",
+    "print(my_entry)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, we have to process it through the MateiralsProjectCompatability to make sure it gets the right corrections. MP has a number of corrections that ensure well measured reaction energies are properly recreated. This accounts for elemental biases such as the overbinding of electrons to oxygen in DFT."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pymatgen.entries.compatibility import MaterialsProjectCompatibility\n",
+    "compat = MaterialsProjectCompatibility()\n",
+    "compat.process_entries([my_entry])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Exercise: Recreate the phase diagram with the new entry added in"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now that we've seen the way we can add our own entry to the phase diagram, let's try to recreate the plot with the new entry added in! "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "```\n",
+    "new_entries = list(entries)\n",
+    "\n",
+    "new_entries.extend(_______)\n",
+    "pd = ________ \n",
+    "plotter = ________ \n",
+    "_____________ \n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Answer\n",
+    "new_entries = list(entries)\n",
+    "\n",
+    "new_entries.extend(compat.process_entries([my_entry]))\n",
+    "pd = PhaseDiagram(new_entries)\n",
+    "plotter = PDPlotter(pd)\n",
+    "plotter.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Plotting Electronic Structure\n",
+    "\n",
+    "The Materials Project contains over 50,000 pre-computed bandstructures and densities of states. This data can then be used to calculate seeebeck coefficeints understand defects and optical transitions. For this example, we'll perform the simple task of getting a bandstructure and plotting it"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Go onto materials project and find a material that has a bandstructure.\n",
+    "Then we'll grab the bandstructure object for that material"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bs = mpr.get_bandstructure_by_material_id(\"mp-2657\")\n",
+    "print(bs)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice that the pymatgen rest module gave us a BandStructureSymmLine object\n",
+    "This is a specific type of bandstructure object that traces an important path in the BZ to identify properties such as the band gap\n",
+    "\n",
+    "Let's check the band gap"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(bs.get_band_gap())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, let's plot the bandstructure"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pymatgen.electronic_structure.plotter import BSPlotter\n",
+    "\n",
+    "plotter=BSPlotter(bs)\n",
+    "plotter.get_plot().show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Sometimes it's useful to visualize what this path is:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plotter.plot_brillouin()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "There is a similar method to get the density of states for a material.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dos = mpr.get_dos_by_material_id(\"mp-2657\")\n",
+    "print(dos)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's now get the elemental components. This is TiO2, so there is a DOS for Ti and a DOS for O"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dos_elemns = dos.get_element_dos()\n",
+    "print(dos_elemns)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's also get the orbitially seperated DOS for Ti"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dos_ti = dos.get_element_spd_dos(\"Ti\")\n",
+    "print(dos_ti)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's plot the total DOS"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pymatgen.electronic_structure.plotter import DosPlotter\n",
+    "dp = DosPlotter()\n",
+    "dp.add_dos(\"Total\",dos)\n",
+    "dp.get_plot().show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.1 Exercise: Plot the total DOS for the TiO2 Elemental DOS'es shown above\n",
+    "\n",
+    "Plot the total and elemental DOSes all together"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "dp = _______\n",
+    "for el,e_dos in dos_elemns.items():\n",
+    "    ________\n",
+    "    \n",
+    "___________\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Answer\n",
+    "dp = DosPlotter()\n",
+    "for el,e_dos in dos_elemns.items():\n",
+    "    dp.add_dos(str(el),e_dos)\n",
+    "    \n",
+    "dp.get_plot().show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "## 3. Find the best substrate for BiFeO3\n",
+    "\n",
+    "Another tool in pymatgen is called the SubstrateAnalyzer. This tool uses geometry and continuum elasticity to find the best substrate to grow a material on. We'll use this to find the best substrate for BiFeO3\n",
+    "\n",
+    "\n",
+    "First, let's the BiFeO3 structure"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "film = mpr.get_structure_by_material_id(\"mp-645159\")\n",
+    "\n",
+    "print(film)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Next, we need to get the elastic tensor. Pymatgen has a built in Tensor defintion and ElasticTensor definition. This is usefull when you want to perform some sort of tensor operation such as rotating or trasnforming it, or even applying it to a structure. \n",
+    "\n",
+    "Let's use MPRester to grab the elasticity data for BiFeO3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "elac = mpr.query({\"material_id\": \"mp-645159\"},['elasticity'])[0]\n",
+    "\n",
+    "elac"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, let's convert it into an Elastic Tensor object"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pymatgen.analysis.elasticity import ElasticTensor\n",
+    "tensor = ElasticTensor.from_voigt(elac['elasticity']['elastic_tensor'])\n",
+    "tensor.voigt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's get a list of substrates to consider. Materials Project has collected a set of the most accessible substrates and their corresponding MPids"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "mpr.get_all_substrates()[:10]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We'll use some fancy python to get all the structures corresponding to these materials ids"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pot_substrates = [mpr.get_structure_by_material_id(s) for s in mpr.get_all_substrates()[:10]]\n",
+    "print(pot_substrates)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Next we need to initialize the substrate analyzer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "from pymatgen.analysis.substrate_analyzer import SubstrateAnalyzer\n",
+    "sa = SubstrateAnalyzer()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The analyzer can be used to calculate matches between a substrates and films. We need to go through those matches and add in any extra metadata and store those matches"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "all_matches = []\n",
+    "for substrate in pot_substrates:\n",
+    "    matches = list(sa.calculate(film=film,substrate=substrate,elasticity_tensor=tensor,lowest=True))\n",
+    "    for m in matches:\n",
+    "        m['composition'] = str(substrate.composition.reduced_formula)\n",
+    "    all_matches.extend(matches)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(all_matches)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's plot the matches"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%matplotlib inline\n",
+    "from matplotlib import pyplot as plt\n",
+    "\n",
+    "for i in all_matches:\n",
+    "    plt.scatter(i['elastic_energy'],i['match_area'])\n",
+    "plt.xlabel(\"Elastic Energy (eV)\")\n",
+    "plt.ylabel(r\"Matching Area ($\\AA^2$)\")\n",
+    "plt.xlim(0,0.005)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Our previous analysis shows that the lower left corner is preferred. So let's look at matches with matching area < 50.0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "for m in all_matches:\n",
+    "    if m['match_area'] < 50.0 and m['elastic_energy'] < 0.002:\n",
+    "        print(\"Material: {} Substrate Face: {}  Film Direction: {}  Strain: {}\".format(m['composition'],\n",
+    "                                                                                      m['sub_miller'],\n",
+    "                                                                                      m['film_miller'],\n",
+    "                                                                                      m['strain']))"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
