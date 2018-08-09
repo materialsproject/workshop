@@ -3,7 +3,6 @@ Module containing helper code for the atomate lesson
 """
 
 import os
-
 from graphviz import Digraph
 from fireworks import Firework, Workflow
 from atomate.vasp.powerups import use_fake_vasp
@@ -21,7 +20,15 @@ state_to_color = {
     "PAUSED": "#FFCFCA"
 }
 
-def renderer(workflow):
+os.environ["FW_CONFIG_FILE"] = "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml"
+
+si_struct_opt_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_structure_opt")
+si_static_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_static")
+si_nscf_line_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_nscf_line")
+si_nscf_uniform_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_nscf_uniform")
+
+
+def wf_to_graph(workflow):
     """
     Creates and renders a graph representation of a
     workflow and firework.  Workflows are rendered as the
