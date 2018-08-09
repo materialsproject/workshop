@@ -31,6 +31,8 @@ Breakfast arrives on Thursday and Friday mornings at 09:00.
 
 Etherpad for sharing code snippets / exercise answers / asking for help discreetly during the workshop: [https://etherpad.wikimedia.org/p/mpworkshop](https://etherpad.wikimedia.org/p/mpworkshop).
 
+Synced (with some lag) static view of current instructor's notebook: [https://matgen7.lbl.gov/workshoplive/](https://matgen7.lbl.gov/workshoplive/). This can be helpful to load if you fall a bit behind.
+
 Wed afternoon -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
 * 13:30-13:45 Built-in functions and libraries; getting help
