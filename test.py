@@ -4,6 +4,8 @@ import tempfile
 import subprocess
 import os
 import nbformat
+from fireworks import LaunchPad
+from mp_workshop.atomate import wf_to_graph
 
 
 # Put any notebooks to be excluded here
@@ -18,6 +20,12 @@ EXPECTED_ERRORS = {
     "lessons/python_primer/5 - Lists.ipynb": 0, # Exception examples
     "lessons/python_primer/8 - Writing Functions.ipynb": 0, # Fill in example
 }
+
+class FireworksConfigTest(unittest.TestCase):
+    def test_config(self):
+        lpad = LaunchPad.auto_load()
+        self.assertEqual(lpad.fireworks.database.name, "mp_workshop")
+
 
 class NotebookTest(unittest.TestCase):
     def setUp(self):
