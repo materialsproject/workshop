@@ -20,7 +20,7 @@ To follow along with the primer videos above, you may:
     <img src="static/img/new-py3-notebook.png" alt="selecting Python 3 from the New button dropdown"
          width="400px">
 
-You can now follow along in your notebook with the Python primer videos. There is a **User Inerface Tour** option in the **Help** menu at the top of your new notebook to get you familiar with the Jupyter notebook interface for writing, editing, and executing Python code in cells.
+You can now follow along in your notebook with the Python primer videos. There is a **User Interface Tour** option in the **Help** menu at the top of your new notebook to get you familiar with the Jupyter notebook interface for writing, editing, and executing Python code in cells.
 
 <img src="static/img/warning.png" alt="WARNING" width="75px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
 
@@ -29,11 +29,15 @@ You can now follow along in your notebook with the Python primer videos. There i
 All activities are in [190 Doe Library](#getting-here).
 Breakfast arrives on Thursday and Friday mornings at 09:00.
 
+Etherpad for sharing code snippets / exercise answers / asking for help discreetly during the workshop: [https://etherpad.wikimedia.org/p/mpworkshop](https://etherpad.wikimedia.org/p/mpworkshop).
+
+Synced (with some lag) static view of current instructor's notebook: [https://matgen7.lbl.gov/workshoplive/](https://matgen7.lbl.gov/workshoplive/). This can be helpful to load if you fall a bit behind.
+
 Wed afternoon -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
 * 13:30-13:45 Built-in functions and libraries; getting help
 * 13:45-14:30 Control flow: conditionals, for loops
-* 14:30-15:00 (break)
+* 14:30-15:00 break -- coffee and refreshments served
 * 15:00-15:45 Data structures: lists and dictionaries
 * 15:45-16:30 Data collection: comprehensions, writing functions
 
@@ -41,7 +45,7 @@ Thu morning
 * 09:30-09:45 Intro
 * 09:45-11:00 Web site - example usage
 * 11:00-11:15 coffee break
-* 11:15-12:30 Pymatgen core use – going over useful functionality
+* 11:15-12:30 Pymatgen core use – going over foundations and useful functionality
 * 12:30-13:30 lunch
 
 Thu afternoon
@@ -62,7 +66,7 @@ Fri afternoon (Breakout sessions)
 * 14:45-15:00 coffee break
 * 15:00-16:15 TBA based on participant polling: Breakout sessions
 * 1: Contributing data to MP
-* 2: Analysis of high-throughput workflow results using mongo and maggma
+* 2: Setting up your own MP-style database for data management and analysis
 * 3: Materials data science using matminer and scikit-learn
 * 4: Milestones in materials design - a walkthrough of past MP discoveries
 
