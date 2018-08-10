@@ -1,5 +1,0 @@
-ADD_USER_PACKAGES:
--   atomate.vasp.firetasks
-CONFIG_FILE_DIR: /home/jovyan/work/workshop-2018/mp_workshop/fireworks_config
-ECHO_TEST: 'Echo Test: MP Workshop'
-QUEUE_UPDATE_INTERVAL: 5
