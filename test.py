@@ -4,6 +4,8 @@ import tempfile
 import subprocess
 import os
 import nbformat
+from mp_workshop.atomate import wf_to_graph
+from fireworks import LaunchPad
 
 
 # Put any notebooks to be excluded here
@@ -15,9 +17,15 @@ EXCLUDE_NBS = {
 module_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 
 EXPECTED_ERRORS = {
-    "lessons/python_primer/5 - Lists.ipynb": 2, # Exception examples
-    "lessons/python_primer/8 - Writing Functions.ipynb": 1, # Fill in example
+    "lessons/python_primer/5 - Lists.ipynb": 0, # Exception examples
+    "lessons/python_primer/8 - Writing Functions.ipynb": 0, # Fill in example
 }
+
+class FireworksConfigTest(unittest.TestCase):
+    def test_config(self):
+        lpad = LaunchPad.auto_load()
+        self.assertEqual(lpad.fireworks.database.name, "mp_workshop")
+
 
 class NotebookTest(unittest.TestCase):
     def setUp(self):

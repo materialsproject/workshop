@@ -31,6 +31,8 @@ Breakfast arrives on Thursday and Friday mornings at 09:00.
 
 Etherpad for sharing code snippets / exercise answers / asking for help discreetly during the workshop: [https://etherpad.wikimedia.org/p/mpworkshop](https://etherpad.wikimedia.org/p/mpworkshop).
 
+Synced (with some lag) static view of current instructor's notebook: [https://matgen7.lbl.gov/workshoplive/](https://matgen7.lbl.gov/workshoplive/). This can be helpful to load if you fall a bit behind.
+
 Wed afternoon -- Python/Jupyter primer (optional)
 * 13:00-13:30 Jupyter basics; Python variables and arithmetic
 * 13:30-13:45 Built-in functions and libraries; getting help
@@ -67,6 +69,10 @@ Fri afternoon (Breakout sessions)
 * 2: Setting up your own MP-style database for data management and analysis
 * 3: Materials data science using matminer and scikit-learn
 * 4: Milestones in materials design - a walkthrough of past MP discoveries
+
+### During the Workshop
+
+You can follow along with the instructor's notebook live by [visiting this link](http://matgen7.lbl.gov/workshoplive/).
 
 ### Getting here
 The workshop is located in 190 Doe Library on the UC Berkeley campus. Doe Library is the central library, adjacent to the beautiful Memorial Glade.
