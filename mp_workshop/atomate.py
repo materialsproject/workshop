@@ -72,9 +72,10 @@ def use_fake_vasp_workshop(workflow):
 
     Args:
     """
-    if workflow.name == "Ag:elastic constants":
-        runs_dir = os.path.join(module, "fake_vasp", "Ag_elastic_tensor")
-        config = {"Ag-elastic deformation 0": os.path.join(runs_dir, "1"),
-                  "Ag-elastic deformation 1": os.path.join(runs_dir, "2")}
+    if workflow.name == "Si:elastic constants":
+        runs_dir = os.path.join(module, "fake_vasp", "Si_elastic_tensor")
+        config = {"Si-elastic deformation 0": os.path.join(runs_dir, "1"),
+                  "Si-elastic deformation 1": os.path.join(runs_dir, "2")}
         return use_fake_vasp(workflow, config)
-    pass
+    else:
+        raise ValueError("Workflow {} not found".format(workflow.name))
