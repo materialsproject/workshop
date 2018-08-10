@@ -3,6 +3,9 @@ Module containing helper code for the atomate lesson
 """
 
 import os
+
+os.environ["FW_CONFIG_FILE"] = "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml"
+
 from graphviz import Digraph
 from fireworks import Firework, Workflow
 from atomate.vasp.powerups import use_fake_vasp
@@ -19,10 +22,6 @@ state_to_color = {
     "DEFUSED": "#B7BCC3",
     "PAUSED": "#FFCFCA"
 }
-
-os.environ["FW_CONFIG_FILE"] = "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml"
-os.putenv("FW_CONFIG_FILE", "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml")
-
 
 si_struct_opt_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_structure_opt")
 si_static_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_static")
