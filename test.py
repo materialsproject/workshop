@@ -15,8 +15,8 @@ EXCLUDE_NBS = {
 module_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 
 EXPECTED_ERRORS = {
-    "lessons/python_primer/5 - Lists.ipynb": 2, # Exception examples
-    "lessons/python_primer/8 - Writing Functions.ipynb": 1, # Fill in example
+    "lessons/python_primer/5 - Lists.ipynb": 0, # Exception examples
+    "lessons/python_primer/8 - Writing Functions.ipynb": 0, # Fill in example
 }
 
 class NotebookTest(unittest.TestCase):
