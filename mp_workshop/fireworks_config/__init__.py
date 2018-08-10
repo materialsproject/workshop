@@ -22,5 +22,7 @@ qadapter = {
     "pre_rocket": "export PATH=/opt/conda/bin:$PATH"
 }
 
-dumpfn(fw_config,"FW_config.yaml")
-dumpfn(qadapter,"my_qadapter.yaml",indent=4, default_flow_style=False)
+fw_config_dir = os.path.dirname(os.path.abspath(__file__))
+
+dumpfn(fw_config,os.path.join(fw_config_dir,"FW_config.yaml"))
+dumpfn(qadapter,os.path.join(fw_config_dir,"my_qadapter.yaml"),indent=4, default_flow_style=False)
