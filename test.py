@@ -23,8 +23,6 @@ EXPECTED_ERRORS = {
 
 class FireworksConfigTest(unittest.TestCase):
     def test_config(self):
-        from fireworks.fw_config import LAUNCHPAD_LOC
-        import nose; nose.tools.set_trace()
         lpad = LaunchPad.auto_load()
         self.assertEqual(lpad.fireworks.database.name, "mp_workshop")
 
