@@ -21,6 +21,8 @@ state_to_color = {
 }
 
 os.environ["FW_CONFIG_FILE"] = "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml"
+os.putenv("FW_CONFIG_FILE", "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml")
+
 
 si_struct_opt_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_structure_opt")
 si_static_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_static")

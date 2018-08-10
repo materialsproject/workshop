@@ -4,8 +4,8 @@ import tempfile
 import subprocess
 import os
 import nbformat
-from fireworks import LaunchPad
 from mp_workshop.atomate import wf_to_graph
+from fireworks import LaunchPad
 
 
 # Put any notebooks to be excluded here
@@ -23,6 +23,8 @@ EXPECTED_ERRORS = {
 
 class FireworksConfigTest(unittest.TestCase):
     def test_config(self):
+        from fireworks.fw_config import LAUNCHPAD_LOC
+        import nose; nose.tools.set_trace()
         lpad = LaunchPad.auto_load()
         self.assertEqual(lpad.fireworks.database.name, "mp_workshop")
 
