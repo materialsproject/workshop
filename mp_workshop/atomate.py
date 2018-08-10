@@ -3,8 +3,8 @@ Module containing helper code for the atomate lesson
 """
 
 import os
-
-os.environ["FW_CONFIG_FILE"] = "/home/jovyan/work/workshop-2018/mp_workshop/fireworks_config/FW_config.yaml"
+from mp_workshop.fireworks_config import fw_config_dir
+os.environ["FW_CONFIG_FILE"] = os.path.join(fw_config_dir,"FW_config.yaml")
 
 from graphviz import Digraph
 from fireworks import Firework, Workflow
