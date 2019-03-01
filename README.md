@@ -1,6 +1,6 @@
-## Materials Project Workshop 2018
+## Materials Project Workshop
 
-Assets for the 2018 Materials Project workshop.
+Assets for the Materials Project workshop.
 
 ## Tests
 
