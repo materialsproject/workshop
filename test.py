@@ -8,7 +8,7 @@ from mp_workshop.atomate import wf_to_graph
 from fireworks import LaunchPad
 
 
-# Put any notebooks to be excluded here
+# Put any notebooks to be excluded here.
 
 EXCLUDE_NBS = {
     "lessons/atomate",
