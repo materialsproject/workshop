@@ -1,90 +1,61 @@
-## Materials Project Workshop 2018
+## Materials Project Workshop 2019
 
-* [Before the workshop](#before-the-workshop)
 * [Schedule](#schedule)
 * [Getting Here](#getting-here)
 
-### Before the Workshop
+### Tentative Schedule
 
-Please review our [website walkthrough](https://www.youtube.com/watch?v=Mg9AgpwoArQ) video (approx. 40 minutes) so that you understand basic techniques for searching and layout of information. This way, we can avoid such a walkthrough during the workshop and spend more time on interactive instruction and exercises.
+All activities are in [310 Sutardja Dai Hall](#getting-here).
+Breakfast arrives on Wednesday, Thursday and Friday mornings at 08:30.
 
-If you are not attending our Python primer on Wednesday afternoon and wish to verify/refresh your Python skills, we have pre-recorded the second half of the primer -- covering lists; sets and dictionaries; comprehensions; and functions. Feel free to [watch any segments online](https://www.youtube.com/playlist?list=PLTjFYVNE7LTiJBX4IYu_XY3C5kRUZLnn6) prior to Thursday.
+(optional) Wed morning -- Python/Jupyter primer
+* 09:00-09:15 Intro - Variables and Arithmetic
+* 09:15-10:30 Built-ins - Lists, Functions, Packages, Dictionaries
+* 10:30-10:45 coffee break
+* 10:45-12:00 Control: Logic, Loops, Creating Functions, Iterators
+* 12:00-13:00 lunch
 
-To follow along with the primer videos above, you may:
-
-1. First, [sign in](https://materialsproject.org/) to your MP account online. Register for an account first if needed.
-2. Next (you *must* be signed in to MP), open a new web browser tab/window and go to [https://jupyterhub.materialsproject.org/](https://jupyterhub.materialsproject.org/).
-3. Then, start your server (big green button).
-4. Finally, open a new Python 3 notebook from the **New&#x25bc;** button on the right side of the shown notebook directory.
-
-    <img src="static/img/new-py3-notebook.png" alt="selecting Python 3 from the New button dropdown"
-         width="400px">
-
-You can now follow along in your notebook with the Python primer videos. There is a **User Interface Tour** option in the **Help** menu at the top of your new notebook to get you familiar with the Jupyter notebook interface for writing, editing, and executing Python code in cells.
-
-<img src="static/img/warning.png" alt="WARNING" width="75px"> **Warning**: Do *not* depend on our jupyterhub for saving your notebooks or data. We are still developing the instructional environment, so the server may reset at *any* time prior to commencement of the workshop.
-
-### Schedule
-
-All activities are in [190 Doe Library](#getting-here).
-Breakfast arrives on Thursday and Friday mornings at 09:00.
-
-Etherpad for sharing code snippets / exercise answers / asking for help discreetly during the workshop: [https://etherpad.wikimedia.org/p/mpworkshop](https://etherpad.wikimedia.org/p/mpworkshop).
-
-Synced (with some lag) static view of current instructor's notebook: [https://matgen7.lbl.gov/workshoplive/](https://matgen7.lbl.gov/workshoplive/). This can be helpful to load if you fall a bit behind.
-
-Wed afternoon -- Python/Jupyter primer (optional)
-* 13:00-13:30 Jupyter basics; Python variables and arithmetic
-* 13:30-13:45 Built-in functions and libraries; getting help
-* 13:45-14:30 Control flow: conditionals, for loops
-* 14:30-15:00 break -- coffee and refreshments served
-* 15:00-15:45 Data structures: lists and dictionaries
-* 15:45-16:30 Data collection: comprehensions, writing functions
+(optional) Wed afternoon -- MongoDB using Python primer 
+* 13:00-13:15 Data Modeling - Python Types to JSON to MongoDB
+* 13:15-14:30 Listing, Counting, Finding, and Dot Notation
+* 14:30-14:45 coffee+stretch break
+* 14:45-16:00 Advanced Filtering, Basic Aggregation, and Sorting
+* 16:00-16:30 wrap-up
 
 Thu morning
-* 09:30-09:45 Intro
-* 09:45-11:00 Web site - example usage
-* 11:00-11:15 coffee break
-* 11:15-12:30 Pymatgen core use – going over foundations and useful functionality
-* 12:30-13:30 lunch
+* 09:00-09:15 Overview of MP data+software ecosystem
+* 09:15-10:30 Website and Basic API use
+* 10:30-10:45 Coffee+stretch break
+* 10:45-12:00 Pymatgen core - foundations and useful functionality
+* 12:00-13:00 Lunch
 
 Thu afternoon
-* 13:30-13:45 catch-up/debugging
-* 13:45-15:00 Pymatgen adventures - several case studies, including use of MP API
-* 15:00-15:15 coffee
-* 15:15-16:30 API basics - Designing materials using MP queries
+* 13:00-13:15 Catch-up
+* 13:15-14:30 Pymatgen adventures - several case studies, including use of MP API
+* 14:30-14:45 Coffee+stretch break
+* 14:45-16:00 Advanced API use - materials informatics
+* 16:00-16:30 Wrap-up
 
 Fri morning
-* 09:30-09:45 catch-up/debugging
-* 09:45-11:00 Atomate session 1 - Building basic workflows
-* 11:00-11:15 coffee break
-* 11:15-12:30 Atomate session 2 - Managing complex workflows
-* 12:30-13:30 lunch
+* 09:00-09:15 Overview of MP workflow infrastructure
+* 09:15-10:30 Atomate basics - Building a workflow
+* 10:30-10:45 Coffee+stretch break
+* 10:45-12:00 Atomate intermediate - Managing complex workflows
+* 12:00-13:00 Lunch
 
-Fri afternoon (Breakout sessions)
-* 13:30-14:45 TBA based on participant polling: Breakout sessions
-* 14:45-15:00 coffee break
-* 15:00-16:15 TBA based on participant polling: Breakout sessions
-* 1: Contributing data to MP
-* 2: Setting up your own MP-style database for data management and analysis
-* 3: Materials data science using matminer and scikit-learn
-* 4: Milestones in materials design - a walkthrough of past MP discoveries
-
-### During the Workshop
-
-You can follow along with the instructor's notebook live by [visiting this link](http://matgen7.lbl.gov/workshoplive/).
+Fri afternoon
+* 13:00-13:15 catch-up
+* 13:15-14:30 Your data: Contributing to MP / Setting up your own data management+analysis pipeline
+* 14:30-14:45 Coffee+stretch break
+* 14:45-16:00 Materials data science: descriptors and machine learning
+* 16:00-16:30 Wrap-up
 
 ### Getting here
-The workshop is located in 190 Doe Library on the UC Berkeley campus. Doe Library is the central library, adjacent to the beautiful Memorial Glade.
+The workshop is located in 310 Sutardja Dai Hall, aka the Banatao Auditorium, on the UC Berkeley campus.
+[Click here](https://citris-uc.org/visitor-information/) for detailed visitor information, including parking and
+transportation options.
 
-<img src="static/img/doe-floorplan-1.jpg" alt="floorplan and bathroom location">
-
-The most convienient parking garage nearby is the [Stadium Parking Garage](https://lots.impark.com/imp#details=37,386) (also known as Maxwell Garage) on the east (uphill) edge of campus at 2175 Gayley Road, with a daily (up to 10 hrs) rate of $15. A walking route from the garage to 190 Doe Library is shown below. 
-
-<img src="static/img/parking.png" alt="parking at Stadium Parking Garage (aka Maxwell Garage)"
+<img src="static/img/banatao-map.jpg" alt="campus map highlighting Sutardja Dai Hall"
      style="margin: 1em 0; width=800px">
 
-From the Downtown Berkeley BART station, there is a lovely walk through the Eucalyptus Grove on the west end of campus and past the iconic Valley Life Sciences Building up to the Memorial Glade and Doe Library.
-
-<img src="static/img/walk-from-bart.png" alt="walk from BART to Doe Library"
-     style="margin: 1em 0; width=800px">
+The walk from downtown is a bit steep, so you may wish to board a campus shuttle.
