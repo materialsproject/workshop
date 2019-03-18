@@ -55,7 +55,7 @@ The workshop is located in 310 Sutardja Dai Hall, aka the Banatao Auditorium, on
 [Click here](https://citris-uc.org/visitor-information/) for detailed visitor information, including parking and
 transportation options.
 
-<img src="static/img/banatao-map.jpg" alt="campus map highlighting Sutardja Dai Hall"
+<img src="static/img/banatao-map.png" alt="campus map highlighting Sutardja Dai Hall"
      style="margin: 1em 0; width=800px">
 
 The walk from downtown is a bit steep, so you may wish to board a campus shuttle.
