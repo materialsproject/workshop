@@ -15,3 +15,5 @@ RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
 COPY server_proxy_config.py /tmp/server_proxy_config.py
 RUN cat /tmp/server_proxy_config.py >> /home/jovyan/.jupyter/jupyter_notebook_config.py 
 RUN mkdir /home/jovyan/mongodb
+RUN npm install -g mongo-express
+COPY start_mongo.sh /home/jovyan/start_mongo.sh

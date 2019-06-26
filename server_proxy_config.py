@@ -3,7 +3,8 @@ c.ServerProxy.servers = {
         'command': ['python', '-m', 'http.server', '{port}']
     },
     'mongo': {
-        'port': 27017,
-        'command': ['mongod', '--dbpath=/home/jovyan/mongodb']
+        'port': 8081,
+        'absolute_url': True,
+        'command': ['/home/jovyan/start_mongo.sh']
     }
 }
