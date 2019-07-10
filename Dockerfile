@@ -12,7 +12,6 @@ USER $NB_USER
 # install additional package...
 
 RUN pip install --no-cache-dir jupyter-server-proxy atomate
-RUN echo "No Cache below"
 RUN pip install --upgrade git+https://github.com/shreddd/fireworks
 RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
 COPY server_proxy_config.py /tmp/server_proxy_config.py
