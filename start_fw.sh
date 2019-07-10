@@ -7,6 +7,5 @@ else
 fi
 
 
-export ME_CONFIG_SITE_BASEURL="${app_root}mongo/"
-mongod --dbpath=/home/jovyan/mongodb &
-mongo-express
+export FW_APPLICATION_ROOT="${app_root}fireworks/"
+lpad webgui
