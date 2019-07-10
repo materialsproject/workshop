@@ -86,6 +86,7 @@ WORKDIR /home/jovyan
 RUN mkdir /home/jovyan/mongodb
 RUN npm install -g mongo-express
 COPY start_mongo.sh /home/jovyan/start_mongo.sh
+COPY start_fw.sh /home/jovyan/start_fw.sh
 RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
 #RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir jupyter-server-proxy atomate graphviz maggma

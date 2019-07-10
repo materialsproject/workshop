@@ -10,7 +10,7 @@ c.ServerProxy.servers = {
     'fireworks': {
         'port': 5000,
         'absolute_url': True,
-        'command': ['lpad', '-l', '/home/jovyan/work/mp_workshop/fireworks_config/my_launchpad.yaml', 'webgui', '-s']
+        'command': ['/home/jovyan/start_fw.sh']
     },
     #'slurm': {
     #    'port': 8081,
