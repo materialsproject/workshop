@@ -89,11 +89,21 @@ COPY start_mongo.sh /home/jovyan/start_mongo.sh
 COPY start_fw.sh /home/jovyan/start_fw.sh
 RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
 #RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
-RUN pip install --no-cache-dir jupyter-server-proxy atomate graphviz maggma
+RUN pip install --no-cache-dir jupyter-server-proxy
 RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
-RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
+RUN pip install --upgrade --force jupyter ipython jupyter-console nbconvert
+#RUN pip uninstall -y tornado && pip install tornado==5.1.1
+COPY setup.py /home/jovyan/
+COPY mp_workshop /home/jovyan/mp_workshop
+RUN cd /home/jovyan/ && pip install --no-cache-dir -e .
+COPY lessons /home/jovyan/work/lessons
 
+USER root
+RUN chown -R jovyan:users /home/jovyan/work/lessons
+RUN chown -R jovyan:users /home/jovyan/mp_workshop
+
+USER $NB_USER
+RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
 COPY server_proxy_config.py /tmp/server_proxy_config.py
 RUN cat /tmp/server_proxy_config.py >> /home/jovyan/.jupyter/jupyter_notebook_config.py
-COPY mp_workshop /home/jovyan/work/mp_workshop
-COPY lessons /home/jovyan/work/lessons
+WORKDIR /home/jovyan/work
