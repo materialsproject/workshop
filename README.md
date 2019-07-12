@@ -14,6 +14,15 @@ pip install -r requirements.txt
 python test.py
 ```
 
+If you get an error like
+> `jupyter_client.kernelspec.NoSuchKernel: No such kernel named <ENVNAME>`
+
+then that notebook expects to be run using an IPython kernel with that name. With your Python environment activated, run
+```
+python -m ipykernel install --user --name <ENVNAME>
+```
+where `<ENVNAME>` is the name in the error message, e.g. `conda-env-mp-py`. This will ensure that the notebook uses your local environment. to run itself.
+
 ## Docker
 
 Docker build for Jupyter Singleuser container to be used in MP Workshop
