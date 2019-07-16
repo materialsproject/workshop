@@ -2,7 +2,7 @@ FROM jupyterhub/k8s-singleuser-sample:0.8.0
 
 USER root
 RUN locale-gen en_US.UTF-8
-RUN apt-get update -q && apt-get install --yes gcc vim emacs mongodb
+RUN apt-get update -q && apt-get install --yes gcc vim emacs mongodb graphviz
 ENV BUILD_DEPS="git devscripts equivs apt-utils apache2-dev libslurm-dev python-setuptools cython python-dev libslurmdb-dev libslurm-dev ca-certificates"
 ENV RUN_DEPS="apache2 libapache2-mod-wsgi javascript-common python-flask clustershell libjs-bootstrap libjs-jquery-flot libjs-jquery-tablesorter libmunge-dev munge node-uglify fonts-dejavu-core python-ldap python-redis libjs-requirejs libjs-requirejs-text libjs-three libjs-d3 libjs-handlebars"
 RUN apt-get update -q && apt-get -y install $BUILD_DEPS $RUN_DEPS
@@ -28,7 +28,6 @@ WORKDIR /home/jovyan
 RUN mkdir /home/jovyan/mongodb
 COPY start_fw.sh /home/jovyan/start_fw.sh
 RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
-#RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir jupyter-server-proxy
 RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
 RUN pip install --upgrade --force jupyter ipython jupyter-console nbconvert
@@ -49,6 +48,13 @@ RUN PASSWORD=${1:-"Setec Astronomy"} && \
   echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key && \
   chown jovyan:users /tmp/munge.key && \
   chmod go-rwx /tmp/munge.key
+
+
+USER $NB_USER
+RUN pip install --no-cache-dir --upgrade pythreejs
+RUN jupyter nbextension install --user --py pythreejs
+RUN jupyter nbextension enable --user --py pythreejs
+RUN pip install --no-cache-dir -e git+https://github.com/materialsproject/crystaltoolkit.git#egg=crystaltoolkit
 
 USER $NB_USER
 RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
