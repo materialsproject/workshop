@@ -18,11 +18,16 @@ RUN cd /usr/src && tar axvf /root/slurm-17-11-8-1.tar.gz && cd /usr/src/slurm-sl
 RUN git clone https://github.com/jamesmcclain/SlurmDocker.git && cd SlurmDocker && cp config/slurm.conf.template /etc/
 RUN apt-get clean
 
+#COPY fireworks /tmp/fireworks
+#RUN chown -R jovyan:users /tmp/fireworks
+RUN conda install python==3.7.3
+
 USER $NB_USER
 WORKDIR /home/jovyan
 RUN mkdir /home/jovyan/mongodb
 COPY start_fw.sh /home/jovyan/start_fw.sh
 RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
+#RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir jupyter-server-proxy
 RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
 RUN pip install --upgrade --force jupyter ipython jupyter-console nbconvert
