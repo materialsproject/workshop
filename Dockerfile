@@ -27,10 +27,12 @@ USER $NB_USER
 WORKDIR /home/jovyan
 RUN mkdir /home/jovyan/mongodb
 COPY start_fw.sh /home/jovyan/start_fw.sh
+RUN pip install --no-cache-dir jsonschema>=2.5.1 entrypoints>=0.2.2 mistune>=0.7.4 testpath
+RUN pip install --no-cache-dir pyzmq>=13 tornado>=4.1 traitlets webencodings SQLAlchemy>=0.7.6
+RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
 RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
 #RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir jupyter-server-proxy
-RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
 RUN pip install --upgrade --force jupyter ipython jupyter-console nbconvert
 COPY setup.py /home/jovyan/
 COPY mp_workshop /home/jovyan/mp_workshop
