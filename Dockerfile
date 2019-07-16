@@ -20,6 +20,7 @@ RUN apt-get clean
 
 #COPY fireworks /tmp/fireworks
 #RUN chown -R jovyan:users /tmp/fireworks
+RUN conda update -n base conda
 RUN conda install python==3.7.3
 
 USER $NB_USER
