@@ -28,7 +28,9 @@ USER $NB_USER
 WORKDIR /home/jovyan
 RUN mkdir /home/jovyan/mongodb
 COPY start_fw.sh /home/jovyan/start_fw.sh
-RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
+ADD https://api.github.com/repos/tschaume/fireworks/git/refs/heads/master version.json
+RUN git clone https://github.com/tschaume/fireworks.git
+RUN cd fireworks && pip install --no-cache-dir -e .
 #RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
 RUN pip install --no-cache-dir jupyter-server-proxy
@@ -65,4 +67,23 @@ RUN cat /tmp/server_proxy_config.py >> /home/jovyan/.jupyter/jupyter_notebook_co
 COPY POTCARs.tar.gz /home/jovyan/
 RUN tar -xvzf /home/jovyan/POTCARs.tar.gz -C /home/jovyan/
 RUN echo "PMG_VASP_PSP_DIR: /home/jovyan/POTCARs" >> /home/jovyan/.pmgrc.yaml
+
+# MPContribs
+ADD https://api.github.com/repos/materialsproject/MPContribs/git/refs/heads/dev version.json
+RUN git clone -b dev https://github.com/materialsproject/MPContribs.git
+WORKDIR /home/jovyan/MPContribs
+ENV SETUPTOOLS_SCM_PRETEND_VERSION 1.6.0
+RUN cd mpcontribs-client && pip install --no-cache-dir -e .
+RUN cd mpcontribs-io && pip install --no-cache-dir -e .
+RUN npm install 2>&1
+RUN cp -v binder/binder.js . && \
+    cp -v webpack-binder.config.js webpack.config.js && \
+    npm run webpack 2>&1
+RUN mkdir /home/jovyan/.jupyter/custom && \
+    mv -v dist /home/jovyan/.jupyter/custom/js
+#RUN cp -v binder/custom.js /home/jovyan/.jupyter/custom/
+RUN mkdir /home/jovyan/work/lessons/MPContribs/ && \
+    cp -v binder/*.ipynb /home/jovyan/work/lessons/MPContribs/
+RUN export FW_CONFIG_FILE="/home/jovyan/mp_workshop/fireworks_config/FW_config.yaml"
+
 WORKDIR /home/jovyan/work
