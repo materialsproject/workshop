@@ -14,3 +14,5 @@ def get_viewer_link(structure, host="https://viewer.materialsproject.org"):
     payload = "?structure={}".format(payload)
     url = urllib.parse.urljoin(host, payload)
     display(HTML("<a href='{}' target='_blank'>Click to view structure.</a>".format(url)))
+
+from crystal_toolkit.helpers.pythreejs_renderer import display_struct
