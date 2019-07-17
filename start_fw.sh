@@ -23,4 +23,5 @@ else
 fi
 
 export FW_APPLICATION_ROOT="${app_root}fireworks/"
-lpad -l /home/jovyan/mp_workshop/fireworks_config/my_launchpad.yaml webgui -s
+export FW_CONFIG_FILE="/home/jovyan/mp_workshop/fireworks_config/FW_config.yaml"
+lpad webgui -s --nworkers 1
