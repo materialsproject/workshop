@@ -1,4 +1,7 @@
-FROM jupyterhub/k8s-singleuser-sample:0.8.0
+FROM jupyter/base-notebook:7a3e968dd212
+# Built from... https://hub.docker.com/r/jupyter/base-notebook/
+#               https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
+# Built from... Ubuntu 18.04
 
 USER root
 RUN locale-gen en_US.UTF-8
@@ -20,16 +23,15 @@ RUN apt-get clean
 
 #COPY fireworks /tmp/fireworks
 #RUN chown -R jovyan:users /tmp/fireworks
-#RUN conda update -n base conda
-RUN conda install python==3.7.3
 
 USER $NB_USER
 WORKDIR /home/jovyan
 RUN mkdir /home/jovyan/mongodb
 COPY start_fw.sh /home/jovyan/start_fw.sh
 RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#egg=fireworks
-RUN pip install --no-cache-dir jupyter-server-proxy
+#RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
+RUN pip install --no-cache-dir jupyter-server-proxy
 RUN pip install --upgrade --force jupyter ipython jupyter-console nbconvert
 COPY setup.py /home/jovyan/
 COPY mp_workshop /home/jovyan/mp_workshop
