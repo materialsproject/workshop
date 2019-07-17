@@ -32,7 +32,7 @@ RUN pip install --no-cache-dir -e git+https://github.com/tschaume/fireworks.git#
 #RUN cd /tmp/fireworks && pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir --upgrade Jinja2 python-dateutil
 RUN pip install --no-cache-dir jupyter-server-proxy
-RUN pip install --upgrade --force jupyter ipython jupyter-console nbconvert
+RUN pip install --upgrade --ignore-installed terminado --force jupyter ipython jupyter-console nbconvert
 COPY setup.py /home/jovyan/
 COPY mp_workshop /home/jovyan/mp_workshop
 RUN cd /home/jovyan/ && pip install --no-cache-dir -e .
