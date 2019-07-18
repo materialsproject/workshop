@@ -4,3 +4,6 @@ maggma
 matminer
 graphviz
 jupyter
+RISE
+pythreejs
+jupyter-server-proxy
