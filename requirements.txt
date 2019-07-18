@@ -7,3 +7,4 @@ jupyter
 RISE
 pythreejs
 jupyter-server-proxy
+nbzip
