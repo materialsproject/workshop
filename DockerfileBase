@@ -44,6 +44,10 @@ RUN pip install --upgrade --ignore-installed terminado --force jupyter ipython j
 RUN jupyter nbextension install --user --py pythreejs
 RUN jupyter nbextension enable --user --py pythreejs
 RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
+RUN pip install --no-cache-dir nbzip
+RUN jupyter serverextension enable --py nbzip --sys-prefix
+RUN jupyter nbextension install --user --py nbzip
+RUN jupyter nbextension enable --user --py nbzip
 
 RUN mkdir -p /home/jovyan/mpcontribs-webtzite/webtzite
 RUN wget -O mpcontribs-webtzite/webtzite/package.json https://raw.githubusercontent.com/materialsproject/MPContribs/dev/mpcontribs-webtzite/webtzite/package.json
