@@ -45,8 +45,7 @@ RUN jupyter nbextension install --user --py pythreejs
 RUN jupyter nbextension enable --user --py pythreejs
 RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
 
-RUN mkdir -p /home/jovyan/MPContribs/mpcontribs-webtzite/webtzite
-WORKDIR /home/jovyan/MPContribs
+RUN mkdir -p /home/jovyan/mpcontribs-webtzite/webtzite
 RUN wget -O mpcontribs-webtzite/webtzite/package.json https://raw.githubusercontent.com/materialsproject/MPContribs/dev/mpcontribs-webtzite/webtzite/package.json
 RUN wget https://raw.githubusercontent.com/materialsproject/MPContribs/dev/package.json
 RUN npm install 2>&1

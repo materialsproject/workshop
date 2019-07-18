@@ -13,6 +13,8 @@ RUN cd crystaltoolkit && pip install --no-cache-dir -e .
 
 ADD https://api.github.com/repos/materialsproject/MPContribs/git/refs/heads/dev version.json
 RUN git clone -b dev https://github.com/materialsproject/MPContribs.git
+RUN mv node_modules MPContribs
+
 WORKDIR /home/jovyan/MPContribs
 ENV SETUPTOOLS_SCM_PRETEND_VERSION 1.6.0
 RUN cd mpcontribs-client && pip install --no-cache-dir -e .
@@ -24,8 +26,6 @@ RUN cp -v binder/binder.js . && \
 RUN mkdir /home/jovyan/.jupyter/custom && \
     mv -v dist /home/jovyan/.jupyter/custom/js
 #RUN cp -v binder/custom.js /home/jovyan/.jupyter/custom/
-RUN mkdir /home/jovyan/work/lessons/MPContribs/ && \
-    cp -v binder/*.ipynb /home/jovyan/work/lessons/MPContribs/
 
 WORKDIR /home/jovyan
 COPY start_fw.sh /home/jovyan/start_fw.sh
@@ -46,6 +46,8 @@ RUN chown -R jovyan:users /home/jovyan/mp_workshop
 RUN chmod +x /home/jovyan/slurm-config.sh
 
 USER $NB_USER
+RUN mkdir /home/jovyan/work/lessons/MPContribs/ && \
+    cp -v /home/jovyan/MPContribs/binder/*.ipynb /home/jovyan/work/lessons/MPContribs/
 RUN cd /home/jovyan/ && pip install --no-cache-dir -e .
 
 WORKDIR /home/jovyan/work
