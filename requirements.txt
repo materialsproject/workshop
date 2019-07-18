@@ -50,4 +50,4 @@ ipython>=7.5.0
 plotly>=3.10.0
 
 fireworks @ git+https://github.com/tschaume/fireworks#egg=fireworks
-crystaltoolkit @ git+https://github.com/materialsproject/crystaltoolkit#egg=crystal-toolkit
+crystal-toolkit @ git+https://github.com/materialsproject/crystaltoolkit#egg=crystal-toolkit

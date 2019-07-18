@@ -8,12 +8,9 @@ devscripts
 equivs
 apt-utils
 apache2-dev
-libslurm-dev
 python-setuptools
 cython
 python-dev
-libslurmdb-dev
-libslurm-dev
 ca-certificates
 apache2
 libapache2-mod-wsgi
@@ -34,4 +31,8 @@ libjs-requirejs-text
 libjs-three
 libjs-d3
 libjs-handlebars
+libslurm-dev
+libslurmdb-dev
+libslurm-dev
 slurm-wlm
+slurm-wlm-doc
