@@ -1,48 +1,22 @@
-set -ex
+#!/bin/bash
 
-mkdir /home/jovyan/mongodb
-cp config/slurm.conf.template /etc/
-mkdir -p /usr/etc
-touch /usr/etc/slurm.conf
-chown -R jovyan:users /usr/etc
-mkdir -p /var/{log,lib,run}/munge
-chown jovyan:users /var/{log,lib,run}/munge
-mkdir -p /var/run/spool
-chown jovyan:users /var/run/spool
-PASSWORD=${1:-"Setec Astronomy"}
-echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key
-chown jovyan:users /tmp/munge.key
-chmod go-rwx /tmp/munge.key
+set -ex
 
 jupyter nbextension install --user --py pythreejs
 jupyter nbextension enable --user --py pythreejs
-jupyter serverextension enable --sys-prefix jupyter_server_proxy
+jupyter serverextension enable --user --sys-prefix jupyter_server_proxy
 jupyter serverextension enable --py nbzip --sys-prefix
 jupyter nbextension install --user --py nbzip
 jupyter nbextension enable --user --py nbzip
 
-cat server_proxy_config.py >> /home/jovyan/.jupyter/jupyter_notebook_config.py
-tar -xvzf /home/jovyan/POTCARs.tar.gz -C /home/jovyan/
-echo "PMG_VASP_PSP_DIR: /home/jovyan/POTCARs" >> /home/jovyan/.pmgrc.yaml
-export FW_CONFIG_FILE="/home/jovyan/mp_workshop/fireworks_config/FW_config.yaml"
+cat server_proxy_config.py >> ${HOME}/.jupyter/jupyter_notebook_config.py
+tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
+echo "PMG_VASP_PSP_DIR: $HOME/POTCARs" >> $HOME/.pmgrc.yaml
+export FW_CONFIG_FILE="$HOME/mp_workshop/fireworks_config/FW_config.yaml"
+mkdir $HOME/mongodb
 
-#chown -R jovyan:users /home/jovyan/work/lessons
-#chown -R jovyan:users /home/jovyan/mp_workshop
-chmod +x /home/jovyan/slurm-config.sh
-
-mongod --dbpath=/home/jovyan/mongodb &
-
-if [ ! -s /usr/etc/slurm.conf ]; then
-    name=`hostname -s`
-    /home/jovyan/slurm-config.sh $name $name CPUs=1
-    echo "SlurmUser=jovyan" >> /usr/etc/slurm.conf
-    echo "SlurmdUser=jovyan" >> /usr/etc/slurm.conf
-    echo "SlurmdSpoolDir=/var/run/spool" >> /usr/etc/slurm.conf
-    echo "slurm.conf generated."
-fi
-
-/usr/sbin/munged -f --syslog --key-file=/tmp/munge.key --pid-file=/tmp/munged.pid --socket=/tmp/munge.socket.2
-/usr/sbin/slurmctld -c
-/usr/sbin/slurmd -c
-sinfo
-
+mkdir -pv $HOME/{log,lib,run}/munge $HOME/run/spool $HOME/run/slurm
+PASSWORD=${1:-"Setec Astronomy"}
+echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key
+chmod go-rwx /tmp/munge.key
+chmod +x $HOME/slurm-config.sh

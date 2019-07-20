@@ -3,7 +3,6 @@ atomate
 maggma
 matminer>=0.5.0
 graphviz
-jupyter
 RISE
 pythreejs>=2.0.2
 jupyter-server-proxy
