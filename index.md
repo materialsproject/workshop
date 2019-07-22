@@ -45,7 +45,7 @@ Fri morning
 
 Fri afternoon
 * 13:00-13:15 catch-up
-* 13:15-14:30 Your data on MP: https://mpcontribs.org
+* 13:15-14:30 [MPContribs](https://mpcontribs.org): Your data on MP
 * 14:30-14:45 Coffee+stretch break
 * 14:45-16:00 Materials data science: descriptors and machine learning
 * 16:00-16:30 Wrap-up
