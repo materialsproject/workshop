@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ex
+
+jupyter nbextension install --user --py pythreejs
+jupyter nbextension enable --user --py pythreejs
+jupyter serverextension enable --user --sys-prefix jupyter_server_proxy
+jupyter serverextension enable --py nbzip --sys-prefix
+jupyter nbextension install --user --py nbzip
+jupyter nbextension enable --user --py nbzip
+
+cat server_proxy_config.py >> ${HOME}/.jupyter/jupyter_notebook_config.py
+tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
+echo "PMG_VASP_PSP_DIR: $HOME/POTCARs" >> $HOME/.pmgrc.yaml
+export FW_CONFIG_FILE="$HOME/mp_workshop/fireworks_config/FW_config.yaml"
+mkdir $HOME/mongodb
+
+mkdir -pv $HOME/{log,lib,run}/munge $HOME/run/spool $HOME/run/slurm
+PASSWORD=${1:-"Setec Astronomy"}
+echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key
+chmod go-rwx /tmp/munge.key
+chmod +x $HOME/slurm-config.sh
+pip install -e .

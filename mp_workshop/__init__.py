@@ -1,1 +1,1 @@
-from crystal_toolkit.helpers.pythreejs_renderer import display_struct
+from crystal_toolkit.helpers.pythreejs_renderer import view

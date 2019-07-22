@@ -1,8 +1,10 @@
+import os
+
 c.ServerProxy.servers = {
     'fireworks': {
         'port': 5000,
         'absolute_url': True,
-        'command': ['/home/jovyan/start_fw.sh']
+        'command': [os.path.join(os.environ['HOME'], 'start_fw.sh')]
     },
 }
 
