@@ -17,4 +17,4 @@ NEDOS = 601
 NELM = 100
 NSW = 0
 PREC = Accurate
-SIGMA = 0.001
+SIGMA = 0.05
