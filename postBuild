@@ -20,3 +20,4 @@ PASSWORD=${1:-"Setec Astronomy"}
 echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key
 chmod go-rwx /tmp/munge.key
 chmod +x $HOME/slurm-config.sh
+pip install -e .
