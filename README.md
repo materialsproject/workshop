@@ -27,4 +27,4 @@ where `<ENVNAME>` is the name in the error message, e.g. `conda-env-mp-py`. This
 
 Docker build for Jupyter Singleuser container to be used in MP Workshop
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://gke.mybinder.org/v2/gh/materialsproject/workshop/0.0.2)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://gke.mybinder.org/v2/gh/materialsproject/workshop/1.0.0)
