@@ -21,3 +21,19 @@ echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key
 chmod go-rwx /tmp/munge.key
 chmod +x $HOME/slurm-config.sh
 pip install -e .
+
+# MPContribs
+git clone -b dev https://github.com/materialsproject/MPContribs.git
+export SETUPTOOLS_SCM_PRETEND_VERSION=1.6.0
+cd $HOME/MPContribs &&
+    cd mpcontribs-client && pip install -e . && \
+    cd ../mpcontribs-io && pip install -e . && \
+    cd .. && npm install && \
+    cp -v binder/binder.js . && \
+    cp -v webpack-binder.config.js webpack.config.js && \
+    npm run webpack && \
+    mkdir $HOME/.jupyter/custom && \
+    mv -v dist $HOME/.jupyter/custom/js && \
+    cp -v binder/custom.js $HOME/.jupyter/custom/ && \
+    mkdir $HOME/lessons/MPContribs/ && \
+    cp -v binder/*.ipynb $HOME/lessons/MPContribs/
