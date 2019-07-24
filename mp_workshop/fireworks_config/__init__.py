@@ -24,5 +24,17 @@ qadapter = {
 
 fw_config_dir = os.path.dirname(os.path.abspath(__file__))
 
+fworker = {
+    "name": "MP_Workshop",
+    "query": "{}",
+    "category": "",
+    "env": {
+        "db_file": os.path.join(fw_config_dir, "db.json"),
+        "scratch_dir": None,
+        "vasp_cmd": None
+    }
+}
+
 dumpfn(fw_config,os.path.join(fw_config_dir,"FW_config.yaml"))
 dumpfn(qadapter,os.path.join(fw_config_dir,"my_qadapter.yaml"),indent=4, default_flow_style=False)
+dumpfn(fworker,os.path.join(fw_config_dir,"my_fworker.yaml"),indent=4, default_flow_style=False)

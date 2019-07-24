@@ -1,7 +1,0 @@
-name: MP_Workshop
-query: '{}'
-category: ''
-env:
-    db_file: null
-    scratch_dir: null
-    vasp_cmd: null
