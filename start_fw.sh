@@ -7,5 +7,6 @@ else
 fi
 
 export FW_APPLICATION_ROOT="${app_root}fireworks/"
-export FW_CONFIG_FILE="/home/jovyan/mp_workshop/fireworks_config/FW_config.yaml"
+python -c 'import mp_workshop.fireworks_config'
+export FW_CONFIG_FILE="$HOME/mp_workshop/fireworks_config/FW_config.yaml"
 lpad webgui -s --nworkers 1
