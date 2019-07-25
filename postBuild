@@ -31,6 +31,7 @@ cd $HOME/MPContribs &&
     cp -v binder/binder.js . && \
     cp -v webpack-binder.config.js webpack.config.js && \
     npm run webpack && \
+    rm -rf node_modules && \
     mkdir $HOME/.jupyter/custom && \
     mv -v dist $HOME/.jupyter/custom/js && \
     cp -v binder/custom.js $HOME/.jupyter/custom/ && \

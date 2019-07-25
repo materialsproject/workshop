@@ -5,6 +5,4 @@ libmunge-dev
 munge
 libslurm-dev
 libslurmdb-dev
-libslurm-dev
 slurm-wlm
-slurm-wlm-doc
