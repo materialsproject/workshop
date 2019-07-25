@@ -36,4 +36,3 @@ cd $HOME/MPContribs &&
     cp -v binder/custom.js $HOME/.jupyter/custom/ && \
     mkdir $HOME/lessons/MPContribs/ && \
     cp -v binder/*.ipynb $HOME/lessons/MPContribs/
-    sed -i "s/db_file.*/db_file: \/home\/$USER\/mp_workshop\/fireworks_config\/db.json/g" $HOME/mp_workshop/fireworks_config/my_fworker.yaml
