@@ -21,6 +21,8 @@ slurmctld -c
 slurmd -c
 sinfo
 
+[[ ! -e $HOME/mp_workshop/fireworks_config/FW_config.yaml ]] && python -c 'import mp_workshop.fireworks_config'
+
 cd $HOME/lessons
 
 exec "$@"
