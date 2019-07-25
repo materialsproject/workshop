@@ -9,6 +9,7 @@ os.environ["FW_CONFIG_FILE"] = os.path.join(fw_config_dir,"FW_config.yaml")
 from graphviz import Digraph
 from fireworks import Firework, Workflow
 from atomate.vasp.powerups import use_fake_vasp
+from pymatgen import Structure
 
 # Copied from fws
 state_to_color = {
@@ -77,6 +78,15 @@ def use_fake_vasp_workshop(workflow):
         runs_dir = os.path.join(module, "fake_vasp", "Si_elastic_tensor")
         config = {"Si-elastic deformation 0": os.path.join(runs_dir, "0"),
                   "Si-elastic deformation 1": os.path.join(runs_dir, "1")}
+        return use_fake_vasp(workflow, config)
+    elif "Al" in workflow.name or "Cr" in workflow.name:
+        # statements of each structure
+        struct_start = workflow.fws[0].tasks[0]['structure']
+        subdir_name = f"{str(struct_start.composition).replace(' ', '')}_{struct_start.lattice.matrix[0][0]:0.2f}"
+        fw_name = f"{str(struct_start.composition.reduced_formula)}-structure optimization"
+        # the firework will always have the same name
+        runs_dir = os.path.join(module, "fake_vasp", "Al_Cr")
+        config = {fw_name : os.path.join(runs_dir, subdir_name)}
         return use_fake_vasp(workflow, config)
     else:
         raise ValueError("Workflow {} not found".format(workflow.name))
