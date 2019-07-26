@@ -8,6 +8,7 @@ dependencies:
   - pip
   - graphviz>=0.11.1
   - RISE
+  - enumlib
   - pythreejs>=2.0.2
   - jupyter>=1.0.0
   - jupyter-server-proxy
