@@ -70,6 +70,6 @@ dependencies:
       - robocrys>=0.1.3
       - habanero>=0.6.2
       - fireworks @ git+https://github.com/tschaume/fireworks#egg=fireworks
-      - crystal-toolkit @ git+https://github.com/materialsproject/crystaltoolkit@60e99cdf54cbb0d01c8db86d5510620e13e18229#egg=crystal-toolkit
+      - crystal-toolkit @ git+https://github.com/jmmshn/crystaltoolkit@mp_workshop2019#egg=crystal-toolkit
 
 
