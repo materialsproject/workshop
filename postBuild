@@ -8,6 +8,7 @@ jupyter serverextension enable --user --sys-prefix jupyter_server_proxy
 jupyter serverextension enable --py nbzip --sys-prefix
 jupyter nbextension install --user --py nbzip
 jupyter nbextension enable --user --py nbzip
+jupyter serverextension enable nbgitpuller --sys-prefix
 
 cat server_proxy_config.py >> ${HOME}/.jupyter/jupyter_notebook_config.py
 tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
