@@ -2,6 +2,13 @@
 
 set -ex
 
+export F90=gfortran
+git clone --recursive https://github.com/msg-byu/enumlib.git
+cd $HOME/enumlib/symlib/src && make
+cd $HOME/enumlib/src && make && make enum.x
+mkdir $HOME/.local/bin && cp enum.x $HOME/.local/bin/
+
+cd $HOME
 jupyter nbextension install --user --py pythreejs
 jupyter nbextension enable --user --py pythreejs
 jupyter serverextension enable --user --sys-prefix jupyter_server_proxy
