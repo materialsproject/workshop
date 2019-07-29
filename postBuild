@@ -4,9 +4,17 @@ set -ex
 
 export F90=gfortran
 git clone --recursive https://github.com/msg-byu/enumlib.git
-cd $HOME/enumlib/symlib/src && make
-cd $HOME/enumlib/src && make && make enum.x
-mkdir $HOME/.local/bin && cp enum.x $HOME/.local/bin/
+cd $HOME/enumlib
+git checkout -b first_release v1.0.8
+git submodule update
+cd $HOME/enumlib/symlib/src
+make
+cd $HOME/enumlib/src
+make
+make enum.x
+make makestr.x
+mkdir -p $HOME/.local/bin
+cp *.x $HOME/.local/bin/
 
 cd $HOME
 jupyter nbextension install --user --py pythreejs
