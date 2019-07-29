@@ -1,6 +1,6 @@
 ## Materials Project Workshop 2019
 
-* [Schedule](#schedule)
+* [Schedule](#tentative-schedule)
 * [Getting Here](#getting-here)
 
 ### Tentative Schedule
@@ -15,7 +15,7 @@ Breakfast arrives on Wednesday, Thursday and Friday mornings at 08:30.
 * 10:45-12:00 Control: Logic, Loops, Creating Functions, Iterators
 * 12:00-13:00 lunch
 
-(optional) Wed afternoon -- MongoDB using Python primer 
+(optional) Wed afternoon -- MongoDB using Python primer
 * 13:00-13:15 Data Modeling - Python Types to JSON to MongoDB
 * 13:15-14:30 Listing, Counting, Finding, and Dot Notation
 * 14:30-14:45 coffee+stretch break
