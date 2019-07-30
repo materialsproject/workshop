@@ -2,12 +2,28 @@
 
 set -ex
 
+export F90=gfortran
+git clone --recursive https://github.com/msg-byu/enumlib.git
+cd $HOME/enumlib
+git checkout -b first_release v1.0.8
+git submodule update
+cd $HOME/enumlib/symlib/src
+make
+cd $HOME/enumlib/src
+make
+make enum.x
+make makestr.x
+mkdir -p $HOME/.local/bin
+cp *.x $HOME/.local/bin/
+
+cd $HOME
 jupyter nbextension install --user --py pythreejs
 jupyter nbextension enable --user --py pythreejs
 jupyter serverextension enable --user --sys-prefix jupyter_server_proxy
 jupyter serverextension enable --py nbzip --sys-prefix
 jupyter nbextension install --user --py nbzip
 jupyter nbextension enable --user --py nbzip
+jupyter serverextension enable nbgitpuller --sys-prefix
 
 cat server_proxy_config.py >> ${HOME}/.jupyter/jupyter_notebook_config.py
 tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
@@ -19,6 +35,9 @@ PASSWORD=${1:-"Setec Astronomy"}
 echo -n $PASSWORD | sha512sum | cut -d' ' -f1 > /tmp/munge.key
 chmod go-rwx /tmp/munge.key
 chmod +x $HOME/slurm-config.sh
+
+git config --global user.email "jovyan@materialsproject.org"
+#cd fireworks && pip install -e . && cd ..
 pip install -e .
 
 # MPContribs
