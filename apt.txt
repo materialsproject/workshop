@@ -6,3 +6,4 @@ munge
 libslurm-dev
 libslurmdb-dev
 slurm-wlm
+gfortran

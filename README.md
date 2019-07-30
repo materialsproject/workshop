@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://gke.mybinder.org/v2/gh/materialsproject/workshop/1.0.8)
+
 ## Materials Project Workshop
 
 Assets for the Materials Project workshop.
@@ -23,8 +25,3 @@ python -m ipykernel install --user --name <ENVNAME>
 ```
 where `<ENVNAME>` is the name in the error message, e.g. `conda-env-mp-py`. This will ensure that the notebook uses your local environment. to run itself.
 
-## Docker
-
-Docker build for Jupyter Singleuser container to be used in MP Workshop
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://gke.mybinder.org/v2/gh/materialsproject/workshop/1.0.3)
