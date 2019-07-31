@@ -59,3 +59,6 @@ transportation options.
      style="margin: 1em 0; width=800px">
 
 The walk from downtown is a bit steep, so you may wish to board a campus shuttle.
+
+### Still have questions?
+If you have any further questions, you can find some more helpful info and confact information [here](https://www.eiseverywhere.com/407381).
