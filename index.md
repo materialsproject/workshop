@@ -31,9 +31,9 @@ Thu morning
 
 Thu afternoon
 * 13:00-13:15 Catch-up
-* 13:15-14:30 Pymatgen adventures - several case studies, including use of MP API
+* 13:15-14:30 Pymatgen adventures - several case studies using transformations
 * 14:30-14:45 Coffee+stretch break
-* 14:45-16:00 Advanced API use - materials informatics
+* 14:45-16:00 API use - materials informatics
 * 16:00-16:30 Wrap-up
 
 Fri morning
@@ -59,3 +59,6 @@ transportation options.
      style="margin: 1em 0; width=800px">
 
 The walk from downtown is a bit steep, so you may wish to board a campus shuttle.
+
+### Still have questions?
+If you have any further questions, you can find some more helpful info and confact information [here](https://www.eiseverywhere.com/407381).
