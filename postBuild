@@ -53,6 +53,4 @@ cd $HOME/MPContribs &&
     rm -rf node_modules && \
     mkdir $HOME/.jupyter/custom && \
     mv -v dist $HOME/.jupyter/custom/js && \
-    cp -v binder/custom.js $HOME/.jupyter/custom/ && \
-    mkdir $HOME/lessons/MPContribs/ && \
-    cp -v binder/*.ipynb $HOME/lessons/MPContribs/
+    cp -v binder/custom.js $HOME/.jupyter/custom/
