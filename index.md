@@ -1,4 +1,4 @@
-## Materials Project Workshop 2020
+## Materials Project Workshop 2020 ([Registration](https://na.eventscloud.com/ereg/index.php?eventid=527975&))
 
 * [Schedule](#tentative-schedule)
 * [Getting Here](#getting-here)
