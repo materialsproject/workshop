@@ -3,13 +3,15 @@ Module containing helper code for the atomate lesson
 """
 
 import os
-from mp_workshop.fireworks_config import fw_config_dir
-os.environ["FW_CONFIG_FILE"] = os.path.join(fw_config_dir,"FW_config.yaml")
 
-from graphviz import Digraph
-from fireworks import Firework, Workflow
 from atomate.vasp.powerups import use_fake_vasp
-from pymatgen import Structure
+from fireworks import Firework, Workflow
+from graphviz import Digraph
+
+from mp_workshop.fireworks_config import fw_config_dir
+
+os.environ["FW_CONFIG_FILE"] = os.path.join(fw_config_dir, "FW_config.yaml")
+
 
 # Copied from fws
 state_to_color = {
@@ -21,13 +23,17 @@ state_to_color = {
     "RESERVED": "#BB8BC1",
     "ARCHIVED": "#7F8287",
     "DEFUSED": "#B7BCC3",
-    "PAUSED": "#FFCFCA"
+    "PAUSED": "#FFCFCA",
 }
 
-si_struct_opt_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_structure_opt")
-si_static_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_static")
-si_nscf_line_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_nscf_line")
-si_nscf_uniform_path = os.path.join(os.path.dirname(__file__),"fake_vasp/Si_nscf_uniform")
+si_struct_opt_path = os.path.join(
+    os.path.dirname(__file__), "fake_vasp/Si_structure_opt"
+)
+si_static_path = os.path.join(os.path.dirname(__file__), "fake_vasp/Si_static")
+si_nscf_line_path = os.path.join(os.path.dirname(__file__), "fake_vasp/Si_nscf_line")
+si_nscf_uniform_path = os.path.join(
+    os.path.dirname(__file__), "fake_vasp/Si_nscf_uniform"
+)
 
 
 def wf_to_graph(workflow):
@@ -42,12 +48,11 @@ def wf_to_graph(workflow):
             to be rendered
     """
     # Create the dag
-    dot = Digraph(comment=workflow.name, graph_attr={"rankdir":'LR'})
-    dot.node_attr['shape'] = 'rectangle'
+    dot = Digraph(comment=workflow.name, graph_attr={"rankdir": "LR"})
+    dot.node_attr["shape"] = "rectangle"
     if isinstance(workflow, Workflow):
         for fw in workflow.fws:
-            dot.node(str(fw.fw_id), label=fw.name,
-                     color=state_to_color[fw.state])
+            dot.node(str(fw.fw_id), label=fw.name, color=state_to_color[fw.state])
 
         for start, targets in workflow.links.items():
             for target in targets:
@@ -55,12 +60,13 @@ def wf_to_graph(workflow):
     elif isinstance(workflow, Firework):
         for n, ft in enumerate(workflow.tasks):
             # Clean up names
-            name = ft.fw_name.replace('{', '').replace('}', '')
-            name = name.split('.')[-1]
+            name = ft.fw_name.replace("{", "").replace("}", "")
+            name = name.split(".")[-1]
             dot.node(str(n), label=name)
-            if n >=1:
+            if n >= 1:
                 dot.edge(str(n - 1), str(n))
     return dot
+
 
 module = os.path.dirname(os.path.abspath(__file__))
 
@@ -76,17 +82,21 @@ def use_fake_vasp_workshop(workflow):
     """
     if workflow.name == "Si:elastic constants":
         runs_dir = os.path.join(module, "fake_vasp", "Si_elastic_tensor")
-        config = {"Si-elastic deformation 0": os.path.join(runs_dir, "0"),
-                  "Si-elastic deformation 1": os.path.join(runs_dir, "1")}
+        config = {
+            "Si-elastic deformation 0": os.path.join(runs_dir, "0"),
+            "Si-elastic deformation 1": os.path.join(runs_dir, "1"),
+        }
         return use_fake_vasp(workflow, config)
     elif "Al" in workflow.name or "Cr" in workflow.name:
         # statements of each structure
-        struct_start = workflow.fws[0].tasks[0]['structure']
+        struct_start = workflow.fws[0].tasks[0]["structure"]
         subdir_name = f"{str(struct_start.composition).replace(' ', '')}_{struct_start.lattice.matrix[0][0]:0.2f}"
-        fw_name = f"{str(struct_start.composition.reduced_formula)}-structure optimization"
+        fw_name = (
+            f"{str(struct_start.composition.reduced_formula)}-structure optimization"
+        )
         # the firework will always have the same name
         runs_dir = os.path.join(module, "fake_vasp", "Al_Cr")
-        config = {fw_name : os.path.join(runs_dir, subdir_name)}
+        config = {fw_name: os.path.join(runs_dir, subdir_name)}
         return use_fake_vasp(workflow, config)
     else:
         raise ValueError("Workflow {} not found".format(workflow.name))
