@@ -1,9 +1,0 @@
-vim
-graphviz
-mongodb
-libmunge-dev
-munge
-libslurm-dev
-libslurmdb-dev
-slurm-wlm
-gfortran
