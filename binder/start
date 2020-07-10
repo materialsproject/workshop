@@ -2,6 +2,6 @@
 
 mongod --dbpath=$HOME/mongodb &
 
-cd $HOME/lessons
+cd $HOME/workshop/lessons
 
 exec "$@"
