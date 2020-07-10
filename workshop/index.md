@@ -60,6 +60,12 @@
 
 1. [Sign in](https://materialsproject.org/) to your MP account online. Register for an account first if needed.
 2. [Sign in](https://cocalc.org) to your Cocalc account using the email you registered with
+3. Test making a new notebook and running some simple python:
+
+![Make a new jupyter notebook](new-py3-notebook.png)
+```python
+print("Hello World")
+```
 
 
 ## Format
