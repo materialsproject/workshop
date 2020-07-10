@@ -25,8 +25,7 @@ jupyter nbextension install --user --py nbzip
 jupyter nbextension enable --user --py nbzip
 jupyter serverextension enable nbgitpuller --sys-prefix
 
-#cat server_proxy_config.py >> ${HOME}/.jupyter/jupyter_notebook_config.py
-#tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
+tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
 echo "PMG_VASP_PSP_DIR: $HOME/POTCARs" >> $HOME/.pmgrc.yaml
 git config --global user.email "jovyan@materialsproject.org"
 pip install -e .
