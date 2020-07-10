@@ -10,7 +10,7 @@ dependencies:
   - RISE
   - pythreejs>=2.0.2
   - jupyter>=1.0.0
-  - jupyter-server-proxy
+  - jupyterlab>=2.0.0
   - pandas>=0.23.4
   - matplotlib
   - pymatgen>=2019.7.30

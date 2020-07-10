@@ -17,9 +17,9 @@ mkdir -p $HOME/.local/bin
 cp *.x $HOME/.local/bin/
 
 cd $HOME
-jupyter nbextension install --user --py pythreejs
-jupyter nbextension enable --user --py pythreejs
-jupyter serverextension enable --user --sys-prefix jupyter_server_proxy
+#jupyter nbextension install --user --py pythreejs
+#jupyter nbextension enable --user --py pythreejs
+jupyter labextension install crystaltoolkit-extension
 jupyter serverextension enable --py nbzip --sys-prefix
 jupyter nbextension install --user --py nbzip
 jupyter nbextension enable --user --py nbzip
