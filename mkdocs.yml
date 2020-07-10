@@ -1,0 +1,30 @@
+site_name: The Materials Project Workshop
+site_description: Lessons for the Materials Project Workshop
+copyright: Built by The Materials Project
+docs_dir: workshop
+
+theme:
+  name: 'material'
+
+nav:
+  - Home: index.md
+  - Schedule: schedule.md
+  - Logistics: logistics.md
+
+
+site_url: https://workshop.materialsproject.org/
+repo_url: https://github.com/materialsproject/workshop/
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - minify
