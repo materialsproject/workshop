@@ -67,7 +67,7 @@ jobs:
         pytest --nbval-lax
 
   docs:
-    needs: test 
+    needs: test
     services:
       local_mongodb:
         image: mongo:4.0

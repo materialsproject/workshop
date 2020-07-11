@@ -9,7 +9,12 @@ module_dir = os.path.dirname(os.path.abspath(__file__))
 if __name__ == "__main__":
     setup(
         name="mp_workshop",
+        author="The Materials Project",
+        author_email="feedback@materialsproject.org",
+        license="modified BSD",
+        description="Dependencies for the MP Workshop",
         version="2020.07.10",
+        url="https://workshop.materialsproject.org",
         package_dir={"": "python_module"},
         install_requires=[
             "pymatgen",
@@ -19,7 +24,6 @@ if __name__ == "__main__":
             "mpcontribs-client",
             "crystal-toolkit",
         ],
-        description="Repository for workshop code",
         package_data={"mp_workshop.data.data_files": ["*.json"]},
         python_requires=">=3.7",
     )
