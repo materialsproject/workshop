@@ -24,4 +24,3 @@ then that notebook expects to be run using an IPython kernel with that name. Wit
 python -m ipykernel install --user --name <ENVNAME>
 ```
 where `<ENVNAME>` is the name in the error message, e.g. `conda-env-mp-py`. This will ensure that the notebook uses your local environment. to run itself.
-

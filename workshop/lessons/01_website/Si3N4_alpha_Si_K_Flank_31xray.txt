@@ -1,13 +1,13 @@
 #FORMAT	     : EMSA/MAS Spectral Data File
 #VERSION     : 1.0
 #TITLE       : Si3N4_alpha_Si_K_Flank_31xray
-#DATE        : 
-#TIME        : 
+#DATE        :
+#TIME        :
 #OWNER       : eelsdatabase.net
 #NPOINTS     : 401
 #NCOLUMNS    : 1
 #XUNITS      : eV
-#YUNITS      : 
+#YUNITS      :
 #DATATYPE    : XY
 #XPERCHAN    : 0.20996
 #OFFSET      : 1830.00000
