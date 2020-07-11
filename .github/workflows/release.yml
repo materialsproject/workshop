@@ -26,13 +26,18 @@ jobs:
         auto-activate-base: false
 
     - name: Install dependencies
+      shell: bash -l {0}
       run: |
+        conda activate r2d
         python -m pip install --upgrade pip
         pip install -r requirements-docs.txt
         pip install -e .
 
     - name: Build
-      run: mkdocs build
+      shell: bash -l {0}
+      run: |
+        conda activate r2d
+        mkdocs build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
