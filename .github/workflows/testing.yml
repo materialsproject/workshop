@@ -64,12 +64,9 @@ jobs:
         MONGODB_SRV_URI: ${{ secrets.MONGODB_SRV_URI }}
       run: |
         pip install -e .
-        pytest --cov=maggma --cov-report=xml
+        pytest --nbval-lax
 
-    - uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.xml
+
 
   docs:
     runs-on: ubuntu-latest
