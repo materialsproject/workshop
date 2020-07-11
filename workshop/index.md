@@ -27,22 +27,22 @@
 
 - 09:00-09:20 Overview of the Materials Project
 - 09:20-10:20 Using the Website Effectively
-- 10:20-10:40 Break 
+- 10:20-10:40 Break
 - 10:40-11:40 Pymatgen Foundations
 - 11:40-12:00 Open Discussion
 - 12:00-13:00 Lunch
 
 #### Wednesday Afternoon
 
-- 13:00-14:00 Working with Surfaces in Pymatgen 
+- 13:00-14:00 Working with Surfaces in Pymatgen
 - 14:00-14:20 Break
 - 14:20-15:20 Using the Materials API
 - 15:20-15:40 Open Discussion
 - 15:40-16:00 Wrap-up
- 
+
 #### Thursday Morning
 
-- 09:00-09:20 Intro 
+- 09:00-09:20 Intro
 - 09:20-10:20 Running Other Codes
 - 10:20-10:40 Break
 - 10:40-11:40 Exploring New Systems with Pymatgen
@@ -63,7 +63,7 @@
 
 ## Format
 
-The lessons will be taught in 20-minute sessions as 10-minutes of "lecture" followed by 10-minutes of a hands-on exercise. You're welcome to follow along with the already filled in hand-out notebook or by typing in as we go along. 
+The lessons will be taught in 20-minute sessions as 10-minutes of "lecture" followed by 10-minutes of a hands-on exercise. You're welcome to follow along with the already filled in hand-out notebook or by typing in as we go along.
 
 ## Still have questions?
 

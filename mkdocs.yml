@@ -10,8 +10,8 @@ nav:
   - Home: index.md
   - Primer:
     - Intro to Jupyter: primer/01_basic_python/1 - Introduction and Jupyter Use.ipynb
-  
-  
+
+
 site_url: https://workshop.materialsproject.org/
 repo_url: https://github.com/materialsproject/workshop/
 

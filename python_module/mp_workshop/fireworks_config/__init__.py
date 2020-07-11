@@ -2,6 +2,7 @@
 Module to setup fireworks config in any situation
 """
 import os
+
 from monty.serialization import dumpfn
 
 fw_config = {

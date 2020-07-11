@@ -1,13 +1,13 @@
 #FORMAT	     : EMSA/MAS Spectral Data File
 #VERSION     : 1.0
 #TITLE       : Al2O3_Al_K_Flank_1xray
-#DATE        : 
-#TIME        : 
+#DATE        :
+#TIME        :
 #OWNER       : eelsdatabase.net
 #NPOINTS     : 226
 #NCOLUMNS    : 1
 #XUNITS      : eV
-#YUNITS      : 
+#YUNITS      :
 #DATATYPE    : XY
 #XPERCHAN    : 0.2
 #OFFSET      : 1555.0
