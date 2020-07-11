@@ -66,17 +66,25 @@ jobs:
         pip install -e .
         pytest --nbval-lax
 
-
-
   docs:
+    needs: test 
+    services:
+      local_mongodb:
+        image: mongo:4.0
+        ports:
+          - 27017:27017
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/setup-python@v1
+    - uses: goanpeca/setup-miniconda@v1
       with:
+        activate-environment: anaconda-client-env
+        environment-file: binder/environment.yml
         python-version: 3.8
+        auto-activate-base: false
 
     - name: Install dependencies
       run: |
@@ -87,11 +95,9 @@ jobs:
     - name: Build
       run: mkdocs build
 
-
-
   repo2docker:
     runs-on: ubuntu-latest
-    steps:  
+    steps:
     - name: Checkout PR
       uses: actions/checkout@v2
 
