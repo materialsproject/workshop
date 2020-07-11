@@ -63,5 +63,7 @@ jobs:
         CONTINUOUS_INTEGRATION: True
         MONGODB_SRV_URI: ${{ secrets.MONGODB_SRV_URI }}
       run: |
+        conda activate r2d
+        pip install -r requirements-testing.txt
         pip install -e .
         pytest --nbval-lax
