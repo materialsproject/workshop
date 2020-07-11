@@ -27,14 +27,14 @@ jobs:
         pip install -r requirements-testing.txt
 
     - name: Lint with pycodestyle
-      run: pycodestyle mp_workshop
+      run: pycodestyle python_module
 
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 --count --show-source --statistics mp_workshop
+        flake8 --count --show-source --statistics python_module
         # exit-zero treats all errors as warnings.
-        flake8 --count --exit-zero --max-complexity=20 --statistics mp_workshop
+        flake8 --count --exit-zero --max-complexity=20 --statistics python_module
 
     - name: Ensure Clean Jupyter Notebooks
       uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@1.1
