@@ -1,0 +1,4 @@
+vim
+graphviz
+mongodb
+gfortran

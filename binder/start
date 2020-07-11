@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mongod --dbpath=$HOME/mongodb &
+
+cd $HOME/workshop/lessons
+
+exec "$@"
