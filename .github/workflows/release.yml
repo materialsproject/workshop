@@ -40,11 +40,10 @@ jobs:
         mkdocs build
 
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2
+      uses: peaceiris/actions-gh-pages@v3
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./site
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
 
   repo2docker:
     runs-on: ubuntu-latest
