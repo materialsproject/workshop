@@ -1,0 +1,1329 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <meta name="description" content="Lessons for the Materials Project Workshop">
+      
+      
+        <link rel="canonical" href="https://workshop.materialsproject.org/primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/">
+      
+      
+      
+        <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-components-1.10.11">
+    
+    
+      
+        <title>2   Variables and built in functions - The Materials Project Workshop</title>
+      
+    
+    
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr-e826f8942a.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application-2cd7d9ab0f.css">
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/material-components-web.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/mdc-web.css">
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Ubuntu+Mono">
+        <style>body,input{font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+    
+  </head>
+  
+  
+  
+  
+    <body>
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      
+        <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink md-flex__cell--vmiddle">
+        <a href="https://workshop.materialsproject.org/" title="The Materials Project Workshop" class="md-header-nav__button md-logo">
+          
+            <img src="../../../assets/images/logo_white.png" width="36" height="36">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            The Materials Project Workshop -
+            
+              
+                <span class="md-header-nav__parent">
+                  Lessons
+                </span>
+              
+            
+            2   Variables and built in functions
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/materialsproject/workshop/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+      
+    </div>
+  </nav>
+</header>
+      
+    
+    <div class="md-container">
+      
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <div class="md-nav__button md-logo">
+      
+        <i class="md-icon md-icon--home"></i>
+      
+    </div>
+    The Materials Project Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/materialsproject/workshop/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Lessons
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Lessons
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/" title="1   Introduction and Jupyter Use" class="md-nav__link">
+      1   Introduction and Jupyter Use
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        2   Variables and built in functions
+      </label>
+    
+    <a href="primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/" title="2   Variables and built in functions" class="md-nav__link md-nav__link--active">
+      2   Variables and built in functions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" title="Expressions" class="md-nav__link">
+    Expressions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" title="Variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-functions" title="Built-in functions" class="md-nav__link">
+    Built-in functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-what-is-the-usage-of-bin" title="Exercise: What is the usage of bin?" class="md-nav__link">
+    Exercise: What is the usage of bin?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-optional-what-will-you-see-with-the-printprint10-why" title="Exercise (Optional): What will you see with the  print(print(10))? Why?" class="md-nav__link">
+    Exercise (Optional): What will you see with the  print(print(10))? Why?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-other-modules-and-functions" title="Importing other modules and functions" class="md-nav__link">
+    Importing other modules and functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#venturing-outside-the-standard-library" title="Venturing outside the standard library" class="md-nav__link">
+    Venturing outside the standard library
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/3%20-%20Lists/" title="3   Lists" class="md-nav__link">
+      3   Lists
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-nav__link">
+      4   For loops
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" title="Expressions" class="md-nav__link">
+    Expressions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" title="Variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-functions" title="Built-in functions" class="md-nav__link">
+    Built-in functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-what-is-the-usage-of-bin" title="Exercise: What is the usage of bin?" class="md-nav__link">
+    Exercise: What is the usage of bin?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-optional-what-will-you-see-with-the-printprint10-why" title="Exercise (Optional): What will you see with the  print(print(10))? Why?" class="md-nav__link">
+    Exercise (Optional): What will you see with the  print(print(10))? Why?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-other-modules-and-functions" title="Importing other modules and functions" class="md-nav__link">
+    Importing other modules and functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#venturing-outside-the-standard-library" title="Venturing outside the standard library" class="md-nav__link">
+    Venturing outside the standard library
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div id="article-content" class="md-content"> 
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/materialsproject/workshop/edit/master/docs/primer/01_basic_python/2 - Variables and built-in functions.ipynb" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h1 id="lesson-2-expressions-variables-and-built-in-functions">Lesson 2: Expressions, variables and built-in functions<a class="headerlink" href="#lesson-2-expressions-variables-and-built-in-functions" title="Permanent link">&para;</a></h1>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+An expression describes a computation and evaluates to a value.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="mi">2019</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2019</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span> <span class="o">+</span> <span class="mi">19</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2019</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>24</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+A call expression is when you name the function you want to call and write down the expression you want the function to apply to.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+* Variables are names for values.
+* In Python the = symbol assigns the value on the right to the name on the left.
+* The variable is created when a value is assigned to it.</p>
+</div>
+</div>
+<p>Here, Python assigns an age to a variable age and a name in quotation marks to a variable first_name.
+</div>
+</div></p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;Tingzheng&quot;</span>
+<span class="n">last_name</span> <span class="o">=</span> <span class="s2">&quot;Hou&quot;</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Unlike many other languages, Python uses a convention known as "duck typing," meaning it infers the data type of a given variable from the context.  Common data types include int, float, string, NoneType.  You can find the type of a variable using the type function.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>int</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+To see duck typing in action, try defining age as 42.0 and inspecting the type:
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mf">42.0</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>float</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+In the Jupyter notebook, variable names are preserved between cells.  In more formal language, the <em>namespace of a notebook is preserved</em> unless the kernel is reset, which resets all of the variable names.  You can see this if you execute the following cells out of sequence.  Try it out.  Also try resetting the kernel and executing just the latter half.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">42</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">age</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>42</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">29</span>
+</code></pre></div>
+
+</div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">age</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>29</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="built-in-functions">Built-in functions<a class="headerlink" href="#built-in-functions" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Now that we understand how python and jupyter handle variables, let's talk about built-in functions.  We've actually already seen <code>min</code>, <code>max</code>, <code>type</code>.  Let's try another built-in function (or one that's available by default without issuing any special instructions) called <code>print</code>.
+</div>
+</div></p>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello world!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Functions are called using the function name and parentheses, which enclose the <strong>function arguments</strong>.  In the previous example, print is the function, and the string "Hello world!" is the argument.  Let's experiment with print a little:
+</div>
+</div></p>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Age is&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Age is 29
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">last_name</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;str&#39;&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+One of the most important things you can know when learning programming is where to access help on the things you're trying to use.  There are a number of ways to access information on a function.  Typically, I like to use "Shift+Tab," which brings up a small box with function information, which can be expanded by pressing tab again.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+<span class="nb">print</span><span class="err">?</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False)
+
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h4 id="exercise-what-is-the-usage-of-bin">Exercise: What is the usage of <code>bin</code>?<a class="headerlink" href="#exercise-what-is-the-usage-of-bin" title="Permanent link">&para;</a></h4>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;0b1010&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h4 id="exercise-optional-what-will-you-see-with-the-printprint10-why">Exercise (Optional): What will you see with the  <code>print(print(10))</code>? Why?<a class="headerlink" href="#exercise-optional-what-will-you-see-with-the-printprint10-why" title="Permanent link">&para;</a></h4>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10
+None
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="importing-other-modules-and-functions">Importing other modules and functions<a class="headerlink" href="#importing-other-modules-and-functions" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Here's a <a href="https://docs.python.org/3/library/functions.html">list of built-in functions</a>, but we often need functionality that's not included in this set.  To get a function that's not included in our namespace by default, we use the <code>import</code> statement.  In this example, we're going to import a module called <code>math</code> that contains a number of functions that can be accessed by using <code>math.FUNCTION_NAME_HERE</code>.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exponent of 2:&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sine of 3.1415:&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">3.1415</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Exponent of 2: 7.38905609893065
+Sine of 3.1415: 9.265358966049024e-05
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Note that we can also import functions from modules like so:
+</div>
+</div></p>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">mul</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">factorial</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2019</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>24
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="venturing-outside-the-standard-library">Venturing outside the standard library<a class="headerlink" href="#venturing-outside-the-standard-library" title="Permanent link">&para;</a></h2>
+<p>The Standard library includes a number of modules that come pre-installed with the python programming language itself, which is summarized in this <a href="https://docs.python.org/3/library/index.html">documentation</a>.  Python's real power, however, comes in how extensible it is. Python has an ecosystem of external libraries that can be managed using tools like the aforementioned Anaconda and pip.  We've installed everything you need for this workshop, but if you want to install an external library on your own machine, you can issue a command like <code>conda install pandas</code> at the command line to automatically install and link a compatable version of the pandas dataframe management library to your current environment.</p>
+<p>Three of the most common external libraries in python are:</p>
+<ul>
+<li>numpy - for efficient numerical array manipulation and operation</li>
+<li>scipy - for a number of tools related to scientific computing</li>
+<li>matplotlib - for plotting data and creating figures
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="n">inflammation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;../../mp_workshop/data_files/inflammation-04.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">inflammation</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">average</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x1113f1438&gt;]</pre>
+</div>
+
+</div>
+
+<div class="output_area" markdown="1">
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+You can even observe crystal structures in line.
+</div>
+</div></p>
+</div>
+</div>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/" title="1   Introduction and Jupyter Use" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                1   Introduction and Jupyter Use
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="primer/01_basic_python/3%20-%20Lists/" title="3   Lists" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                3   Lists
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Built by The Materials Project
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://yakworks.github.io/mkdocs-material-components/" title="Material Components for MkDocs">
+          Material Components for MkDocs</a>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application-68832431b5.js"></script>
+      
+      
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <script>window.mdc.autoInit()</script>
+      <script src="../../../assets/javascripts/headroom.min.js"></script>
+      <script src="../../../assets/javascripts/jQuery.headroom.min.js"></script>
+      <script src="../../../assets/javascripts/jq-mdc-web.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../../.."}})</script>
+      
+    
+    
+  </body>
+</html>

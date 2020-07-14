@@ -1,0 +1,1341 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <meta name="description" content="Lessons for the Materials Project Workshop">
+      
+      
+        <link rel="canonical" href="https://workshop.materialsproject.org/primer/01_basic_python/3%20-%20Lists/">
+      
+      
+      
+        <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-components-1.10.11">
+    
+    
+      
+        <title>3   Lists - The Materials Project Workshop</title>
+      
+    
+    
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr-e826f8942a.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application-2cd7d9ab0f.css">
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/material-components-web.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/mdc-web.css">
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Ubuntu+Mono">
+        <style>body,input{font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+    
+  </head>
+  
+  
+  
+  
+    <body>
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      
+        <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink md-flex__cell--vmiddle">
+        <a href="https://workshop.materialsproject.org/" title="The Materials Project Workshop" class="md-header-nav__button md-logo">
+          
+            <img src="../../../assets/images/logo_white.png" width="36" height="36">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            The Materials Project Workshop -
+            
+              
+                <span class="md-header-nav__parent">
+                  Lessons
+                </span>
+              
+            
+            3   Lists
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/materialsproject/workshop/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+      
+    </div>
+  </nav>
+</header>
+      
+    
+    <div class="md-container">
+      
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <div class="md-nav__button md-logo">
+      
+        <i class="md-icon md-icon--home"></i>
+      
+    </div>
+    The Materials Project Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/materialsproject/workshop/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Lessons
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Lessons
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/" title="1   Introduction and Jupyter Use" class="md-nav__link">
+      1   Introduction and Jupyter Use
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/" title="2   Variables and built in functions" class="md-nav__link">
+      2   Variables and built in functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3   Lists
+      </label>
+    
+    <a href="primer/01_basic_python/3%20-%20Lists/" title="3   Lists" class="md-nav__link md-nav__link--active">
+      3   Lists
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-list-stores-many-values-in-a-single-structure" title="A list stores many values in a single structure." class="md-nav__link">
+    A list stores many values in a single structure.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-an-items-index-to-fetch-it-from-a-list" title="Use an item's index to fetch it from a list" class="md-nav__link">
+    Use an item's index to fetch it from a list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists-values-can-be-replaced-by-assigning-to-them" title="Lists' values can be replaced by assigning to them" class="md-nav__link">
+    Lists' values can be replaced by assigning to them
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appending-items-to-a-list-lengthens-it" title="Appending items to a list lengthens it" class="md-nav__link">
+    Appending items to a list lengthens it
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-del-to-remove-items-from-a-list-entirely" title="Use del to remove items from a list entirely" class="md-nav__link">
+    Use del to remove items from a list entirely
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-empty-list-contains-no-values" title="The empty list contains no values" class="md-nav__link">
+    The empty list contains no values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists-may-be-heterogeneous" title="Lists may be heterogeneous" class="md-nav__link">
+    Lists may be heterogeneous
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#character-strings-are-immutable" title="Character strings are immutable" class="md-nav__link">
+    Character strings are immutable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-and-slice-to-get-information-out-of-a-stringlist" title="Index and slice to get information out of a string/list" class="md-nav__link">
+    Index and slice to get information out of a string/list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-built-in-function-len-to-find-the-length-of-a-string" title="Use the built-in function len to find the length of a string" class="md-nav__link">
+    Use the built-in function len to find the length of a string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-slicing" title="Exercise: Slicing" class="md-nav__link">
+    Exercise: Slicing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-fill-in-the-blanks" title="Exercise: Fill in the blanks" class="md-nav__link">
+    Exercise: Fill in the blanks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values-____-values____1-values____3-values____5-printfirst-time-values-values-values____-printsecond-time-values" title="values = ____
+values.____(1)
+values.____(3)
+values.____(5)
+print(&#39;first time:&#39;, values)
+values = values[____]
+print(&#39;second time:&#39;, values)
+" class="md-nav__link">
+    values = ____
+values.____(1)
+values.____(3)
+values.____(5)
+print(&#39;first time:&#39;, values)
+values = values[____]
+print(&#39;second time:&#39;, values)
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-from-strings-to-lists-and-back" title="Exercise: From strings to lists and back" class="md-nav__link">
+    Exercise: From strings to lists and back
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printstring-to-list-listtin-printlist-to-string-joing-o-l-d" title="print(&#39;string to list:&#39;, list(&#39;tin&#39;))
+print(&#39;list to string:&#39;, &#39;&#39;.join([&#39;g&#39;, &#39;o&#39;, &#39;l&#39;, &#39;d&#39;]))
+" class="md-nav__link">
+    print(&#39;string to list:&#39;, list(&#39;tin&#39;))
+print(&#39;list to string:&#39;, &#39;&#39;.join([&#39;g&#39;, &#39;o&#39;, &#39;l&#39;, &#39;d&#39;]))
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-sort-and-sorted" title="Exercise: Sort and Sorted" class="md-nav__link">
+    Exercise: Sort and Sorted
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-a-letters-listgold-result-sortedletters-printletters-is-letters-and-result-is-result" title="# Program A
+letters = list(&#39;gold&#39;)
+result = sorted(letters)
+print(&#39;letters is&#39;, letters, &#39;and result is&#39;, result)
+" class="md-nav__link">
+    # Program A
+letters = list(&#39;gold&#39;)
+result = sorted(letters)
+print(&#39;letters is&#39;, letters, &#39;and result is&#39;, result)
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-copying-or-not" title="Exercise: Copying (or Not)" class="md-nav__link">
+    Exercise: Copying (or Not)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-a-old-listgold-new-old-simple-assignment-new0-d-printnew-is-new-and-old-is-old" title="# Program A
+old = list(&#39;gold&#39;)
+new = old      # simple assignment
+new[0] = &#39;D&#39;
+print(&#39;new is&#39;, new, &#39;and old is&#39;, old)
+" class="md-nav__link">
+    # Program A
+old = list(&#39;gold&#39;)
+new = old      # simple assignment
+new[0] = &#39;D&#39;
+print(&#39;new is&#39;, new, &#39;and old is&#39;, old)
+
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-nav__link">
+      4   For loops
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-list-stores-many-values-in-a-single-structure" title="A list stores many values in a single structure." class="md-nav__link">
+    A list stores many values in a single structure.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-an-items-index-to-fetch-it-from-a-list" title="Use an item's index to fetch it from a list" class="md-nav__link">
+    Use an item's index to fetch it from a list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists-values-can-be-replaced-by-assigning-to-them" title="Lists' values can be replaced by assigning to them" class="md-nav__link">
+    Lists' values can be replaced by assigning to them
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appending-items-to-a-list-lengthens-it" title="Appending items to a list lengthens it" class="md-nav__link">
+    Appending items to a list lengthens it
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-del-to-remove-items-from-a-list-entirely" title="Use del to remove items from a list entirely" class="md-nav__link">
+    Use del to remove items from a list entirely
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-empty-list-contains-no-values" title="The empty list contains no values" class="md-nav__link">
+    The empty list contains no values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists-may-be-heterogeneous" title="Lists may be heterogeneous" class="md-nav__link">
+    Lists may be heterogeneous
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#character-strings-are-immutable" title="Character strings are immutable" class="md-nav__link">
+    Character strings are immutable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-and-slice-to-get-information-out-of-a-stringlist" title="Index and slice to get information out of a string/list" class="md-nav__link">
+    Index and slice to get information out of a string/list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-built-in-function-len-to-find-the-length-of-a-string" title="Use the built-in function len to find the length of a string" class="md-nav__link">
+    Use the built-in function len to find the length of a string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-slicing" title="Exercise: Slicing" class="md-nav__link">
+    Exercise: Slicing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-fill-in-the-blanks" title="Exercise: Fill in the blanks" class="md-nav__link">
+    Exercise: Fill in the blanks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values-____-values____1-values____3-values____5-printfirst-time-values-values-values____-printsecond-time-values" title="values = ____
+values.____(1)
+values.____(3)
+values.____(5)
+print(&#39;first time:&#39;, values)
+values = values[____]
+print(&#39;second time:&#39;, values)
+" class="md-nav__link">
+    values = ____
+values.____(1)
+values.____(3)
+values.____(5)
+print(&#39;first time:&#39;, values)
+values = values[____]
+print(&#39;second time:&#39;, values)
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-from-strings-to-lists-and-back" title="Exercise: From strings to lists and back" class="md-nav__link">
+    Exercise: From strings to lists and back
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printstring-to-list-listtin-printlist-to-string-joing-o-l-d" title="print(&#39;string to list:&#39;, list(&#39;tin&#39;))
+print(&#39;list to string:&#39;, &#39;&#39;.join([&#39;g&#39;, &#39;o&#39;, &#39;l&#39;, &#39;d&#39;]))
+" class="md-nav__link">
+    print(&#39;string to list:&#39;, list(&#39;tin&#39;))
+print(&#39;list to string:&#39;, &#39;&#39;.join([&#39;g&#39;, &#39;o&#39;, &#39;l&#39;, &#39;d&#39;]))
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-sort-and-sorted" title="Exercise: Sort and Sorted" class="md-nav__link">
+    Exercise: Sort and Sorted
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-a-letters-listgold-result-sortedletters-printletters-is-letters-and-result-is-result" title="# Program A
+letters = list(&#39;gold&#39;)
+result = sorted(letters)
+print(&#39;letters is&#39;, letters, &#39;and result is&#39;, result)
+" class="md-nav__link">
+    # Program A
+letters = list(&#39;gold&#39;)
+result = sorted(letters)
+print(&#39;letters is&#39;, letters, &#39;and result is&#39;, result)
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-copying-or-not" title="Exercise: Copying (or Not)" class="md-nav__link">
+    Exercise: Copying (or Not)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-a-old-listgold-new-old-simple-assignment-new0-d-printnew-is-new-and-old-is-old" title="# Program A
+old = list(&#39;gold&#39;)
+new = old      # simple assignment
+new[0] = &#39;D&#39;
+print(&#39;new is&#39;, new, &#39;and old is&#39;, old)
+" class="md-nav__link">
+    # Program A
+old = list(&#39;gold&#39;)
+new = old      # simple assignment
+new[0] = &#39;D&#39;
+print(&#39;new is&#39;, new, &#39;and old is&#39;, old)
+
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div id="article-content" class="md-content"> 
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/materialsproject/workshop/edit/master/docs/primer/01_basic_python/3 - Lists.ipynb" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h1 id="lesson-3-lists">Lesson 3: Lists<a class="headerlink" href="#lesson-3-lists" title="Permanent link">&para;</a></h1>
+<p><strong>Teaching:</strong> 15min<br>
+<strong>Exercises:</strong> 5min
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="a-list-stores-many-values-in-a-single-structure">A list stores many values in a single structure.<a class="headerlink" href="#a-list-stores-many-values-in-a-single-structure" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Doing calculations with a hundred variables called <code>pressure_001</code>, <code>pressure_002</code>, etc., would be at least as slow as doing them by hand.</p>
+</li>
+<li>
+<p>Use a <code>list</code> to store many values together.</p>
+</li>
+<li>Contained within square brackets <code>[...]</code>.</li>
+<li>
+<p>Values separated by commas <code>,</code>.</p>
+</li>
+<li>
+<p>Use <code>len</code> to find out how many values are in a list.
+</div>
+</div></p>
+</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">pressures</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.273</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="mf">0.277</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="mf">0.276</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pressures:&#39;</span><span class="p">,</span> <span class="n">pressures</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pressures</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="use-an-items-index-to-fetch-it-from-a-list">Use an item's index to fetch it from a list<a class="headerlink" href="#use-an-items-index-to-fetch-it-from-a-list" title="Permanent link">&para;</a></h2>
+<ul>
+<li>just like strings
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zeroth item of pressures:&#39;</span><span class="p">,</span> <span class="n">pressures</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fourth item of pressures:&#39;</span><span class="p">,</span> <span class="n">pressures</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fourth item of &quot;pressures&quot;:&#39;</span><span class="p">,</span> <span class="s2">&quot;pressures&quot;</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Say <strong>your name</strong>...
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="lists-values-can-be-replaced-by-assigning-to-them">Lists' values can be replaced by assigning to them<a class="headerlink" href="#lists-values-can-be-replaced-by-assigning-to-them" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use an index expression on the left of assignment to replace a value.
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">pressures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.265</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pressures is now:&#39;</span><span class="p">,</span> <span class="n">pressures</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>pressures is now: [0.265, 0.275, 0.277, 0.275, 0.276]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="appending-items-to-a-list-lengthens-it">Appending items to a list lengthens it<a class="headerlink" href="#appending-items-to-a-list-lengthens-it" title="Permanent link">&para;</a></h2>
+<ul>
+<li>use <code>list_name.append</code> to add items to the end of a list.
+</div>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes is initially:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+<span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes has become:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>primes is initially: [2, 3, 5]
+primes has become: [2, 3, 5, 7, 9]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+* <code>append</code> is a <em>method</em> of lists
+  * like a function, but tied to a particular object</p>
+</div>
+</div>
+<ul>
+<li>Use <code>object_name.method_name</code> to call methods</li>
+<li>
+<p>deliberately resembles the way we refer to things in a library</p>
+</li>
+<li>
+<p>We will meet other methods of lists as we go along</p>
+</li>
+<li>Use <code>help(list)</code> for a preview
+</div>
+</div></li>
+</ul>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<code>extend</code> is similar to <code>append</code>, but it allows you to combine two lists.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">teen_primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+<span class="n">older_primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">59</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes is currently:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+<span class="n">primes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">teen_primes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes has now become:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+<span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">older_primes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes has finally become:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>primes is currently: [2, 3, 5, 7, 9]
+primes has now become: [2, 3, 5, 7, 9, 11, 13, 17, 19]
+primes has finally become: [2, 3, 5, 7, 9, 11, 13, 17, 19, [23, 31, 47, 59]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Note that while <code>extend</code> maintains the "flat" structure of the list, appending a list to a list makes the result two-dimensional.
+</div>
+</div></p>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="use-del-to-remove-items-from-a-list-entirely">Use <code>del</code> to remove items from a list entirely<a class="headerlink" href="#use-del-to-remove-items-from-a-list-entirely" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>del list_name[index]</code> removes an item from a list and shortens the list.</li>
+<li>Not a function or method, but a statement in the language.
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes before removing last item:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">primes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;primes after removing last item:&#39;</span><span class="p">,</span> <span class="n">primes</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>primes before removing last item: [2, 3, 5, 7, 9, 11, 13, 17, 19, [23, 31, 47, 59]]
+primes after removing last item: [2, 3, 5, 7, 11, 13, 17, 19, [23, 31, 47, 59]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="the-empty-list-contains-no-values">The empty list contains no values<a class="headerlink" href="#the-empty-list-contains-no-values" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>[]</code> is "the zero of lists"</li>
+<li>Helpful as a starting point for collecting values
+</div>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="lists-may-be-heterogeneous">Lists may be <em>heterogeneous</em><a class="headerlink" href="#lists-may-be-heterogeneous" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">goals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Create lists.&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Extract items from lists.&#39;</span><span class="p">,</span>
+         <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Modify lists.&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+* Not always a good idea...
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="character-strings-are-immutable">Character strings are <em>immutable</em><a class="headerlink" href="#character-strings-are-immutable" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Cannot change the characters in a string after it has been created.</li>
+<li>Python considers the string to be a single value with parts, not a collection of values.
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="n">element</span> <span class="o">=</span> <span class="s1">&#39;helium&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Traceback (most recent call last):
+  File &#34;&lt;ipython-input-9-7b43d8c316ad&gt;&#34;, line 5, in &lt;module&gt;
+    element[0] = &#39;C&#39;
+TypeError: &#39;str&#39; object does not support item assignment
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="index-and-slice-to-get-information-out-of-a-stringlist">Index and slice to get information out of a string/list<a class="headerlink" href="#index-and-slice-to-get-information-out-of-a-stringlist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Locations are numbered from 0 rather than 1</li>
+<li>Negative indices count backward from the end of the string</li>
+<li>Slices <em>include</em> the lower bound but <em>exclude</em> the upper bound, so <code>(upper - lower)</code> is the slice's length
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered"></div>
+</div>
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;first character:&#39;</span><span class="p">,</span> <span class="n">element</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;last character:&#39;</span><span class="p">,</span> <span class="n">element</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;middle:&#39;</span><span class="p">,</span> <span class="n">element</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>first character: h
+last character: m
+middle: liu
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Indexing beyond the end of a collection is an error
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;99th element of element is:&#39;</span><span class="p">,</span> <span class="n">element</span><span class="p">[</span><span class="mi">99</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Traceback (most recent call last):
+  File &#34;&lt;ipython-input-11-68966f3afd5b&gt;&#34;, line 2, in &lt;module&gt;
+    print(&#39;99th element of element is:&#39;, element[99])
+IndexError: string index out of range
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="use-the-built-in-function-len-to-find-the-length-of-a-string">Use the built-in function <code>len</code> to find the length of a string<a class="headerlink" href="#use-the-built-in-function-len-to-find-the-length-of-a-string" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered"></div>
+</div>
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;helium&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="exercise-slicing">Exercise: Slicing<a class="headerlink" href="#exercise-slicing" title="Permanent link">&para;</a></h2>
+<p>What does the following print:</p>
+<div class="highlight"><pre><span></span><code><span class="n">element</span> <span class="o">=</span> <span class="s1">&#39;carbon&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;element[1:3] is:&#39;</span><span class="p">,</span> <span class="n">element</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+
+<p>What does <code>thing[low:high]</code> do?</p>
+<p>What does <code>thing[low:]</code> do?</p>
+<p>What does <code>thing[:high]</code> do?</p>
+<p>What does <code>thing[:]</code> do?</p>
+<p>What about <code>thing[::2]</code>? <code>thing[::-1]</code>?
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="exercise-fill-in-the-blanks">Exercise: Fill in the blanks<a class="headerlink" href="#exercise-fill-in-the-blanks" title="Permanent link">&para;</a></h2>
+<p>Fill in the blanks so that the program below produces the output shown.</p>
+<h2 id="values-____-values____1-values____3-values____5-printfirst-time-values-values-values____-printsecond-time-values"><div class="highlight"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="n">____</span>
+<span class="n">values</span><span class="o">.</span><span class="n">____</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">values</span><span class="o">.</span><span class="n">____</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">values</span><span class="o">.</span><span class="n">____</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;first time:&#39;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">____</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second time:&#39;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+</code></pre></div><a class="headerlink" href="#values-____-values____1-values____3-values____5-printfirst-time-values-values-values____-printsecond-time-values" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>first time: [1, 3, 5]
+second time: [3, 5]
+</code></pre></div>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="exercise-from-strings-to-lists-and-back">Exercise: From strings to lists and back<a class="headerlink" href="#exercise-from-strings-to-lists-and-back" title="Permanent link">&para;</a></h2>
+<p>Given this:</p>
+<h2 id="printstring-to-list-listtin-printlist-to-string-joing-o-l-d"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;string to list:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;tin&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list to string:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]))</span>
+</code></pre></div><a class="headerlink" href="#printstring-to-list-listtin-printlist-to-string-joing-o-l-d" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>[&#39;t&#39;, &#39;i&#39;, &#39;n&#39;]
+&#39;gold&#39;
+</code></pre></div>
+
+<ol>
+<li>Explain in simple terms what <code>list('some string')</code> does.</li>
+<li>What does <code>'-'.join(['x', 'y'])</code> generate?
+</div>
+</div></li>
+</ol>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="exercise-sort-and-sorted">Exercise: Sort and Sorted<a class="headerlink" href="#exercise-sort-and-sorted" title="Permanent link">&para;</a></h2>
+<p>What do these two programs print? In simple terms, explain the difference between <code>sorted(letters)</code> and <code>letters.sort()</code>.</p>
+<h2 id="program-a-letters-listgold-result-sortedletters-printletters-is-letters-and-result-is-result"><div class="highlight"><pre><span></span><code><span class="c1"># Program A</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;letters is&#39;</span><span class="p">,</span> <span class="n">letters</span><span class="p">,</span> <span class="s1">&#39;and result is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</code></pre></div><a class="headerlink" href="#program-a-letters-listgold-result-sortedletters-printletters-is-letters-and-result-is-result" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Program B</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">letters</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;letters is&#39;</span><span class="p">,</span> <span class="n">letters</span><span class="p">,</span> <span class="s1">&#39;and result is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="exercise-copying-or-not">Exercise: Copying (or Not)<a class="headerlink" href="#exercise-copying-or-not" title="Permanent link">&para;</a></h2>
+<p>What do these two programs print? In simple terms, explain the difference between <br><code>new = old</code> and <code>new = old[:]</code>.</p>
+<h2 id="program-a-old-listgold-new-old-simple-assignment-new0-d-printnew-is-new-and-old-is-old"><div class="highlight"><pre><span></span><code><span class="c1"># Program A</span>
+<span class="n">old</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">)</span>
+<span class="n">new</span> <span class="o">=</span> <span class="n">old</span>      <span class="c1"># simple assignment</span>
+<span class="n">new</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new is&#39;</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="s1">&#39;and old is&#39;</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span>
+</code></pre></div><a class="headerlink" href="#program-a-old-listgold-new-old-simple-assignment-new0-d-printnew-is-new-and-old-is-old" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Program B</span>
+<span class="n">old</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">)</span>
+<span class="n">new</span> <span class="o">=</span> <span class="n">old</span><span class="p">[:]</span>   <span class="c1"># assigning a slice</span>
+<span class="n">new</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new is&#39;</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="s1">&#39;and old is&#39;</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div></p>
+</div>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/" title="2   Variables and built in functions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                2   Variables and built in functions
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                4   For loops
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Built by The Materials Project
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://yakworks.github.io/mkdocs-material-components/" title="Material Components for MkDocs">
+          Material Components for MkDocs</a>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application-68832431b5.js"></script>
+      
+      
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <script>window.mdc.autoInit()</script>
+      <script src="../../../assets/javascripts/headroom.min.js"></script>
+      <script src="../../../assets/javascripts/jQuery.headroom.min.js"></script>
+      <script src="../../../assets/javascripts/jq-mdc-web.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../../.."}})</script>
+      
+    
+    
+  </body>
+</html>

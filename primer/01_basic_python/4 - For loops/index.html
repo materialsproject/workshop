@@ -11,7 +11,7 @@
         <meta name="description" content="Lessons for the Materials Project Workshop">
       
       
-        <link rel="canonical" href="https://workshop.materialsproject.org/primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/">
+        <link rel="canonical" href="https://workshop.materialsproject.org/primer/01_basic_python/4%20-%20For%20loops/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>1   Introduction and Jupyter Use - The Materials Project Workshop</title>
+        <title>4   For loops - The Materials Project Workshop</title>
       
     
     
@@ -102,7 +102,7 @@
                 </span>
               
             
-            1   Introduction and Jupyter Use
+            4   For loops
           
         </span>
       </div>
@@ -245,61 +245,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        1   Introduction and Jupyter Use
-      </label>
-    
-    <a href="primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/" title="1   Introduction and Jupyter Use" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/" title="1   Introduction and Jupyter Use" class="md-nav__link">
       1   Introduction and Jupyter Use
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" title="Installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#code-vs-markdown" title="Code vs. Markdown" class="md-nav__link">
-    Code vs. Markdown
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shell-commands-magic-and-where-to-learn-more" title="Shell commands, magic, and where to learn more" class="md-nav__link">
-    Shell commands, magic, and where to learn more
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -331,11 +281,54 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        4   For loops
+      </label>
+    
+    <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-nav__link md-nav__link--active">
       4   For loops
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-write-a-for-loop-that-computes-the-sum-of-all-of-the-squares-from-2-to-11" title="Exercise: write a for loop that computes the sum of all of the squares from 2 to 11." class="md-nav__link">
+    Exercise: write a for loop that computes the sum of all of the squares from 2 to 11.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-optional-write-a-python-program-to-construct-the-following-pattern-using-a-nested-for-loop" title="Exercise (optional): Write a Python program to construct the following pattern, using a nested for loop." class="md-nav__link">
+    Exercise (optional): Write a Python program to construct the following pattern, using a nested for loop.
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -365,22 +358,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" title="Installation" class="md-nav__link">
-    Installation
+  <a href="#exercise-write-a-for-loop-that-computes-the-sum-of-all-of-the-squares-from-2-to-11" title="Exercise: write a for loop that computes the sum of all of the squares from 2 to 11." class="md-nav__link">
+    Exercise: write a for loop that computes the sum of all of the squares from 2 to 11.
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#code-vs-markdown" title="Code vs. Markdown" class="md-nav__link">
-    Code vs. Markdown
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shell-commands-magic-and-where-to-learn-more" title="Shell commands, magic, and where to learn more" class="md-nav__link">
-    Shell commands, magic, and where to learn more
+  <a href="#exercise-optional-write-a-python-program-to-construct-the-following-pattern-using-a-nested-for-loop" title="Exercise (optional): Write a Python program to construct the following pattern, using a nested for loop." class="md-nav__link">
+    Exercise (optional): Write a Python program to construct the following pattern, using a nested for loop.
   </a>
   
 </li>
@@ -399,7 +385,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/materialsproject/workshop/edit/master/docs/primer/01_basic_python/1 - Introduction and Jupyter Use.ipynb" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/materialsproject/workshop/edit/master/docs/primer/01_basic_python/4 - For loops.ipynb" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
                 
@@ -435,142 +421,324 @@
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
-<h1 id="lesson-1-introduction-to-python-and-using-jupyter-notebooks">Lesson 1: Introduction to Python and Using Jupyter notebooks<a class="headerlink" href="#lesson-1-introduction-to-python-and-using-jupyter-notebooks" title="Permanent link">&para;</a></h1>
+<h1 id="lesson-4-for-loops">Lesson 4: For loops<a class="headerlink" href="#lesson-4-for-loops" title="Permanent link">&para;</a></h1>
 <p></div>
 </div></p>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-The Jupyter notebook is a platform for using and writing code in a dynamic way that allows users to combine cells of code snippets that are executed with a persistent namespace and kernel alongside markdown text for facilitating readability and visualization.</p>
-<p>In this notebook, we cover some basics of Jupyter functionality along with a discussion of some details of how you can use python in this environment and elsewhere.
+A for loop can be used to repeat actions over a set of values.
 </div>
 </div></p>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Jimmy&#39;</span>
+
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>J
+i
+m
+m
+y
+J
+i
+m
+m
+y
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+For loops are constructed via the syntax for LOOP_VARIABLE in ITERABLE.  The loop variable in the above example I've used is <code>letter</code> and the iterable I've used is the string <code>name</code>, which was defined as <code>'Jimmy'</code>.  Other iterables include lists and dictionary keys, which we'll discuss later.  You can construct an iterable corresponding to a set of numbers beginning at 0 and ending at a certain number by using the built-in range function:
+</div>
+</div></p>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="s2">&quot;is even&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2 is even
+4 is even
+6 is even
+8 is even
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">my_sum</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">my_sum</span> <span class="o">+=</span> <span class="n">number</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of numbers from 0 to 5 is&quot;</span><span class="p">,</span> <span class="n">my_sum</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sum of numbers from 0 to 5 is 15
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Letter&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Letter 0 - J
+Letter 1 - i
+Letter 2 - m
+Letter 3 - m
+Letter 4 - y
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Iterables have a length, and you can find this length using the len function.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length of&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Length of Jimmy is 5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">letter1</span><span class="p">,</span> <span class="n">letter2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="s2">&quot;Jimmy&quot;</span><span class="p">,</span> <span class="s2">&quot;Heath&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter1</span><span class="p">,</span> <span class="n">letter2</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>J H
+i e
+m a
+m t
+y h
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>For this workshop, we've constructed an online environment for everyone to use in order to smooth out any platform-dependent installation issues, but you'll probably want to install the tools we use today locally on your own machine.  To do this, we recommend <a href="https://docs.continuum.io/anaconda/install">Anaconda</a>, which is an effective tool for python package management that can create virtual environments, comes with a pre-installed IDE, and includes all of the Jupyter functionality that you'll see here.  The Anaconda installer should be detailed on the page linked above, but here's <a href="https://swcarpentry.github.io/python-novice-gapminder/setup/">another resource</a> for installation that might be helpful.
-</div>
+<h3 id="exercise-write-a-for-loop-that-computes-the-sum-of-all-of-the-squares-from-2-to-11">Exercise: write a for loop that computes the sum of all of the squares from 2 to 11.<a class="headerlink" href="#exercise-write-a-for-loop-that-computes-the-sum-of-all-of-the-squares-from-2-to-11" title="Permanent link">&para;</a></h3>
+<p></div>
 </div></p>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
+
+
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>505
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
-<h2 id="code-vs-markdown">Code vs. Markdown<a class="headerlink" href="#code-vs-markdown" title="Permanent link">&para;</a></h2>
-<p>Jupyter notebooks are broken down into "cells" which might contain either code or markdown.  If you select a cell with your mouse, it should be highlighted with a green border indicating that you are in "edit," mode and can edit the contents of the cell.  If text reading <code>In [ ]:</code> is on the left hand side of the cell, it's a "code" cell.  For example, type the following and press "Shift + Enter"
+<h3 id="exercise-optional-write-a-python-program-to-construct-the-following-pattern-using-a-nested-for-loop">Exercise (optional): Write a Python program to construct the following pattern, using a nested for loop.<a class="headerlink" href="#exercise-optional-write-a-python-program-to-construct-the-following-pattern-using-a-nested-for-loop" title="Permanent link">&para;</a></h3>
 </div>
-</div></p>
 </div>
+<dd>* </dd>
+<dd>* * </dd>
+<dd>* * * </dd>
+<dd>* * * * </dd>
+<dd>* * * * * </dd>
+<dd>* * * * </dd>
+<dd>* * * </dd>
+<dd>* * </dd>
+<dd>* </dd>
+</div>
+</div>
+
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;* &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-Pressing "Shift + Enter" executes the code in the cell, prints the output below the cell, and creates a new cell below that one.  In addition to code cells, you can also write your own markdown cells by converting a cell using either the dropdown menu in the toolbar or pressing "Esc + m".  In general, pressing escape enters "command mode" for which you can issue a number of commands, including</p>
-<ul>
-<li>f - find and replace</li>
-<li>m - convert to markdown</li>
-<li>y - convert to code</li>
-<li>h - open the help menu</li>
-</ul>
-<p>Right now, trying typing "Esc + h" to open the help/shortcut menu and peruse it.  Spend a minute testing out some of the shortcuts.
-</div>
-</div></p>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-Note that markdown cells are quite flexible and can basically do anything wikipedia does, including adding $\LaTeX$-formatted equations.</p>
-<p>$\hat{H}\psi = E \psi$
-</div>
-</div></p>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
-<h2 id="shell-commands-magic-and-where-to-learn-more">Shell commands, magic, and where to learn more<a class="headerlink" href="#shell-commands-magic-and-where-to-learn-more" title="Permanent link">&para;</a></h2>
-<p>Jupyter notebooks can also issue commands to the shell, which can be achieved using the <code>!</code> symbol at the beginning of the cell:
-</div>
-</div></p>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
 
-<div class="highlight"><pre><span></span><code><span class="err">!</span><span class="n">ls</span> <span class="o">.</span>
-</code></pre></div>
 
+<div class="output_area" markdown="1">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+* * * * 
+* * * 
+* * 
+* 
+</pre>
+</div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="err">!</span><span class="n">date</span>
-</code></pre></div>
-
 </div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-In addition, certain things can be achieved in Jupyter notebooks using what are called "magic" commands, which are demarcated using the <code>%</code> sign.  The most common of these are the magic function to enable inline plotting:
-</div>
-</div></p>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-</code></pre></div>
-
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-and to invoke the debugger in a particular cell on an error:
-</div>
-</div></p>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">pdb</span>
-</code></pre></div>
-
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-These functions set up special functionality in the notebook.
-</div>
-</div></p>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-Lastly, note that Jupyter notebooks are becoming increasingly popular as tools to supplement publication.  As a computational researcher, you can provide explicit documentation of your methods with embedded code that actually works for a person who wants to understand better what you're working on.  In my own work, I've begun making all my plots and collecting all of my data in Jupyter notebooks to provide as supporting info for each of my recent papers.  It's a bit more work, but you'll find that having this level of organization and being this transparent about your methods goes a long way.</p>
-<p>There are great resources for IPython notebooks online, and here are a few of them:</p>
-<ul>
-<li><a href="http://jupyter.org/">Jupyter website</a></li>
-<li><a href="https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks">A gallery of interesting notebooks</a></li>
-</ul>
-</div>
-</div>
-
 
 </div>
                 
@@ -591,7 +759,7 @@ Lastly, note that Jupyter notebooks are becoming increasingly popular as tools t
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="" title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="primer/01_basic_python/3%20-%20Lists/" title="3   Lists" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -600,25 +768,11 @@ Lastly, note that Jupyter notebooks are becoming increasingly popular as tools t
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
+                3   Lists
               </span>
             </div>
           </a>
         
-        
-          <a href="primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/" title="2   Variables and built in functions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                2   Variables and built in functions
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>
