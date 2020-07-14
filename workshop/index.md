@@ -1,10 +1,10 @@
-# Materials Project Workshop 2020 (July 28 - 30) 
+# Materials Project Workshop 2020 (July 28 - 30)
 
-The 2020 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based Jupyter deployment to enable interactive tutorials where we provide close support. 
+The 2020 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based Jupyter deployment to enable interactive tutorials where we provide close support.
 
 ## Registration
 
-[Registration](https://na.eventscloud.com/ereg/index.php?eventid=527975&) is currently waitlisted. 
+[Registration](https://na.eventscloud.com/ereg/index.php?eventid=527975&) is currently waitlisted.
 
 ## Tentative Schedule
 
