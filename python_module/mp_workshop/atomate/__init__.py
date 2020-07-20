@@ -2,15 +2,11 @@
 Module containing helper code for the atomate lesson
 """
 
-import os
+from pathlib import Path
 
 from atomate.vasp.powerups import use_fake_vasp
 from fireworks import Firework, Workflow
 from graphviz import Digraph
-
-from mp_workshop.fireworks_config import fw_config_dir
-
-os.environ["FW_CONFIG_FILE"] = os.path.join(fw_config_dir, "FW_config.yaml")
 
 
 # Copied from fws
@@ -25,15 +21,6 @@ state_to_color = {
     "DEFUSED": "#B7BCC3",
     "PAUSED": "#FFCFCA",
 }
-
-si_struct_opt_path = os.path.join(
-    os.path.dirname(__file__), "fake_vasp/Si_structure_opt"
-)
-si_static_path = os.path.join(os.path.dirname(__file__), "fake_vasp/Si_static")
-si_nscf_line_path = os.path.join(os.path.dirname(__file__), "fake_vasp/Si_nscf_line")
-si_nscf_uniform_path = os.path.join(
-    os.path.dirname(__file__), "fake_vasp/Si_nscf_uniform"
-)
 
 
 def wf_to_graph(workflow):
@@ -68,7 +55,7 @@ def wf_to_graph(workflow):
     return dot
 
 
-module = os.path.dirname(os.path.abspath(__file__))
+fake_vasp_dir = (Path(__file__).parent / "fake_vasp").resolve()
 
 
 # Use this to streamline faking vasp if desired
@@ -81,10 +68,10 @@ def use_fake_vasp_workshop(workflow):
     Args:
     """
     if workflow.name == "Si:elastic constants":
-        runs_dir = os.path.join(module, "fake_vasp", "Si_elastic_tensor")
+        runs_dir = fake_vasp_dir / "Si_elastic_tensor"
         config = {
-            "Si-elastic deformation 0": os.path.join(runs_dir, "0"),
-            "Si-elastic deformation 1": os.path.join(runs_dir, "1"),
+            "Si-elastic deformation 0": runs_dir / "0",
+            "Si-elastic deformation 1": runs_dir / "1",
         }
         return use_fake_vasp(workflow, config)
     elif "Al" in workflow.name or "Cr" in workflow.name:
@@ -95,8 +82,8 @@ def use_fake_vasp_workshop(workflow):
             f"{str(struct_start.composition.reduced_formula)}-structure optimization"
         )
         # the firework will always have the same name
-        runs_dir = os.path.join(module, "fake_vasp", "Al_Cr")
-        config = {fw_name: os.path.join(runs_dir, subdir_name)}
+        runs_dir = fake_vasp_dir / "Al_Cr"
+        config = {fw_name: runs_dir / subdir_name}
         return use_fake_vasp(workflow, config)
     else:
         raise ValueError("Workflow {} not found".format(workflow.name))
