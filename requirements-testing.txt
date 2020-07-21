@@ -1,0 +1,6 @@
+pytest==5.4.3
+pytest-sugar==0.9.4
+nbval==0.9.5
+pycodestyle==2.6.0
+pydocstyle==5.0.2
+flake8==3.8.3

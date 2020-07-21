@@ -1,7 +1,0 @@
-{
-    "aliases": {}, 
-    "collection": "tasks",
-    "database": "mp_workshop",
-    "host": "localhost", 
-    "port": 27017
-}

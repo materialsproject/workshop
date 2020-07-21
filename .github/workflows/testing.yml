@@ -1,0 +1,67 @@
+name: testing
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-testing.txt
+
+    - name: Lint with pycodestyle
+      run: pycodestyle python_module
+
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 --count --show-source --statistics python_module
+        # exit-zero treats all errors as warnings.
+        flake8 --count --exit-zero --max-complexity=20 --statistics python_module
+
+    - name: Ensure Clean Jupyter Notebooks
+      uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@1.1
+
+  test:
+    services:
+      local_mongodb:
+        image: mongo:4.0
+        ports:
+          - 27017:27017
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: goanpeca/setup-miniconda@v1
+      with:
+        activate-environment: r2d
+        environment-file: binder/environment.yml
+        python-version: 3.8
+        auto-activate-base: false
+
+    - name: Test with pytest
+      shell: bash -l {0}
+      run: |
+        conda activate r2d
+        pip install -r requirements-testing.txt
+        pip install -e .
+        pytest --nbval-lax
