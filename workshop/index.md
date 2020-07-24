@@ -1,15 +1,17 @@
 # Materials Project Workshop 2020 (July 28 - 30)
 
-The 2020 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based Jupyter deployment to enable interactive tutorials where we provide close support.
+The Materials Project Workshop is two-day interactive workshop to learn to use th Materials Project (MP) open-source tools. Topics will include basic structure manipulation, querying data from MP using the API, automating DFT calculations, exploring new chemical systems and machine learning. A optional one-day python and MongoDB primer is provided for anyone new to python programming and using databases. We'll also provide a virtual poster-session for anyone interested in networking with other participants.
 
 ## Registration
 
-[Registration](https://na.eventscloud.com/ereg/index.php?eventid=527975&) is currently waitlisted.
+[Registration](https://na.eventscloud.com/ereg/index.php?eventid=527975&) is currently closed.
 
-## Tentative Schedule
+## Location
 
-### Primer
-#### (optional) Tuesday Morning -- Python/Jupyter Primer
+The 2020 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based python environment to enable interactive tutorials where we provide close support.
+
+## Primer (optional)
+### Tuesday Morning -- Python/Jupyter Primer
 
 - 09:00-09:20 Intro - Logistics
 - 09:20-10:20 Basics - Variables, Lists, Loops
@@ -18,7 +20,7 @@ The 2020 Materials Project Workshop will be fully virtual due to COVID related t
 - 11:40-12:00 Open Discussion
 - 12:00-13:00 Lunch
 
-#### (optional) Tuesday Afternoon -- MongoDB using Python primer
+### Tuesday Afternoon -- MongoDB using Python primer
 
 - 13:00-13:20 Data Modeling - Python Types to JSON to MongoDB
 - 13:20-14:00 Listing, Counting, Finding, and Dot Notation
@@ -28,8 +30,8 @@ The 2020 Materials Project Workshop will be fully virtual due to COVID related t
 - 15:40-16:00 Wrap-Up
 
 
-### Main Workshop
-#### Wednesday Morning
+## Main Workshop
+### Wednesday Morning
 
 - 09:00-09:20 Overview of the Materials Project
 - 09:20-10:20 Using the Website Effectively
@@ -38,7 +40,7 @@ The 2020 Materials Project Workshop will be fully virtual due to COVID related t
 - 11:40-12:00 Open Discussion
 - 12:00-13:00 Lunch
 
-#### Wednesday Afternoon
+### Wednesday Afternoon
 
 - 13:00-14:00 Working with Surfaces in Pymatgen
 - 14:00-14:20 Break
@@ -46,31 +48,22 @@ The 2020 Materials Project Workshop will be fully virtual due to COVID related t
 - 15:20-15:40 Open Discussion
 - 15:40-16:00 Wrap-up
 
-#### Thursday Morning
+### Thursday Morning
 
 - 09:00-09:20 Intro
-- 09:20-10:20 Running Other Codes
+- 09:20-10:20 Automating DFT
 - 10:20-10:40 Break
 - 10:40-11:40 Exploring New Systems with Pymatgen
 - 11:40-12:00 Open Discussion
 - 12:00-13:00 Lunch
 
-#### Thursday Afternoon
+### Thursday Afternoon
 
 - 13:00-14:00 [MPContribs](https://mpcontribs.org): Share You Data via MPContribs
 - 14:00-14:20 Break
 - 14:20-15:40 Machine Learning with Matminer
 - 15:40-16:00 Wrap-Up
 
-## Instructions:
-
-1. [Sign in](https://materialsproject.org/) to your MP account online. Register for an account first if needed.
-
-More instructions are coming as the workshop tools are finalized.
-
-## Format
-
-The lessons will be taught in 20-minute sessions as 10-minutes of "lecture" followed by 10-minutes of a hands-on exercise. You're welcome to follow along with the already filled in hand-out notebook or by typing in as we go along.
 
 ## Still have questions?
 

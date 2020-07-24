@@ -29,3 +29,5 @@ jupyter serverextension enable nbgitpuller --sys-prefix
 #echo "PMG_VASP_PSP_DIR: $HOME/POTCARs" >> $HOME/.pmgrc.yaml
 git config --global user.email "jovyan@materialsproject.org"
 pip install -e .
+
+mkdir $HOME/mongodb
