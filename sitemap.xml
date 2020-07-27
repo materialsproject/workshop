@@ -11,5 +11,13 @@
      <loc>https://workshop.materialsproject.org/people/people/</loc>
      <lastmod>2020-07-27</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://workshop.materialsproject.org/primer/01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/</loc>
+     <lastmod>2020-07-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://workshop.materialsproject.org/primer/01_basic_python/1%20-%20Python%20Primer/</loc>
+     <lastmod>2020-07-27</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>
