@@ -13,8 +13,8 @@ cd $HOME/enumlib/src
 make
 make enum.x
 make makestr.x
-mkdir -p $HOME/.local/bin
-cp *.x $HOME/.local/bin/
+cp *.x /usr/local/bin
+rm -Rf $HOME/enumlib
 
 cd $HOME
 #jupyter nbextension install --user --py pythreejs
