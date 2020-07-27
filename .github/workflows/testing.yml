@@ -53,15 +53,13 @@ jobs:
 
     - uses: goanpeca/setup-miniconda@v1
       with:
-        activate-environment: r2d
         environment-file: binder/environment.yml
         python-version: 3.8
-        auto-activate-base: false
+        auto-activate-base: true
 
     - name: Test with pytest
       shell: bash -l {0}
       run: |
-        conda activate r2d
         pip install -r requirements-testing.txt
         pip install -e .
         bash binder/start

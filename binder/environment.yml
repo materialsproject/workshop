@@ -1,4 +1,3 @@
-name: r2d
 channels:
   - conda-forge
   - matsci

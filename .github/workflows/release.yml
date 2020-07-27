@@ -20,15 +20,13 @@ jobs:
 
     - uses: goanpeca/setup-miniconda@v1
       with:
-        activate-environment: r2d
         environment-file: binder/environment.yml
         python-version: 3.8
-        auto-activate-base: false
+        auto-activate-base: true
 
     - name: Install dependencies
       shell: bash -l {0}
       run: |
-        conda activate r2d
         python -m pip install --upgrade pip
         pip install -r requirements-docs.txt
         pip install -e .
@@ -36,7 +34,6 @@ jobs:
     - name: Build
       shell: bash -l {0}
       run: |
-        conda activate r2d
         mkdocs build
 
     - name: Deploy
