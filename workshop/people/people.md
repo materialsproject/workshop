@@ -38,8 +38,10 @@ The annual MP Workshop would not be possible without all the people that contrib
 ![John Dagdelen](/people/jdag.jpg#person)
 
 ### Rachel Woods-Robinson
+![Rachel Woods-Robinson](/people/rwr.jpg#person)
 
 ### Alex Ganose
+![Alex Ganose](/people/aganose.jpg#person)
 
 ### Mingjian Wen
 ![Mingjian Wen](/people/mwen.jpeg#person)
@@ -56,6 +58,7 @@ The annual MP Workshop would not be possible without all the people that contrib
 ### Kara Fong
 
 ### Matt McDermott
+![Matt McDermott](/people/mmcdermott.jpg#person)
 
 ### Jimmy Shen
 
