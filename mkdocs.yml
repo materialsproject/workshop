@@ -1,21 +1,22 @@
 site_name: The Materials Project Workshop
 site_description: Lessons for the Materials Project Workshop
 copyright: Built by The Materials Project
+site_url: https://workshop.materialsproject.org
+repo_url: https://github.com/materialsproject/workshop
 docs_dir: workshop
-
+extra_css: [workshop.css]
 theme:
   name: 'material'
+  icon:
+    logo: material/book-open-page-variant
+  font:
+    text: Roboto
+    code: Roboto Mono
 
 nav:
   - Home: index.md
-  - Lessons:
-    - primer/01_basic_python/1 - Introduction and Jupyter Use.ipynb
-    - primer/01_basic_python/2 - Variables and built-in functions.ipynb
-    - primer/01_basic_python/3 - Lists.ipynb
-    - primer/01_basic_python/4 - For loops.ipynb
-
-site_url: https://workshop.materialsproject.org/
-repo_url: https://github.com/materialsproject/workshop/
+  - Logistics: logistics/logistics.md
+  - People: people/people.md
 
 markdown_extensions:
   - admonition
@@ -24,10 +25,12 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.inlinehilite
+  - pymdownx.keys
   - toc:
       permalink: true
 
 plugins:
   - search
-  - minify
   - mknotebooks
+  - minify:
+      minify_html: true
