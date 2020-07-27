@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mongod --dbpath=$HOME/mongodb &
+mongod --dbpath=$HOME/.mongodb &
 
 python $HOME/binder/populate_nobel_database.py
 
