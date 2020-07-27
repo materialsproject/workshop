@@ -16,6 +16,7 @@ theme:
 nav:
   - Home: index.md
   - Logistics: logistics/logistics.md
+  - People: people/people.md
 
 markdown_extensions:
   - admonition
