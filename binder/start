@@ -2,6 +2,8 @@
 
 mongod --dbpath=$HOME/mongodb &
 
+python $HOME/binder/populate_nobel_database.py
+
 cd $HOME/workshop/lessons
 
 exec "$@"
