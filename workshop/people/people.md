@@ -6,63 +6,45 @@ The annual MP Workshop would not be possible without all the people that contrib
 
 2020 is particularly important as the transition from an in-person 40-person workshop to an online 100-person workshop represents a significant effort. The workshop lesson plan changes a little bit each year, but these individuals stepped up and reworked the lessons for a virtual teaching environment. This represents 100's, if not well over 1000+ combined hours of effort.
 
-### Shyam Dwaraknath
-![Shyam Dwaraknath](/people/sdwaraknath.png#person)
+### Organizers
 
-### Matthew Horton
 
-### Patrick Huck
-![Patrick Huck](/people/phuck.jpg#person)
 
-### Alice Muller
-![Alice Muller](/people/amuller.jpg#person)
+<ul class="person_list">
+    <li class="person"> <img class="person_image" src="/people/sdwaraknath.png"><p> Shyam Dwaraknath</p></li>
+    <li class="person"> <img class="person_image" src="/people/mkhorton.jpg"><p> Matthew Horton</p></li>
+    <li class="person"> <img class="person_image" src="/people/phuck.jpg"><p>Patrick Huck</p></li>
+    <li class="person"> <img class="person_image" src="/people/amuller.jpg"><p>Alice Muller</p></li>
+    <li class="person"> <img class="person_image" src="/people/kpersson.jpg"><p>Kristin Persson</p></li>
+</ul>
 
-### Ryan Kingsbury
-![Ryan Kingbury](/people/rkingsbury.jpg#person)
+### Instructors
 
-### Guy Moore
-![Guy Moore](/people/gmoore.jpg#person)
 
-### Jason Munro
-![Jason Munro](/people/jmunro.jpg#person)
 
-### Sam Blau
+<ul class="person_list">
+    <li class="person"> <img class="person_image" src="/people/rkingsbury.jpg"><p>Ryan Kingbury</p></li>
+    <li class="person"> <img class="person_image" src="/people/gmoore.jpg"><p>Guy Moore</p></li>
+    <li class="person"> <img class="person_image" src="/people/jmunro.jpg"><p>Jason Munro</p></li>
+    <li class="person"> <img class="person_image" src="/people/smblau.jpg"><p>Sam Blau</p></li>
+    <li class="person"> <img class="person_image" src="/people/espottesmith.jpg"><p>Evan Spotte-Smith</p></li>
+    <li class="person"> <img class="person_image" src="/people/oandriuc.jpg"><p>Oxana Andriuc</p></li>
+    <li class="person"> <img class="person_image" src="/people/jdag.jpg"><p>John Dagdelen</p></li>
+    <li class="person"> <img class="person_image" src="/people/rwr.jpg"><p>Rachel Woods-Robinson</p></li>
+    <li class="person"> <img class="person_image" src="/people/aganose.jpg"><p>Alex Ganose</p></li>
+</ul>
 
-### Evan Spotte-Smith
-![Evan Spotte-Smith](/people/espottesmith.jpg#person)
+### Helpers
 
-### Oxana Andriuc
-![Oxana Andriuc](/people/oandriuc.jpg#person)
 
-### John Dagdelen
-![John Dagdelen](/people/jdag.jpg#person)
 
-### Rachel Woods-Robinson
-![Rachel Woods-Robinson](/people/rwr.jpg#person)
-
-### Alex Ganose
-![Alex Ganose](/people/aganose.jpg#person)
-
-### Mingjian Wen
-![Mingjian Wen](/people/mwen.jpeg#person)
-
-### Jianli Cheng
-![Jianli Cheng](/people/jcheng.png#person)
-
-### Ann Rutt
-![Ann Rutt](/people/arutt.jpg#person)
-
-### Hetal Patel
-![Hetal Patel](/people/hpatel.jpg#person)
-
-### Kara Fong
-
-### Matt McDermott
-![Matt McDermott](/people/mmcdermott.jpg#person)
-
-### Jimmy Shen
-
-### Eric Sivonxay
-
-### Kristin Persson
-![Kristin Persson](/people/kpersson.jpg#person)
+<ul class="person_list">
+    <li class="person"> <img class="person_image" src="/people/mwen.jpeg"><p>Mingjian Wen</p></li>
+    <li class="person"> <img class="person_image" src="/people/jcheng.png"><p>Jianli Cheng</p></li>
+    <li class="person"> <img class="person_image" src="/people/arutt.jpg"><p>Ann Rutt</p></li>
+    <li class="person"> <img class="person_image" src="/people/hpatel.jpg"><p>Hetal Patel</p></li>
+    <li class="person"> <img class="person_image" src="/people/kfong.jpg"><p>Kara Fong</p></li>
+    <li class="person"> <img class="person_image" src="/people/mmcdermott.jpg"><p>Matt McDermott</p></li>
+    <li class="person"> <img class="person_image" src="/people/jmmshn.jpg"><p>Jimmy Shen</p></li>
+    <li class="person"> <img class="person_image" src="/people/esivonxay.jpg"><p>Eric Sivonxay</p></li>
+</ul>
