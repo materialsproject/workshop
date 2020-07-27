@@ -41,11 +41,11 @@ img.person_image {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  
+
   .input pre {
     margin-bottom: 0;
   }
-  
+
   .output code {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -54,7 +54,7 @@ img.person_image {
     border-top: none;
     max-height: 20rem;
   }
-  
+
   .output pre {
     margin-top: 0;
     display: grid;
