@@ -353,36 +353,13 @@ A for loop can be used to repeat actions over a set of values.
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>J
-i
-m
-m
-y
-J
-i
-m
-m
-y
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
 For loops are constructed via the syntax for LOOP_VARIABLE in ITERABLE.  The loop variable in the above example I've used is <code>letter</code> and the iterable I've used is the string <code>name</code>, which was defined as <code>'Jimmy'</code>.  Other iterables include lists and dictionary keys, which we'll discuss later.  You can construct an iterable corresponding to a set of numbers beginning at 0 and ending at a certain number by using the built-in range function:
 </div>
 </div></p>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -393,30 +370,10 @@ For loops are constructed via the syntax for LOOP_VARIABLE in ITERABLE.  The loo
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0
-1
-2
-3
-4
-5
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-</div>
-</div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="s2">&quot;is even&quot;</span><span class="p">)</span>
@@ -424,23 +381,7 @@ For loops are constructed via the syntax for LOOP_VARIABLE in ITERABLE.  The loo
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2 is even
-4 is even
-6 is even
-8 is even
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -453,49 +394,17 @@ For loops are constructed via the syntax for LOOP_VARIABLE in ITERABLE.  The loo
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sum of numbers from 0 to 5 is 15
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-</div>
-</div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Letter&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Letter 0 - J
-Letter 1 - i
-Letter 2 - m
-Letter 3 - m
-Letter 4 - y
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
@@ -511,49 +420,17 @@ Iterables have a length, and you can find this length using the len function.
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Length of Jimmy is 5
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-</div>
-</div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">letter1</span><span class="p">,</span> <span class="n">letter2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="s2">&quot;Jimmy&quot;</span><span class="p">,</span> <span class="s2">&quot;Heath&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">letter1</span><span class="p">,</span> <span class="n">letter2</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>J H
-i e
-m a
-m t
-y h
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
@@ -572,26 +449,11 @@ y h
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>505
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
 <h3 id="exercise-optional-write-a-python-program-to-construct-the-following-pattern-using-a-nested-for-loop">Exercise (optional): Write a Python program to construct the following pattern, using a nested for loop.<a class="headerlink" href="#exercise-optional-write-a-python-program-to-construct-the-following-pattern-using-a-nested-for-loop" title="Permanent link">&para;</a></h3>
-</div>
-</div>
 <dd>* </dd>
 <dd>* * </dd>
 <dd>* * * </dd>
@@ -605,6 +467,7 @@ y h
 </div>
 
 
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -620,29 +483,6 @@ y h
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-* 
-* * 
-* * * 
-* * * * 
-* * * * * 
-* * * * 
-* * * 
-* * 
-* 
-</pre>
-</div>
-</div>
-
-</div>
 </div>
 
 </div>

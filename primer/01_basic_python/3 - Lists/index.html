@@ -575,20 +575,7 @@ Say <strong>your name</strong>...
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>pressures is now: [0.265, 0.275, 0.277, 0.275, 0.276]
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
@@ -598,7 +585,6 @@ Say <strong>your name</strong>...
 </div>
 </div></li>
 </ul>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -612,28 +598,12 @@ Say <strong>your name</strong>...
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>primes is initially: [2, 3, 5]
-primes has become: [2, 3, 5, 7, 9]
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
 * <code>append</code> is a <em>method</em> of lists
   * like a function, but tied to a particular object</p>
-</div>
-</div>
 <ul>
 <li>Use <code>object_name.method_name</code> to call methods</li>
 <li>
@@ -646,6 +616,7 @@ primes has become: [2, 3, 5, 7, 9]
 </div>
 </div></li>
 </ul>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
@@ -667,29 +638,13 @@ primes has become: [2, 3, 5, 7, 9]
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>primes is currently: [2, 3, 5, 7, 9]
-primes has now become: [2, 3, 5, 7, 9, 11, 13, 17, 19]
-primes has finally become: [2, 3, 5, 7, 9, 11, 13, 17, 19, [23, 31, 47, 59]]
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
 Note that while <code>extend</code> maintains the "flat" structure of the list, appending a list to a list makes the result two-dimensional.
 </div>
 </div></p>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
@@ -712,21 +667,7 @@ Note that while <code>extend</code> maintains the "flat" structure of the list, 
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>primes before removing last item: [2, 3, 5, 7, 9, 11, 13, 17, 19, [23, 31, 47, 59]]
-primes after removing last item: [2, 3, 5, 7, 11, 13, 17, 19, [23, 31, 47, 59]]
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
@@ -737,7 +678,6 @@ primes after removing last item: [2, 3, 5, 7, 11, 13, 17, 19, [23, 31, 47, 59]]
 </div>
 </div></li>
 </ul>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
@@ -788,24 +728,7 @@ primes after removing last item: [2, 3, 5, 7, 11, 13, 17, 19, [23, 31, 47, 59]]
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Traceback (most recent call last):
-  File &#34;&lt;ipython-input-9-7b43d8c316ad&gt;&#34;, line 5, in &lt;module&gt;
-    element[0] = &#39;C&#39;
-TypeError: &#39;str&#39; object does not support item assignment
-
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
@@ -818,8 +741,7 @@ TypeError: &#39;str&#39; object does not support item assignment
 </div></li>
 </ul>
 </div>
-<div class="cell border-box-sizing code_cell rendered"></div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;first character:&#39;</span><span class="p">,</span> <span class="n">element</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -829,22 +751,7 @@ TypeError: &#39;str&#39; object does not support item assignment
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>first character: h
-last character: m
-middle: liu
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1">
@@ -863,24 +770,7 @@ Indexing beyond the end of a collection is an error
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Traceback (most recent call last):
-  File &#34;&lt;ipython-input-11-68966f3afd5b&gt;&#34;, line 2, in &lt;module&gt;
-    print(&#39;99th element of element is:&#39;, element[99])
-IndexError: string index out of range
-
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
@@ -888,8 +778,7 @@ IndexError: string index out of range
 <p></div>
 </div></p>
 </div>
-<div class="cell border-box-sizing code_cell rendered"></div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;helium&#39;</span><span class="p">))</span>
@@ -897,20 +786,7 @@ IndexError: string index out of range
 
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>6
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
 <div class="cell border-box-sizing text_cell rendered">
 <p><div class="inner_cell" markdown="1">
 <div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
