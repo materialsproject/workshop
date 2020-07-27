@@ -66,3 +66,17 @@ jobs:
         pip install -e .
         bash binder/start
         pytest --nbval-lax
+      env:
+        MPCONTRIBS_API_KEY: ${{ secrets.MPCONTRIBS_API_KEY }}
+
+  merge-deps:
+    needs:
+      - lint
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge me!
+        uses: ridedott/merge-me-action@master
+        with:
+          GITHUB_LOGIN: dependabot[bot]
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
