@@ -2,13 +2,14 @@ site_name: The Materials Project Workshop
 site_description: Lessons for the Materials Project Workshop
 copyright: Built by The Materials Project
 docs_dir: workshop
-
+extra_css: [workshop.css]
 theme:
   name: 'material'
 
 nav:
   - Home: index.md
-  - Logistics: logistics.md
+  - Logistics: logistics/logistics.md
+  - People: people/people.md
 
 site_url: https://workshop.materialsproject.org/
 repo_url: https://github.com/materialsproject/workshop/
