@@ -64,4 +64,5 @@ jobs:
         conda activate r2d
         pip install -r requirements-testing.txt
         pip install -e .
+        bash binder/start
         pytest --nbval-lax
