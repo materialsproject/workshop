@@ -36,40 +36,40 @@ jobs:
         # exit-zero treats all errors as warnings.
         flake8 --count --exit-zero --max-complexity=20 --statistics python_module
 
-  test:
-    services:
-      local_mongodb:
-        image: mongo:4.0
-        ports:
-          - 27017:27017
+  # test:
+  #   services:
+  #     local_mongodb:
+  #       image: mongo:4.0
+  #       ports:
+  #         - 27017:27017
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - uses: goanpeca/setup-miniconda@v1
-      with:
-        activate-environment: r2d
-        environment-file: binder/environment.yml
-        python-version: 3.8
-        auto-activate-base: false
+  #   - uses: goanpeca/setup-miniconda@v1
+  #     with:
+  #       activate-environment: r2d
+  #       environment-file: binder/environment.yml
+  #       python-version: 3.8
+  #       auto-activate-base: false
 
-    - name: Test with pytest
-      shell: bash -l {0}
-      run: |
-        conda activate r2d
-        pip install -r requirements-testing.txt
-        pip install -e .
-        bash binder/start
-        pytest --nbval-lax
-      env:
-        MPCONTRIBS_API_KEY: ${{ secrets.MPCONTRIBS_API_KEY }}
+  #   - name: Test with pytest
+  #     shell: bash -l {0}
+  #     run: |
+  #       conda activate r2d
+  #       pip install -r requirements-testing.txt
+  #       pip install -e .
+  #       bash binder/start
+  #       pytest --nbval-lax
+  #     env:
+  #       MPCONTRIBS_API_KEY: ${{ secrets.MPCONTRIBS_API_KEY }}
 
   merge-deps:
     needs:
       - lint
-      - test
+      #- test
     runs-on: ubuntu-latest
     steps:
       - name: Merge me!
