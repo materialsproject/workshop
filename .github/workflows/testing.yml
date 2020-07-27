@@ -36,9 +36,6 @@ jobs:
         # exit-zero treats all errors as warnings.
         flake8 --count --exit-zero --max-complexity=20 --statistics python_module
 
-    - name: Ensure Clean Jupyter Notebooks
-      uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@1.1
-
   test:
     services:
       local_mongodb:
