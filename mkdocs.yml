@@ -1,17 +1,21 @@
 site_name: The Materials Project Workshop
 site_description: Lessons for the Materials Project Workshop
 copyright: Built by The Materials Project
+site_url: https://workshop.materialsproject.org
+repo_url: https://github.com/materialsproject/workshop
 docs_dir: workshop
 extra_css: [workshop.css]
 theme:
   name: 'material'
+  icon:
+    logo: material/book-open-page-variant
+  font:
+    text: Roboto
+    code: Roboto Mono
 
 nav:
   - Home: index.md
   - Logistics: logistics/logistics.md
-
-site_url: https://workshop.materialsproject.org/
-repo_url: https://github.com/materialsproject/workshop/
 
 markdown_extensions:
   - admonition
@@ -26,5 +30,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - minify
   - mknotebooks
+  - minify:
+      minify_html: true
