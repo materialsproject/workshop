@@ -67,23 +67,22 @@ def use_fake_vasp_workshop(workflow):
 
     Args:
     """
-    if workflow.name == "Si:elastic constants":
-        runs_dir = fake_vasp_dir / "Si_elastic_tensor"
-        config = {
-            "Si-elastic deformation 0": runs_dir / "0",
-            "Si-elastic deformation 1": runs_dir / "1",
-        }
-        return use_fake_vasp(workflow, config)
-    elif "Al" in workflow.name or "Cr" in workflow.name:
-        # statements of each structure
-        struct_start = workflow.fws[0].tasks[0]["structure"]
-        subdir_name = f"{str(struct_start.composition).replace(' ', '')}_{struct_start.lattice.matrix[0][0]:0.2f}"
-        fw_name = (
-            f"{str(struct_start.composition.reduced_formula)}-structure optimization"
-        )
-        # the firework will always have the same name
-        runs_dir = fake_vasp_dir / "Al_Cr"
-        config = {fw_name: runs_dir / subdir_name}
-        return use_fake_vasp(workflow, config)
-    else:
-        raise ValueError("Workflow {} not found".format(workflow.name))
+
+    runs = {
+        "Si-structure optimization": fake_vasp_dir / "Si_structure_opt",
+        "Si-static": fake_vasp_dir / "Si_static",
+        "Si-nscf uniform": fake_vasp_dir / "Si_nscf_line",
+        "Si-nscf line": fake_vasp_dir / "Si_nscf_uniform",
+        "Si-elastic deformation 0": fake_vasp_dir / "Si_elastic_tensor" / "0",
+        "Si-elastic deformation 1": fake_vasp_dir / "Si_elastic_tensor" / "1",
+    }
+
+    return use_fake_vasp(
+        workflow,
+        runs,
+        check_incar=False,
+        check_kpoints=False,
+        check_poscar=False,
+        check_potcar=False,
+        clear_inputs=False,
+    )
