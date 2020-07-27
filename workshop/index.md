@@ -11,6 +11,8 @@ The Materials Project Workshop is two-day interactive workshop to learn to use t
 The 2020 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based python environment to enable interactive tutorials where we provide close support.
 
 ## Primer (optional)
+All times are in Pacific Daylight Time.
+
 ### Tuesday Morning -- Python/Jupyter Primer
 
 - 09:00-09:20 Intro - Logistics
@@ -31,6 +33,8 @@ The 2020 Materials Project Workshop will be fully virtual due to COVID related t
 
 
 ## Main Workshop
+All times are in Pacific Daylight Time.
+
 ### Wednesday Morning
 
 - 09:00-09:20 Overview of the Materials Project
