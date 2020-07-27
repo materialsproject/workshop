@@ -47,6 +47,8 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
+      <link rel="stylesheet" href="../../../workshop.css">
+    
       <link rel="stylesheet" href="../../../css/ansi-colours.css">
     
       <link rel="stylesheet" href="../../../css/jupyter-cells.css">
@@ -96,10 +98,6 @@
           
             The Materials Project Workshop -
             
-              
-                <span class="md-header-nav__parent">
-                  Lessons
-                </span>
               
             
             3   Lists
@@ -224,271 +222,23 @@
       
       
 
-  
 
+  <li class="md-nav__item">
+    <a href="logistics/logistics/" title="Logistics" class="md-nav__link">
+      Logistics
+    </a>
+  </li>
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
-    
-    <label class="md-nav__link" for="nav-2">
-      Lessons
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Lessons
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
+      
+      
+      
 
 
   <li class="md-nav__item">
-    <a href="primer/01_basic_python/1%20-%20Introduction%20and%20Jupyter%20Use/" title="1   Introduction and Jupyter Use" class="md-nav__link">
-      1   Introduction and Jupyter Use
+    <a href="people/people.md" title="People" class="md-nav__link">
+      People
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/" title="2   Variables and built in functions" class="md-nav__link">
-      2   Variables and built in functions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        3   Lists
-      </label>
-    
-    <a href="primer/01_basic_python/3%20-%20Lists/" title="3   Lists" class="md-nav__link md-nav__link--active">
-      3   Lists
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title md-nav__toc" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-list-stores-many-values-in-a-single-structure" title="A list stores many values in a single structure." class="md-nav__link">
-    A list stores many values in a single structure.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-an-items-index-to-fetch-it-from-a-list" title="Use an item's index to fetch it from a list" class="md-nav__link">
-    Use an item's index to fetch it from a list
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lists-values-can-be-replaced-by-assigning-to-them" title="Lists' values can be replaced by assigning to them" class="md-nav__link">
-    Lists' values can be replaced by assigning to them
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appending-items-to-a-list-lengthens-it" title="Appending items to a list lengthens it" class="md-nav__link">
-    Appending items to a list lengthens it
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-del-to-remove-items-from-a-list-entirely" title="Use del to remove items from a list entirely" class="md-nav__link">
-    Use del to remove items from a list entirely
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-empty-list-contains-no-values" title="The empty list contains no values" class="md-nav__link">
-    The empty list contains no values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lists-may-be-heterogeneous" title="Lists may be heterogeneous" class="md-nav__link">
-    Lists may be heterogeneous
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#character-strings-are-immutable" title="Character strings are immutable" class="md-nav__link">
-    Character strings are immutable
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#index-and-slice-to-get-information-out-of-a-stringlist" title="Index and slice to get information out of a string/list" class="md-nav__link">
-    Index and slice to get information out of a string/list
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-the-built-in-function-len-to-find-the-length-of-a-string" title="Use the built-in function len to find the length of a string" class="md-nav__link">
-    Use the built-in function len to find the length of a string
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-slicing" title="Exercise: Slicing" class="md-nav__link">
-    Exercise: Slicing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-fill-in-the-blanks" title="Exercise: Fill in the blanks" class="md-nav__link">
-    Exercise: Fill in the blanks
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#values-____-values____1-values____3-values____5-printfirst-time-values-values-values____-printsecond-time-values" title="values = ____
-values.____(1)
-values.____(3)
-values.____(5)
-print(&#39;first time:&#39;, values)
-values = values[____]
-print(&#39;second time:&#39;, values)
-" class="md-nav__link">
-    values = ____
-values.____(1)
-values.____(3)
-values.____(5)
-print(&#39;first time:&#39;, values)
-values = values[____]
-print(&#39;second time:&#39;, values)
-
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-from-strings-to-lists-and-back" title="Exercise: From strings to lists and back" class="md-nav__link">
-    Exercise: From strings to lists and back
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#printstring-to-list-listtin-printlist-to-string-joing-o-l-d" title="print(&#39;string to list:&#39;, list(&#39;tin&#39;))
-print(&#39;list to string:&#39;, &#39;&#39;.join([&#39;g&#39;, &#39;o&#39;, &#39;l&#39;, &#39;d&#39;]))
-" class="md-nav__link">
-    print(&#39;string to list:&#39;, list(&#39;tin&#39;))
-print(&#39;list to string:&#39;, &#39;&#39;.join([&#39;g&#39;, &#39;o&#39;, &#39;l&#39;, &#39;d&#39;]))
-
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-sort-and-sorted" title="Exercise: Sort and Sorted" class="md-nav__link">
-    Exercise: Sort and Sorted
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#program-a-letters-listgold-result-sortedletters-printletters-is-letters-and-result-is-result" title="# Program A
-letters = list(&#39;gold&#39;)
-result = sorted(letters)
-print(&#39;letters is&#39;, letters, &#39;and result is&#39;, result)
-" class="md-nav__link">
-    # Program A
-letters = list(&#39;gold&#39;)
-result = sorted(letters)
-print(&#39;letters is&#39;, letters, &#39;and result is&#39;, result)
-
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-copying-or-not" title="Exercise: Copying (or Not)" class="md-nav__link">
-    Exercise: Copying (or Not)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#program-a-old-listgold-new-old-simple-assignment-new0-d-printnew-is-new-and-old-is-old" title="# Program A
-old = list(&#39;gold&#39;)
-new = old      # simple assignment
-new[0] = &#39;D&#39;
-print(&#39;new is&#39;, new, &#39;and old is&#39;, old)
-" class="md-nav__link">
-    # Program A
-old = list(&#39;gold&#39;)
-new = old      # simple assignment
-new[0] = &#39;D&#39;
-print(&#39;new is&#39;, new, &#39;and old is&#39;, old)
-
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-nav__link">
-      4   For loops
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -1268,41 +1018,6 @@ second time: [3, 5]
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="primer/01_basic_python/2%20-%20Variables%20and%20built-in%20functions/" title="2   Variables and built in functions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                2   Variables and built in functions
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="primer/01_basic_python/4%20-%20For%20loops/" title="4   For loops" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                4   For loops
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
