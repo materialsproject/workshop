@@ -9,7 +9,6 @@ theme:
 nav:
   - Home: index.md
   - Logistics: logistics/logistics.md
-  - People: people/people.md
 
 site_url: https://workshop.materialsproject.org/
 repo_url: https://github.com/materialsproject/workshop/
