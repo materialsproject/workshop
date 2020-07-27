@@ -65,3 +65,5 @@ jobs:
         pip install -r requirements-testing.txt
         pip install -e .
         pytest --nbval-lax
+      env:
+        MPCONTRIBS_API_KEY: ${{ secrets.MPCONTRIBS_API_KEY }}
