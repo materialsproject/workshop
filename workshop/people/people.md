@@ -46,5 +46,5 @@ The annual MP Workshop would not be possible without all the people that contrib
     <li class="person"> <img class="person_image" src="/people/kfong.jpg"><p>Kara Fong</p></li>
     <li class="person"> <img class="person_image" src="/people/mmcdermott.jpg"><p>Matt McDermott</p></li>
     <li class="person"> <img class="person_image" src="/people/jmmshn.jpg"><p>Jimmy Shen</p></li>
-    <li class="person"> <img class="person_image" src="/people/esivonxay.jpg"><p>Eric Sivonxay</p></li>
+    <li class="person"> <img class="person_image" src="/people/esivonxay.png"><p>Eric Sivonxay</p></li>
 </ul>
