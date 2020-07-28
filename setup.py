@@ -21,7 +21,6 @@ if __name__ == "__main__":
             "pymatgen",
             "atomate",
             "graphviz",
-            "maggma",
             "mpcontribs-client",
             "crystal-toolkit",
         ],
