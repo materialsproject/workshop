@@ -13,7 +13,8 @@ cd $HOME/enumlib/src
 make
 make enum.x
 make makestr.x
-cp *.x /usr/local/bin
+mkdir $HOME/.enumlib
+cp *.x $HOME/.enumlib
 rm -Rf $HOME/enumlib
 
 cd $HOME

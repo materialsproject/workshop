@@ -6,4 +6,6 @@ python $HOME/binder/populate_nobel_database.py
 
 cd $HOME/workshop/lessons
 
+export PATH=$PATH:$HOME/.enumlib/
+
 exec "$@"
