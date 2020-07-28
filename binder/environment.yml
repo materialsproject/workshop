@@ -1,4 +1,4 @@
-name: r2d
+name: workshop
 channels:
   - conda-forge
   - matsci

@@ -20,7 +20,7 @@ jobs:
 
     - uses: goanpeca/setup-miniconda@v1
       with:
-        activate-environment: r2d
+        activate-environment: workshop
         environment-file: binder/environment.yml
         python-version: 3.8
         auto-activate-base: false
@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies
       shell: bash -l {0}
       run: |
-        conda activate r2d
+        conda activate workshop
         python -m pip install --upgrade pip
         pip install -r requirements-docs.txt
         pip install -e .
@@ -36,7 +36,7 @@ jobs:
     - name: Build
       shell: bash -l {0}
       run: |
-        conda activate r2d
+        conda activate workshop
         mkdocs build
 
     - name: Deploy
