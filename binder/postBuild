@@ -32,3 +32,4 @@ git config --global user.email "jovyan@materialsproject.org"
 pip install -e .
 
 mkdir $HOME/.mongodb
+rm -rf ~/.cache
