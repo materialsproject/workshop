@@ -45,14 +45,14 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
 
-  repo2docker:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout PR
-      uses: actions/checkout@v2
+  # repo2docker:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout PR
+  #     uses: actions/checkout@v2
 
-    - name: test build
-      uses: machine-learning-apps/repo2docker-action@0.2
-      with:
-        NO_PUSH: 'true'
-        IMAGE_NAME: "mp/repo2docker-test"
+  #   - name: test build
+  #     uses: machine-learning-apps/repo2docker-action@0.2
+  #     with:
+  #       NO_PUSH: 'true'
+  #       IMAGE_NAME: "mp/repo2docker-test"

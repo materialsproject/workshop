@@ -17,6 +17,14 @@ nav:
   - Home: index.md
   - Logistics: logistics/logistics.md
   - People: people/people.md
+  - Code of Conduct: code_of_conduct.md
+  - Primer:
+    - Intro: primer/01_basic_python/0 - Introduction and Jupyter Use.ipynb
+    - Basic Python: primer/01_basic_python/1 - Python Primer.ipynb
+    - Advanced Python: primer/02_building_logic/2 - Python Primer - Part II.ipynb
+    - Intro to MongoDB: primer/03_MongoDB_part1/lessons.ipynb
+    - Advanced MongoDB: primer/04_MongoDB_part2/lesson.ipynb
+
 
 markdown_extensions:
   - admonition
@@ -26,6 +34,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
+  - pymdownx.arithmatex
   - toc:
       permalink: true
 
