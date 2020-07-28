@@ -24,8 +24,10 @@ nav:
     - Advanced Python: primer/02_building_logic/2 - Python Primer - Part II.ipynb
     - Intro to MongoDB: primer/03_MongoDB_part1/lessons.ipynb
     - Advanced MongoDB: primer/04_MongoDB_part2/lesson.ipynb
-
-
+  - Workshop:
+    - Intro to Pymatgen: lessons/02_intro_pymatgen/1 - pymatgen foundations.ipynb
+    - Working with Surfaces: lessons/03_surfaces/Working With Surfaces_lesson.ipynb
+    - The Materials API: lessons/04_materials_api/api_use.ipynb
 markdown_extensions:
   - admonition
   - codehilite
