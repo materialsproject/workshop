@@ -14,13 +14,13 @@ The Materials Project offers a variety of properties of hundreds of thousands of
 
 Almost all Materials Project data is calculated using a theoretical technique called **Density Functional Theory** (DFT). Teaching the fundamentals of DFT are beyond the scope of this workshop, but if you come from an experimental background there are some important high-level things you should know:
 
-* DFT is an atomistic method. This means it needs approximate positions of atoms (and the definition of your lattice) to perform a calculation.
+* DFT is an atomistic method. This means it needs approximate positions of atoms and approximate lattice parameters to perform a calculation.
 
-* DFT is a first-principles method. This means that it uses a minimum of empirical information, and can handle unusual systems well. It scales well to several hundred atoms, but beyond that other methods need to be used.
+* DFT is a first-principles method. This means that it uses a minimum of empirical information, so it can handle unusual systems well, including materials that have never been synthesized! It scales well to several hundred atoms, but beyond that other methods need to be used.
 
-* However, DFT does still need some form of correction. The particular form of DFT used in Materials Project (GGA/PBE) systematically under-binds materials, meaning that bond lengths (and hence lattice parameters) are systematically larger than expected by 1-2%. We correct the resulting systematic error in our formation enthalpies by fitting to experimental formation enthalpies.
+* However, DFT does still need some form of correction. The particular type of DFT used in Materials Project (GGA/PBE) systematically under-binds materials, meaning that bond lengths (and hence lattice parameters) are systematically larger than expected by 1-2%. This also results in a systematic error in our formation energies, but we can fix this systematic error by fitting our calculated data to experimental formation enthalpies.
 
-* DFT is a ground-state, 0 K method. It can calculate bulk properties well, along with electronic structure information (the shape of your band structures, for example) but it is notably bad at calculating band gaps, and systematically under-estimates band gaps by a large margin. For this reason, any screening based on band gap has to include a large safety margin of ~0.5 eV.
+* DFT is a ground-state, 0 K method. It can calculate ground state properties well such as bulk modulus, along with electronic structure information (the shape of your band structures, for example) but it is notably bad at calculating excited states including band gaps, and systematically under-estimates band gaps by a large margin. For this reason, any screening based on band gap has to include a large safety margin of ~0.5 eV.
 
 * Our methods are continuously being updated. If you're a DFT person, you're welcome to talk to us about this!
 
@@ -55,7 +55,10 @@ This part of the walkthrough will be in the [Materials Explorer](https://materia
 
 We will briefly demonstrate how to identify experimentally synthesized structures, how to interpret the "energy above hull" and why this is important, and introduce an advanced search syntax we will use later in our API lesson.
 
-## 2. Understanding a Materials Detail Page
+![Search Interace](workshop-search-interface.png)
+![Search Results](workshop-search-results.png)
+
+## 2. Understanding a "Materials Details" Page
 
 This part of the walkthrough will take you through a typical "Materials Details" page, such as [this one for GaN](https://materialsproject.org/materials/mp-804/) and [this one for Fe](https://materialsproject.org/materials/mp-13/), and look at various properties including:
 
@@ -76,6 +79,8 @@ This part of the walkthrough will take you through a typical "Materials Details"
 * Provenance/Citation
 
 We will talk about the subtlety of crystallographic setting in interpreting lattice parameter, how to download a CIF file for the relevant crystal structure, examine references for the crystal structure from the literature (where applicable), discuss why not all materials have all properties, and show advanced users where to find details on calculation parameters.
+
+![Materials Details](workshop-material-details.png)
 
 ## 3. Using Materials Project Apps
 
