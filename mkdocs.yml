@@ -25,6 +25,7 @@ nav:
     - Intro to MongoDB: primer/03_MongoDB_part1/lessons.ipynb
     - Advanced MongoDB: primer/04_MongoDB_part2/lesson.ipynb
   - Workshop:
+    - The Materials Project Website: lessons/01_website_walkthrough/website_walkthrough.md
     - Intro to Pymatgen: lessons/02_intro_pymatgen/1 - pymatgen foundations.ipynb
     - Working with Surfaces: lessons/03_surfaces/Working With Surfaces_lesson.ipynb
     - The Materials API: lessons/04_materials_api/api_use.ipynb
