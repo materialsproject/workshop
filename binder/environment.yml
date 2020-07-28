@@ -4,6 +4,7 @@ channels:
   - matsci
 dependencies:
   - python>=3.7
+  - jupyterlab>=2.0.0
   - numpy
   - pip
   - pymatgen
