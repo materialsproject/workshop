@@ -2,7 +2,7 @@
 
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 module_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -15,12 +15,12 @@ if __name__ == "__main__":
         description="Dependencies for the MP Workshop",
         version="2020.07.10",
         url="https://workshop.materialsproject.org",
+        packages=find_packages("python_module"),
         package_dir={"": "python_module"},
         install_requires=[
             "pymatgen",
             "atomate",
             "graphviz",
-            "maggma",
             "mpcontribs-client",
             "crystal-toolkit",
         ],

@@ -1,0 +1,61 @@
+ul.person_list {
+    padding: 0;
+    margin: 45px 0 0;
+}
+
+li.person{
+    min-width: 100px;
+    width: 33.3333%;
+    max-width: 200px;
+    display: inline-block;
+    text-align: center;
+}
+
+img.person_image {
+    display: block;
+    height: auto;
+    width: 100%;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+@media screen and (min-width: 540px) and (max-width: 800px) {
+   .person {
+    width: 25%;
+    float:left;
+   }
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 1180px) {
+   .person {
+    width: 20%;
+    float:left;
+   }
+}
+
+
+.input code {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .input pre {
+    margin-bottom: 0;
+  }
+
+  .output code {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: unset;
+    border: 1px solid var(--md-code-bg-color);
+    border-top: none;
+    max-height: 20rem;
+  }
+
+  .output pre {
+    margin-top: 0;
+    display: grid;
+  }
