@@ -1,0 +1,501 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Lessons for the Materials Project Workshop"><link href=https://workshop.materialsproject.org/lessons/05_automated_dft/Lesson/ rel=canonical><link rel="shortcut icon" href=../../../assets/images/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-5.5.0"><title>Automated DFT - The Materials Project Workshop</title><link rel=stylesheet href=../../../assets/stylesheets/main.b5d04df8.min.css><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style><link rel=stylesheet href=../../../workshop.css><link rel=stylesheet href=../../../css/ansi-colours.css><link rel=stylesheet href=../../../css/jupyter-cells.css><link rel=stylesheet href=../../../css/pandas-dataframe.css></head> <body dir=ltr> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#automated-dft class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://workshop.materialsproject.org title="The Materials Project Workshop" class="md-header-nav__button md-logo" aria-label="The Materials Project Workshop"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 2l-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> The Materials Project Workshop </span> <span class="md-header-nav__topic md-ellipsis"> Automated DFT </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://workshop.materialsproject.org title="The Materials Project Workshop" class="md-nav__button md-logo" aria-label="The Materials Project Workshop"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 2l-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5z"/></svg> </a> The Materials Project Workshop </label> <div class=md-nav__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../.. title=Home class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../../logistics/logistics/ title=Logistics class=md-nav__link> Logistics </a> </li> <li class=md-nav__item> <a href=../../../people/people/ title=People class=md-nav__link> People </a> </li> <li class=md-nav__item> <a href=../../../code_of_conduct/ title="Code of Conduct" class=md-nav__link> Code of Conduct </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> Primer <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Primer data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Primer </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../primer/01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/ title=Intro class=md-nav__link> Intro </a> </li> <li class=md-nav__item> <a href=../../../primer/01_basic_python/1%20-%20Python%20Primer/ title="Basic Python" class=md-nav__link> Basic Python </a> </li> <li class=md-nav__item> <a href=../../../primer/02_building_logic/2%20-%20Python%20Primer%20-%20Part%20II/ title="Advanced Python" class=md-nav__link> Advanced Python </a> </li> <li class=md-nav__item> <a href=../../../primer/03_MongoDB_part1/lessons/ title="Intro to MongoDB" class=md-nav__link> Intro to MongoDB </a> </li> <li class=md-nav__item> <a href=../../../primer/04_MongoDB_part2/lesson/ title="Advanced MongoDB" class=md-nav__link> Advanced MongoDB </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-6 type=checkbox id=nav-6 checked> <label class=md-nav__link for=nav-6> Workshop <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Workshop data-md-level=1> <label class=md-nav__title for=nav-6> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Workshop </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-6-1 type=checkbox id=nav-6-1> <label class=md-nav__link for=nav-6-1> Day 1 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label="Day 1" data-md-level=2> <label class=md-nav__title for=nav-6-1> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Day 1 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../01_website_walkthrough/website_walkthrough/ title="The Materials Project Website" class=md-nav__link> The Materials Project Website </a> </li> <li class=md-nav__item> <a href=../../02_intro_pymatgen/1%20-%20pymatgen%20foundations/ title="Intro to Pymatgen" class=md-nav__link> Intro to Pymatgen </a> </li> <li class=md-nav__item> <a href=../../03_surfaces/Working%20With%20Surfaces_lesson/ title="Working with Surfaces" class=md-nav__link> Working with Surfaces </a> </li> <li class=md-nav__item> <a href=../../04_materials_api/api_use/ title="The Materials API" class=md-nav__link> The Materials API </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-6-2 type=checkbox id=nav-6-2 checked> <label class=md-nav__link for=nav-6-2> Day 2 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label="Day 2" data-md-level=2> <label class=md-nav__title for=nav-6-2> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Day 2 </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Automated DFT <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg> </span> </label> <a href=./ title="Automated DFT" class="md-nav__link md-nav__link--active"> Automated DFT </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#core-concepts class=md-nav__link> Core Concepts </a> </li> <li class=md-nav__item> <a href=#lesson-1-using-pymatgen-io class=md-nav__link> Lesson 1: Using Pymatgen IO </a> <nav class=md-nav aria-label="Lesson 1: Using Pymatgen IO"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#vasp-inputs class=md-nav__link> VASP Inputs </a> </li> <li class=md-nav__item> <a href=#vasp-outputs class=md-nav__link> VASP Outputs </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#lesson-2-input-sets class=md-nav__link> Lesson 2: Input Sets </a> <nav class=md-nav aria-label="Lesson 2: Input Sets"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#storing-input-sets class=md-nav__link> Storing Input Sets </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#lesson-3-automating-dft-with-atomate class=md-nav__link> Lesson 3: Automating DFT with Atomate </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../07_mpcontribs/contribute/ title=MPContribs class=md-nav__link> MPContribs </a> </li> <li class=md-nav__item> <a href=../../08_ml_matminer/matminer-notes/ title="Machine Learning with MatMiner" class=md-nav__link> Machine Learning with MatMiner </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#core-concepts class=md-nav__link> Core Concepts </a> </li> <li class=md-nav__item> <a href=#lesson-1-using-pymatgen-io class=md-nav__link> Lesson 1: Using Pymatgen IO </a> <nav class=md-nav aria-label="Lesson 1: Using Pymatgen IO"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#vasp-inputs class=md-nav__link> VASP Inputs </a> </li> <li class=md-nav__item> <a href=#vasp-outputs class=md-nav__link> VASP Outputs </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#lesson-2-input-sets class=md-nav__link> Lesson 2: Input Sets </a> <nav class=md-nav aria-label="Lesson 2: Input Sets"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#storing-input-sets class=md-nav__link> Storing Input Sets </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#lesson-3-automating-dft-with-atomate class=md-nav__link> Lesson 3: Automating DFT with Atomate </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <a href=https://github.com/materialsproject/workshop/edit/master/docs/lessons/05_automated_dft/Lesson.ipynb title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <script src=https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js></script> <script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1></p> <h1 id=automated-dft>Automated DFT<a class=headerlink href=#automated-dft title="Permanent link">&para;</a></h1> <p>This lesson focuses on key concepts necessary to run automated Density Functional Theory (DFT) workflows using our atomate code. We begin by focusing on using pymatgen to build inputs and parsing outputs of DFT calculations. We then build an understanding of <code>InputSets</code> in pymatgen, a key capability to automate running DFT. We finally go through a demonstration of using atomate.</p> <h2 id=core-concepts>Core Concepts<a class=headerlink href=#core-concepts title="Permanent link">&para;</a></h2> <ul> <li><strong>Input/Output</strong> - There is an enitre module in pymatgen devoted to reading and writing the input and output files of other codes</li> <li><strong>Input Sets</strong> - Standardizing the input options to various codes allows for repeatability and automatically generitng inputs for a new calculation</li> <li><strong>Atomate</strong> - This is a set of automated recipes for computing materials and molecular properties using density functional theory </div> </div></li> </ul> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1></p> <h2 id=lesson-1-using-pymatgen-io>Lesson 1: Using Pymatgen IO<a class=headerlink href=#lesson-1-using-pymatgen-io title="Permanent link">&para;</a></h2> <p>For the first lesson we'll focus on using pymatgen to interface with DFT codes in the most simple way possible. Pymatgen has a IO module which is designed to have methods to parse and write files that are compatible with a number of external codes. These include:</p> <ul> <li>AbInit</li> <li>EXCITING</li> <li>FEFF</li> <li>LAMMPS</li> <li>Lobster</li> <li>QChem</li> <li>VASP</li> <li>ATAT</li> <li>Gaussian</li> <li>NWCHem</li> <li>ShengBTE</li> <li>Wannier90</li> <li>Zeo++</li> </ul> <p>For the purpose of this tutorial, we'll focus on using VASP and QChem as these are the primary DFT codes used by the Materials Project.</p> <h3 id=vasp-inputs>VASP Inputs<a class=headerlink href=#vasp-inputs title="Permanent link">&para;</a></h3> <p>Let's beging by reading some VASP inputs for an Al-Cr alloy structure: </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen</span> <span class=kn>import</span> <span class=n>Structure</span>
+<span class=n>struc</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;Al16Cr10.cif&quot;</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> This is a CIF file which is not compatible with many DFT codes. Each code has its own input structure. Next, we'll make a POSCAR file which is the way structures are represented in VASP </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.inputs</span> <span class=kn>import</span> <span class=n>Poscar</span>
+
+<span class=n>poscar</span> <span class=o>=</span> <span class=n>Poscar</span><span class=p>(</span><span class=n>structure</span><span class=o>=</span><span class=n>struc</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>poscar</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Al16 Cr10
+1.0
+7.417988 0.000000 -2.655322
+-3.770804 6.388081 -2.655321
+0.000000 0.000000 7.878914
+Al Cr
+16 10
+direct
+0.696455 0.696455 0.696455 Al
+0.646563 0.002044 0.646563 Al
+0.646563 0.646563 0.002044 Al
+0.002044 0.646563 0.646563 Al
+0.336523 0.558569 0.336523 Al
+0.336523 0.336523 0.558569 Al
+0.558569 0.336523 0.336523 Al
+0.734771 0.383622 0.734771 Al
+0.734771 0.734771 0.383622 Al
+0.383622 0.734771 0.734771 Al
+0.280797 0.666745 0.038053 Al
+0.038053 0.280797 0.666745 Al
+0.666745 0.038053 0.280797 Al
+0.666745 0.280797 0.038053 Al
+0.038053 0.666745 0.280797 Al
+0.280797 0.038053 0.666745 Al
+0.151124 0.151124 0.151124 Cr
+0.015343 0.797266 0.015343 Cr
+0.015343 0.015343 0.797266 Cr
+0.797266 0.015343 0.015343 Cr
+0.987828 0.333690 0.987828 Cr
+0.987828 0.987828 0.333690 Cr
+0.333690 0.987828 0.987828 Cr
+0.365023 0.015932 0.365023 Cr
+0.365023 0.365023 0.015932 Cr
+0.015932 0.365023 0.365023 Cr
+
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Note that this POSCAR object has a method that lets you write it out as a file. This makes it very easy to construct complex structures such as heterostructures or adsorbates on surfaces and write them out to compute using a DFT code like VASP.</p> <p>For the purpose of this example, we've provided a completed VASP calculation under <code>VASP_Al16Cr10_example</code>. Let's use pymatgen to read the inputs in this directory </div> </div></p> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>poscar</span> <span class=o>=</span> <span class=n>Poscar</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;./VASP_Al16Cr10_example//POSCAR.gz&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>poscar</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Al16 Cr10
+1.0
+7.430657 -0.067234 -2.618797
+-3.680038 6.455734 -2.618797
+-0.039473 -0.067234 7.878528
+Al Cr
+16 10
+direct
+0.696455 0.696455 0.696455 Al
+0.646563 0.002044 0.646563 Al
+0.646563 0.646563 0.002044 Al
+0.002044 0.646563 0.646563 Al
+0.336523 0.558569 0.336523 Al
+0.336523 0.336523 0.558569 Al
+0.558569 0.336523 0.336523 Al
+0.734771 0.383622 0.734771 Al
+0.734771 0.734771 0.383622 Al
+0.383622 0.734771 0.734771 Al
+0.280797 0.666745 0.038053 Al
+0.038053 0.280797 0.666745 Al
+0.666745 0.038053 0.280797 Al
+0.666745 0.280797 0.038053 Al
+0.038053 0.666745 0.280797 Al
+0.280797 0.038053 0.666745 Al
+0.151124 0.151124 0.151124 Cr
+0.015343 0.797266 0.015343 Cr
+0.015343 0.015343 0.797266 Cr
+0.797266 0.015343 0.015343 Cr
+0.987828 0.333690 0.987828 Cr
+0.987828 0.987828 0.333690 Cr
+0.333690 0.987828 0.987828 Cr
+0.365023 0.015932 0.365023 Cr
+0.365023 0.365023 0.015932 Cr
+0.015932 0.365023 0.365023 Cr
+
+</code>
+</pre> </div> </div> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stderr output_text"> <pre>
+<code>/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Al has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
+/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Cr_pv has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> In this POSCAR object there is a full pymatgen Structure we can grab and use pythonically if we have a manipulation we want to apply. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> </div> </div> <div class=highlight><pre><span></span><code><span class=n>poscar</span><span class=o>.</span><span class=n>structure</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>Structure Summary
+Lattice
+    abc : 7.878913731575819 7.87891356009247 7.878913756049688
+ angles : 109.69518778724337 109.69519443176932 109.69518691661757
+ volume : 373.35579693687976
+      A : 7.430657 -0.067234 -2.618797
+      B : -3.680038 6.455734 -2.618797
+      C : -0.039473 -0.067234 7.878528
+PeriodicSite: Al (2.5846, 4.4025, 1.8393) [0.6965, 0.6965, 0.6965]
+PeriodicSite: Al (4.7713, -0.0737, 3.3954) [0.6466, 0.0020, 0.6466]
+PeriodicSite: Al (2.4249, 4.1304, -3.3703) [0.6466, 0.6466, 0.0020]
+PeriodicSite: Al (-2.3897, 4.1304, 3.3954) [0.0020, 0.6466, 0.6466]
+PeriodicSite: Al (0.4317, 3.5607, 0.3072) [0.3365, 0.5586, 0.3365]
+PeriodicSite: Al (1.2401, 2.1123, 2.6381) [0.3365, 0.3365, 0.5586]
+PeriodicSite: Al (2.8988, 2.1123, 0.3072) [0.5586, 0.3365, 0.3365]
+PeriodicSite: Al (4.0191, 2.3778, 2.8601) [0.7348, 0.3836, 0.7348]
+PeriodicSite: Al (2.7407, 4.6683, -0.8261) [0.7348, 0.7348, 0.3836]
+PeriodicSite: Al (0.1176, 4.6683, 2.8601) [0.3836, 0.7348, 0.7348]
+PeriodicSite: Al (-0.3686, 4.2829, -2.1816) [0.2808, 0.6667, 0.0381]
+PeriodicSite: Al (-0.7769, 1.7654, 4.4180) [0.0381, 0.2808, 0.6667]
+PeriodicSite: Al (4.8032, 0.1820, 0.3665) [0.6667, 0.0381, 0.2808]
+PeriodicSite: Al (3.9195, 1.7654, -2.1816) [0.6667, 0.2808, 0.0381]
+PeriodicSite: Al (-2.1820, 4.2829, 0.3665) [0.0381, 0.6667, 0.2808]
+PeriodicSite: Al (1.9202, 0.1820, 4.4180) [0.2808, 0.0381, 0.6667]
+PeriodicSite: Cr (0.5608, 0.9553, 0.3991) [0.1511, 0.1511, 0.1511]
+PeriodicSite: Cr (-2.8206, 5.1449, -2.0072) [0.0153, 0.7973, 0.0153]
+PeriodicSite: Cr (0.0261, 0.0444, 6.2009) [0.0153, 0.0153, 0.7973]
+PeriodicSite: Cr (5.8671, 0.0444, -2.0072) [0.7973, 0.0153, 0.0153]
+PeriodicSite: Cr (6.0732, 2.0214, 4.3218) [0.9878, 0.3337, 0.9878]
+PeriodicSite: Cr (3.6918, 6.2883, -2.5449) [0.9878, 0.9878, 0.3337]
+PeriodicSite: Cr (-1.1947, 6.2883, 4.3218) [0.3337, 0.9878, 0.9878]
+PeriodicSite: Cr (2.6393, 0.0538, 1.8782) [0.3650, 0.0159, 0.3650]
+PeriodicSite: Cr (1.3684, 2.3309, -1.7863) [0.3650, 0.3650, 0.0159]
+PeriodicSite: Cr (-1.2393, 2.3309, 1.8782) [0.0159, 0.3650, 0.3650]</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> VASP has three other primary input files: KPOINTS, POTCAR, and INCAR. Each of these has a corresponding object. Each of these can read and write the corresponding VASP Files. Let's read the inputs in the <code>Al16Cr10_VASP</code> directory included in this lesson. Let's look at the POTCAR file next. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.inputs</span> <span class=kn>import</span> <span class=n>Potcar</span>
+
+<span class=n>al_cr_potcar</span> <span class=o>=</span> <span class=n>Potcar</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;./VASP_Al16Cr10_example/POTCAR.gz&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>al_cr_potcar</span><span class=o>.</span><span class=n>symbols</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>[&#39;Al&#39;, &#39;Cr_pv&#39;]
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Note the above warning suggesting something is wrong with these POTCARs. We maintain a list of hashes of VASP POTCARs to ensure the data is not corrupted when VASP is run. For the purpose of this lesson, we've included fake POTCARs as the offical POTCARs are licensed by VASP. You can always check the hash of your own POTCARs by investigating the <code>spec</code> of the Potcar object. </div> </div></p> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=nb>print</span><span class=p>(</span><span class=n>al_cr_potcar</span><span class=o>.</span><span class=n>spec</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>[{&#39;symbol&#39;: &#39;Al&#39;, &#39;hash&#39;: &#39;a6fd9a46aec185f4ad2acd0cbe4ae2fa&#39;}, {&#39;symbol&#39;: &#39;Cr_pv&#39;, &#39;hash&#39;: &#39;eb23364cc25164418f9f79efd8f04f7d&#39;}]
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1></p> <h3 id=vasp-outputs>VASP Outputs<a class=headerlink href=#vasp-outputs title="Permanent link">&para;</a></h3> </div> </div> <p>Once, you've run VASP, you'll need to parse the VASP outputs to get the data you want. VASP makes a number of output files: </p> <ul> <li>WAVECAR</li> <li>CHGCAR</li> <li>OUTCAR</li> <li>vasprun.xml</li> <li>PROCAR</li> <li>And more ...</li> </ul> <p>Please read the <a href=https://www.vasp.at/wiki/index.php/The_VASP_Manual>VASP documentation</a> for a good description of what these all are. For this lesson. We'll focus on <code>vasprun.xml</code> in the <code>Al16Cr10_vasp</code> directory. The Vasprun contains a lot information that can be parsed using the <code>Vasprun</code> object in pymatgen </div> </div></p> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.outputs</span> <span class=kn>import</span> <span class=n>Vasprun</span>
+
+<span class=n>vrun</span> <span class=o>=</span> <span class=n>Vasprun</span><span class=p>(</span><span class=n>filename</span><span class=o>=</span><span class=s2>&quot;./VASP_Al16Cr10_example/vasprun.xml.gz&quot;</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Since VASPRUN has most of the information that VASP can provide, this one object is often enough to parse a full VASP calculation. The various properties available from the VASPRUN are properties in the <code>Vasprun</code> object. Use Shift+Tab to look through all the properties and try some out </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>vrun</span><span class=o>.</span><span class=n>vasp_version</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>&#39;5.4.4.18Apr17-6-g9f103f2a35&#39;</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> We can see what actual kpoints VASP used when it auto-generated it's mesh to run DFT on: </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> </div> </div> <div class=highlight><pre><span></span><code><span class=n>vrun</span><span class=o>.</span><span class=n>actual_kpoints</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>[[0.0, 0.0, 0.0],
+ [0.33333333, -0.0, -0.0],
+ [0.0, 0.33333333, 0.0],
+ [0.33333333, 0.33333333, 0.0],
+ [-0.33333333, 0.33333333, 0.0],
+ [0.0, -0.0, 0.33333333],
+ [0.33333333, -0.0, 0.33333333],
+ [-0.33333333, 0.0, 0.33333333],
+ [0.0, 0.33333333, 0.33333333],
+ [0.33333333, 0.33333333, 0.33333333],
+ [-0.33333333, 0.33333333, 0.33333333],
+ [-0.0, -0.33333333, 0.33333333],
+ [0.33333333, -0.33333333, 0.33333333],
+ [-0.33333333, -0.33333333, 0.33333333]]</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> We can also look at the final energy </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>vrun</span><span class=o>.</span><span class=n>final_energy</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>-157.80974238</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Or even the progress of VASP as it optimized the structure </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> </div> </div> <div class=highlight><pre><span></span><code><span class=nb>len</span><span class=p>(</span><span class=n>vrun</span><span class=o>.</span><span class=n>ionic_steps</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>4</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Each ionic step contains the energy, forces, stress, the structure </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>vrun</span><span class=o>.</span><span class=n>ionic_steps</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>keys</span><span class=p>()</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>dict_keys([&#39;e_fr_energy&#39;, &#39;e_wo_entrp&#39;, &#39;e_0_energy&#39;, &#39;forces&#39;, &#39;stress&#39;, &#39;electronic_steps&#39;, &#39;structure&#39;])</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1></p> <h2 id=lesson-2-input-sets>Lesson 2: Input Sets<a class=headerlink href=#lesson-2-input-sets title="Permanent link">&para;</a></h2> <p>This lesson will focus on using <code>InputSets</code>. These are objects that provide default parameters to perform a specific kind of calcualtion. There are several <code>InputSets</code> that are default MP parameters, but it's also possible to define your own <code>InputSet</code> that lets you build new calculations using the parameters you want. </p> <p>Let's begin by taking the Al-Cr structure and making a simple input set to optimize this structure </div> </div></p> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.sets</span> <span class=kn>import</span> <span class=n>MPRelaxSet</span>
+
+<span class=n>relax_set</span> <span class=o>=</span> <span class=n>MPRelaxSet</span><span class=p>(</span><span class=n>structure</span><span class=o>=</span><span class=n>struc</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>relax_set</span><span class=o>.</span><span class=n>incar</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>ALGO = Fast
+EDIFF = 0.0013000000000000002
+ENCUT = 520
+IBRION = 2
+ICHARG = 1
+ISIF = 3
+ISMEAR = -5
+ISPIN = 2
+LORBIT = 11
+LREAL = Auto
+LWAVE = False
+MAGMOM = 16*0.6 10*5.0
+NELM = 100
+NSW = 99
+PREC = Accurate
+SIGMA = 0.05
+
+</code>
+</pre> </div> </div> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stderr output_text"> <pre>
+<code>/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/sets.py:589: BadInputSetWarning: Relaxation of likely metal with ISMEAR &lt; 1 detected. Please see VASP recommendations on ISMEAR for metals.
+  warnings.warn(
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> We can see that the input set has pre-set values for a number of parameters. Some of these such as <code>ALGO</code> and <code>IBRION</code> just tell VASP what kind of calculation to perform, but other such as <code>EDIFF</code>, <code>ENCUT,</code> and <code>MAGMOM</code> are structure specific. The <code>MPRelaxSet</code>, which is designed to optimize a structure, has default MP parameters that make the resulting structure compataible with MP data.</p> <p>Many DFT calculations actually extend from a previous calculation. For instance, it's often desireable to perform a static calculation from a previous relaxation calculation. <code>InputSet</code>s for these types of calculations have <code>classmethod</code> that lets you automatically construct the next calculation input set from the output of a previous calculation. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"></div> </div> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.sets</span> <span class=kn>import</span> <span class=n>MPStaticSet</span>
+<span class=n>static_set</span> <span class=o>=</span> <span class=n>MPStaticSet</span><span class=o>.</span><span class=n>from_prev_calc</span><span class=p>(</span><span class=s2>&quot;./VASP_Al16Cr10_example/&quot;</span><span class=p>)</span>
+
+<span class=nb>print</span><span class=p>(</span><span class=n>static_set</span><span class=o>.</span><span class=n>incar</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>ALGO = Normal
+EDIFF = 0.0013
+ENCUT = 520.0
+IBRION = -1
+ICHARG = 0
+ISIF = 3
+ISMEAR = -5
+ISPIN = 2
+KPOINT_BSE = -1 0 0 0
+LAECHG = True
+LCHARG = True
+LORBIT = 11
+LREAL = Auto
+LVHAR = True
+LWAVE = False
+MAGMOM = 1*0.013 3*-0.012 3*-0.022 3*-0.01 2*-0.019 1*-0.018 2*-0.019 1*-0.018 1*0.487 1*-0.501 1*-0.505 1*-0.5 1*0.99 1*0.967 1*0.968 1*1.509 1*1.532 1*1.536
+NELM = 100
+NSW = 0
+PREC = accurate
+SIGMA = 0.05
+
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Notice how the <code>MAGMOM</code> list is very different for this calculation. <code>MAGMOM</code> is the set of magnetic moments that VASP is using both as its input and its writing in its output. Because the magnetic moment and the charge density are closely related, the new lowest energy configuration is actually not the nice Ferromagnetic configuration that was put into the initial relaxation calculation but a newer more complex configuration with much lower overall magnetic moment.</p> <p>Other inputs are a function of the InputSet is designed to do. The <code>MPRelaxSet</code> is designed to be a structure optimization that balances accuracy and computational cost. The <code>MPstaticSet</code> on the other hand is designed to increase the accuracy once an optimized structure is found to get a good charge density and DFT energy. The result is that these two sets produce different K-point densities as shown next. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>relax_set</span><span class=o>.</span><span class=n>kpoints</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>pymatgen v2020.7.16 with grid density = 1106 / number of atoms
+0
+Gamma
+3 3 3</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>static_set</span><span class=o>.</span><span class=n>kpoints</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>Automatic kpoint scheme
+0
+Gamma
+4 4 4</code>
+</pre> </div> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1></p> <h3 id=storing-input-sets>Storing Input Sets<a class=headerlink href=#storing-input-sets title="Permanent link">&para;</a></h3> <p>InputSet objects follow the <code>MSONable</code> pattern used heavily in pymatgen. This means that an InputSet with a structure or molecules can be converted to a dictionary and then stored in a database, which is very useful for running high throughput calculations or workflows. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>relax_set</span><span class=o>.</span><span class=n>as_dict</span><span class=p>()</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{&#39;@module&#39;: &#39;pymatgen.io.vasp.sets&#39;,
+ &#39;@class&#39;: &#39;MPRelaxSet&#39;,
+ &#39;@version&#39;: &#39;2020.7.16&#39;,
+ &#39;structure&#39;: {&#39;@module&#39;: &#39;pymatgen.core.structure&#39;,
+  &#39;@class&#39;: &#39;Structure&#39;,
+  &#39;charge&#39;: None,
+  &#39;lattice&#39;: {&#39;matrix&#39;: [[7.4179879378990465, 0.0, -2.6553223002051487],
+    [-3.7708043655287886, 6.388081220096888, -2.6553213832427804],
+    [0.0, 0.0, 7.87891376]],
+   &#39;a&#39;: 7.87891373,
+   &#39;b&#39;: 7.878913559999999,
+   &#39;c&#39;: 7.87891376,
+   &#39;alpha&#39;: 109.69518779,
+   &#39;beta&#39;: 109.69519443,
+   &#39;gamma&#39;: 109.69518691999998,
+   &#39;volume&#39;: 373.35579702428646},
+  &#39;sites&#39;: [{&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.696455, 0.696455, 0.696455],
+    &#39;xyz&#39;: [2.540099234895128, 4.449011106142579, 1.7886845361650723],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.646563, 0.002044, 0.646563],
+    &#39;xyz&#39;: [4.78848901096868, 0.013057238013878038, 3.37195348811199],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.646563, 0.646563, 0.002044],
+    &#39;xyz&#39;: [2.3581339521024316, 4.130296957909504, -3.4175612121757033],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.002044, 0.646563, 0.646563],
+    &#39;xyz&#39;: [-2.4229002156443245, 4.130296957909504, 3.3719540791116587],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.336523, 0.558569, 0.336523],
+    &#39;xyz&#39;: [0.39006913117655095, 3.5681841390282987, 0.2746784591080065],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.336523, 0.336523, 0.558569],
+    &#39;xyz&#39;: [1.2273611573247563, 2.149736256430665, 2.613763235724492],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.558569, 0.336523, 0.336523],
+    &#39;xyz&#39;: [2.8744957069834873, 2.149736256430665, 0.2746782555001799],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.734771, 0.383622, 0.734771],
+    &#39;xyz&#39;: [4.0039589028051354, 2.4506084938160084, 2.8195038208225602],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.734771, 0.734771, 0.383622],
+    &#39;xyz&#39;: [2.6798447206540668, 4.69377682617181, -0.879582315491998],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.383622, 0.734771, 0.734771],
+    &#39;xyz&#39;: [0.07502567424875473, 4.69377682617181, 2.819504142812979],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.280797, 0.666745, 0.038053],
+    &#39;xyz&#39;: [-0.43121619769625363, 4.259221213093499, -2.2162124862916333],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.038053, 0.280797, 0.666745],
+    &#39;xyz&#39;: [-0.776553858426515, 1.793754042359546, 4.40657709697107],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.666745, 0.038053, 0.280797],
+    &#39;xyz&#39;: [4.8024159491330325, 0.24308565466834686, 0.34090953541990054],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.666745, 0.280797, 0.038053],
+    &#39;xyz&#39;: [3.8870758142271122, 1.793754042359546, -2.216212840191425],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.038053, 0.666745, 0.280797],
+    &#39;xyz&#39;: [-2.2318882616936198, 4.259221213093499, 0.34091011190680565],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.280797, 0.038053, 0.666745],
+    &#39;xyz&#39;: [1.9394583404767716, 0.24308565466834686, 4.406576874383957],
+    &#39;label&#39;: &#39;Al&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.151124, 0.151124, 0.151124],
+    &#39;xyz&#39;: [0.5511769701908827, 0.9653923863059222, 0.38812724704885504],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.015343, 0.797266, 0.015343],
+    &#39;xyz&#39;: [-2.89251992435649, 5.092999962021766, -2.036851894164806],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.015343, 0.015343, 0.797266],
+    &#39;xyz&#39;: [0.055958737550876866, 0.09801233015994655, 6.200108851745018],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.797266, 0.015343, 0.015343],
+    &#39;xyz&#39;: [5.856254119916713, 0.09801233015994655, -2.036852611158772],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.987828, 0.33369, 0.987828],
+    &#39;xyz&#39;: [6.069416479985638, 2.1316388223341303, 4.273955712171945],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.987828, 0.987828, 0.33369],
+    &#39;xyz&#39;: [3.602790053927367, 6.310325495485869, -2.6168877959586014],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.33369, 0.987828, 0.987828],
+    &#39;xyz&#39;: [-1.2495977397940399, 6.310325495485869, 4.273956311991874],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.365023, 0.015932, 0.365023],
+    &#39;xyz&#39;: [2.647659755904119, 0.10177490999858363, 1.8644264451508719],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.365023, 0.365023, 0.015932],
+    &#39;xyz&#39;: [1.3313058891373089, 2.331796571203426, -1.8129802352388933],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}},
+   {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
+    &#39;abc&#39;: [0.015932, 0.365023, 0.365023],
+    &#39;xyz&#39;: [-1.2582469380918073, 2.331796571203426, 1.864426765254182],
+    &#39;label&#39;: &#39;Cr&#39;,
+    &#39;properties&#39;: {}}]}}</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1></p> <h2 id=lesson-3-automating-dft-with-atomate>Lesson 3: Automating DFT with Atomate<a class=headerlink href=#lesson-3-automating-dft-with-atomate title="Permanent link">&para;</a></h2> <p>The final section of this lesson focuses on automating DFT using our <code>atomate</code> code. <code>atomate</code> is a set of recipes for computing properties for both molecules and structures. The workflows in <code>atomate</code> run on <code>fireworks</code>, our workflow management software. <code>fireworks</code> stores workflow information and calculation summaries in MongoDB. Using this infrastructure MP routinely manages 10,000 simultaneous calculations on supercomputers such as Cori at NERSC. </p> <p>Let's begin by importing a basic silicon structure </div> </div></p> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen</span> <span class=kn>import</span> <span class=n>Structure</span>
+<span class=n>si</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;Si.CIF&quot;</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Now, we'll make a workflow to optimize our structure </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>atomate.vasp.workflows</span> <span class=kn>import</span> <span class=n>wf_structure_optimization</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf</span> <span class=o>=</span> <span class=n>wf_structure_optimization</span><span class=p>(</span><span class=n>structure</span><span class=o>=</span><span class=n>si</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Workflow object: (fw_ids: odict_keys([-1]) , name: Si)
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Fireworks doesn't tell us much about the workflow, but we can tell there is only one firework. A firework is a single job for a supercomputer, involving usually just a few DFT calculations. Let's use a more complex example to illustrate how easy this is. Let's compute the full bandstructure for Silicon </div> </div></p> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>atomate.vasp.workflows</span> <span class=kn>import</span> <span class=n>wf_bandstructure</span>
+
+<span class=n>wf</span> <span class=o>=</span> <span class=n>wf_bandstructure</span><span class=p>(</span><span class=n>structure</span><span class=o>=</span><span class=n>si</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Workflow object: (fw_ids: odict_keys([-2, -3, -4, -5]) , name: Si)
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Now we can see there are a low more fireworks in this workflow, but its still hard to tell what is going on. Let's start by looking at the whole workflow as a graph.</p> </div> </div> <p>We'll use a function built for this workshop to plot what the workflow looks like. </div> </div></p> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>mp_workshop.atomate</span> <span class=kn>import</span> <span class=n>wf_to_graph</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf_to_graph</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_svg output_subarea output_execute_result"> <?xml version="1.0" encoding="UTF-8" standalone="no"?> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ --><!-- Title: %3 Pages: 1 --><svg width=338pt height=98pt viewbox="0.00 0.00 338.00 98.00" xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink> <g id=graph0 class=graph transform="scale(1 1) rotate(0) translate(4 94)"> <title>%3</title> <polygon fill=#ffffff stroke=transparent points="-4,4 -4,-94 334,-94 334,4 -4,4"/> <!-- &#45;2 --> <g id=node1 class=node> <title>&#45;2</title> <polygon fill=none stroke=#1f62a2 points="121,-63 0,-63 0,-27 121,-27 121,-63"/> <text text-anchor=middle x=60.5 y=-41.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;structure optimization</text> </g> <!-- &#45;3 --> <g id=node2 class=node> <title>&#45;3</title> <polygon fill=none stroke=#1f62a2 points="211,-63 157,-63 157,-27 211,-27 211,-63"/> <text text-anchor=middle x=184 y=-41.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;static</text> </g> <!-- &#45;2&#45;&gt;&#45;3 --> <g id=edge1 class=edge> <title>&#45;2&#45;&gt;&#45;3</title> <path fill=none stroke=#000000 d="M121.1646,-45C129.902,-45 138.6685,-45 146.7639,-45"/> <polygon fill=#000000 stroke=#000000 points="146.9607,-48.5001 156.9606,-45 146.9606,-41.5001 146.9607,-48.5001"/> </g> <!-- &#45;4 --> <g id=node3 class=node> <title>&#45;4</title> <polygon fill=none stroke=#1f62a2 points="330,-90 247,-90 247,-54 330,-54 330,-90"/> <text text-anchor=middle x=288.5 y=-68.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;nscf uniform</text> </g> <!-- &#45;3&#45;&gt;&#45;4 --> <g id=edge2 class=edge> <title>&#45;3&#45;&gt;&#45;4</title> <path fill=none stroke=#000000 d="M211.1833,-52.0234C219.1773,-54.0889 228.1972,-56.4194 237.1803,-58.7404"/> <polygon fill=#000000 stroke=#000000 points="236.3057,-62.1293 246.8634,-61.2422 238.0569,-55.3518 236.3057,-62.1293"/> </g> <!-- &#45;5 --> <g id=node4 class=node> <title>&#45;5</title> <polygon fill=none stroke=#1f62a2 points="321,-36 256,-36 256,0 321,0 321,-36"/> <text text-anchor=middle x=288.5 y=-14.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;nscf line</text> </g> <!-- &#45;3&#45;&gt;&#45;5 --> <g id=edge3 class=edge> <title>&#45;3&#45;&gt;&#45;5</title> <path fill=none stroke=#000000 d="M211.1833,-37.9766C221.8609,-35.2178 234.3687,-31.9861 246.1746,-28.9357"/> <polygon fill=#000000 stroke=#000000 points="247.0645,-32.3208 255.871,-26.4305 245.3134,-25.5434 247.0645,-32.3208"/> </g> </g> </svg> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> This is clearly a more complex workflow with an intermediate step to compute the full bandstructore of Si both along the special high-symmetry lines in Brillouin zone and with a uniform grid.</p> <p>To make this workshop more usefull, we've provided a set of fake VASP input and outputs and a helper function that will let atomate "run" these calculations. In reality, these take a lot more CPU time and a License to VASP, which we can't provide in this workshop. Let's use that fake VASP utility to "run" this workflow. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> </div> </div> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>mp_workshop.atomate</span> <span class=kn>import</span> <span class=n>use_fake_vasp_workshop</span>
+</code></pre></div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Now lets run the above workflow. First we have to add this to our LaunchPad. Fireworks hides the database with an object called a LaunchPad. This allows you to submit and query workflows from anywhere you have database access. We need to get ourselves a LaunchPad object so we can submit our workflow </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>fireworks</span> <span class=kn>import</span> <span class=n>LaunchPad</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span> <span class=o>=</span> <span class=n>LaunchPad</span><span class=o>.</span><span class=n>auto_load</span><span class=p>()</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> For this one time, we have to initialize the database. In everyday use, we'll only need to do this once, upon database creation. </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>reset</span><span class=p>(</span><span class=n>password</span><span class=o>=</span><span class=kc>None</span><span class=p>,</span><span class=n>require_password</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>2020-07-29 09:48:21,910 INFO Performing db tune-up
+2020-07-29 09:48:21,996 INFO LaunchPad was RESET.
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> </div> </div> <div class=highlight><pre><span></span><code><span class=n>wf</span> <span class=o>=</span> <span class=n>use_fake_vasp_workshop</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
+<span class=n>lp</span><span class=o>.</span><span class=n>add_wf</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>2020-07-29 09:48:22,010 INFO Added a workflow. id_map: {-5: 1, -4: 2, -3: 3, -2: 4}
+</code>
+</pre> </div> </div> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{-5: 1, -4: 2, -3: 3, -2: 4}</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Now let's see what the status of our workflow is in the LaunchPad </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>get_wf_summary_dict</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{&#39;state&#39;: &#39;READY&#39;,
+ &#39;name&#39;: &#39;Si&#39;,
+ &#39;created_on&#39;: datetime.datetime(2020, 7, 29, 16, 48, 21, 73000),
+ &#39;updated_on&#39;: datetime.datetime(2020, 7, 29, 16, 48, 21, 73000),
+ &#39;states&#39;: OrderedDict([(&#39;Si-nscf line--1&#39;, &#39;WAITING&#39;),
+              (&#39;Si-nscf uniform--2&#39;, &#39;WAITING&#39;),
+              (&#39;Si-static--3&#39;, &#39;WAITING&#39;),
+              (&#39;Si-structure optimization--4&#39;, &#39;READY&#39;)]),
+ &#39;launch_dirs&#39;: OrderedDict([(&#39;Si-nscf line--1&#39;, []),
+              (&#39;Si-nscf uniform--2&#39;, []),
+              (&#39;Si-static--3&#39;, []),
+              (&#39;Si-structure optimization--4&#39;, [])])}</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>fireworks.core.rocket_launcher</span> <span class=kn>import</span> <span class=n>rapidfire</span>
+</code></pre></div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>rapidfire</span><span class=p>(</span><span class=n>lp</span><span class=p>,</span><span class=n>nlaunches</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper markdown=1> <div class=output markdown=1> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>2020-07-29 09:48:22,086 INFO Created new dir /Users/shyamd/Desktop/06_running_DFT/launcher_2020-07-29-16-48-22-085767
+2020-07-29 09:48:22,086 INFO Launching Rocket
+2020-07-29 09:48:22,165 INFO RUNNING fw_id: 4 in directory: /Users/shyamd/Desktop/06_running_DFT/launcher_2020-07-29-16-48-22-085767
+2020-07-29 09:48:22,175 INFO Task started: FileWriteTask.
+2020-07-29 09:48:22,176 INFO Task completed: FileWriteTask 
+2020-07-29 09:48:22,179 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
+2020-07-29 09:48:22,222 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
+2020-07-29 09:48:22,226 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2020-07-29 09:48:22,229 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2020-07-29 09:48:22,265 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2020-07-29 09:48:22,267 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2020-07-29 09:48:22,271 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2020-07-29 09:48:22,273 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2020-07-29 09:48:22,277 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2020-07-29 09:48:22,278 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /Users/shyamd/Desktop/06_running_DFT/launcher_2020-07-29-16-48-22-085767
+2020-07-29 09:48:22,279 INFO atomate.vasp.drones Getting task doc for base dir :/Users/shyamd/Desktop/06_running_DFT/launcher_2020-07-29-16-48-22-085767
+</code>
+</pre> </div> </div> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stderr output_text"> <pre>
+<code>/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
+</code>
+</pre> </div> </div> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>2020-07-29 09:48:23,246 INFO atomate.vasp.drones Post-processing dir:/Users/shyamd/Desktop/06_running_DFT/launcher_2020-07-29-16-48-22-085767
+2020-07-29 09:48:23,247 WARNING atomate.vasp.drones Transformations file does not exist.
+2020-07-29 09:48:23,329 INFO atomate.vasp.drones Post-processed /Users/shyamd/Desktop/06_running_DFT/launcher_2020-07-29-16-48-22-085767
+2020-07-29 09:48:23,354 INFO Rocket finished
+</code>
+</pre> </div> </div> <div class=output_area markdown=1> <div class="output_subarea output_stream output_stderr output_text"> <pre>
+<code>Traceback (most recent call last):
+  File &#34;/usr/local/Caskroom/miniconda/base/envs/dev/lib/python3.8/site-packages/FireWorks-1.9.5-py3.8.egg/fireworks/core/rocket.py&#34;, line 262, in run
+    m_action = t.run_task(my_spec)
+  File &#34;/usr/local/Caskroom/miniconda/base/envs/dev/lib/python3.8/site-packages/atomate-0.9.5-py3.8.egg/atomate/vasp/firetasks/parse_outputs.py&#34;, line 112, in run_task
+    db_file = env_chk(self.get(&#39;db_file&#39;), fw_spec)
+  File &#34;/usr/local/Caskroom/miniconda/base/envs/dev/lib/python3.8/site-packages/atomate-0.9.5-py3.8.egg/atomate/utils/utils.py&#34;, line 57, in env_chk
+    return fw_spec[&#39;_fw_env&#39;][val[2:-2]]
+KeyError: &#39;db_file&#39;
+</code>
+</pre> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <p><div class=inner_cell markdown=1> <div class="text_cell_render border-box-sizing rendered_html" markdown=1> Try running with <code>nlaunches</code> unset and see what happens </div> </div></p> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>rapidfire</span><span class=p>(</span><span class=n>lp</span><span class=p>)</span>
+</code></pre></div> </div> </div> </div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../../04_materials_api/api_use/ title="The Materials API" class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> The Materials API </div> </div> </a> <a href=../../07_mpcontribs/contribute/ title=MPContribs class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> MPContribs </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Built by The Materials Project </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <script src=../../../assets/javascripts/vendor.92ffa368.min.js></script> <script src=../../../assets/javascripts/bundle.5123e3d4.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script> <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script> </body> </html>
