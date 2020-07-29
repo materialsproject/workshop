@@ -1,5 +1,5 @@
 from pathlib import Path
 
-import pymatgen
+import os
 
-pymatgen.SETTINGS["PMG_VASP_PSP_DIR"] = Path(__file__).parent.resolve()
+os.environ["PMG_VASP_PSP_DIR"] = str(Path(__file__).parent.resolve())
