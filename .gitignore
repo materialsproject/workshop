@@ -107,3 +107,5 @@ venv.bak/
 .DS_Store
 
 fireworks/
+
+workshop/08_ml_matminer/*lesson-plan.ipynb

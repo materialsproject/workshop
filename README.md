@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://gke.mybinder.org/v2/gh/materialsproject/workshop/1.1.1)
+[![Binder](https://mybinder.org/v2/gh/materialsproject/workshop/master)
 
 ## Materials Project Workshop
 

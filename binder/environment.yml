@@ -1,7 +1,6 @@
 name: workshop
 channels:
   - conda-forge
-  - matsci
 dependencies:
   - python>=3.7
   - jupyterlab>=2.0.0
