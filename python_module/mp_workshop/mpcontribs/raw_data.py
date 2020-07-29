@@ -19,18 +19,14 @@ raw_data = defaultdict(list)
 with ZipFile(dbpath) as zf:
     paths = zf.namelist()
     for path in tqdm(paths):
-        if path.startswith("database/data/main") and \
-           path.endswith(".yml"):
+        if path.startswith("database/data/main") and path.endswith(".yml"):
             _, formula, fn = path.rsplit("/", 2)
             mat_ids = mpr.get_materials_ids(formula)
             if not mat_ids:
                 continue
 
             tag = fn.split(".", 1)[0]
-            contrib = {
-                "identifier": mat_ids[0],
-                "data": {"tag": tag}, "tables": []
-            }
+            contrib = {"identifier": mat_ids[0], "data": {"tag": tag}, "tables": []}
             try:
                 dct = yaml.safe_load(zf.read(path))
             except:
@@ -46,14 +42,11 @@ with ZipFile(dbpath) as zf:
                         "max": f"{vals[1]} µm",
                     }
                 elif k == "coefficients":
-                    contrib["data"][k] = {
-                        f"c{idx}": c
-                        for idx, c in enumerate(vals)
-                    }
+                    contrib["data"][k] = {f"c{idx}": c for idx, c in enumerate(vals)}
 
             datafile = quote(path.split("/", 1)[-1])
             df = read_csv(url.format(datafile))
-            contrib["tables"].append(df.to_dict(orient='records'))
+            contrib["tables"].append(df.to_dict(orient="records"))
             raw_data[formula].append(contrib)
 
             if len(raw_data) == 200:
@@ -62,5 +55,5 @@ with ZipFile(dbpath) as zf:
 
 outfile = os.path.join(dbdir, "raw_data.json.gz")
 with gzip.open(outfile, "wb") as f:
-    content = json.dumps(raw_data).encode('utf-8')
+    content = json.dumps(raw_data).encode("utf-8")
     f.write(content)

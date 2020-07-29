@@ -5,7 +5,7 @@ dependencies:
   - python>=3.7
   - jupyterlab>=2.0.0
   - numpy
-  - pip 
+  - pip
   - plotly
   - typing_extensions
   - pip:

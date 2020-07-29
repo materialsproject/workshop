@@ -49,7 +49,7 @@ Eery single property for a given material might need one or more distinct calcul
 
 We then group together all the calculations for a given material together and use a single mp-id, typically the oldest one, to use for its canonical database identifier and URL on materialsproject.org, however it should be noted that any mp-id from any calculation associated with a given material can be used to find that calculation.
 
-Our implicit "user contract" is that the information on a specific calculation task will always remain available and unchanged via our website or API. For example, the final energy from a given calculation task will always remain the same and remain accessible. However our *derived data*, such as the summarized information on the materials detail page like formation energy, may change with from one database release to the next as we perform newer, better calculations that might supercede our old data. Therefore, if you want to cite Materials Project data, make sure to include the database version information with your citation.  
+Our implicit "user contract" is that the information on a specific calculation task will always remain available and unchanged via our website or API. For example, the final energy from a given calculation task will always remain the same and remain accessible. However our *derived data*, such as the summarized information on the materials detail page like formation energy, may change with from one database release to the next as we perform newer, better calculations that might supercede our old data. Therefore, if you want to cite Materials Project data, make sure to include the database version information with your citation.
 
 ## 1. Searching the Materials Project
 

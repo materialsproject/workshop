@@ -14,12 +14,12 @@ We'll host the lightning-videos on our YouTube Channel and publish the PDFs on F
 ### Setup Instructions
 
 1. [Sign in](https://materialsproject.org/) to your MP account online. Register for an account first if needed.
-2. [Sign in](https://cocalc.org) to an account on CoCalc using the same email address you registered with. This will be the online python service we'll use to work interactively. If you don't use the email you registered for the workshop with to register on CoCalc.com, please send me an [email](mailto:shyamd@lbl.gov) so that I know. We'll use CoCalc as an interactive python environment where you can code alongside the lessons, work on exercises, and get live-help and feedback from our helpers. 
+2. [Sign in](https://cocalc.org) to an account on CoCalc using the same email address you registered with. This will be the online python service we'll use to work interactively. If you don't use the email you registered for the workshop with to register on CoCalc.com, please send me an [email](mailto:shyamd@lbl.gov) so that I know. We'll use CoCalc as an interactive python environment where you can code alongside the lessons, work on exercises, and get live-help and feedback from our helpers.
 
 ### Lesson Format
 
-1. Lessons will be broadcast via Zoom with live audio + screencast from the instructor. You won't need a microphone or camera. Please make sure audio works via Zoom. 
-2. We'll use CoCalc for all our collaborative work. An in-notebook chat will allow attendees to ask for help. Instructors and helpers will be able 
+1. Lessons will be broadcast via Zoom with live audio + screencast from the instructor. You won't need a microphone or camera. Please make sure audio works via Zoom.
+2. We'll use CoCalc for all our collaborative work. An in-notebook chat will allow attendees to ask for help. Instructors and helpers will be able
 3. We'll set up a Slack channel for group chat. This will allow attendees to ask general questions and chat amongst each other as well.
 
 #### Finding your API Key:
