@@ -8,6 +8,8 @@ We will navigate the Materials Project website, explore the properties of a mate
 
 We will re-visit much of this data and methods later but from a programmatic perspective later within the CoCalc teaching environment.
 
+Slides from this session are also [available](https://github.com/materialsproject/workshop/blob/master/workshop/lessons/01_website_walkthrough/Website%20Walkthrough%20Slides.pdf).
+
 ## Where Does Materials Project Data Come From?
 
 The Materials Project offers a variety of properties of hundreds of thousands of inorganic crystalline materials. These properties can be searched, combined and filtered in a variety of ways to help understand existing materials or discover new ones for a variety of modern applications, such as better batteries, optoelectronics, photovoltaics, carbon dioxide reduction and more. But where does this data come from?
