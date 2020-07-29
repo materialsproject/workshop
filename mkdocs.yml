@@ -31,7 +31,7 @@ nav:
       - Working with Surfaces: lessons/03_surfaces/Working With Surfaces_lesson.ipynb
       - The Materials API: lessons/04_materials_api/api_use.ipynb
     - Day 2:
-
+      - Automated DFT: lessons/05_automated_dft/Lesson.ipynb
       - MPContribs: lessons/07_mpcontribs/contribute.ipynb
       - Machine Learning with MatMiner: lessons/08_ml_matminer/matminer-notes.ipynb
 markdown_extensions:
