@@ -5,13 +5,13 @@ dependencies:
   - python>=3.7
   - jupyterlab>=2.0.0
   - numpy
-  - pip
-  - pymatgen
+  - pip 
   - plotly
   - typing_extensions
   - pip:
       - nbzip
       - nbgitpuller
+      - pymatgen
       - atomate>=0.9.5
       - matminer>=0.6.3
       - pymongo==3.10.1
