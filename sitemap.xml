@@ -51,5 +51,13 @@
      <loc>https://workshop.materialsproject.org/lessons/04_materials_api/api_use/</loc>
      <lastmod>2020-07-29</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://workshop.materialsproject.org/lessons/07_mpcontribs/contribute/</loc>
+     <lastmod>2020-07-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://workshop.materialsproject.org/lessons/08_ml_matminer/matminer-notes/</loc>
+     <lastmod>2020-07-29</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>
