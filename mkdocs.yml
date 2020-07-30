@@ -4,7 +4,12 @@ copyright: Built by The Materials Project
 site_url: https://workshop.materialsproject.org
 repo_url: https://github.com/materialsproject/workshop
 docs_dir: workshop
-extra_css: [workshop.css]
+extra_css: 
+  - assets/workshop.css
+extra_javascript:
+  - assets/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 theme:
   name: 'material'
   palette:
@@ -48,7 +53,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
   - toc:
       permalink: true
 
