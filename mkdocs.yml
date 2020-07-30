@@ -7,11 +7,15 @@ docs_dir: workshop
 extra_css: [workshop.css]
 theme:
   name: 'material'
-  icon:
-    logo: material/book-open-page-variant
+  palette:
+    primary: blue grey
+  logo: materials_project_logo_white.svg
   font:
     text: Roboto
     code: Roboto Mono
+  features:
+    - instant
+    - tabs
 
 nav:
   - Home: index.md
@@ -49,7 +53,8 @@ markdown_extensions:
       permalink: true
 
 plugins:
-  - search
+  - search:
+      prebuild_index: true
   - mknotebooks
   - minify:
       minify_html: true
