@@ -23,6 +23,12 @@
     
       <link rel="stylesheet" href="assets/stylesheets/main.b5d04df8.min.css">
       
+        <link rel="stylesheet" href="assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
       
     
     
@@ -50,7 +56,10 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -67,8 +76,7 @@
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://workshop.materialsproject.org" title="The Materials Project Workshop" class="md-header-nav__button md-logo" aria-label="The Materials Project Workshop">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 2l-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5z"/></svg>
+  <img src="materials_project_logo_white.svg" alt="logo">
 
     </a>
     <label class="md-header-nav__button md-icon" for="__drawer">
@@ -142,6 +150,64 @@
       
       
         
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="primer/01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/" class="md-tabs__link">
+          Primer
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="lessons/01_website_walkthrough/website_walkthrough/" class="md-tabs__link">
+          Workshop
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -154,8 +220,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://workshop.materialsproject.org" title="The Materials Project Workshop" class="md-nav__button md-logo" aria-label="The Materials Project Workshop">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 2l-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5z"/></svg>
+  <img src="materials_project_logo_white.svg" alt="logo">
 
     </a>
     The Materials Project Workshop
@@ -552,7 +617,7 @@
       <script>
         app = initialize({
           base: "",
-          features: [],
+          features: ["instant", "tabs"],
           search: Object.assign({
             worker: "assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
