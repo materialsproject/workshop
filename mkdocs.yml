@@ -35,7 +35,7 @@ nav:
       - Exploring New Systems: lessons/06_new_systems/06 - New Systems - filled.ipynb
       - MPContribs: lessons/07_mpcontribs/contribute.ipynb
       - Machine Learning with MatMiner: lessons/08_ml_matminer/matminer-notes.ipynb
-      
+
 markdown_extensions:
   - admonition
   - codehilite
