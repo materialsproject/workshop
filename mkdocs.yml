@@ -14,7 +14,7 @@ theme:
   name: 'material'
   palette:
     primary: blue grey
-  logo: materials_project_logo_white.svg
+  logo: assets/materials_project_logo_white.svg
   font:
     text: Roboto
     code: Roboto Mono
