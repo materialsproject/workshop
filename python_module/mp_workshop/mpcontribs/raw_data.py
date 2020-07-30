@@ -30,7 +30,7 @@ with ZipFile(dbpath) as zf:
             contrib = {"identifier": mat_ids[0], "data": {"tag": tag}, "tables": []}
             try:
                 dct = yaml.safe_load(zf.read(path))
-            except:
+            except Exception:
                 continue
 
             for k, v in dct["DATA"][0].items():
