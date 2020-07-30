@@ -2,3 +2,4 @@ vim
 graphviz
 mongodb
 gfortran
+zip

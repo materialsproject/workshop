@@ -19,3 +19,4 @@ dependencies:
       - crystal-toolkit>=2020.6.4
       - mpcontribs-client>=3.2.0
       - automatminer
+      - yapf
