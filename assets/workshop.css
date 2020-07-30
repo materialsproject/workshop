@@ -1,0 +1,46 @@
+ul.person_list {
+    padding: 0;
+    margin: 45px 0 0;
+}
+
+li.person{
+    min-width: 100px;
+    width: 33.3333%;
+    max-width: 200px;
+    display: inline-block;
+    text-align: center;
+}
+
+img.person_image {
+    display: block;
+    height: auto;
+    width: 100%;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+@media screen and (min-width: 540px) and (max-width: 800px) {
+   .person {
+    width: 25%;
+    float:left;
+   }
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 1180px) {
+   .person {
+    width: 20%;
+    float:left;
+   }
+}
+
+.dataframe {
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
