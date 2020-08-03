@@ -2,4 +2,4 @@ mkdocs==1.1.2
 mkdocs-material==5.5.0
 mkdocs-material-extensions==1.0
 mkdocs-minify-plugin==0.3.0
-mknotebooks==0.4.1
+mknotebooks==0.4.1.post0.dev3
