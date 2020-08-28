@@ -2,9 +2,10 @@
 
 The Materials Project Workshop is two-day interactive workshop to learn to use th Materials Project (MP) open-source tools. Topics will include basic structure manipulation, querying data from MP using the API, automating DFT calculations, exploring new chemical systems and machine learning. A optional one-day python and MongoDB primer is provided for anyone new to python programming and using databases. We'll also provide a virtual poster-session for anyone interested in networking with other participants.
 
-## Registration
+## Youtube Videos
 
-[Registration](https://na.eventscloud.com/ereg/index.php?eventid=527975&) is currently closed.
+The lessons for this workshop are on [Youtube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE).
+
 
 ## Location
 
