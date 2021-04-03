@@ -1,16 +1,16 @@
-# Materials Project Workshop 2020 (July 28 - 30)
+# Materials Project Workshop 2021 (August 10 - 12)
 
 The Materials Project Workshop is two-day interactive workshop to learn to use th Materials Project (MP) open-source tools. Topics will include basic structure manipulation, querying data from MP using the API, automating DFT calculations, exploring new chemical systems and machine learning. A optional one-day python and MongoDB primer is provided for anyone new to python programming and using databases. We'll also provide a virtual poster-session for anyone interested in networking with other participants.
 
 ## Workshop Videos
 
-The lessons for this workshop are on [Youtube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE) and [Bilibili](https://www.bilibili.com/video/BV1Uz4y1f7L5/)
+The lessons for the last virtual workshop are on [Youtube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE) and [Bilibili](https://www.bilibili.com/video/BV1Uz4y1f7L5/).
 
 
 
 ## Location
 
-The 2020 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based python environment to enable interactive tutorials where we provide close support.
+The 2021 Materials Project Workshop will be fully virtual due to COVID related travel and congregation restrictions. We'll use a cloud-based python environment to enable interactive tutorials where we provide close support.
 
 ## Primer (optional)
 All times are in Pacific Daylight Time.
@@ -73,4 +73,4 @@ All times are in Pacific Daylight Time.
 
 ## Still have questions?
 
-If you have any further questions, you can find some more helpful info and confact information [here](mailto:feedback@materialsproject.org?subject=Materials Project Workshop 2020)
+If you have any further questions, you can find some more helpful info and confact information [here](mailto:feedback@materialsproject.org?subject=Materials Project Workshop 2021)
