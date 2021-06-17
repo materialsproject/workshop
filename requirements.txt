@@ -6,5 +6,5 @@ pymongo==3.11.4
 robocrys==0.2.6
 crystal-toolkit==2021.4.29
 mpcontribs-client==3.10.1
-automatminer==1.0.3.20191111
+automatminer==1.0.3.20200727
 graphviz==0.16
