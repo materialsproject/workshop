@@ -13,7 +13,8 @@ if __name__ == "__main__":
         author_email="feedback@materialsproject.org",
         license="modified BSD",
         description="Dependencies for the MP Workshop",
-        version="2020.07.10",
+        use_scm_version=True,
+        setup_requires=["setuptools_scm"],
         url="https://workshop.materialsproject.org",
         packages=find_packages("python_module"),
         package_dir={"": "python_module"},
@@ -25,5 +26,5 @@ if __name__ == "__main__":
             "crystal-toolkit",
         ],
         package_data={"mp_workshop.data.data_files": ["*.json"]},
-        python_requires=">=3.7",
+        python_requires=">=3.8",
     )
