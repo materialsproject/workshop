@@ -1,4 +1,4 @@
 nbval==0.9.5
-pycodestyle==2.6.0
+pycodestyle==2.7.0
 pydocstyle==6.1.1
 flake8==3.8.3
