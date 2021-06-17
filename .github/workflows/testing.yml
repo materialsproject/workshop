@@ -35,7 +35,7 @@ jobs:
         flake8 --count --show-source --statistics python_module
         # exit-zero treats all errors as warnings.
         flake8 --count --exit-zero --max-complexity=20 --statistics python_module
-        
+
   test:
     services:
       local_mongodb:
@@ -58,7 +58,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-docs.txt
-        pip install -e .
+
+    - uses: actions/cache@v2
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('dev-requirements.txt') }}
+
+    - name: Install workshop package
+      run: pip install -e .
 
     - name: Build
       run: mkdocs build
@@ -100,7 +107,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-docs.txt
-        pip install -e .
+
+    - uses: actions/cache@v2
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('dev-requirements.txt') }}
+
+    - name: Install workshop package
+      run: pip install -e .
 
     - name: Build
       run: mkdocs build
