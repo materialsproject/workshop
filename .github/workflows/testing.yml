@@ -70,17 +70,6 @@ jobs:
     - name: Build
       run: mkdocs build
 
-  merge-deps:
-    needs:
-      - lint
-      - test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Merge me!
-        uses: ridedott/merge-me-action@v2.8.43
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   deploy:
     needs:
      - lint
