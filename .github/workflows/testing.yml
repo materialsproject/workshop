@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Merge me!
-        uses: ridedott/merge-me-action@master
+        uses: ridedott/merge-me-action@v2.8.43
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
