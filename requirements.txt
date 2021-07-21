@@ -8,3 +8,4 @@ crystal-toolkit==2021.4.29
 mpcontribs-client==3.10.1
 matminer==0.7.3
 graphviz==0.16
+figrecipes==0.0.7
