@@ -26,10 +26,9 @@ All times are in Pacific Daylight Time.
 
 ### Tuesday Afternoon -- MongoDB using Python primer
 
-- 13:00-13:20 Data Modeling - Python Types to JSON to MongoDB
-- 13:20-14:00 Listing, Counting, Finding, and Dot Notation
+- 13:00-14:00 Data Modeling - Python Types to JSON to MongoDB
 - 14:00-14:20 Break
-- 14:20-15:20 Advanced Filtering, Basic Aggregation, and Indexing
+- 14:20-15:20 Setting up your own Python Environments
 - 15:20-15:40 Open Discussion
 - 15:40-16:00 Wrap-Up
 
