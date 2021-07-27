@@ -1,9 +1,12 @@
 name: Merge me!
 
 on:
-  check_suite:
+  workflow_run:
     types:
       - completed
+    workflows:
+      # List all required workflow names here.
+      - 'testing'
 
 jobs:
   merge-me:
