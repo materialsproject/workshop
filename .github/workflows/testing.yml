@@ -36,7 +36,7 @@ jobs:
         # exit-zero treats all errors as warnings.
         flake8 --count --exit-zero --max-complexity=20 --statistics python_module
 
-  test:
+  test_and_deploy:
     services:
       local_mongodb:
         image: mongo:4.0
@@ -52,57 +52,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-
-    - uses: actions/cache@v2
-      with:
-        path: ${{ env.pythonLocation }}
-        key: ${{ env.pythonLocation }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements-docs.txt') }}-${{ hashFiles('requirements-testing.txt') }}
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install -r requirements-docs.txt
-
-    - name: Install workshop package
-      run: pip install -e .
-
-    - name: Install workshop data
-      run: python ./binder/populate_nobel_database.py
-
-    - name: Run Notebooks
-      env:
-        PMG_MAPI_KEY: ${{ secrets.MAPI_KEY }}
-      run: python .github/run_notebooks.py
-
-    - name: Build
-      run: mkdocs build
-
-  deploy:
-    needs:
-     - lint
-     - test
-    services:
-      local_mongodb:
-        image: mongo:4.0
-        ports:
-          - 27017:27017
-
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - uses: actions/cache@v2
-      with:
-        path: ${{ env.pythonLocation }}
-        key: ${{ env.pythonLocation }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements-docs.txt') }}-${{ hashFiles('requirements-testing.txt') }}
 
     - name: Install dependencies
       run: |
@@ -126,6 +75,7 @@ jobs:
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/master'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
