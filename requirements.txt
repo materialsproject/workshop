@@ -8,3 +8,4 @@ crystal-toolkit==2021.4.29
 mpcontribs-client==3.10.1
 automatminer==1.0.3.20191111
 graphviz==0.16
+ipywidgets==7.5.1
