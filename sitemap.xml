@@ -51,7 +51,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://workshop.materialsproject.org/lessons/04_materials_api/MAPI%20Exercise%202%20Sloutions/</loc>
+         <loc>https://workshop.materialsproject.org/lessons/04_materials_api/MAPI%20Exercise%202%20Solutions/</loc>
          <lastmod>2021-07-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -61,7 +61,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://workshop.materialsproject.org/lessons/04_materials_api/api_use/</loc>
+         <loc>https://workshop.materialsproject.org/lessons/04_materials_api/MAPI%20Lesson%20%28empty%29/</loc>
+         <lastmod>2021-07-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://workshop.materialsproject.org/lessons/04_materials_api/MAPI%20Lesson%20%28filled%29/</loc>
          <lastmod>2021-07-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
