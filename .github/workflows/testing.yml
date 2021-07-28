@@ -68,8 +68,10 @@ jobs:
       run: pip install -e .
 
     - name: Run Notebooks
+      env:
+        PMG_MAPI_KEY: ${{ secerts.MAPI_KEY }}
       run: python .github/run_notebooks.py
-      
+
     - name: Build
       run: mkdocs build
 
@@ -107,6 +109,11 @@ jobs:
 
     - name: Install workshop package
       run: pip install -e .
+
+    - name: Run Notebooks
+      env:
+        PMG_MAPI_KEY: ${{ secerts.MAPI_KEY }}
+      run: python .github/run_notebooks.py
 
     - name: Build
       run: mkdocs build
