@@ -18,13 +18,9 @@ cp *.x $HOME/.enumlib
 rm -Rf $HOME/enumlib
 
 cd $HOME
-#jupyter nbextension install --user --py pythreejs
-#jupyter nbextension enable --user --py pythreejs
-jupyter labextension install crystaltoolkit-extension
 jupyter serverextension enable --py nbzip --sys-prefix
 jupyter nbextension install --user --py nbzip
 jupyter nbextension enable --user --py nbzip
-jupyter serverextension enable nbgitpuller --sys-prefix
 
 #tar -xvzf ${HOME}/POTCARs.tar.gz -C ${HOME}
 #echo "PMG_VASP_PSP_DIR: $HOME/POTCARs" >> $HOME/.pmgrc.yaml
