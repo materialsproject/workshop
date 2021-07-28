@@ -48,10 +48,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python 3.8
+    - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.7
 
     - uses: actions/cache@v2
       with:
@@ -67,6 +67,9 @@ jobs:
     - name: Install workshop package
       run: pip install -e .
 
+    - name: Run Notebooks
+      run: python .github/run_notebooks.py
+      
     - name: Build
       run: mkdocs build
 
