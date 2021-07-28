@@ -69,7 +69,7 @@ jobs:
 
     - name: Run Notebooks
       env:
-        PMG_MAPI_KEY: ${{ secerts.MAPI_KEY }}
+        PMG_MAPI_KEY: ${{ secrets.MAPI_KEY }}
       run: python .github/run_notebooks.py
 
     - name: Build
@@ -112,7 +112,7 @@ jobs:
 
     - name: Run Notebooks
       env:
-        PMG_MAPI_KEY: ${{ secerts.MAPI_KEY }}
+        PMG_MAPI_KEY: ${{ secrets.MAPI_KEY }}
       run: python .github/run_notebooks.py
 
     - name: Build
