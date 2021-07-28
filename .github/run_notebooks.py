@@ -35,8 +35,6 @@ for notebook in notebooks:
     for cell in nb.cells:
         if cell.get("cell_type", "") == "code" and "no-execute" in cell.get("metadata",{}).get("tags", []):
             cell["cell_type"] = "markdown"
-            print("Found no-execute cell")
-            print(cell)
 
     client = NotebookClient(
         nb,
