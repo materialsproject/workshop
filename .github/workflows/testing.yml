@@ -67,6 +67,14 @@ jobs:
     - name: Install workshop package
       run: pip install -e .
 
+    - name: Install workshop data
+      run: python ./binder/populate_nobel_database.py
+
+    - name: Run Notebooks
+      env:
+        PMG_MAPI_KEY: ${{ secrets.MAPI_KEY }}
+      run: python .github/run_notebooks.py
+
     - name: Build
       run: mkdocs build
 
@@ -104,6 +112,14 @@ jobs:
 
     - name: Install workshop package
       run: pip install -e .
+
+    - name: Install workshop data
+      run: python ./binder/populate_nobel_database.py
+
+    - name: Run Notebooks
+      env:
+        PMG_MAPI_KEY: ${{ secrets.MAPI_KEY }}
+      run: python .github/run_notebooks.py
 
     - name: Build
       run: mkdocs build

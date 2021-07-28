@@ -4,7 +4,7 @@ copyright: Built by The Materials Project
 site_url: https://workshop.materialsproject.org
 repo_url: https://github.com/materialsproject/workshop
 docs_dir: workshop
-extra_css: 
+extra_css:
   - assets/workshop.css
 extra_javascript:
   - assets/config.js

@@ -32,7 +32,10 @@ fworker = {
 
 dumpfn(fw_config, fw_config_dir / "FW_config.yaml")
 dumpfn(
-    fworker, fw_config_dir / "my_fworker.yaml", indent=4, default_flow_style=False,
+    fworker,
+    fw_config_dir / "my_fworker.yaml",
+    indent=4,
+    default_flow_style=False,
 )
 
 
