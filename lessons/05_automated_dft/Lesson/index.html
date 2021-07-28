@@ -21,7 +21,7 @@
 
   document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
 }());
-</script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=automated-dft>Automated DFT<a class=headerlink href=#automated-dft title="Permanent link">&para;</a></h1> <p>This lesson focuses on key concepts necessary to run automated Density Functional Theory (DFT) workflows using our atomate code. We begin by focusing on using pymatgen to build inputs and parsing outputs of DFT calculations. We then build an understanding of <code>InputSets</code> in pymatgen, a key capability to automate running DFT. We finally go through a demonstration of using atomate.</p> <h2 id=core-concepts>Core Concepts<a class=headerlink href=#core-concepts title="Permanent link">&para;</a></h2> <ul> <li><strong>Input/Output</strong> - There is an enitre module in pymatgen devoted to reading and writing the input and output files of other codes</li> <li><strong>Input Sets</strong> - Standardizing the input options to various codes allows for repeatability and automatically generitng inputs for a new calculation</li> <li><strong>Atomate</strong> - This is a set of automated recipes for computing materials and molecular properties using density functional theory</li> </ul> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=lesson-1-using-pymatgen-io>Lesson 1: Using Pymatgen IO<a class=headerlink href=#lesson-1-using-pymatgen-io title="Permanent link">&para;</a></h2> <p>For the first lesson we'll focus on using pymatgen to interface with DFT codes in the most simple way possible. Pymatgen has a IO module which is designed to have methods to parse and write files that are compatible with a number of external codes. These include:</p> <ul> <li>AbInit</li> <li>EXCITING</li> <li>FEFF</li> <li>LAMMPS</li> <li>Lobster</li> <li>QChem</li> <li>VASP</li> <li>ATAT</li> <li>Gaussian</li> <li>NWCHem</li> <li>ShengBTE</li> <li>Wannier90</li> <li>Zeo++</li> </ul> <p>For the purpose of this tutorial, we'll focus on using VASP and QChem as these are the primary DFT codes used by the Materials Project.</p> <h3 id=vasp-inputs>VASP Inputs<a class=headerlink href=#vasp-inputs title="Permanent link">&para;</a></h3> <p>Let's beging by reading some VASP inputs for an Al-Cr alloy structure:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen</span> <span class=kn>import</span> <span class=n>Structure</span>
+</script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=automated-dft>Automated DFT<a class=headerlink href=#automated-dft title="Permanent link">&para;</a></h1> <p>This lesson focuses on key concepts necessary to run automated Density Functional Theory (DFT) workflows using our atomate code. We begin by focusing on using pymatgen to build inputs and parsing outputs of DFT calculations. We then build an understanding of <code>InputSets</code> in pymatgen, a key capability to automate running DFT. We finally go through a demonstration of using atomate.</p> <h2 id=core-concepts>Core Concepts<a class=headerlink href=#core-concepts title="Permanent link">&para;</a></h2> <ul> <li><strong>Input/Output</strong> - There is an enitre module in pymatgen devoted to reading and writing the input and output files of other codes</li> <li><strong>Input Sets</strong> - Standardizing the input options to various codes allows for repeatability and automatically generitng inputs for a new calculation</li> <li><strong>Atomate</strong> - This is a set of automated recipes for computing materials and molecular properties using density functional theory</li> </ul> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=lesson-1-using-pymatgen-io>Lesson 1: Using Pymatgen IO<a class=headerlink href=#lesson-1-using-pymatgen-io title="Permanent link">&para;</a></h2> <p>For the first lesson we'll focus on using pymatgen to interface with DFT codes in the most simple way possible. Pymatgen has a IO module which is designed to have methods to parse and write files that are compatible with a number of external codes. These include:</p> <ul> <li>AbInit</li> <li>EXCITING</li> <li>FEFF</li> <li>LAMMPS</li> <li>Lobster</li> <li>QChem</li> <li>VASP</li> <li>ATAT</li> <li>Gaussian</li> <li>NWCHem</li> <li>ShengBTE</li> <li>Wannier90</li> <li>Zeo++</li> </ul> <p>For the purpose of this tutorial, we'll focus on using VASP and QChem as these are the primary DFT codes used by the Materials Project.</p> <h3 id=vasp-inputs>VASP Inputs<a class=headerlink href=#vasp-inputs title="Permanent link">&para;</a></h3> <p>Let's beging by reading some VASP inputs for an Al-Cr alloy structure:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.core.structure</span> <span class=kn>import</span> <span class=n>Structure</span>
 <span class=n>struc</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;Al16Cr10.cif&quot;</span><span class=p>)</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>This is a CIF file which is not compatible with many DFT codes. Each code has its own input structure. Next, we'll make a POSCAR file which is the way structures are represented in VASP</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.inputs</span> <span class=kn>import</span> <span class=n>Poscar</span>
 
@@ -104,17 +104,17 @@ direct
 
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_subarea output_stream output_stderr output_text"> <pre>
-<code>/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Al has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
-  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
-/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Cr_pv has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
-  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
+<code>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Al has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Cr_pv has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>In this POSCAR object there is a full pymatgen Structure we can grab and use pythonically if we have a manipulation we want to apply. </p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>poscar</span><span class=o>.</span><span class=n>structure</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>Structure Summary
 Lattice
     abc : 7.878913731575819 7.87891356009247 7.878913756049688
- angles : 109.69518778724337 109.69519443176932 109.69518691661757
+ angles : 109.69518778724338 109.69519443176935 109.69518691661757
  volume : 373.35579693687976
       A : 7.430657 -0.067234 -2.618797
       B : -3.680038 6.455734 -2.618797
@@ -196,10 +196,10 @@ PeriodicSite: Cr (-1.2393, 2.3309, 1.8782) [0.0159, 0.3650, 0.3650]</code>
 EDIFF = 0.0013000000000000002
 ENCUT = 520
 IBRION = 2
-ICHARG = 1
 ISIF = 3
 ISMEAR = -5
 ISPIN = 2
+LASPH = True
 LORBIT = 11
 LREAL = Auto
 LWAVE = False
@@ -211,7 +211,7 @@ SIGMA = 0.05
 
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_subarea output_stream output_stderr output_text"> <pre>
-<code>/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/sets.py:589: BadInputSetWarning: Relaxation of likely metal with ISMEAR &lt; 1 detected. Please see VASP recommendations on ISMEAR for metals.
+<code>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/sets.py:592: BadInputSetWarning: Relaxation of likely metal with ISMEAR &lt; 1 detected. Please see VASP recommendations on ISMEAR for metals.
   warnings.warn(
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can see that the input set has pre-set values for a number of parameters. Some of these such as <code>ALGO</code> and <code>IBRION</code> just tell VASP what kind of calculation to perform, but other such as <code>EDIFF</code>, <code>ENCUT,</code> and <code>MAGMOM</code> are structure specific. The <code>MPRelaxSet</code>, which is designed to optimize a structure, has default MP parameters that make the resulting structure compataible with MP data. </p> <p>Many DFT calculations actually extend from a previous calculation. For instance, it's often desireable to perform a static calculation from a previous relaxation calculation. <code>InputSet</code>s for these types of calculations have <code>classmethod</code> that lets you automatically construct the next calculation input set from the output of a previous calculation.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.io.vasp.sets</span> <span class=kn>import</span> <span class=n>MPStaticSet</span>
@@ -223,7 +223,7 @@ SIGMA = 0.05
 EDIFF = 0.0013
 ENCUT = 520.0
 IBRION = -1
-ICHARG = 0
+ICHARG = 1
 ISIF = 3
 ISMEAR = -5
 ISPIN = 2
@@ -243,7 +243,7 @@ SIGMA = 0.05
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Notice how the <code>MAGMOM</code> list is very different for this calculation. <code>MAGMOM</code> is the set of magnetic moments that VASP is using both as its input and its writing in its output. Because the magnetic moment and the charge density are closely related, the new lowest energy configuration is actually not the nice Ferromagnetic configuration that was put into the initial relaxation calculation but a newer more complex configuration with much lower overall magnetic moment. </p> <p>Other inputs are a function of the InputSet is designed to do. The <code>MPRelaxSet</code> is designed to be a structure optimization that balances accuracy and computational cost. The <code>MPstaticSet</code> on the other hand is designed to increase the accuracy once an optimized structure is found to get a good charge density and DFT energy. The result is that these two sets produce different K-point densities as shown next.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>relax_set</span><span class=o>.</span><span class=n>kpoints</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>pymatgen v2020.7.16 with grid density = 1106 / number of atoms
+<code>pymatgen with grid density = 1106 / number of atoms
 0
 Gamma
 3 3 3</code>
@@ -257,20 +257,20 @@ Gamma
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{&#39;@module&#39;: &#39;pymatgen.io.vasp.sets&#39;,
  &#39;@class&#39;: &#39;MPRelaxSet&#39;,
- &#39;@version&#39;: &#39;2020.7.16&#39;,
+ &#39;@version&#39;: None,
  &#39;structure&#39;: {&#39;@module&#39;: &#39;pymatgen.core.structure&#39;,
   &#39;@class&#39;: &#39;Structure&#39;,
   &#39;charge&#39;: None,
   &#39;lattice&#39;: {&#39;matrix&#39;: [[7.4179879378990465, 0.0, -2.6553223002051487],
-    [-3.7708043655287886, 6.388081220096888, -2.6553213832427804],
+    [-3.7708043655287886, 6.388081220096889, -2.6553213832427804],
     [0.0, 0.0, 7.87891376]],
    &#39;a&#39;: 7.87891373,
-   &#39;b&#39;: 7.878913559999999,
+   &#39;b&#39;: 7.87891356,
    &#39;c&#39;: 7.87891376,
    &#39;alpha&#39;: 109.69518779,
    &#39;beta&#39;: 109.69519443,
-   &#39;gamma&#39;: 109.69518691999998,
-   &#39;volume&#39;: 373.35579702428646},
+   &#39;gamma&#39;: 109.69518692000001,
+   &#39;volume&#39;: 373.3557970242865},
   &#39;sites&#39;: [{&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.696455, 0.696455, 0.696455],
     &#39;xyz&#39;: [2.540099234895128, 4.449011106142579, 1.7886845361650723],
@@ -278,82 +278,82 @@ Gamma
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.646563, 0.002044, 0.646563],
-    &#39;xyz&#39;: [4.78848901096868, 0.013057238013878038, 3.37195348811199],
+    &#39;xyz&#39;: [4.78848901096868, 0.01305723801387804, 3.37195348811199],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.646563, 0.646563, 0.002044],
-    &#39;xyz&#39;: [2.3581339521024316, 4.130296957909504, -3.4175612121757033],
+    &#39;xyz&#39;: [2.3581339521024316, 4.130296957909505, -3.4175612121757033],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.002044, 0.646563, 0.646563],
-    &#39;xyz&#39;: [-2.4229002156443245, 4.130296957909504, 3.3719540791116587],
+    &#39;xyz&#39;: [-2.4229002156443245, 4.130296957909505, 3.3719540791116587],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.336523, 0.558569, 0.336523],
-    &#39;xyz&#39;: [0.39006913117655095, 3.5681841390282987, 0.2746784591080065],
+    &#39;xyz&#39;: [0.39006913117655095, 3.568184139028299, 0.2746784591080065],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.336523, 0.336523, 0.558569],
-    &#39;xyz&#39;: [1.2273611573247563, 2.149736256430665, 2.613763235724492],
+    &#39;xyz&#39;: [1.2273611573247563, 2.1497362564306655, 2.613763235724492],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.558569, 0.336523, 0.336523],
-    &#39;xyz&#39;: [2.8744957069834873, 2.149736256430665, 0.2746782555001799],
+    &#39;xyz&#39;: [2.8744957069834873, 2.1497362564306655, 0.2746782555001799],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.734771, 0.383622, 0.734771],
-    &#39;xyz&#39;: [4.0039589028051354, 2.4506084938160084, 2.8195038208225602],
+    &#39;xyz&#39;: [4.0039589028051354, 2.450608493816009, 2.8195038208225602],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.734771, 0.734771, 0.383622],
-    &#39;xyz&#39;: [2.6798447206540668, 4.69377682617181, -0.879582315491998],
+    &#39;xyz&#39;: [2.6798447206540668, 4.693776826171811, -0.879582315491998],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.383622, 0.734771, 0.734771],
-    &#39;xyz&#39;: [0.07502567424875473, 4.69377682617181, 2.819504142812979],
+    &#39;xyz&#39;: [0.07502567424875473, 4.693776826171811, 2.819504142812979],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.280797, 0.666745, 0.038053],
-    &#39;xyz&#39;: [-0.43121619769625363, 4.259221213093499, -2.2162124862916333],
+    &#39;xyz&#39;: [-0.43121619769625363, 4.2592212130935, -2.2162124862916333],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.038053, 0.280797, 0.666745],
-    &#39;xyz&#39;: [-0.776553858426515, 1.793754042359546, 4.40657709697107],
+    &#39;xyz&#39;: [-0.776553858426515, 1.7937540423595462, 4.40657709697107],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.666745, 0.038053, 0.280797],
-    &#39;xyz&#39;: [4.8024159491330325, 0.24308565466834686, 0.34090953541990054],
+    &#39;xyz&#39;: [4.8024159491330325, 0.2430856546683469, 0.34090953541990054],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.666745, 0.280797, 0.038053],
-    &#39;xyz&#39;: [3.8870758142271122, 1.793754042359546, -2.216212840191425],
+    &#39;xyz&#39;: [3.8870758142271122, 1.7937540423595462, -2.216212840191425],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.038053, 0.666745, 0.280797],
-    &#39;xyz&#39;: [-2.2318882616936198, 4.259221213093499, 0.34091011190680565],
+    &#39;xyz&#39;: [-2.2318882616936198, 4.2592212130935, 0.34091011190680565],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Al&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.280797, 0.038053, 0.666745],
-    &#39;xyz&#39;: [1.9394583404767716, 0.24308565466834686, 4.406576874383957],
+    &#39;xyz&#39;: [1.9394583404767716, 0.2430856546683469, 4.406576874383957],
     &#39;label&#39;: &#39;Al&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.151124, 0.151124, 0.151124],
-    &#39;xyz&#39;: [0.5511769701908827, 0.9653923863059222, 0.38812724704885504],
+    &#39;xyz&#39;: [0.5511769701908827, 0.9653923863059223, 0.38812724704885504],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
@@ -363,48 +363,52 @@ Gamma
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.015343, 0.015343, 0.797266],
-    &#39;xyz&#39;: [0.055958737550876866, 0.09801233015994655, 6.200108851745018],
+    &#39;xyz&#39;: [0.055958737550876866, 0.09801233015994656, 6.200108851745018],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.797266, 0.015343, 0.015343],
-    &#39;xyz&#39;: [5.856254119916713, 0.09801233015994655, -2.036852611158772],
+    &#39;xyz&#39;: [5.856254119916713, 0.09801233015994656, -2.036852611158772],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.987828, 0.33369, 0.987828],
-    &#39;xyz&#39;: [6.069416479985638, 2.1316388223341303, 4.273955712171945],
+    &#39;xyz&#39;: [6.069416479985638, 2.1316388223341307, 4.273955712171945],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.987828, 0.987828, 0.33369],
-    &#39;xyz&#39;: [3.602790053927367, 6.310325495485869, -2.6168877959586014],
+    &#39;xyz&#39;: [3.602790053927367, 6.31032549548587, -2.6168877959586014],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.33369, 0.987828, 0.987828],
-    &#39;xyz&#39;: [-1.2495977397940399, 6.310325495485869, 4.273956311991874],
+    &#39;xyz&#39;: [-1.2495977397940399, 6.31032549548587, 4.273956311991874],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.365023, 0.015932, 0.365023],
-    &#39;xyz&#39;: [2.647659755904119, 0.10177490999858363, 1.8644264451508719],
+    &#39;xyz&#39;: [2.647659755904119, 0.10177490999858364, 1.8644264451508719],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.365023, 0.365023, 0.015932],
-    &#39;xyz&#39;: [1.3313058891373089, 2.331796571203426, -1.8129802352388933],
+    &#39;xyz&#39;: [1.3313058891373089, 2.3317965712034265, -1.8129802352388933],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}},
    {&#39;species&#39;: [{&#39;element&#39;: &#39;Cr&#39;, &#39;occu&#39;: 1.0}],
     &#39;abc&#39;: [0.015932, 0.365023, 0.365023],
-    &#39;xyz&#39;: [-1.2582469380918073, 2.331796571203426, 1.864426765254182],
+    &#39;xyz&#39;: [-1.2582469380918073, 2.3317965712034265, 1.864426765254182],
     &#39;label&#39;: &#39;Cr&#39;,
     &#39;properties&#39;: {}}]}}</code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=lesson-3-automating-dft-with-atomate>Lesson 3: Automating DFT with Atomate<a class=headerlink href=#lesson-3-automating-dft-with-atomate title="Permanent link">&para;</a></h2> <p>The final section of this lesson focuses on automating DFT using our <code>atomate</code> code. <code>atomate</code> is a set of recipes for computing properties for both molecules and structures. The workflows in <code>atomate</code> run on <code>fireworks</code>, our workflow management software. <code>fireworks</code> stores workflow information and calculation summaries in MongoDB. Using this infrastructure MP routinely manages 10,000 simultaneous calculations on supercomputers such as Cori at NERSC. </p> <p>Let's begin by importing a basic silicon structure</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen</span> <span class=kn>import</span> <span class=n>Structure</span>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=lesson-3-automating-dft-with-atomate>Lesson 3: Automating DFT with Atomate<a class=headerlink href=#lesson-3-automating-dft-with-atomate title="Permanent link">&para;</a></h2> <p>The final section of this lesson focuses on automating DFT using our <code>atomate</code> code. <code>atomate</code> is a set of recipes for computing properties for both molecules and structures. The workflows in <code>atomate</code> run on <code>fireworks</code>, our workflow management software. <code>fireworks</code> stores workflow information and calculation summaries in MongoDB. Using this infrastructure MP routinely manages 10,000 simultaneous calculations on supercomputers such as Cori at NERSC. </p> <p>Let's begin by importing a basic silicon structure</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.core.structure</span> <span class=kn>import</span> <span class=n>Structure</span>
 <span class=n>si</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;Si.CIF&quot;</span><span class=p>)</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, we'll make a workflow to optimize our structure</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>atomate.vasp.workflows</span> <span class=kn>import</span> <span class=n>wf_structure_optimization</span>
-</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf</span> <span class=o>=</span> <span class=n>wf_structure_optimization</span><span class=p>(</span><span class=n>structure</span><span class=o>=</span><span class=n>si</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stderr output_text"> <pre>
+<code>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/maggma/utils.py:20: TqdmExperimentalWarning: Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
+  from tqdm.autonotebook import tqdm
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf</span> <span class=o>=</span> <span class=n>wf_structure_optimization</span><span class=p>(</span><span class=n>structure</span><span class=o>=</span><span class=n>si</span><span class=p>)</span>
 <span class=nb>print</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Workflow object: (fw_ids: odict_keys([-1]) , name: Si)
@@ -418,20 +422,78 @@ Gamma
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now we can see there are a low more fireworks in this workflow, but its still hard to tell what is going on. Let's start by looking at the whole workflow as a graph.</p> <p>We'll use a function built for this workshop to plot what the workflow looks like.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>mp_workshop.atomate</span> <span class=kn>import</span> <span class=n>wf_to_graph</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf_to_graph</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
-</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_svg output_subarea output_execute_result"> <?xml version="1.0" encoding="UTF-8" standalone="no"?> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><!-- Generated by graphviz version 2.40.1 (20161225.0304)
- --><!-- Title: %3 Pages: 1 --><svg width=338pt height=98pt viewbox="0.00 0.00 338.00 98.00" xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink> <g id=graph0 class=graph transform="scale(1 1) rotate(0) translate(4 94)"> <title>%3</title> <polygon fill=#ffffff stroke=transparent points="-4,4 -4,-94 334,-94 334,4 -4,4"/> <!-- &#45;2 --> <g id=node1 class=node> <title>&#45;2</title> <polygon fill=none stroke=#1f62a2 points="121,-63 0,-63 0,-27 121,-27 121,-63"/> <text text-anchor=middle x=60.5 y=-41.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;structure optimization</text> </g> <!-- &#45;3 --> <g id=node2 class=node> <title>&#45;3</title> <polygon fill=none stroke=#1f62a2 points="211,-63 157,-63 157,-27 211,-27 211,-63"/> <text text-anchor=middle x=184 y=-41.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;static</text> </g> <!-- &#45;2&#45;&gt;&#45;3 --> <g id=edge1 class=edge> <title>&#45;2&#45;&gt;&#45;3</title> <path fill=none stroke=#000000 d="M121.1646,-45C129.902,-45 138.6685,-45 146.7639,-45"/> <polygon fill=#000000 stroke=#000000 points="146.9607,-48.5001 156.9606,-45 146.9606,-41.5001 146.9607,-48.5001"/> </g> <!-- &#45;4 --> <g id=node3 class=node> <title>&#45;4</title> <polygon fill=none stroke=#1f62a2 points="330,-90 247,-90 247,-54 330,-54 330,-90"/> <text text-anchor=middle x=288.5 y=-68.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;nscf uniform</text> </g> <!-- &#45;3&#45;&gt;&#45;4 --> <g id=edge2 class=edge> <title>&#45;3&#45;&gt;&#45;4</title> <path fill=none stroke=#000000 d="M211.1833,-52.0234C219.1773,-54.0889 228.1972,-56.4194 237.1803,-58.7404"/> <polygon fill=#000000 stroke=#000000 points="236.3057,-62.1293 246.8634,-61.2422 238.0569,-55.3518 236.3057,-62.1293"/> </g> <!-- &#45;5 --> <g id=node4 class=node> <title>&#45;5</title> <polygon fill=none stroke=#1f62a2 points="321,-36 256,-36 256,0 321,0 321,-36"/> <text text-anchor=middle x=288.5 y=-14.3 font-family=Times,serif font-size=14.00 fill=#000000>Si&#45;nscf line</text> </g> <!-- &#45;3&#45;&gt;&#45;5 --> <g id=edge3 class=edge> <title>&#45;3&#45;&gt;&#45;5</title> <path fill=none stroke=#000000 d="M211.1833,-37.9766C221.8609,-35.2178 234.3687,-31.9861 246.1746,-28.9357"/> <polygon fill=#000000 stroke=#000000 points="247.0645,-32.3208 255.871,-26.4305 245.3134,-25.5434 247.0645,-32.3208"/> </g> </g> </svg> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>This is clearly a more complex workflow with an intermediate step to compute the full bandstructore of Si both along the special high-symmetry lines in Brillouin zone and with a uniform grid.</p> <p>To make this workshop more usefull, we've provided a set of fake VASP input and outputs and a helper function that will let atomate "run" these calculations. In reality, these take a lot more CPU time and a License to VASP, which we can't provide in this workshop. Let's use that fake VASP utility to "run" this workflow.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>mp_workshop.atomate</span> <span class=kn>import</span> <span class=n>use_fake_vasp_workshop</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_text output_error"> <pre>
+<span class=ansi-red-fg>---------------------------------------------------------------------------</span>
+<span class=ansi-red-fg>FileNotFoundError</span>                         Traceback (most recent call last)
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/graphviz/backend.py</span> in <span class=ansi-cyan-fg>run</span><span class=ansi-blue-fg>(cmd, input, capture_output, check, encoding, quiet, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    169</span>     <span class=ansi-green-fg>try</span><span class=ansi-blue-fg>:</span>
+<span class=ansi-green-fg>--&gt; 170</span><span class=ansi-red-fg>         </span>proc <span class=ansi-blue-fg>=</span> subprocess<span class=ansi-blue-fg>.</span>Popen<span class=ansi-blue-fg>(</span>cmd<span class=ansi-blue-fg>,</span> startupinfo<span class=ansi-blue-fg>=</span>get_startupinfo<span class=ansi-blue-fg>(</span><span class=ansi-blue-fg>)</span><span class=ansi-blue-fg>,</span> <span class=ansi-blue-fg>**</span>kwargs<span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">    171</span>     <span class=ansi-green-fg>except</span> OSError <span class=ansi-green-fg>as</span> e<span class=ansi-blue-fg>:</span>
+
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/subprocess.py</span> in <span class=ansi-cyan-fg>__init__</span><span class=ansi-blue-fg>(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, encoding, errors, text)</span>
+<span class="ansi-green-intense-fg ansi-bold">    857</span> 
+<span class=ansi-green-fg>--&gt; 858</span><span class=ansi-red-fg>             self._execute_child(args, executable, preexec_fn, close_fds,
+</span><span class="ansi-green-intense-fg ansi-bold">    859</span>                                 pass_fds<span class=ansi-blue-fg>,</span> cwd<span class=ansi-blue-fg>,</span> env<span class=ansi-blue-fg>,</span>
+
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/subprocess.py</span> in <span class=ansi-cyan-fg>_execute_child</span><span class=ansi-blue-fg>(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, start_new_session)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1703</span>                         err_msg <span class=ansi-blue-fg>=</span> os<span class=ansi-blue-fg>.</span>strerror<span class=ansi-blue-fg>(</span>errno_num<span class=ansi-blue-fg>)</span>
+<span class=ansi-green-fg>-&gt; 1704</span><span class=ansi-red-fg>                     </span><span class=ansi-green-fg>raise</span> child_exception_type<span class=ansi-blue-fg>(</span>errno_num<span class=ansi-blue-fg>,</span> err_msg<span class=ansi-blue-fg>,</span> err_filename<span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1705</span>                 <span class=ansi-green-fg>raise</span> child_exception_type<span class=ansi-blue-fg>(</span>err_msg<span class=ansi-blue-fg>)</span>
+
+<span class=ansi-red-fg>FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;dot&#39;
+
+The above exception was the direct cause of the following exception:
+
+<span class=ansi-red-fg>ExecutableNotFound</span>                        Traceback (most recent call last)
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/IPython/core/formatters.py</span> in <span class=ansi-cyan-fg>__call__</span><span class=ansi-blue-fg>(self, obj)</span>
+<span class="ansi-green-intense-fg ansi-bold">    343</span>             method <span class=ansi-blue-fg>=</span> get_real_method<span class=ansi-blue-fg>(</span>obj<span class=ansi-blue-fg>,</span> self<span class=ansi-blue-fg>.</span>print_method<span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">    344</span>             <span class=ansi-green-fg>if</span> method <span class=ansi-green-fg>is</span> <span class=ansi-green-fg>not</span> <span class=ansi-green-fg>None</span><span class=ansi-blue-fg>:</span>
+<span class=ansi-green-fg>--&gt; 345</span><span class=ansi-red-fg>                 </span><span class=ansi-green-fg>return</span> method<span class=ansi-blue-fg>(</span><span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">    346</span>             <span class=ansi-green-fg>return</span> <span class=ansi-green-fg>None</span>
+<span class="ansi-green-intense-fg ansi-bold">    347</span>         <span class=ansi-green-fg>else</span><span class=ansi-blue-fg>:</span>
+
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/graphviz/files.py</span> in <span class=ansi-cyan-fg>_repr_svg_</span><span class=ansi-blue-fg>(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    139</span> 
+<span class="ansi-green-intense-fg ansi-bold">    140</span>     <span class=ansi-green-fg>def</span> _repr_svg_<span class=ansi-blue-fg>(</span>self<span class=ansi-blue-fg>)</span><span class=ansi-blue-fg>:</span>
+<span class=ansi-green-fg>--&gt; 141</span><span class=ansi-red-fg>         </span><span class=ansi-green-fg>return</span> self<span class=ansi-blue-fg>.</span>pipe<span class=ansi-blue-fg>(</span>format<span class=ansi-blue-fg>=</span><span class=ansi-blue-fg>&#39;svg&#39;</span><span class=ansi-blue-fg>)</span><span class=ansi-blue-fg>.</span>decode<span class=ansi-blue-fg>(</span>self<span class=ansi-blue-fg>.</span>_encoding<span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">    142</span> 
+<span class="ansi-green-intense-fg ansi-bold">    143</span>     <span class=ansi-green-fg>def</span> pipe<span class=ansi-blue-fg>(</span>self<span class=ansi-blue-fg>,</span> format<span class=ansi-blue-fg>=</span><span class=ansi-green-fg>None</span><span class=ansi-blue-fg>,</span> renderer<span class=ansi-blue-fg>=</span><span class=ansi-green-fg>None</span><span class=ansi-blue-fg>,</span> formatter<span class=ansi-blue-fg>=</span><span class=ansi-green-fg>None</span><span class=ansi-blue-fg>,</span> quiet<span class=ansi-blue-fg>=</span><span class=ansi-green-fg>False</span><span class=ansi-blue-fg>)</span><span class=ansi-blue-fg>:</span>
+
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/graphviz/files.py</span> in <span class=ansi-cyan-fg>pipe</span><span class=ansi-blue-fg>(self, format, renderer, formatter, quiet)</span>
+<span class="ansi-green-intense-fg ansi-bold">    164</span>         data <span class=ansi-blue-fg>=</span> self<span class=ansi-blue-fg>.</span>source<span class=ansi-blue-fg>.</span>encode<span class=ansi-blue-fg>(</span>self<span class=ansi-blue-fg>.</span>_encoding<span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">    165</span> 
+<span class=ansi-green-fg>--&gt; 166</span><span class=ansi-red-fg>         out = backend.pipe(self._engine, format, data,
+</span><span class="ansi-green-intense-fg ansi-bold">    167</span>                            renderer<span class=ansi-blue-fg>=</span>renderer<span class=ansi-blue-fg>,</span> formatter<span class=ansi-blue-fg>=</span>formatter<span class=ansi-blue-fg>,</span>
+<span class="ansi-green-intense-fg ansi-bold">    168</span>                            quiet=quiet)
+
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/graphviz/backend.py</span> in <span class=ansi-cyan-fg>pipe</span><span class=ansi-blue-fg>(engine, format, data, renderer, formatter, quiet)</span>
+<span class="ansi-green-intense-fg ansi-bold">    266</span>     &#34;&#34;&#34;
+<span class="ansi-green-intense-fg ansi-bold">    267</span>     cmd<span class=ansi-blue-fg>,</span> _ <span class=ansi-blue-fg>=</span> command<span class=ansi-blue-fg>(</span>engine<span class=ansi-blue-fg>,</span> format<span class=ansi-blue-fg>,</span> <span class=ansi-green-fg>None</span><span class=ansi-blue-fg>,</span> renderer<span class=ansi-blue-fg>,</span> formatter<span class=ansi-blue-fg>)</span>
+<span class=ansi-green-fg>--&gt; 268</span><span class=ansi-red-fg>     </span>out<span class=ansi-blue-fg>,</span> _ <span class=ansi-blue-fg>=</span> run<span class=ansi-blue-fg>(</span>cmd<span class=ansi-blue-fg>,</span> input<span class=ansi-blue-fg>=</span>data<span class=ansi-blue-fg>,</span> capture_output<span class=ansi-blue-fg>=</span><span class=ansi-green-fg>True</span><span class=ansi-blue-fg>,</span> check<span class=ansi-blue-fg>=</span><span class=ansi-green-fg>True</span><span class=ansi-blue-fg>,</span> quiet<span class=ansi-blue-fg>=</span>quiet<span class=ansi-blue-fg>)</span>
+<span class="ansi-green-intense-fg ansi-bold">    269</span>     <span class=ansi-green-fg>return</span> out
+<span class="ansi-green-intense-fg ansi-bold">    270</span> 
+
+<span class=ansi-green-fg>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/graphviz/backend.py</span> in <span class=ansi-cyan-fg>run</span><span class=ansi-blue-fg>(cmd, input, capture_output, check, encoding, quiet, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    171</span>     <span class=ansi-green-fg>except</span> OSError <span class=ansi-green-fg>as</span> e<span class=ansi-blue-fg>:</span>
+<span class="ansi-green-intense-fg ansi-bold">    172</span>         <span class=ansi-green-fg>if</span> e<span class=ansi-blue-fg>.</span>errno <span class=ansi-blue-fg>==</span> errno<span class=ansi-blue-fg>.</span>ENOENT<span class=ansi-blue-fg>:</span>
+<span class=ansi-green-fg>--&gt; 173</span><span class=ansi-red-fg>             </span><span class=ansi-green-fg>raise</span> ExecutableNotFound<span class=ansi-blue-fg>(</span>cmd<span class=ansi-blue-fg>)</span> <span class=ansi-green-fg>from</span> e
+<span class="ansi-green-intense-fg ansi-bold">    174</span>         <span class=ansi-green-fg>else</span><span class=ansi-blue-fg>:</span>
+<span class="ansi-green-intense-fg ansi-bold">    175</span>             <span class=ansi-green-fg>raise</span>
+
+<span class=ansi-red-fg>ExecutableNotFound</span>: failed to execute &#39;dot&#39;, make sure the Graphviz executables are on your systems&#39; PATH</pre> </div> </div> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>&lt;graphviz.dot.Digraph at 0x7ffa4fb6fa90&gt;</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>This is clearly a more complex workflow with an intermediate step to compute the full bandstructore of Si both along the special high-symmetry lines in Brillouin zone and with a uniform grid.</p> <p>To make this workshop more usefull, we've provided a set of fake VASP input and outputs and a helper function that will let atomate "run" these calculations. In reality, these take a lot more CPU time and a License to VASP, which we can't provide in this workshop. Let's use that fake VASP utility to "run" this workflow.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>mp_workshop.atomate</span> <span class=kn>import</span> <span class=n>use_fake_vasp_workshop</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now lets run the above workflow. First we have to add this to our LaunchPad. Fireworks hides the database with an object called a LaunchPad. This allows you to submit and query workflows from anywhere you have database access. We need to get ourselves a LaunchPad object so we can submit our workflow</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>fireworks</span> <span class=kn>import</span> <span class=n>LaunchPad</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span> <span class=o>=</span> <span class=n>LaunchPad</span><span class=o>.</span><span class=n>auto_load</span><span class=p>()</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>For this one time, we have to initialize the database. In everyday use, we'll only need to do this once, upon database creation.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>reset</span><span class=p>(</span><span class=n>password</span><span class=o>=</span><span class=kc>None</span><span class=p>,</span><span class=n>require_password</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2020-07-29 16:22:52,820 INFO Performing db tune-up
-2020-07-29 16:22:52,917 INFO LaunchPad was RESET.
+<code>2021-07-28 21:09:31,516 INFO Performing db tune-up
+2021-07-28 21:09:31,649 INFO LaunchPad was RESET.
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf</span> <span class=o>=</span> <span class=n>use_fake_vasp_workshop</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
 <span class=n>lp</span><span class=o>.</span><span class=n>add_wf</span><span class=p>(</span><span class=n>wf</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2020-07-29 16:22:52,930 INFO Added a workflow. id_map: {-5: 1, -4: 2, -3: 3, -2: 4}
+<code>2021-07-28 21:09:31,672 INFO Added a workflow. id_map: {-5: 1, -4: 2, -3: 3, -2: 4}
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{-5: 1, -4: 2, -3: 3, -2: 4}</code>
@@ -439,8 +501,8 @@ Gamma
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{&#39;state&#39;: &#39;READY&#39;,
  &#39;name&#39;: &#39;Si&#39;,
- &#39;created_on&#39;: datetime.datetime(2020, 7, 29, 23, 22, 52, 542000),
- &#39;updated_on&#39;: datetime.datetime(2020, 7, 29, 23, 22, 52, 542000),
+ &#39;created_on&#39;: datetime.datetime(2021, 7, 28, 21, 9, 31, 406000),
+ &#39;updated_on&#39;: datetime.datetime(2021, 7, 28, 21, 9, 31, 406000),
  &#39;states&#39;: OrderedDict([(&#39;Si-nscf line--1&#39;, &#39;WAITING&#39;),
               (&#39;Si-nscf uniform--2&#39;, &#39;WAITING&#39;),
               (&#39;Si-static--3&#39;, &#39;WAITING&#39;),
@@ -484,117 +546,117 @@ optional arguments:
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's run one job in rapidfire mode</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>rlaunch</span> <span class=n>rapidfire</span> <span class=o>--</span><span class=n>nlaunches</span> <span class=mi>1</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>FW Echo Test: MP Workshop
-2020-07-29 16:22:53,942 INFO Hostname/IP lookup (this will take a few seconds)
-2020-07-29 16:22:55,579 INFO Created new dir /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983
-2020-07-29 16:22:55,579 INFO Launching Rocket
-2020-07-29 16:22:55,596 INFO RUNNING fw_id: 4 in directory: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983
-2020-07-29 16:22:55,602 INFO Task started: FileWriteTask.
-2020-07-29 16:22:55,603 INFO Task completed: FileWriteTask 
-2020-07-29 16:22:55,604 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
-2020-07-29 16:22:55,639 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
-2020-07-29 16:22:55,640 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2020-07-29 16:22:55,641 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2020-07-29 16:22:55,662 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2020-07-29 16:22:55,662 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2020-07-29 16:22:55,665 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2020-07-29 16:22:55,665 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2020-07-29 16:22:55,668 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2020-07-29 16:22:55,668 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983
-2020-07-29 16:22:55,668 INFO atomate.vasp.drones Getting task doc for base dir :/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983
-/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
-  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
-2020-07-29 16:22:56,460 INFO atomate.vasp.drones Post-processing dir:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983
-2020-07-29 16:22:56,460 WARNING atomate.vasp.drones Transformations file does not exist.
-2020-07-29 16:22:56,463 INFO atomate.vasp.drones Post-processed /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983
-2020-07-29 16:22:56,548 INFO atomate.utils.database Inserting shyams-mbp.dhcp.lbnl.us:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-55-578983 with taskid = 21
-2020-07-29 16:22:56,588 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 21
-2020-07-29 16:22:56,589 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
-2020-07-29 16:22:56,609 INFO Rocket finished
+2021-07-28 21:09:33,031 INFO Hostname/IP lookup (this will take a few seconds)
+2021-07-28 21:09:34,922 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605
+2021-07-28 21:09:34,922 INFO Launching Rocket
+2021-07-28 21:09:34,951 INFO RUNNING fw_id: 4 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605
+2021-07-28 21:09:34,962 INFO Task started: FileWriteTask.
+2021-07-28 21:09:34,962 INFO Task completed: FileWriteTask 
+2021-07-28 21:09:34,964 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
+2021-07-28 21:09:35,107 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
+2021-07-28 21:09:35,110 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-07-28 21:09:35,111 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-07-28 21:09:35,119 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-07-28 21:09:35,119 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-07-28 21:09:35,121 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-07-28 21:09:35,121 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-07-28 21:09:35,123 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-07-28 21:09:35,123 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605
+2021-07-28 21:09:35,124 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(
+2021-07-28 21:09:35,855 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605
+2021-07-28 21:09:35,855 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-07-28 21:09:35,856 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605
+2021-07-28 21:09:35,913 INFO atomate.utils.database Inserting fv-az219-88.ylzdhobuz03udiqwozmpg25a0d.xx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-34-922605 with taskid = 1
+2021-07-28 21:09:35,923 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 1
+2021-07-28 21:09:35,923 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
+2021-07-28 21:09:35,947 INFO Rocket finished
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Try running with <code>nlaunches</code> unset and see what happens</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>rlaunch</span> <span class=n>rapidfire</span> 
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>FW Echo Test: MP Workshop
-2020-07-29 16:22:57,855 INFO Hostname/IP lookup (this will take a few seconds)
-2020-07-29 16:22:59,793 INFO Created new dir /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907
-2020-07-29 16:22:59,793 INFO Launching Rocket
-2020-07-29 16:22:59,804 INFO RUNNING fw_id: 3 in directory: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907
-2020-07-29 16:22:59,808 INFO Task started: FileWriteTask.
-2020-07-29 16:22:59,808 INFO Task completed: FileWriteTask 
-2020-07-29 16:22:59,810 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
-2020-07-29 16:22:59,820 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
-2020-07-29 16:22:59,822 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}}.
-/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/io/vasp/inputs.py:1853: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
-  warnings.warn(&#34;POTCAR with symbol {} has metadata that does not match\
-2020-07-29 16:23:00,078 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}} 
-2020-07-29 16:23:00,079 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2020-07-29 16:23:00,080 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2020-07-29 16:23:00,098 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2020-07-29 16:23:00,098 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2020-07-29 16:23:00,100 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2020-07-29 16:23:00,101 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2020-07-29 16:23:00,103 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2020-07-29 16:23:00,103 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907
-2020-07-29 16:23:00,103 INFO atomate.vasp.drones Getting task doc for base dir :/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907
-2020-07-29 16:23:01,640 INFO atomate.vasp.drones Post-processing dir:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907
-2020-07-29 16:23:01,641 WARNING atomate.vasp.drones Transformations file does not exist.
-2020-07-29 16:23:01,784 INFO atomate.vasp.drones Post-processed /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907
-2020-07-29 16:23:02,537 INFO atomate.utils.database Inserting shyams-mbp.dhcp.lbnl.us:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-22-59-792907 with taskid = 22
-2020-07-29 16:23:02,834 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 22
-2020-07-29 16:23:02,834 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
-2020-07-29 16:23:02,849 INFO Rocket finished
-2020-07-29 16:23:02,852 INFO Created new dir /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888
-2020-07-29 16:23:02,852 INFO Launching Rocket
-2020-07-29 16:23:02,862 INFO RUNNING fw_id: 1 in directory: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888
-2020-07-29 16:23:02,865 INFO Task started: FileWriteTask.
-2020-07-29 16:23:02,865 INFO Task completed: FileWriteTask 
-2020-07-29 16:23:02,866 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
-2020-07-29 16:23:02,920 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
-2020-07-29 16:23:02,923 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}}.
-/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/symmetry/kpath.py:161: UserWarning: &#39;magmom&#39; entry found in site properties but will be ignored                   for the Setyawan and Curtarolo convention.
+2021-07-28 21:09:37,413 INFO Hostname/IP lookup (this will take a few seconds)
+2021-07-28 21:09:39,313 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233
+2021-07-28 21:09:39,313 INFO Launching Rocket
+2021-07-28 21:09:39,331 INFO RUNNING fw_id: 3 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233
+2021-07-28 21:09:39,337 INFO Task started: FileWriteTask.
+2021-07-28 21:09:39,337 INFO Task completed: FileWriteTask 
+2021-07-28 21:09:39,339 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
+2021-07-28 21:09:39,348 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
+2021-07-28 21:09:39,350 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}}.
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
+  warnings.warn(
+2021-07-28 21:09:39,775 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}} 
+2021-07-28 21:09:39,779 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-07-28 21:09:39,780 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-07-28 21:09:39,791 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-07-28 21:09:39,792 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-07-28 21:09:39,794 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-07-28 21:09:39,794 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-07-28 21:09:39,796 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-07-28 21:09:39,796 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233
+2021-07-28 21:09:39,796 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233
+2021-07-28 21:09:40,619 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233
+2021-07-28 21:09:40,620 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-07-28 21:09:40,802 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233
+2021-07-28 21:09:40,810 INFO atomate.utils.database Inserting fv-az219-88.ylzdhobuz03udiqwozmpg25a0d.xx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-39-313233 with taskid = 2
+2021-07-28 21:09:40,819 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 2
+2021-07-28 21:09:40,819 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
+2021-07-28 21:09:40,840 INFO Rocket finished
+2021-07-28 21:09:40,844 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974
+2021-07-28 21:09:40,844 INFO Launching Rocket
+2021-07-28 21:09:40,859 INFO RUNNING fw_id: 1 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974
+2021-07-28 21:09:40,864 INFO Task started: FileWriteTask.
+2021-07-28 21:09:40,864 INFO Task completed: FileWriteTask 
+2021-07-28 21:09:40,866 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
+2021-07-28 21:09:40,933 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
+2021-07-28 21:09:40,936 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}}.
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/symmetry/kpath.py:163: UserWarning: &#39;magmom&#39; entry found in site properties but will be ignored                   for the Setyawan and Curtarolo convention.
   warn(
-/Users/shyamd/Dropbox/Codes/pymatgen/pymatgen/symmetry/kpath.py:177: UserWarning: The input structure does not match the expected standard primitive! The path can be incorrect. Use at your own risk.
+/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/symmetry/kpath.py:179: UserWarning: The input structure does not match the expected standard primitive! The path can be incorrect. Use at your own risk.
   warn(
-2020-07-29 16:23:03,365 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}} 
-2020-07-29 16:23:03,367 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2020-07-29 16:23:03,367 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2020-07-29 16:23:03,381 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2020-07-29 16:23:03,382 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2020-07-29 16:23:03,384 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2020-07-29 16:23:03,384 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2020-07-29 16:23:03,386 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2020-07-29 16:23:03,386 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888
-2020-07-29 16:23:03,386 INFO atomate.vasp.drones Getting task doc for base dir :/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888
-2020-07-29 16:23:04,233 INFO atomate.vasp.drones Post-processing dir:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888
-2020-07-29 16:23:04,234 WARNING atomate.vasp.drones Transformations file does not exist.
-2020-07-29 16:23:04,362 INFO atomate.vasp.drones Post-processed /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888
-2020-07-29 16:23:04,629 INFO atomate.utils.database Inserting shyams-mbp.dhcp.lbnl.us:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-02-851888 with taskid = 23
-2020-07-29 16:23:04,754 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 23
-2020-07-29 16:23:04,755 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
-2020-07-29 16:23:04,766 INFO Rocket finished
-2020-07-29 16:23:04,769 INFO Created new dir /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444
-2020-07-29 16:23:04,769 INFO Launching Rocket
-2020-07-29 16:23:04,782 INFO RUNNING fw_id: 2 in directory: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444
-2020-07-29 16:23:04,785 INFO Task started: FileWriteTask.
-2020-07-29 16:23:04,786 INFO Task completed: FileWriteTask 
-2020-07-29 16:23:04,787 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
-2020-07-29 16:23:04,858 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
-2020-07-29 16:23:04,860 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}}.
-2020-07-29 16:23:05,121 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}} 
-2020-07-29 16:23:05,123 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2020-07-29 16:23:05,123 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2020-07-29 16:23:05,138 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2020-07-29 16:23:05,138 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2020-07-29 16:23:05,140 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2020-07-29 16:23:05,140 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2020-07-29 16:23:05,142 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2020-07-29 16:23:05,142 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444
-2020-07-29 16:23:05,142 INFO atomate.vasp.drones Getting task doc for base dir :/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444
-2020-07-29 16:23:05,939 INFO atomate.vasp.drones Post-processing dir:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444
-2020-07-29 16:23:05,939 WARNING atomate.vasp.drones Transformations file does not exist.
-2020-07-29 16:23:06,085 INFO atomate.vasp.drones Post-processed /Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444
-2020-07-29 16:23:06,374 INFO atomate.utils.database Inserting shyams-mbp.dhcp.lbnl.us:/Users/shyamd/Dropbox/Codes/workshop/workshop/lessons/05_automated_dft/launcher_2020-07-29-23-23-04-769444 with taskid = 24
-2020-07-29 16:23:06,498 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 24
-2020-07-29 16:23:06,498 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
-2020-07-29 16:23:06,509 INFO Rocket finished
+2021-07-28 21:09:41,513 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}} 
+2021-07-28 21:09:41,516 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-07-28 21:09:41,516 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-07-28 21:09:41,522 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-07-28 21:09:41,522 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-07-28 21:09:41,524 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-07-28 21:09:41,524 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-07-28 21:09:41,526 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-07-28 21:09:41,526 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974
+2021-07-28 21:09:41,527 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974
+2021-07-28 21:09:41,999 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974
+2021-07-28 21:09:41,999 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-07-28 21:09:42,096 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974
+2021-07-28 21:09:42,101 INFO atomate.utils.database Inserting fv-az219-88.ylzdhobuz03udiqwozmpg25a0d.xx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-40-843974 with taskid = 3
+2021-07-28 21:09:42,159 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 3
+2021-07-28 21:09:42,159 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
+2021-07-28 21:09:42,175 INFO Rocket finished
+2021-07-28 21:09:42,179 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072
+2021-07-28 21:09:42,179 INFO Launching Rocket
+2021-07-28 21:09:42,195 INFO RUNNING fw_id: 2 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072
+2021-07-28 21:09:42,201 INFO Task started: FileWriteTask.
+2021-07-28 21:09:42,202 INFO Task completed: FileWriteTask 
+2021-07-28 21:09:42,204 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
+2021-07-28 21:09:42,269 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
+2021-07-28 21:09:42,271 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}}.
+2021-07-28 21:09:42,696 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}} 
+2021-07-28 21:09:42,699 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-07-28 21:09:42,699 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-07-28 21:09:42,705 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-07-28 21:09:42,705 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-07-28 21:09:42,707 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-07-28 21:09:42,707 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-07-28 21:09:42,709 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-07-28 21:09:42,709 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072
+2021-07-28 21:09:42,709 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072
+2021-07-28 21:09:43,080 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072
+2021-07-28 21:09:43,081 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-07-28 21:09:43,270 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072
+2021-07-28 21:09:43,276 INFO atomate.utils.database Inserting fv-az219-88.ylzdhobuz03udiqwozmpg25a0d.xx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-07-28-21-09-42-179072 with taskid = 4
+2021-07-28 21:09:43,334 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 4
+2021-07-28 21:09:43,335 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
+2021-07-28 21:09:43,350 INFO Rocket finished
 </code>
 </pre> </div> </div> </div> </div> </div> </article> </div> </div> </main> <footer class=md-footer> <nav class="md-footer__inner md-grid" aria-label=Footer> <a href=../../04_materials_api/api_use/ class="md-footer__link md-footer__link--prev" aria-label="Previous: The Materials API" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> The Materials API </div> </div> </a> <a href=../../06_new_systems/06%20-%20New%20Systems%20-%20filled/ class="md-footer__link md-footer__link--next" aria-label="Next: Exploring New Systems" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> Exploring New Systems </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Built by The Materials Project </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../../..", "features": ["instant", "tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script> <script src=../../../assets/javascripts/bundle.76f349be.min.js></script> <script src=../../../assets/config.js></script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> </body> </html>
