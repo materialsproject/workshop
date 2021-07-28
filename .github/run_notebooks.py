@@ -33,7 +33,9 @@ for notebook in notebooks:
     nb = nbformat.read(notebook, as_version=4)
 
     for cell in nb.cells:
-        if cell.get("cell_type", "") == "code" and "no-execute" in cell.get("metadata",{}).get("tags", []):
+        if cell.get("cell_type", "") == "code" and "no-execute" in cell.get(
+            "metadata", {}
+        ).get("tags", []):
             cell["cell_type"] = "markdown"
 
     client = NotebookClient(
