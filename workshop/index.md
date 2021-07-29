@@ -4,7 +4,7 @@ The Materials Project Workshop is two-day interactive workshop to learn to use t
 
 ## Workshop Videos
 
-The lessons for the last virtual workshop are on [Youtube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE) and [Bilibili](https://www.bilibili.com/video/BV1Uz4y1f7L5/).
+The lessons for the last virtual workshop (2020) are on [Youtube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE) and [Bilibili](https://www.bilibili.com/video/BV1Uz4y1f7L5/).
 
 
 
@@ -26,10 +26,9 @@ All times are in Pacific Daylight Time.
 
 ### Tuesday Afternoon -- MongoDB using Python primer
 
-- 13:00-13:20 Data Modeling - Python Types to JSON to MongoDB
-- 13:20-14:00 Listing, Counting, Finding, and Dot Notation
+- 13:00-14:00 Data Modeling - Python Types to JSON to MongoDB
 - 14:00-14:20 Break
-- 14:20-15:20 Advanced Filtering, Basic Aggregation, and Indexing
+- 14:20-15:20 Setting up your own Python Environments
 - 15:20-15:40 Open Discussion
 - 15:40-16:00 Wrap-Up
 
@@ -48,7 +47,7 @@ All times are in Pacific Daylight Time.
 
 ### Wednesday Afternoon
 
-- 13:00-14:00 Working with Surfaces in Pymatgen
+- 13:00-14:00 Working with Surfaces and Interfaces in Pymatgen
 - 14:00-14:20 Break
 - 14:20-15:20 Using the Materials API
 - 15:20-15:40 Open Discussion
@@ -59,13 +58,13 @@ All times are in Pacific Daylight Time.
 - 09:00-09:20 Intro
 - 09:20-10:20 Automating DFT
 - 10:20-10:40 Break
-- 10:40-11:40 Exploring New Systems with Pymatgen
+- 10:40-11:40 [MPContribs](https://mpcontribs.org): Share You Data via MPContribs
 - 11:40-12:00 Open Discussion
 - 12:00-13:00 Lunch
 
 ### Thursday Afternoon
 
-- 13:00-14:00 [MPContribs](https://mpcontribs.org): Share You Data via MPContribs
+- 13:00-14:00 Exploring Synthesis with MP Data and Reaction Networks
 - 14:00-14:20 Break
 - 14:20-15:40 Machine Learning with Matminer
 - 15:40-16:00 Wrap-Up
