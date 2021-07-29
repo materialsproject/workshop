@@ -4,7 +4,7 @@ copyright: Built by The Materials Project
 site_url: https://workshop.materialsproject.org
 repo_url: https://github.com/materialsproject/workshop
 docs_dir: workshop
-extra_css: 
+extra_css:
   - assets/workshop.css
 extra_javascript:
   - assets/config.js
@@ -38,7 +38,7 @@ nav:
       - The Materials Project Website: lessons/01_website_walkthrough/website_walkthrough.md
       - Intro to Pymatgen: lessons/02_intro_pymatgen/1 - pymatgen foundations.ipynb
       - Working with Surfaces: lessons/03_surfaces/Working With Surfaces_lesson.ipynb
-      - The Materials API: lessons/04_materials_api/api_use.ipynb
+      - The Materials API: lessons/04_materials_api/MAPI Lesson (filled).ipynb
     - Day 2:
       - Automated DFT: lessons/05_automated_dft/Lesson.ipynb
       - Exploring New Systems: lessons/06_new_systems/06 - New Systems - filled.ipynb
