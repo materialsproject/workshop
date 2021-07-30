@@ -64,6 +64,8 @@ jobs:
 
     - name: Install workshop data
       run: python ./binder/populate_nobel_database.py
+      env:
+        PR: ${{ github.event.pull_request.number }}
 
     - name: Run Notebooks
       env:

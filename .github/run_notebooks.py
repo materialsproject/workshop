@@ -7,6 +7,9 @@ from nbclient import NotebookClient
 from nbclient.exceptions import CellExecutionError
 
 
+run_on_master_only = ["04_materials_api"]
+
+
 def recursive_get(items):
     if isinstance(items, dict):
         for v in items.values():
@@ -26,6 +29,11 @@ notebooks = [
     for item in recursive_get(mkdocs_config.get("nav", {}))
     if item.endswith(".ipynb")
 ]
+
+if os.environ.get("PR", "") != "":
+    notebooks = [
+        nb for nb in notebooks if not any(avoid in nb for avoid in run_on_master_only)
+    ]
 
 os.chdir("workshop")
 for notebook in notebooks:
