@@ -55,7 +55,7 @@
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=searching-for-documents>Searching for documents<a class=headerlink href=#searching-for-documents title="Permanent link">&para;</a></h3> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's see what a document looks like in the <code>prizes</code> collection using the <code>find_one()</code> method. This takes an optional <code>filter</code> argument. Passing an empty filter (<code>{}</code>) is the same as passing no filter. In Python, the returned document takes the form of a dictionary. The keys of the dictionary are the (root-level) "fields" of the document.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>prizes</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;61084684ed264b285b7c1216&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;61084c758126e50385ad532b&#39;),
  &#39;year&#39;: &#39;2020&#39;,
  &#39;category&#39;: &#39;chemistry&#39;,
  &#39;laureates&#39;: [{&#39;id&#39;: &#39;991&#39;,
@@ -71,7 +71,7 @@
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now add a filter to our search to ensure that the returned <code>prizes</code> document contains data for a physics nobel prize.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>criteria</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&quot;category&quot;</span><span class=p>:</span> <span class=s2>&quot;physics&quot;</span><span class=p>}</span>
 <span class=n>db</span><span class=o>.</span><span class=n>prizes</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;61084684ed264b285b7c121a&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;61084c758126e50385ad532f&#39;),
  &#39;year&#39;: &#39;2020&#39;,
  &#39;category&#39;: &#39;physics&#39;,
  &#39;laureates&#39;: [{&#39;id&#39;: &#39;988&#39;,
@@ -163,7 +163,7 @@
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;61084684ed264b285b7c14ba&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;61084c758126e50385ad55cf&#39;),
  &#39;id&#39;: &#39;26&#39;,
  &#39;firstname&#39;: &#39;Albert&#39;,
  &#39;surname&#39;: &#39;Einstein&#39;,
@@ -262,7 +262,7 @@ Database(MongoClient(host=[&#39;localhost:27017&#39;], document_class=dict, tz_a
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;61084684ed264b285b7c14e2&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;61084c758126e50385ad55f7&#39;),
  &#39;id&#39;: &#39;66&#39;,
  &#39;firstname&#39;: &#39;John&#39;,
  &#39;surname&#39;: &#39;Bardeen&#39;,
