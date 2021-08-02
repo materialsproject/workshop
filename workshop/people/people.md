@@ -1,6 +1,6 @@
 # People
 
-The annual MP Workshop would not be possible without all the people that contribute. In particular, several critical people step up each year to plan, organize, develop lessons, run the workshop, teach, collect post-workshop surveys, and begin planning again. This page highlights those individuals who have contributed significantly to this workshop each year.
+The annual MP Workshop would not be possible without all the people that contribute. In particular, several critical people step up each year to plan, organize, develop lessons, run the workshop, teach, collect post-workshop surveys, and begin planning again. This page highlights those individuals who have contributed significantly to this workshop this year.
 
 ## Organizers
 
@@ -41,4 +41,5 @@ The annual MP Workshop would not be possible without all the people that contrib
     <li class="person"> <img class="person_image" src="/people/jburns.jpeg"><p>Jordan Burns</p></li>
     <li class="person"> <img class="person_image" src="/people/cmccandler.jpeg"><p>Caitlin McCandler</p></li>
     <li class="person"> <img class="person_image" src="/people/mvenetos.jpeg"><p>Max Venetos</p></li>
+    <li class="person"> <img class="person_image" src="/people/bli.jpg"><p>Bryant Li</p></li>
 </ul>
