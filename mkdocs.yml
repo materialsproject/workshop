@@ -30,7 +30,7 @@ nav:
   - Primer:
     - Intro: primer/01_basic_python/0 - Introduction and Jupyter Use.ipynb
     - Basic Python: primer/01_basic_python/1 - Python Primer.ipynb
-    - Advanced Python: primer/02_building_logic/2 - Python Primer - Part II.ipynb
+    - Advanced Python: primer/02_python_part2/lessons.ipynb
     - Intro to MongoDB: primer/03_MongoDB_part1/lessons_filled.ipynb
     - Advanced MongoDB: primer/04_MongoDB_part2/lesson.ipynb
   - Workshop:
@@ -38,7 +38,7 @@ nav:
       - The Materials Project Website: lessons/01_website_walkthrough/website_walkthrough.md
       - Intro to Pymatgen: lessons/02_intro_pymatgen/1 - pymatgen foundations.ipynb
       - Working with Surfaces: lessons/03_surfaces/Working With Surfaces_lesson.ipynb
-      - The Materials API: lessons/04_materials_api/api_use.ipynb
+      - The Materials API: lessons/04_materials_api/MAPI Lesson (filled).ipynb
     - Day 2:
       - Automated DFT: lessons/05_automated_dft/Lesson.ipynb
       - Exploring New Systems: lessons/06_new_systems/06 - New Systems - filled.ipynb
