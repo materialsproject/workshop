@@ -237,7 +237,7 @@ PeriodicSite: Si (0.0000, 0.0000, 0.0000) [0.0000, -0.0000, 0.0000]</code>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>drone</span> <span class=o>=</span> <span class=n>VaspDrone</span><span class=p>()</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>task_doc</span> <span class=o>=</span> <span class=n>drone</span><span class=o>.</span><span class=n>assimilate</span><span class=p>(</span><span class=n>path</span><span class=o>=</span><span class=s2>&quot;./example_VASP_Al16Cr10&quot;</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2021-08-02 19:26:07,678 INFO atomate.vasp.drones Getting task doc for base dir :./example_VASP_Al16Cr10
+<code>2021-08-02 19:26:37,233 INFO atomate.vasp.drones Getting task doc for base dir :./example_VASP_Al16Cr10
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_subarea output_stream output_stderr output_text"> <pre>
 <code>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Al has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
@@ -246,9 +246,9 @@ PeriodicSite: Si (0.0000, 0.0000, 0.0000) [0.0000, -0.0000, 0.0000]</code>
   warnings.warn(
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2021-08-02 19:26:09,880 INFO atomate.vasp.drones Post-processing dir:./example_VASP_Al16Cr10
-2021-08-02 19:26:09,881 WARNING atomate.vasp.drones Transformations file does not exist.
-2021-08-02 19:26:09,883 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/example_VASP_Al16Cr10
+<code>2021-08-02 19:26:39,633 INFO atomate.vasp.drones Post-processing dir:./example_VASP_Al16Cr10
+2021-08-02 19:26:39,635 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-08-02 19:26:39,637 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/example_VASP_Al16Cr10
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=nb>print</span><span class=p>(</span><span class=n>task_doc</span><span class=o>.</span><span class=n>keys</span><span class=p>())</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
@@ -346,7 +346,7 @@ The above exception was the direct cause of the following exception:
 <span class="ansi-green-intense-fg ansi-bold">    175</span>             <span class=ansi-green-fg>raise</span>
 
 <span class=ansi-red-fg>ExecutableNotFound</span>: failed to execute &#39;dot&#39;, make sure the Graphviz executables are on your systems&#39; PATH</pre> </div> </div> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>&lt;graphviz.dot.Digraph at 0x7fefdd9ff4c0&gt;</code>
+<code>&lt;graphviz.dot.Digraph at 0x7fb9b0b00ac0&gt;</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>wf_to_graph</span><span class=p>(</span><span class=n>bs_wf</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_text output_error"> <pre>
 <span class=ansi-red-fg>---------------------------------------------------------------------------</span>
@@ -407,7 +407,7 @@ The above exception was the direct cause of the following exception:
 <span class="ansi-green-intense-fg ansi-bold">    175</span>             <span class=ansi-green-fg>raise</span>
 
 <span class=ansi-red-fg>ExecutableNotFound</span>: failed to execute &#39;dot&#39;, make sure the Graphviz executables are on your systems&#39; PATH</pre> </div> </div> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>&lt;graphviz.dot.Digraph at 0x7fefddc26730&gt;</code>
+<code>&lt;graphviz.dot.Digraph at 0x7fb9b0b00b80&gt;</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The exact steps in each firework can vary but for these cases, each firework roughly represents one VASP calculation which consists of the following steps:</p> <div class=codehilite><pre><span></span><code><span class=mf>1.</span> <span class=n>Write</span> <span class=n>VASP</span> <span class=kr>input</span> <span class=n>files</span>
 <span class=mf>2.</span> <span class=kr>Run</span> <span class=n>VASP</span>
 <span class=mf>3.</span> <span class=n>Parse</span> <span class=n>VASP</span> <span class=n>output</span> <span class=n>files</span>
@@ -418,12 +418,12 @@ The above exception was the direct cause of the following exception:
 </code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span> <span class=o>=</span> <span class=n>LaunchPad</span><span class=o>.</span><span class=n>auto_load</span><span class=p>()</span>
 </code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>reset</span><span class=p>(</span><span class=n>password</span><span class=o>=</span><span class=kc>None</span><span class=p>,</span><span class=n>require_password</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2021-08-02 19:26:10,056 INFO Performing db tune-up
-2021-08-02 19:26:10,143 INFO LaunchPad was RESET.
+<code>2021-08-02 19:26:39,829 INFO Performing db tune-up
+2021-08-02 19:26:39,935 INFO LaunchPad was RESET.
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Note <code>lp.reset()</code> should only be executed one time when you are first initializing your database set-up. If you reset your LaunchPad at a later time, you will erase the record of past calcuations you have run.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Adding our workflows to our Launchpad will encode and store our workflow objects into MongoDB so they can be accessed later. Let's start by adding one workflow, the simpler structure optimization workflow.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>add_wf</span><span class=p>(</span><span class=n>so_wf</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2021-08-02 19:26:10,157 INFO Added a workflow. id_map: {-1: 1}
+<code>2021-08-02 19:26:39,951 INFO Added a workflow. id_map: {-1: 1}
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{-1: 1}</code>
@@ -431,8 +431,8 @@ The above exception was the direct cause of the following exception:
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{&#39;state&#39;: &#39;READY&#39;,
  &#39;name&#39;: &#39;Si&#39;,
- &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 9, 919000),
- &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 9, 919000),
+ &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 39, 675000),
+ &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 39, 675000),
  &#39;states&#39;: OrderedDict([(&#39;Si-structure optimization--1&#39;, &#39;READY&#39;)]),
  &#39;launch_dirs&#39;: OrderedDict([(&#39;Si-structure optimization--1&#39;, [])])}</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now that we a workflow in our LaunchPad, we are ready to run it. Normally we run fireworks through the command-line interface on supercomputers because external codes, such as VASP, require more compute resources. However, for today's demonstration, we will run our workflows locally in this notebook to illustrate how it works.</p> <p>Fireworks has a command called <code>rlaunch</code> for "launching" or running a firework in a workflow from our LaunchPad. Let's see how to use it and use "rapidfire" mode.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>rlaunch</span> <span class=o>--</span><span class=n>help</span>
@@ -470,45 +470,45 @@ optional arguments:
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>rlaunch</span> <span class=n>rapidfire</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>FW Echo Test: MP Workshop
-2021-08-02 19:26:11,246 INFO Hostname/IP lookup (this will take a few seconds)
-2021-08-02 19:26:12,791 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794
-2021-08-02 19:26:12,792 INFO Launching Rocket
-2021-08-02 19:26:12,814 INFO RUNNING fw_id: 1 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794
-2021-08-02 19:26:12,823 INFO Task started: FileWriteTask.
-2021-08-02 19:26:12,823 INFO Task completed: FileWriteTask 
-2021-08-02 19:26:12,825 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
-2021-08-02 19:26:12,964 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
-2021-08-02 19:26:12,967 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2021-08-02 19:26:12,968 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2021-08-02 19:26:12,974 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2021-08-02 19:26:12,974 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2021-08-02 19:26:12,976 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2021-08-02 19:26:12,976 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2021-08-02 19:26:12,978 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2021-08-02 19:26:12,978 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794
-2021-08-02 19:26:12,978 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794
+2021-08-02 19:26:41,189 INFO Hostname/IP lookup (this will take a few seconds)
+2021-08-02 19:26:42,955 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969
+2021-08-02 19:26:42,955 INFO Launching Rocket
+2021-08-02 19:26:42,981 INFO RUNNING fw_id: 1 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969
+2021-08-02 19:26:42,990 INFO Task started: FileWriteTask.
+2021-08-02 19:26:42,991 INFO Task completed: FileWriteTask 
+2021-08-02 19:26:42,992 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
+2021-08-02 19:26:43,135 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
+2021-08-02 19:26:43,138 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-08-02 19:26:43,139 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-08-02 19:26:43,145 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-08-02 19:26:43,145 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-08-02 19:26:43,148 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-08-02 19:26:43,148 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-08-02 19:26:43,150 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-08-02 19:26:43,150 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969
+2021-08-02 19:26:43,150 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969
 /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
   warnings.warn(
-2021-08-02 19:26:13,618 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794
-2021-08-02 19:26:13,619 WARNING atomate.vasp.drones Transformations file does not exist.
-2021-08-02 19:26:13,620 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794
-2021-08-02 19:26:13,665 INFO atomate.utils.database Inserting fv-az213-732.c2vz3wqhpjau3hcstnyptvmwla.cx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794 with taskid = 1
-2021-08-02 19:26:13,674 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 1
-2021-08-02 19:26:13,675 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
-2021-08-02 19:26:13,691 INFO Rocket finished
+2021-08-02 19:26:43,856 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969
+2021-08-02 19:26:43,857 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-08-02 19:26:43,857 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969
+2021-08-02 19:26:43,911 INFO atomate.utils.database Inserting fv-az219-546.ylzdhobuz03udiqwozmpg25a0d.xx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969 with taskid = 1
+2021-08-02 19:26:43,920 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 1
+2021-08-02 19:26:43,921 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
+2021-08-02 19:26:43,941 INFO Rocket finished
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's check on our workflow in our LaunchPad to see how it has changed after launching one firework.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>get_wf_summary_dict</span><span class=p>(</span><span class=n>fw_id</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{&#39;state&#39;: &#39;COMPLETED&#39;,
  &#39;name&#39;: &#39;Si&#39;,
- &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 9, 919000),
- &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 13, 684000),
+ &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 39, 675000),
+ &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 43, 933000),
  &#39;states&#39;: OrderedDict([(&#39;Si-structure optimization--1&#39;, &#39;COMPLETED&#39;)]),
  &#39;launch_dirs&#39;: OrderedDict([(&#39;Si-structure optimization--1&#39;,
-               [&#39;/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-12-791794&#39;])])}</code>
+               [&#39;/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-42-954969&#39;])])}</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Great! We can see the state of the one firework in our workflow has changed to COMPLETED and now the workflow is done.</p> <p>Now let's try running the more complicated bandstructure workflow which has four fireworks. First let's add the workflow to our LaunchPad and look at its summary dictionary.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>add_wf</span><span class=p>(</span><span class=n>bs_wf</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>2021-08-02 19:26:14,778 INFO Added a workflow. id_map: {-5: 2, -4: 3, -3: 4, -2: 5}
+<code>2021-08-02 19:26:44,863 INFO Added a workflow. id_map: {-5: 2, -4: 3, -3: 4, -2: 5}
 </code>
 </pre> </div> </div> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{-5: 2, -4: 3, -3: 4, -2: 5}</code>
@@ -516,8 +516,8 @@ optional arguments:
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{&#39;state&#39;: &#39;READY&#39;,
  &#39;name&#39;: &#39;Si&#39;,
- &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 9, 930000),
- &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 9, 930000),
+ &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 39, 689000),
+ &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 39, 689000),
  &#39;states&#39;: OrderedDict([(&#39;Si-nscf line--2&#39;, &#39;WAITING&#39;),
               (&#39;Si-nscf uniform--3&#39;, &#39;WAITING&#39;),
               (&#39;Si-static--4&#39;, &#39;WAITING&#39;),
@@ -529,58 +529,58 @@ optional arguments:
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now let's move forward with running the workflow. Note that if the <code>--nlaunches</code> flag is not used, <code>rlaunch rapidfire</code> will continue to launch more fireworks from the LaunchPad until no "READY" fireworks remain. This is convenient for our case because we have 4 fireworks in our workflow that need to run.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>rlaunch</span> <span class=n>rapidfire</span> 
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>FW Echo Test: MP Workshop
-2021-08-02 19:26:15,250 INFO Hostname/IP lookup (this will take a few seconds)
-2021-08-02 19:26:16,780 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895
-2021-08-02 19:26:16,781 INFO Launching Rocket
-2021-08-02 19:26:16,803 INFO RUNNING fw_id: 5 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895
-2021-08-02 19:26:16,811 INFO Task started: FileWriteTask.
-2021-08-02 19:26:16,811 INFO Task completed: FileWriteTask 
-2021-08-02 19:26:16,813 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
-2021-08-02 19:26:16,950 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
-2021-08-02 19:26:16,952 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2021-08-02 19:26:16,954 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2021-08-02 19:26:16,959 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2021-08-02 19:26:16,959 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2021-08-02 19:26:16,961 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2021-08-02 19:26:16,961 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2021-08-02 19:26:16,963 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2021-08-02 19:26:16,963 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895
-2021-08-02 19:26:16,963 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895
+2021-08-02 19:26:45,414 INFO Hostname/IP lookup (this will take a few seconds)
+2021-08-02 19:26:47,161 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470
+2021-08-02 19:26:47,161 INFO Launching Rocket
+2021-08-02 19:26:47,187 INFO RUNNING fw_id: 5 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470
+2021-08-02 19:26:47,196 INFO Task started: FileWriteTask.
+2021-08-02 19:26:47,197 INFO Task completed: FileWriteTask 
+2021-08-02 19:26:47,199 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}.
+2021-08-02 19:26:47,338 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}} 
+2021-08-02 19:26:47,340 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-08-02 19:26:47,342 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-08-02 19:26:47,348 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-08-02 19:26:47,348 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-08-02 19:26:47,351 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-08-02 19:26:47,352 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-08-02 19:26:47,354 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-08-02 19:26:47,354 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470
+2021-08-02 19:26:47,354 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470
 /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/io/vasp/inputs.py:1792: UnknownPotcarWarning: POTCAR with symbol Si has metadata that does not match                          any VASP POTCAR known to pymatgen. The data in this                          POTCAR is known to match the following functionals:                          [&#39;PBE&#39;]
   warnings.warn(
-2021-08-02 19:26:17,598 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895
-2021-08-02 19:26:17,599 WARNING atomate.vasp.drones Transformations file does not exist.
-2021-08-02 19:26:17,600 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895
-2021-08-02 19:26:17,606 INFO atomate.utils.database Inserting fv-az213-732.c2vz3wqhpjau3hcstnyptvmwla.cx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895 with taskid = 2
-2021-08-02 19:26:17,614 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 2
-2021-08-02 19:26:17,615 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
-2021-08-02 19:26:17,634 INFO Rocket finished
-2021-08-02 19:26:17,637 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-17-637193
-2021-08-02 19:26:17,637 INFO Launching Rocket
-2021-08-02 19:26:17,648 INFO RUNNING fw_id: 4 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-17-637193
-2021-08-02 19:26:17,652 INFO Task started: FileWriteTask.
-2021-08-02 19:26:17,652 INFO Task completed: FileWriteTask 
-2021-08-02 19:26:17,654 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
-2021-08-02 19:26:17,661 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
-2021-08-02 19:26:17,663 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}}.
-2021-08-02 19:26:17,944 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}} 
-2021-08-02 19:26:17,948 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
-2021-08-02 19:26:17,948 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
-2021-08-02 19:26:17,959 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
-2021-08-02 19:26:17,959 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
-2021-08-02 19:26:17,961 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
-2021-08-02 19:26:17,961 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
-2021-08-02 19:26:17,963 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
-2021-08-02 19:26:17,963 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-17-637193
-2021-08-02 19:26:17,963 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-17-637193
-2021-08-02 19:26:18,616 ERROR atomate.vasp.drones Traceback (most recent call last):
+2021-08-02 19:26:48,054 INFO atomate.vasp.drones Post-processing dir:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470
+2021-08-02 19:26:48,054 WARNING atomate.vasp.drones Transformations file does not exist.
+2021-08-02 19:26:48,055 INFO atomate.vasp.drones Post-processed /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470
+2021-08-02 19:26:48,062 INFO atomate.utils.database Inserting fv-az219-546.ylzdhobuz03udiqwozmpg25a0d.xx.internal.cloudapp.net:/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470 with taskid = 2
+2021-08-02 19:26:48,072 INFO atomate.vasp.firetasks.parse_outputs Finished parsing with task_id: 2
+2021-08-02 19:26:48,072 INFO Task completed: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}} 
+2021-08-02 19:26:48,093 INFO Rocket finished
+2021-08-02 19:26:48,097 INFO Created new dir /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-48-097079
+2021-08-02 19:26:48,097 INFO Launching Rocket
+2021-08-02 19:26:48,110 INFO RUNNING fw_id: 4 in directory: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-48-097079
+2021-08-02 19:26:48,115 INFO Task started: FileWriteTask.
+2021-08-02 19:26:48,115 INFO Task completed: FileWriteTask 
+2021-08-02 19:26:48,117 INFO Task started: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}.
+2021-08-02 19:26:48,125 INFO Task completed: {{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}} 
+2021-08-02 19:26:48,127 INFO Task started: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}}.
+2021-08-02 19:26:48,435 INFO Task completed: {{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}} 
+2021-08-02 19:26:48,438 INFO Task started: {{atomate.vasp.firetasks.run_calc.RunVaspFake}}.
+2021-08-02 19:26:48,438 INFO atomate.vasp.firetasks.run_calc RunVaspFake: verified inputs successfully
+2021-08-02 19:26:48,449 INFO atomate.vasp.firetasks.run_calc RunVaspFake: ran fake VASP, generated outputs
+2021-08-02 19:26:48,449 INFO Task completed: {{atomate.vasp.firetasks.run_calc.RunVaspFake}} 
+2021-08-02 19:26:48,452 INFO Task started: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}}.
+2021-08-02 19:26:48,452 INFO Task completed: {{atomate.common.firetasks.glue_tasks.PassCalcLocs}} 
+2021-08-02 19:26:48,454 INFO Task started: {{atomate.vasp.firetasks.parse_outputs.VaspToDb}}.
+2021-08-02 19:26:48,454 INFO atomate.vasp.firetasks.parse_outputs PARSING DIRECTORY: /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-48-097079
+2021-08-02 19:26:48,454 INFO atomate.vasp.drones Getting task doc for base dir :/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-48-097079
+2021-08-02 19:26:49,211 ERROR atomate.vasp.drones Traceback (most recent call last):
   File &#34;/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/atomate/vasp/drones.py&#34;, line 363, in generate_doc
     s.add_site_property(&#34;magmom&#34;, magmoms)
   File &#34;/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/core/structure.py&#34;, line 430, in add_site_property
     raise ValueError(&#34;Values must be same length as sites.&#34;)
 ValueError: Values must be same length as sites.
 
-2021-08-02 19:26:18,616 ERROR atomate.vasp.drones Error in /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-17-637193.
+2021-08-02 19:26:49,211 ERROR atomate.vasp.drones Error in /home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-48-097079.
 Traceback (most recent call last):
   File &#34;/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/atomate/vasp/drones.py&#34;, line 363, in generate_doc
     s.add_site_property(&#34;magmom&#34;, magmoms)
@@ -600,14 +600,14 @@ Traceback (most recent call last):
   File &#34;/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pymatgen/core/structure.py&#34;, line 430, in add_site_property
     raise ValueError(&#34;Values must be same length as sites.&#34;)
 ValueError: Values must be same length as sites.
-2021-08-02 19:26:18,634 INFO Rocket finished
+2021-08-02 19:26:49,230 INFO Rocket finished
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Once <code>rlaunch rapidfire</code> has finished running, now we can check to see if this workflow completed successfully.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>lp</span><span class=o>.</span><span class=n>get_wf_summary_dict</span><span class=p>(</span><span class=n>fw_id</span><span class=o>=</span><span class=mi>2</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>{&#39;state&#39;: &#39;FIZZLED&#39;,
  &#39;name&#39;: &#39;Si&#39;,
- &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 9, 930000),
- &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 18, 630000),
+ &#39;created_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 39, 689000),
+ &#39;updated_on&#39;: datetime.datetime(2021, 8, 2, 19, 26, 49, 226000),
  &#39;states&#39;: OrderedDict([(&#39;Si-nscf line--2&#39;, &#39;WAITING&#39;),
               (&#39;Si-nscf uniform--3&#39;, &#39;WAITING&#39;),
               (&#39;Si-static--4&#39;, &#39;FIZZLED&#39;),
@@ -615,7 +615,7 @@ ValueError: Values must be same length as sites.
  &#39;launch_dirs&#39;: OrderedDict([(&#39;Si-nscf line--2&#39;, []),
               (&#39;Si-nscf uniform--3&#39;, []),
               (&#39;Si-static--4&#39;,
-               [&#39;/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-17-637193&#39;]),
+               [&#39;/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-48-097079&#39;]),
               (&#39;Si-structure optimization--5&#39;,
-               [&#39;/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-16-780895&#39;])])}</code>
+               [&#39;/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-02-19-26-47-161470&#39;])])}</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Fireworks also has a command called <code>qlaunch</code> to automatically submit jobs to the supercomputer to run. Upon the job starting on the supercomputer, rlaunch from fireworks will be called thus running fireworks with supercomputer resources. qlaunch is the primary command used by users in the command-line interface on supercomputers.</p> </div> </div> </div> </article> </div> </div> </main> <footer class=md-footer> <nav class="md-footer__inner md-grid" aria-label=Footer> <a href=../../04_materials_api/MAPI%20Lesson%20%28filled%29/ class="md-footer__link md-footer__link--prev" aria-label="Previous: The Materials API" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> The Materials API </div> </div> </a> <a href=../../06_new_systems/06%20-%20New%20Systems%20-%20filled/ class="md-footer__link md-footer__link--next" aria-label="Next: Exploring New Systems" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> Exploring New Systems </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Built by The Materials Project </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../../..", "features": ["instant", "tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script> <script src=../../../assets/javascripts/bundle.2b46852b.min.js></script> <script src=../../../assets/config.js></script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> </body> </html>
