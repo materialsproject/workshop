@@ -33,7 +33,7 @@ nav:
     - Advanced Python: primer/02_building_logic/2 - Python Primer - Part II.ipynb
     - Intro to MongoDB: primer/03_MongoDB_part1/lessons.ipynb
     - Intro to Python Environments: primer/04_Python_environments/1_pip_and_conda.ipynb
-    - Intro to Google Colab: primer/04/Python_environments/2_google_colab.ipynb
+    - Intro to Google Colab: primer/04_Python_environments/2_google_colab.ipynb
   - Workshop:
     - Day 1:
       - The Materials Project Website: lessons/01_website_walkthrough/website_walkthrough.md
