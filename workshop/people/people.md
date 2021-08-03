@@ -26,6 +26,7 @@ The annual MP Workshop would not be possible without all the people that contrib
     <li class="person"> <img class="person_image" src="/people/arutt.jpg"><p>Ann Rutt</p></li>
     <li class="person"> <img class="person_image" src="/people/mmcdermott.jpg"><p>Matt McDermott</p></li>
     <li class="person"> <img class="person_image" src="/people/ardunn.jpeg"><p>Alex Dunn</p></li>
+    <li class="person"> <img class="person_image" src="/people/ryang.jpeg"><p>Ruoxi Yang</p></li>
 </ul>
 
 ## Helpers
