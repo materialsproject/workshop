@@ -42,7 +42,7 @@ nav:
       - The Materials API: lessons/04_materials_api/MAPI Lesson (filled).ipynb
     - Day 2:
       - Automated DFT: lessons/05_automated_dft/Lesson.ipynb
-      - Exploring New Systems: lessons/06_new_systems/06 - New Systems - filled.ipynb
+      - Exploring Synthesis: lessons/06_exploring_synthesis/Exploring Synthesis (filled).ipynb
       - MPContribs: lessons/07_mpcontribs/contribute.ipynb
       - Machine Learning with MatMiner: lessons/08_ml_matminer/matminer-notes.ipynb
 
