@@ -8,4 +8,6 @@ cd $HOME/workshop/lessons
 
 export PATH=$PATH:$HOME/.enumlib/
 
+conda init bash
+
 exec "$@"
