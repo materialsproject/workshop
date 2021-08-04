@@ -8,6 +8,6 @@ robocrys==0.2.7
 crystal-toolkit==2021.4.29
 matminer==0.7.3
 ipywidgets==7.6.3
-mpcontribs-client==3.12.2
+mpcontribs-client==3.12.3
 graphviz==0.17
 mp-api==0.6.0
