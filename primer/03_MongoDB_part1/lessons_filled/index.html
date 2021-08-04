@@ -61,7 +61,7 @@
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=searching-for-documents-with-find_one>Searching for documents with find_one()<a class=headerlink href=#searching-for-documents-with-find_one title="Permanent link">&para;</a></h3> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's see what a document looks like in the <code>prizes</code> collection using the <code>find_one()</code> method. This takes an optional <code>filter</code> argument. Passing an empty filter (<code>{}</code>) is the same as passing no filter. In Python, the returned document takes the form of a dictionary. The keys of the dictionary are the (root-level) "fields" of the document.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>prizes</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;610ad09b49500329fe29551f&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;610ad09dad8364df0c8b4bed&#39;),
  &#39;year&#39;: &#39;2020&#39;,
  &#39;category&#39;: &#39;chemistry&#39;,
  &#39;laureates&#39;: [{&#39;id&#39;: &#39;991&#39;,
@@ -77,7 +77,7 @@
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now add a filter to our search to ensure that the returned <code>prizes</code> document contains data for a physics nobel prize.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>criteria</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&quot;category&quot;</span><span class=p>:</span> <span class=s2>&quot;physics&quot;</span><span class=p>}</span>
 <span class=n>db</span><span class=o>.</span><span class=n>prizes</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;610ad09b49500329fe295523&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;610ad09dad8364df0c8b4bf1&#39;),
  &#39;year&#39;: &#39;2020&#39;,
  &#39;category&#39;: &#39;physics&#39;,
  &#39;laureates&#39;: [{&#39;id&#39;: &#39;988&#39;,
@@ -97,7 +97,7 @@
    &#39;share&#39;: &#39;4&#39;}]}</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=iterating-through-documents-with-find>Iterating through documents with find()<a class=headerlink href=#iterating-through-documents-with-find title="Permanent link">&para;</a></h3> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>A collection is not a list, so we can't write <code>for doc in &lt;collection&gt;</code> to iterate over documents. Instead, we use the <code>find()</code> method to produce an iterable called a <em>cursor</em>, and instead write <code>for doc in &lt;collection&gt;.find()</code> to iterate over documents.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Example: Using <code>find()</code> to iterate over documents in the <code>laureates</code> collection, sum the total number of laureate prizes. The length of <code>doc["prizes"]</code> for a laureate document <code>doc</code> is the number of prizes won by that laureate. Store the sum in the variable <code>count</code>.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;610ad09b49500329fe2957ab&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;610ad09dad8364df0c8b4e79&#39;),
  &#39;id&#39;: &#39;1&#39;,
  &#39;firstname&#39;: &#39;Wilhelm Conrad&#39;,
  &#39;surname&#39;: &#39;Röntgen&#39;,
@@ -271,7 +271,7 @@ Database(MongoClient(host=[&#39;localhost:27017&#39;], document_class=dict, tz_a
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;610ad09b49500329fe2957eb&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;610ad09dad8364df0c8b4eb9&#39;),
  &#39;id&#39;: &#39;66&#39;,
  &#39;firstname&#39;: &#39;John&#39;,
  &#39;surname&#39;: &#39;Bardeen&#39;,
