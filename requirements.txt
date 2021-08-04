@@ -7,3 +7,4 @@ ipywidgets==7.6.3
 mpcontribs-client==3.12.4
 graphviz==0.17
 mp-api==0.7.0
+reaction-network @ git+https://github.com/GENESIS-EFRC/reaction-network@refactor-networks#egg=reaction-network-0.0.0
