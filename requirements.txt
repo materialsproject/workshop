@@ -6,4 +6,4 @@ crystal-toolkit==2021.4.29
 ipywidgets==7.6.3
 mpcontribs-client==3.12.4
 graphviz==0.17
-mp-api==0.6.1
+mp-api==0.7.0
