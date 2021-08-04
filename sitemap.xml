@@ -221,17 +221,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://workshop.materialsproject.org/primer/04_MongoDB_part2/exercises/</loc>
+         <loc>https://workshop.materialsproject.org/primer/04_Python_environments/</loc>
          <lastmod>2021-08-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://workshop.materialsproject.org/primer/04_MongoDB_part2/exercises_solved/</loc>
+         <loc>https://workshop.materialsproject.org/primer/04_Python_environments/1_pip_and_conda/</loc>
          <lastmod>2021-08-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://workshop.materialsproject.org/primer/04_MongoDB_part2/lesson/</loc>
+         <loc>https://workshop.materialsproject.org/primer/04_Python_environments/2_google_colab/</loc>
+         <lastmod>2021-08-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://workshop.materialsproject.org/primer/04_Python_environments/Exercises-Blank/</loc>
+         <lastmod>2021-08-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://workshop.materialsproject.org/primer/04_Python_environments/Exercises/</loc>
          <lastmod>2021-08-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
