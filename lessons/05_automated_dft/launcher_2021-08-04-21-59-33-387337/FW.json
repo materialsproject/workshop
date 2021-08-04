@@ -58,13 +58,13 @@
             {
                 "name": "structure optimization",
                 "filesystem": null,
-                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-04-21-15-27-331790"
+                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-04-21-59-32-488040"
             }
         ]
     },
     "fw_id": 4,
-    "created_on": "2021-08-04T21:15:20.984946",
-    "updated_on": "2021-08-04T21:15:28.012738",
+    "created_on": "2021-08-04T21:59:24.893272",
+    "updated_on": "2021-08-04T21:59:33.392387",
     "launches": [
         {
             "fworker": {
@@ -78,17 +78,17 @@
                 }
             },
             "fw_id": 4,
-            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-04-21-15-28-008603",
-            "host": "fv-az154-255",
-            "ip": "10.1.1.55",
+            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-04-21-59-33-387337",
+            "host": "fv-az201-296",
+            "ip": "10.1.1.82",
             "trackers": [],
             "action": null,
             "state": "RUNNING",
             "state_history": [
                 {
                     "state": "RUNNING",
-                    "created_on": "2021-08-04T21:15:28.012022",
-                    "updated_on": "2021-08-04T21:15:28.012024"
+                    "created_on": "2021-08-04T21:59:33.391496",
+                    "updated_on": "2021-08-04T21:59:33.391499"
                 }
             ],
             "launch_id": 3
