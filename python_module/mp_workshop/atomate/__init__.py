@@ -84,5 +84,5 @@ def use_fake_vasp_workshop(workflow):
         check_kpoints=False,
         check_poscar=False,
         check_potcar=False,
-        clear_inputs=False,
+        clear_inputs=True,
     )
