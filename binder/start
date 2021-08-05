@@ -10,6 +10,5 @@ export PATH=$PATH:$HOME/.enumlib/
 
 conda init bash
 conda config --prepend pkgs_dirs $HOME/.conda/pkgs
-conda activate notebook
 
 exec "$@"
