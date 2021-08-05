@@ -94,8 +94,8 @@ General Options:
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p><code>pip list</code> will show all installed packages, while <code>pip freeze</code> will show all user installed packages</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=nb>list</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>Package                    Version             Location
--------------------------- ------------------- -------------------------------------------------
+<code>Package                    Version           Location
+-------------------------- ----------------- -------------------------------------------------
 aioitertools               0.8.0
 anyio                      3.3.0
 argon2-cffi                20.1.0
@@ -193,7 +193,7 @@ monotonic                  1.6
 monty                      2021.7.8
 mp-api                     0.7.0
 mp-pyrho                   0.0.14
-mp-workshop                0.1.dev1+gc274588   /home/runner/work/workshop/workshop/python_module
+mp-workshop                0.1.dev1+gf4a89bc /home/runner/work/workshop/workshop/python_module
 mpcontribs-client          3.12.4
 mpmath                     1.2.1
 msgpack                    1.0.2
@@ -252,7 +252,7 @@ PyYAML                     5.4.1
 pyyaml_env_tag             0.1
 pyzmq                      22.2.1
 ratelimit                  2.2.1
-reaction-network           1.1.dev185+g2faafe0
+reaction-network           2.0.0
 requests                   2.26.0
 requests-futures           1.0.0
 requests-unixsocket        0.2.0
@@ -404,7 +404,7 @@ monotonic==1.6
 monty==2021.7.8
 mp-api==0.7.0
 mp-pyrho==0.0.14
--e git+https://github.com/materialsproject/workshop@c2745881bf6e72b6119914719da0f95a0176c61f#egg=mp_workshop
+-e git+https://github.com/materialsproject/workshop@f4a89bc7e46e4520b4ae456410fb7236936b118e#egg=mp_workshop
 mpcontribs-client==3.12.4
 mpmath==1.2.1
 msgpack==1.0.2
@@ -462,7 +462,7 @@ PyYAML==5.4.1
 pyyaml_env_tag==0.1
 pyzmq==22.2.1
 ratelimit==2.2.1
-reaction-network==1.1.dev185+g2faafe0
+reaction-network==2.0.0
 requests==2.26.0
 requests-futures==1.0.0
 requests-unixsocket==0.2.0
@@ -522,23 +522,23 @@ zope.interface==5.4.0
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting MDAnalysis
   Downloading MDAnalysis-1.1.1.tar.gz (3.7 MB)
-     |████████████████████████████████| 3.7 MB 15.0 MB/s 
+     |████████████████████████████████| 3.7 MB 50.0 MB/s 
 Requirement already satisfied: numpy&gt;=1.13.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.21.1)
 Collecting biopython&gt;=1.71
   Downloading biopython-1.79-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (2.3 MB)
-     |████████████████████████████████| 2.3 MB 44.5 MB/s 
+     |████████████████████████████████| 2.3 MB 73.4 MB/s 
 Requirement already satisfied: joblib&gt;=0.12 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.0.1)
 Requirement already satisfied: networkx&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (2.6.2)
 Collecting GridDataFormats&gt;=0.4.0
   Downloading GridDataFormats-0.5.0-py2.py3-none-any.whl (2.0 MB)
-     |████████████████████████████████| 2.0 MB 54.3 MB/s 
+     |████████████████████████████████| 2.0 MB 77.3 MB/s 
 Requirement already satisfied: six&gt;=1.4.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.16.0)
 Collecting mmtf-python&gt;=1.0.0
   Downloading mmtf_python-1.1.2-py2.py3-none-any.whl (21 kB)
 Requirement already satisfied: scipy&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.7.1)
 Collecting matplotlib&lt;3.4,&gt;=1.5.1
   Downloading matplotlib-3.3.4-cp38-cp38-manylinux1_x86_64.whl (11.6 MB)
-     |████████████████████████████████| 11.6 MB 43.2 MB/s 
+     |████████████████████████████████| 11.6 MB 97.5 MB/s 
 Collecting mock
   Downloading mock-4.0.3-py3-none-any.whl (28 kB)
 Requirement already satisfied: tqdm&gt;=4.43.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (4.62.0)
@@ -546,12 +546,12 @@ Collecting funcsigs
   Downloading funcsigs-1.0.2-py2.py3-none-any.whl (17 kB)
 Collecting gsd&gt;=1.4.0
   Downloading gsd-2.4.2-cp38-cp38-manylinux2010_x86_64.whl (387 kB)
-     |████████████████████████████████| 387 kB 55.8 MB/s 
-Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (0.10.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (1.3.1)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (2.4.7)
-Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (8.3.1)
+     |████████████████████████████████| 387 kB 101.8 MB/s 
 Requirement already satisfied: python-dateutil&gt;=2.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (2.8.2)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (2.4.7)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (0.10.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (8.3.1)
 Requirement already satisfied: msgpack&gt;=0.5.6 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis) (1.0.2)
 Using legacy &#39;setup.py install&#39; for MDAnalysis, since package &#39;wheel&#39; is not installed.
 Installing collected packages: mock, mmtf-python, matplotlib, gsd, GridDataFormats, funcsigs, biopython, MDAnalysis
@@ -559,7 +559,7 @@ Installing collected packages: mock, mmtf-python, matplotlib, gsd, GridDataForma
     Found existing installation: matplotlib 3.4.2
     Uninstalling matplotlib-3.4.2:
       Successfully uninstalled matplotlib-3.4.2
-    Running setup.py install for MDAnalysis ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / done
+    Running setup.py install for MDAnalysis ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
 Successfully installed GridDataFormats-0.5.0 MDAnalysis-1.1.1 biopython-1.79 funcsigs-1.0.2 gsd-2.4.2 matplotlib-3.3.4 mmtf-python-1.1.2 mock-4.0.3
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, we confirm the package is installed using the <code>pip show</code> command again.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>show</span> <span class=n>MDAnalysis</span>
@@ -583,7 +583,7 @@ Required-by:
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting MDAnalysis==2.0.0b0
   Downloading MDAnalysis-2.0.0b0.tar.gz (3.4 MB)
-     |████████████████████████████████| 3.4 MB 11.2 MB/s 
+     |████████████████████████████████| 3.4 MB 24.1 MB/s 
 Requirement already satisfied: numpy&gt;=1.16.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.21.1)
 Requirement already satisfied: biopython&gt;=1.71 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.79)
 Requirement already satisfied: networkx&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (2.6.2)
@@ -596,9 +596,9 @@ Requirement already satisfied: tqdm&gt;=4.43.0 in /opt/hostedtoolcache/Python/3.
 Requirement already satisfied: threadpoolctl in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (2.2.0)
 Requirement already satisfied: gsd&gt;=1.4.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (2.4.2)
 Requirement already satisfied: six in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from GridDataFormats&gt;=0.4.0-&gt;MDAnalysis==2.0.0b0) (1.16.0)
-Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (8.3.1)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.4.7)
 Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (0.10.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (8.3.1)
 Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (1.3.1)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.8.2)
 Requirement already satisfied: msgpack&gt;=0.5.6 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis==2.0.0b0) (1.0.2)
@@ -608,7 +608,7 @@ Installing collected packages: MDAnalysis
     Found existing installation: MDAnalysis 1.1.1
     Uninstalling MDAnalysis-1.1.1:
       Successfully uninstalled MDAnalysis-1.1.1
-    Running setup.py install for MDAnalysis ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | done
+    Running setup.py install for MDAnalysis ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - done
 Successfully installed MDAnalysis-2.0.0b0
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>show</span> <span class=n>MDAnalysis</span>

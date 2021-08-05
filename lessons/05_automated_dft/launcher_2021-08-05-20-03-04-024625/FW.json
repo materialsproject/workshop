@@ -438,8 +438,8 @@
         ]
     },
     "fw_id": 5,
-    "created_on": "2021-08-05T20:01:29.894852",
-    "updated_on": "2021-08-05T20:01:37.486446",
+    "created_on": "2021-08-05T20:02:56.931952",
+    "updated_on": "2021-08-05T20:03:04.031884",
     "launches": [
         {
             "fworker": {
@@ -453,17 +453,17 @@
                 }
             },
             "fw_id": 5,
-            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-05-20-01-37-477923",
-            "host": "fv-az216-25",
-            "ip": "10.1.1.21",
+            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-05-20-03-04-024625",
+            "host": "fv-az201-296",
+            "ip": "10.1.1.250",
             "trackers": [],
             "action": null,
             "state": "RUNNING",
             "state_history": [
                 {
                     "state": "RUNNING",
-                    "created_on": "2021-08-05T20:01:37.485414",
-                    "updated_on": "2021-08-05T20:01:37.485417"
+                    "created_on": "2021-08-05T20:03:04.030950",
+                    "updated_on": "2021-08-05T20:03:04.030953"
                 }
             ],
             "launch_id": 2
