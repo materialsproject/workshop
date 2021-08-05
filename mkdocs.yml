@@ -31,7 +31,7 @@ nav:
     - Intro: primer/01_basic_python/0 - Introduction and Jupyter Use.ipynb
     - Basic Python: primer/01_basic_python/1 - Python Primer.ipynb
     - Advanced Python: primer/02_python_part2/lessons.ipynb
-    - Intro to MongoDB: primer/03_MongoDB_part1/lessons.ipynb
+    - Intro to MongoDB: primer/03_MongoDB_part1/lessons_filled.ipynb
     - Intro to Python Environments: primer/04_Python_environments/1_pip_and_conda.ipynb
     - Intro to Google Colab: primer/04_Python_environments/2_google_colab.ipynb
   - Workshop:

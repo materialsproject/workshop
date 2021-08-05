@@ -3,3 +3,5 @@ graphviz
 mongodb
 gfortran
 zip
+libgtk-3-dev
+libcairo2-dev
