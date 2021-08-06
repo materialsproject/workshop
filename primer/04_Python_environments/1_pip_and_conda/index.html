@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Lessons for the Materials Project Workshop"><link href=https://workshop.materialsproject.org/primer/04_Python_environments/1_pip_and_conda/ rel=canonical><link rel=icon href=../../../assets/images/favicon.png><meta name=generator content="mkdocs-1.2.2, mkdocs-material-7.2.2"><title>Intro to Python Environments - The Materials Project Workshop</title><link rel=stylesheet href=../../../assets/stylesheets/main.1118c9be.min.css><link rel=stylesheet href=../../../assets/stylesheets/palette.ba0d045b.min.css><meta name=theme-color content=#546d78><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style><link rel=stylesheet href=../../../assets/workshop.css><link rel=stylesheet href=../../../css/ansi-colours.css><link rel=stylesheet href=../../../css/jupyter-cells.css><link rel=stylesheet href=../../../css/pandas-dataframe.css></head> <body dir=ltr data-md-color-scheme data-md-color-primary=blue-grey data-md-color-accent> <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#introduction-to-package-managers-and-environments class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=../../.. title="The Materials Project Workshop" class="md-header__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> The Materials Project Workshop </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Intro to Python Environments </span> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </nav> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../../.. title="The Materials Project Workshop" class="md-nav__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> The Materials Project Workshop </label> <div class=md-nav__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../.. class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../../logistics/logistics/ class=md-nav__link> Logistics </a> </li> <li class=md-nav__item> <a href=../../../people/people/ class=md-nav__link> People </a> </li> <li class=md-nav__item> <a href=../../../code_of_conduct/ class=md-nav__link> Code of Conduct </a> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5 checked> <label class=md-nav__link for=__nav_5> Primer <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Primer data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Primer </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/ class=md-nav__link> Intro </a> </li> <li class=md-nav__item> <a href=../../01_basic_python/1%20-%20Python%20Primer/ class=md-nav__link> Basic Python </a> </li> <li class=md-nav__item> <a href=../../02_python_part2/lessons/ class=md-nav__link> Advanced Python </a> </li> <li class=md-nav__item> <a href=../../03_MongoDB_part1/lessons_filled/ class=md-nav__link> Intro to MongoDB </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <a href=./ class="md-nav__link md-nav__link--active"> Intro to Python Environments </a> </li> <li class=md-nav__item> <a href=../2_google_colab/ class=md-nav__link> Intro to Google Colab </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6> Workshop <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Workshop data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> Workshop </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_1 type=checkbox id=__nav_6_1> <label class=md-nav__link for=__nav_6_1> Day 1 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 1" data-md-level=2> <label class=md-nav__title for=__nav_6_1> <span class="md-nav__icon md-icon"></span> Day 1 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../lessons/01_website_walkthrough/website_walkthrough/ class=md-nav__link> The Materials Project Website </a> </li> <li class=md-nav__item> <a href=../../../lessons/02_intro_pymatgen/1%20-%20pymatgen%20foundations/ class=md-nav__link> Intro to Pymatgen </a> </li> <li class=md-nav__item> <a href=../../../lessons/03_surfaces/Working%20With%20Surfaces_lesson/ class=md-nav__link> Working with Surfaces </a> </li> <li class=md-nav__item> <a href=../../../lessons/04_materials_api/MAPI%20Lesson%20%28filled%29/ class=md-nav__link> The Materials API </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_2 type=checkbox id=__nav_6_2> <label class=md-nav__link for=__nav_6_2> Day 2 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 2" data-md-level=2> <label class=md-nav__title for=__nav_6_2> <span class="md-nav__icon md-icon"></span> Day 2 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../lessons/05_automated_dft/Lesson/ class=md-nav__link> Automated DFT </a> </li> <li class=md-nav__item> <a href=../../../lessons/06_new_systems/06%20-%20New%20Systems%20-%20filled/ class=md-nav__link> Exploring New Systems </a> </li> <li class=md-nav__item> <a href=../../../lessons/07_mpcontribs/contribute/ class=md-nav__link> MPContribs </a> </li> <li class=md-nav__item> <a href=../../../lessons/08_ml_matminer/matminer-notes/ class=md-nav__link> Machine Learning with MatMiner </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/materialsproject/workshop/edit/master/docs/primer/04_Python_environments/1_pip_and_conda.ipynb title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <script src=https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js></script> <script>
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Lessons for the Materials Project Workshop"><link href=https://workshop.materialsproject.org/primer/04_Python_environments/1_pip_and_conda/ rel=canonical><link rel=icon href=../../../assets/images/favicon.png><meta name=generator content="mkdocs-1.2.2, mkdocs-material-7.2.2"><title>Intro to Python Environments - The Materials Project Workshop</title><link rel=stylesheet href=../../../assets/stylesheets/main.1118c9be.min.css><link rel=stylesheet href=../../../assets/stylesheets/palette.ba0d045b.min.css><meta name=theme-color content=#546d78><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style><link rel=stylesheet href=../../../assets/workshop.css><link rel=stylesheet href=../../../css/ansi-colours.css><link rel=stylesheet href=../../../css/jupyter-cells.css><link rel=stylesheet href=../../../css/pandas-dataframe.css></head> <body dir=ltr data-md-color-scheme data-md-color-primary=blue-grey data-md-color-accent> <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#introduction-to-package-managers-and-environments class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=../../.. title="The Materials Project Workshop" class="md-header__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> The Materials Project Workshop </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Intro to Python Environments </span> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </nav> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../../.. title="The Materials Project Workshop" class="md-nav__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> The Materials Project Workshop </label> <div class=md-nav__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../.. class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../../logistics/logistics/ class=md-nav__link> Logistics </a> </li> <li class=md-nav__item> <a href=../../../people/people/ class=md-nav__link> People </a> </li> <li class=md-nav__item> <a href=../../../code_of_conduct/ class=md-nav__link> Code of Conduct </a> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5 checked> <label class=md-nav__link for=__nav_5> Primer <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Primer data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Primer </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/ class=md-nav__link> Intro </a> </li> <li class=md-nav__item> <a href=../../01_basic_python/1%20-%20Python%20Primer/ class=md-nav__link> Basic Python </a> </li> <li class=md-nav__item> <a href=../../02_python_part2/lessons/ class=md-nav__link> Advanced Python </a> </li> <li class=md-nav__item> <a href=../../03_MongoDB_part1/lessons_filled/ class=md-nav__link> Intro to MongoDB </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <a href=./ class="md-nav__link md-nav__link--active"> Intro to Python Environments </a> </li> <li class=md-nav__item> <a href=../2_google_colab/ class=md-nav__link> Intro to Google Colab </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6> Workshop <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Workshop data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> Workshop </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_1 type=checkbox id=__nav_6_1> <label class=md-nav__link for=__nav_6_1> Day 1 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 1" data-md-level=2> <label class=md-nav__title for=__nav_6_1> <span class="md-nav__icon md-icon"></span> Day 1 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../lessons/01_website_walkthrough/website_walkthrough/ class=md-nav__link> The Materials Project Website </a> </li> <li class=md-nav__item> <a href=../../../lessons/02_intro_pymatgen/1%20-%20pymatgen%20foundations/ class=md-nav__link> Intro to Pymatgen </a> </li> <li class=md-nav__item> <a href=../../../lessons/03_surfaces/Working%20With%20Surfaces_lesson/ class=md-nav__link> Working with Surfaces </a> </li> <li class=md-nav__item> <a href=../../../lessons/04_materials_api/MAPI%20Lesson%20%28filled%29/ class=md-nav__link> The Materials API </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_2 type=checkbox id=__nav_6_2> <label class=md-nav__link for=__nav_6_2> Day 2 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 2" data-md-level=2> <label class=md-nav__title for=__nav_6_2> <span class="md-nav__icon md-icon"></span> Day 2 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../lessons/05_automated_dft/Lesson/ class=md-nav__link> Automated DFT </a> </li> <li class=md-nav__item> <a href=../../../lessons/06_exploring_synthesis/Exploring%20Synthesis%20%28filled%29/ class=md-nav__link> Exploring Synthesis </a> </li> <li class=md-nav__item> <a href=../../../lessons/07_mpcontribs/contribute/ class=md-nav__link> MPContribs </a> </li> <li class=md-nav__item> <a href=../../../lessons/08_ml_matminer/matminer-notes/ class=md-nav__link> Machine Learning with MatMiner </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/materialsproject/workshop/edit/master/docs/primer/04_Python_environments/1_pip_and_conda.ipynb title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <script src=https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js></script> <script>
 (function() {
   function addWidgetsRenderer() {
     var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
@@ -23,7 +23,7 @@
 }());
 </script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-package-managers-and-environments>Introduction to Package Managers and Environments<a class=headerlink href=#introduction-to-package-managers-and-environments title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While many programming languages exist, Python has risen to the top amongst the scientific and data science community. Python is simple to learn and use, is platform independent, and most importantly has access to a wide range of open source packages and libraries that aid in data analysis. While many of these packages are open source and readily available, in order to leverage these libraries in our code, we must use package managers to install and manage the packages. There are two common package management systems used - pip and conda.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <hr> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While it is easiest to work with pip and conda in the command line/terminal, for ease of demonstration, we will use ipython notebooks (in Co-calc) for the workshop. </p> <p>Most of the commands (especially those starting with <code>pip</code> or <code>conda</code>) used in this section are to be executed in a command-line. Within an ipython notebook, we use the <code>!</code> to run a single line of code in the command-line. Additionally, if we wish to execute the entirety of a cell as command-line, we can use the <code>%%bash</code> magic command. We will see examples of these later in the notebook.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-pip>Introduction to pip<a class=headerlink href=#introduction-to-pip title="Permanent link">&para;</a></h1> <p>pip is a package management system for python that is used to install and manage additional libraries and dependencies. pip typically comes pre-installed by alongside python. </p> <p>Let's verify that pip is installed:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=o>--</span><span class=n>version</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>pip 21.2.2 from /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/pip (python 3.8)
+<code>pip 21.2.3 from /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages/pip (python 3.9)
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>*note that we are using the <code>!</code> to execute a command on the system terminal/command-line</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's see what we can do with pip using the <code>help</code> command</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=o>--</span><span class=n>help</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
@@ -94,8 +94,8 @@ General Options:
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p><code>pip list</code> will show all installed packages, while <code>pip freeze</code> will show all user installed packages</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=nb>list</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>Package                    Version           Location
--------------------------- ----------------- -------------------------------------------------
+<code>Package                    Version             Location
+-------------------------- ------------------- -------------------------------------------------
 aioitertools               0.8.0
 anyio                      3.3.0
 argon2-cffi                20.1.0
@@ -110,10 +110,15 @@ bleach                     4.0.0
 boltons                    21.0.0
 bravado                    11.0.3
 bravado-core               5.17.0
+brotlipy                   0.7.0
 certifi                    2021.5.30
 cffi                       1.14.6
-charset-normalizer         2.0.4
+chardet                    4.0.0
+charset-normalizer         2.0.0
 click                      8.0.1
+colorama                   0.4.4
+conda                      4.10.3
+conda-package-handling     1.7.3
 constantly                 15.1.0
 crochet                    2.0.0
 cryptography               3.4.7
@@ -144,7 +149,7 @@ gunicorn                   20.1.0
 h5py                       3.3.0
 htmlmin                    0.1.12
 hyperlink                  21.0.0
-idna                       3.2
+idna                       3.1
 imageio                    2.9.0
 importlib-metadata         4.6.3
 incremental                21.3.0
@@ -175,6 +180,7 @@ kiwisolver                 1.3.1
 latexcodec                 2.0.1
 llvmlite                   0.36.0
 maggma                     0.30.4
+mamba                      0.15.2
 Markdown                   3.3.4
 MarkupSafe                 2.0.1
 matminer                   0.7.4
@@ -193,7 +199,7 @@ monotonic                  1.6
 monty                      2021.7.8
 mp-api                     0.7.0
 mp-pyrho                   0.0.14
-mp-workshop                0.1.dev1+gb6fc089 /home/runner/work/workshop/workshop/python_module
+mp-workshop                0.1.dev1+g36ad63b   /home/runner/work/workshop/workshop/python_module
 mpcontribs-client          3.12.4
 mpmath                     1.2.1
 msgpack                    1.0.2
@@ -205,9 +211,10 @@ nbgitpuller                0.10.1
 nbzip                      0.1.0
 nest-asyncio               1.5.1
 networkx                   2.6.2
-notebook                   6.4.1
+notebook                   6.4.2
 numba                      0.53.1
 numpy                      1.21.1
+olefile                    0.46
 orjson                     3.6.1
 packaging                  21.0
 palettable                 3.3.0
@@ -219,7 +226,7 @@ pexpect                    4.8.0
 pickleshare                0.7.5
 Pillow                     8.3.1
 Pint                       0.17
-pip                        21.2.2
+pip                        21.2.3
 plotly                     4.14.3
 pluggy                     0.13.1
 prometheus-client          0.11.0
@@ -231,10 +238,12 @@ pyasn1                     0.4.8
 pyasn1-modules             0.2.8
 pybtex                     0.24.0
 pycairo                    1.20.1
+pycosat                    0.6.3
 pycparser                  2.20
 pydantic                   1.8.2
 pydash                     5.0.2
 Pygments                   2.9.0
+PyGObject                  3.40.1
 pyIsEmail                  1.3.2
 pymatgen                   2022.0.11
 pymatgen-diffusion         2020.10.8
@@ -245,6 +254,7 @@ pynng                      0.7.1
 pyOpenSSL                  20.0.1
 pyparsing                  2.4.7
 pyrsistent                 0.18.0
+PySocks                    1.7.1
 pytest                     6.2.4
 python-dateutil            2.8.2
 pytz                       2021.1
@@ -262,6 +272,7 @@ rfc3987                    1.3.8
 robocrys                   0.2.7
 ruamel.yaml                0.17.10
 ruamel.yaml.clib           0.2.6
+ruamel-yaml-conda          0.15.80
 scikit-image               0.18.2
 scikit-learn               0.24.2
 scipy                      1.7.1
@@ -269,7 +280,7 @@ Send2Trash                 1.7.1
 sentinels                  1.0.0
 sentry-sdk                 1.3.1
 service-identity           21.1.0
-setuptools                 56.0.0
+setuptools                 49.6.0.post20210108
 simplejson                 3.17.3
 six                        1.16.0
 smmap                      4.0.0
@@ -297,14 +308,16 @@ watchdog                   2.1.3
 wcwidth                    0.2.5
 webcolors                  1.11.1
 webencodings               0.5.1
-websocket-client           1.1.0
+websocket-client           1.1.1
 Werkzeug                   2.0.1
+wheel                      0.36.2
 widgetsnbextension         3.5.1
 wrapt                      1.12.1
 yelp-bytes                 0.3.0
 yelp-encodings             1.0.0
 zipp                       3.5.0
 zope.interface             5.4.0
+zstandard                  0.15.2
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>freeze</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
@@ -322,13 +335,18 @@ bleach==4.0.0
 boltons==21.0.0
 bravado==11.0.3
 bravado-core==5.17.0
+brotlipy==0.7.0
 certifi==2021.5.30
-cffi==1.14.6
-charset-normalizer==2.0.4
+cffi @ file:///home/conda/feedstock_root/build_artifacts/cffi_1625835307225/work
+chardet @ file:///home/conda/feedstock_root/build_artifacts/chardet_1610093492116/work
+charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1626371162869/work
 click==8.0.1
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1602866480661/work
+conda==4.10.3
+conda-package-handling @ file:///home/conda/feedstock_root/build_artifacts/conda-package-handling_1618231390031/work
 constantly==15.1.0
 crochet==2.0.0
-cryptography==3.4.7
+cryptography @ file:///home/conda/feedstock_root/build_artifacts/cryptography_1616851485986/work
 crystal-toolkit==2021.4.29
 crystaltoolkit-extension==0.3.0
 custodian==2021.2.8
@@ -356,7 +374,7 @@ gunicorn==20.1.0
 h5py==3.3.0
 htmlmin==0.1.12
 hyperlink==21.0.0
-idna==3.2
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1609836280497/work
 imageio==2.9.0
 importlib-metadata==4.6.3
 incremental==21.3.0
@@ -383,14 +401,15 @@ jupyterlab==3.1.4
 jupyterlab-pygments==0.1.2
 jupyterlab-server==2.6.2
 jupyterlab-widgets==1.0.0
-kiwisolver==1.3.1
+kiwisolver @ file:///home/conda/feedstock_root/build_artifacts/kiwisolver_1610099772044/work
 latexcodec==2.0.1
 llvmlite==0.36.0
 maggma==0.30.4
+mamba @ file:///home/conda/feedstock_root/build_artifacts/mamba_1626467930043/work
 Markdown==3.3.4
 MarkupSafe==2.0.1
 matminer==0.7.4
-matplotlib==3.4.2
+matplotlib @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-suite_1620506038354/work
 matplotlib-inline==0.1.2
 mergedeep==1.3.4
 mistune==0.8.4
@@ -405,7 +424,7 @@ monotonic==1.6
 monty==2021.7.8
 mp-api==0.7.0
 mp-pyrho==0.0.14
--e git+https://github.com/materialsproject/workshop@b6fc0899baf5951653e30c5283eb642e469b3a8f#egg=mp_workshop
+-e git+https://github.com/materialsproject/workshop@36ad63bb1a34a4a63f9b07f4fb7014c6aa48658d#egg=mp_workshop
 mpcontribs-client==3.12.4
 mpmath==1.2.1
 msgpack==1.0.2
@@ -417,9 +436,10 @@ nbgitpuller==0.10.1
 nbzip==0.1.0
 nest-asyncio==1.5.1
 networkx==2.6.2
-notebook==6.4.1
+notebook==6.4.2
 numba==0.53.1
-numpy==1.21.1
+numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1626648378336/work
+olefile @ file:///home/conda/feedstock_root/build_artifacts/olefile_1602866521163/work
 orjson==3.6.1
 packaging==21.0
 palettable==3.3.0
@@ -429,7 +449,7 @@ paramiko==2.7.2
 parso==0.8.2
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==8.3.1
+Pillow @ file:///home/conda/feedstock_root/build_artifacts/pillow_1625677815963/work
 Pint==0.17
 plotly==4.14.3
 pluggy==0.13.1
@@ -442,10 +462,12 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pybtex==0.24.0
 pycairo==1.20.1
-pycparser==2.20
+pycosat @ file:///home/conda/feedstock_root/build_artifacts/pycosat_1610094799048/work
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
 pydantic==1.8.2
 pydash==5.0.2
 Pygments==2.9.0
+PyGObject==3.40.1
 pyIsEmail==1.3.2
 pymatgen==2022.0.11
 pymatgen-diffusion==2020.10.8
@@ -453,11 +475,12 @@ pymdown-extensions==8.2
 pymongo==3.12.0
 PyNaCl==1.4.0
 pynng==0.7.1
-pyOpenSSL==20.0.1
+pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1608055815057/work
 pyparsing==2.4.7
 pyrsistent==0.18.0
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1610291451001/work
 pytest==6.2.4
-python-dateutil==2.8.2
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
 pytz==2021.1
 PyWavelets==1.1.1
 PyYAML==5.4.1
@@ -465,23 +488,24 @@ pyyaml_env_tag==0.1
 pyzmq==22.2.1
 ratelimit==2.2.1
 reaction-network==2.0.3
-requests==2.26.0
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1626393743643/work
 requests-futures==1.0.0
 requests-unixsocket==0.2.0
 retrying==1.3.3
 rfc3987==1.3.8
 robocrys==0.2.7
+ruamel-yaml-conda @ file:///home/conda/feedstock_root/build_artifacts/ruamel_yaml_1611943432947/work
 ruamel.yaml==0.17.10
 ruamel.yaml.clib==0.2.6
 scikit-image==0.18.2
 scikit-learn==0.24.2
-scipy==1.7.1
+scipy @ file:///home/conda/feedstock_root/build_artifacts/scipy_1628206395139/work
 Send2Trash==1.7.1
 sentinels==1.0.0
 sentry-sdk==1.3.1
 service-identity==21.1.0
 simplejson==3.17.3
-six==1.16.0
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
 smmap==4.0.0
 sniffio==1.2.0
 spglib==1.16.1
@@ -496,18 +520,18 @@ testpath==0.5.0
 threadpoolctl==2.2.0
 tifffile==2021.7.30
 toml==0.10.2
-tornado==6.1
-tqdm==4.62.0
+tornado @ file:///home/conda/feedstock_root/build_artifacts/tornado_1610094708661/work
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1627689047698/work
 traitlets==5.0.5
 Twisted==21.7.0
 typing-extensions==3.10.0.0
 uncertainties==3.1.6
-urllib3==1.26.6
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1624634538755/work
 watchdog==2.1.3
 wcwidth==0.2.5
 webcolors==1.11.1
 webencodings==0.5.1
-websocket-client==1.1.0
+websocket-client==1.1.1
 Werkzeug==2.0.1
 widgetsnbextension==3.5.1
 wrapt==1.12.1
@@ -515,6 +539,7 @@ yelp-bytes==0.3.0
 yelp-encodings==1.0.0
 zipp==3.5.0
 zope.interface==5.4.0
+zstandard @ file:///home/conda/feedstock_root/build_artifacts/zstandard_1614954803539/work
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=searching-for-python-packages>Searching for python packages<a class=headerlink href=#searching-for-python-packages title="Permanent link">&para;</a></h2> <p>Python packages for (nearly) any task can be found on the <a href=https://pypi.org/ >Python Package Index (PyPI)</a>. PyPI is an online repository of 3rd party packages. Additionally, most python packages can be found on github, gitlab or other code repositories. Google search is also very handy when searching for packages.</p> <ul> <li><em>For those familiar with pip, <code>pip search</code> has recently been deprecated. See this <a href=https://status.python.org/ >link</a> and this <a href=https://github.com/pypa/pip/issues/5216>github issue</a> for more information.</em></li> </ul> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>For demonstration purposes, we will examine the PyPI entry for <a href=https://pypi.org/project/MDAnalysis/ >MDAnalysis</a>. The landing page for MDAnalysis provides us with details on the package in addition to installation instructions, examples, and release history.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=installing-python-packages>Installing python packages<a class=headerlink href=#installing-python-packages title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>To install the latest version of a package, use <code>pip install</code></p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>show</span> <span class=n>MDAnalysis</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
@@ -523,94 +548,92 @@ zope.interface==5.4.0
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>install</span> <span class=n>MDAnalysis</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting MDAnalysis
-  Downloading MDAnalysis-1.1.1.tar.gz (3.7 MB)
-     |████████████████████████████████| 3.7 MB 10.7 MB/s 
-Requirement already satisfied: numpy&gt;=1.13.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.21.1)
+  Downloading MDAnalysis-1.0.0.tar.gz (19.6 MB)
+     |████████████████████████████████| 19.6 MB 7.0 MB/s 
+Requirement already satisfied: numpy&gt;=1.13.3 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (1.21.1)
 Collecting biopython&gt;=1.71
-  Downloading biopython-1.79-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (2.3 MB)
-     |████████████████████████████████| 2.3 MB 41.2 MB/s 
-Requirement already satisfied: joblib&gt;=0.12 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.0.1)
-Requirement already satisfied: networkx&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (2.6.2)
+  Downloading biopython-1.79-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (2.3 MB)
+     |████████████████████████████████| 2.3 MB 78.2 MB/s 
+Requirement already satisfied: networkx&gt;=1.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (2.6.2)
 Collecting GridDataFormats&gt;=0.4.0
   Downloading GridDataFormats-0.5.0-py2.py3-none-any.whl (2.0 MB)
-     |████████████████████████████████| 2.0 MB 73.3 MB/s 
-Requirement already satisfied: six&gt;=1.4.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.16.0)
+     |████████████████████████████████| 2.0 MB 70.3 MB/s 
+Requirement already satisfied: six&gt;=1.4.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (1.16.0)
 Collecting mmtf-python&gt;=1.0.0
   Downloading mmtf_python-1.1.2-py2.py3-none-any.whl (21 kB)
-Requirement already satisfied: scipy&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (1.7.1)
-Collecting matplotlib&lt;3.4,&gt;=1.5.1
-  Downloading matplotlib-3.3.4-cp38-cp38-manylinux1_x86_64.whl (11.6 MB)
-     |████████████████████████████████| 11.6 MB 79.3 MB/s 
+Requirement already satisfied: joblib&gt;=0.12 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (1.0.1)
+Requirement already satisfied: scipy&gt;=1.0.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (1.7.1)
+Requirement already satisfied: matplotlib&gt;=1.5.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (3.4.2)
 Collecting mock
   Downloading mock-4.0.3-py3-none-any.whl (28 kB)
-Requirement already satisfied: tqdm&gt;=4.43.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis) (4.62.0)
-Collecting funcsigs
-  Downloading funcsigs-1.0.2-py2.py3-none-any.whl (17 kB)
+Requirement already satisfied: tqdm&gt;=4.43.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (4.62.0)
 Collecting gsd&gt;=1.4.0
-  Downloading gsd-2.4.2-cp38-cp38-manylinux2010_x86_64.whl (387 kB)
-     |████████████████████████████████| 387 kB 57.8 MB/s 
-Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (8.3.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (1.3.1)
-Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (0.10.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (2.8.2)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&lt;3.4,&gt;=1.5.1-&gt;MDAnalysis) (2.4.7)
-Requirement already satisfied: msgpack&gt;=0.5.6 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis) (1.0.2)
-Using legacy &#39;setup.py install&#39; for MDAnalysis, since package &#39;wheel&#39; is not installed.
-Installing collected packages: mock, mmtf-python, matplotlib, gsd, GridDataFormats, funcsigs, biopython, MDAnalysis
-  Attempting uninstall: matplotlib
-    Found existing installation: matplotlib 3.4.2
-    Uninstalling matplotlib-3.4.2:
-      Successfully uninstalled matplotlib-3.4.2
-    Running setup.py install for MDAnalysis ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - done
-Successfully installed GridDataFormats-0.5.0 MDAnalysis-1.1.1 biopython-1.79 funcsigs-1.0.2 gsd-2.4.2 matplotlib-3.3.4 mmtf-python-1.1.2 mock-4.0.3
+  Downloading gsd-2.4.2-cp39-cp39-manylinux2010_x86_64.whl (354 kB)
+     |████████████████████████████████| 354 kB 84.6 MB/s 
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (2.8.2)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (8.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (0.10.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (1.3.1)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (2.4.7)
+Requirement already satisfied: msgpack&gt;=0.5.6 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis) (1.0.2)
+Building wheels for collected packages: MDAnalysis
+  Building wheel for MDAnalysis (setup.py) ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
+  Created wheel for MDAnalysis: filename=MDAnalysis-1.0.0-cp39-cp39-linux_x86_64.whl size=2122190 sha256=0fc99c2d2553ab1cf72397d5f31f92afa53e7d4c2b67e6ef80b169694a6caccc
+  Stored in directory: /home/runner/.cache/pip/wheels/50/9f/9e/803a0fafc253694711c79fb2940e717d32cf5114719a444cc5
+Successfully built MDAnalysis
+Installing collected packages: mock, mmtf-python, gsd, GridDataFormats, biopython, MDAnalysis
+Successfully installed GridDataFormats-0.5.0 MDAnalysis-1.0.0 biopython-1.79 gsd-2.4.2 mmtf-python-1.1.2 mock-4.0.3
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, we confirm the package is installed using the <code>pip show</code> command again.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>show</span> <span class=n>MDAnalysis</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Name: MDAnalysis
-Version: 1.1.1
+Version: 1.0.0
 Summary: An object-oriented toolkit to analyze molecular dynamics trajectories generated by CHARMM, Gromacs, NAMD, LAMMPS, or Amber.
 Home-page: https://www.mdanalysis.org
 Author: Naveen Michaud-Agrawal
 Author-email: naveen.michaudagrawal@gmail.com
 License: GPL 2
-Location: /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages
-Requires: numpy, biopython, joblib, networkx, GridDataFormats, six, mmtf-python, scipy, matplotlib, mock, tqdm, funcsigs, gsd
+Location: /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages
+Requires: matplotlib, GridDataFormats, tqdm, joblib, mmtf-python, biopython, scipy, six, mock, numpy, networkx, gsd
 Required-by: 
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>After installing the package, we must reload the notebook kernel to load the newly installed package. To do this, click Kernel -&gt; Restart Kernel</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>MDAnalysis</span>
 <span class=n>MDAnalysis</span><span class=o>.</span><span class=n>__version__</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>&#39;1.1.1&#39;</code>
+<code>&#39;1.0.0&#39;</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Package versions can be found on the PyPI page for each package. We can specify the version we want installed using <code>==</code>.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>install</span> <span class=o>--</span><span class=n>upgrade</span> <span class=n>MDAnalysis</span><span class=o>==</span><span class=mf>2.0.0</span><span class=n>b0</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting MDAnalysis==2.0.0b0
   Downloading MDAnalysis-2.0.0b0.tar.gz (3.4 MB)
-     |████████████████████████████████| 3.4 MB 11.6 MB/s 
-Requirement already satisfied: numpy&gt;=1.16.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.21.1)
-Requirement already satisfied: biopython&gt;=1.71 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.79)
-Requirement already satisfied: networkx&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (2.6.2)
-Requirement already satisfied: GridDataFormats&gt;=0.4.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (0.5.0)
-Requirement already satisfied: mmtf-python&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.1.2)
-Requirement already satisfied: joblib&gt;=0.12 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.0.1)
-Requirement already satisfied: scipy&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (1.7.1)
-Requirement already satisfied: matplotlib&gt;=1.5.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (3.3.4)
-Requirement already satisfied: tqdm&gt;=4.43.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (4.62.0)
-Requirement already satisfied: threadpoolctl in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (2.2.0)
-Requirement already satisfied: gsd&gt;=1.4.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from MDAnalysis==2.0.0b0) (2.4.2)
-Requirement already satisfied: six in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from GridDataFormats&gt;=0.4.0-&gt;MDAnalysis==2.0.0b0) (1.16.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.4.7)
-Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (0.10.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (1.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.8.2)
-Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (8.3.1)
-Requirement already satisfied: msgpack&gt;=0.5.6 in /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis==2.0.0b0) (1.0.2)
-Using legacy &#39;setup.py install&#39; for MDAnalysis, since package &#39;wheel&#39; is not installed.
+     |████████████████████████████████| 3.4 MB 8.1 MB/s 
+Requirement already satisfied: numpy&gt;=1.16.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.21.1)
+Requirement already satisfied: biopython&gt;=1.71 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.79)
+Requirement already satisfied: networkx&gt;=1.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (2.6.2)
+Requirement already satisfied: GridDataFormats&gt;=0.4.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (0.5.0)
+Requirement already satisfied: mmtf-python&gt;=1.0.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.1.2)
+Requirement already satisfied: joblib&gt;=0.12 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.0.1)
+Requirement already satisfied: scipy&gt;=1.0.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.7.1)
+Requirement already satisfied: matplotlib&gt;=1.5.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (3.4.2)
+Requirement already satisfied: tqdm&gt;=4.43.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (4.62.0)
+Requirement already satisfied: threadpoolctl in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (2.2.0)
+Requirement already satisfied: gsd&gt;=1.4.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (2.4.2)
+Requirement already satisfied: six in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from GridDataFormats&gt;=0.4.0-&gt;MDAnalysis==2.0.0b0) (1.16.0)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (0.10.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (1.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.8.2)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (8.3.1)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.4.7)
+Requirement already satisfied: msgpack&gt;=0.5.6 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis==2.0.0b0) (1.0.2)
+Building wheels for collected packages: MDAnalysis
+  Building wheel for MDAnalysis (setup.py) ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - done
+  Created wheel for MDAnalysis: filename=MDAnalysis-2.0.0b0-cp39-cp39-linux_x86_64.whl size=2128678 sha256=0565befff2d0685a71683773dbac3e724527fcb6251b7f70f4a05269e1aeb58a
+  Stored in directory: /home/runner/.cache/pip/wheels/5e/a7/28/1c392640be72c44d40adeefd5ea798b0e67d685eca30c253e9
+Successfully built MDAnalysis
 Installing collected packages: MDAnalysis
   Attempting uninstall: MDAnalysis
-    Found existing installation: MDAnalysis 1.1.1
-    Uninstalling MDAnalysis-1.1.1:
-      Successfully uninstalled MDAnalysis-1.1.1
-    Running setup.py install for MDAnalysis ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - done
+    Found existing installation: MDAnalysis 1.0.0
+    Uninstalling MDAnalysis-1.0.0:
+      Successfully uninstalled MDAnalysis-1.0.0
 Successfully installed MDAnalysis-2.0.0b0
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>show</span> <span class=n>MDAnalysis</span>
@@ -622,34 +645,15 @@ Home-page: https://www.mdanalysis.org
 Author: MDAnalysis Development Team
 Author-email: mdanalysis@numfocus.org
 License: GPL 2
-Location: /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages
-Requires: numpy, biopython, networkx, GridDataFormats, mmtf-python, joblib, scipy, matplotlib, tqdm, threadpoolctl, gsd
+Location: /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages
+Requires: scipy, gsd, networkx, biopython, GridDataFormats, matplotlib, threadpoolctl, numpy, mmtf-python, tqdm, joblib
 Required-by: 
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Again, we must restart our kernel to reset our ipython runtime environment.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>MDAnalysis</span>
 <span class=n>MDAnalysis</span><span class=o>.</span><span class=n>__version__</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>&#39;1.1.1&#39;</code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=installing-from-packages-from-github>Installing from packages from Github<a class=headerlink href=#installing-from-packages-from-github title="Permanent link">&para;</a></h3> <p>In some cases, especially for development or when using alpha or beta code, we must install the package from the source code. As an example, we will install <a href=https://github.com/materialsproject/mpmorph>mpmorph</a> which is a package for running AIMD calculations in vasp using pymatgen, fireworks, and atomate.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>git</span> <span class=n>clone</span> <span class=n>git</span><span class=nd>@github</span><span class=o>.</span><span class=n>com</span><span class=p>:</span><span class=n>materialsproject</span><span class=o>/</span><span class=n>mpmorph</span><span class=o>.</span><span class=n>git</span>
-</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>Cloning into &#39;mpmorph&#39;...
-
-
-fatal: Could not read from remote repository.
-
-Please make sure you have the correct access rights
-and the repository exists.
-</code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>install</span> <span class=n>mpmorph</span><span class=o>/</span>
-</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code><span class=ansi-red-fg>ERROR: Invalid requirement: &#39;mpmorph/&#39;
-Hint: It looks like a path. File &#39;mpmorph/&#39; does not exist.</span>
-</code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>show</span> <span class=n>mpmorph</span>
-</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code><span class=ansi-yellow-fg>WARNING: Package(s) not found: mpmorph</span>
-</code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=removing-python-packages>Removing Python Packages<a class=headerlink href=#removing-python-packages title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Use <code>pip uninstall</code> to remove a python package. Use the <code>-y</code> flag to pre-confirm the uninstall</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>uninstall</span> <span class=o>-</span><span class=n>y</span> <span class=n>MDAnalysis</span>
+<code>&#39;1.0.0&#39;</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=installing-from-packages-from-github>Installing from packages from Github<a class=headerlink href=#installing-from-packages-from-github title="Permanent link">&para;</a></h3> <p>In some cases, especially for development or when using alpha or beta code, we must install the package from the source code. As an example, we will install <a href=https://github.com/materialsproject/mpmorph>mpmorph</a> which is a package for running AIMD calculations in vasp using pymatgen, fireworks, and atomate.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!git clone https://github.com/materialsproject/mpmorph.git</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!pip install mpmorph/</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!pip show mpmorph</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=removing-python-packages>Removing Python Packages<a class=headerlink href=#removing-python-packages title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Use <code>pip uninstall</code> to remove a python package. Use the <code>-y</code> flag to pre-confirm the uninstall</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>uninstall</span> <span class=o>-</span><span class=n>y</span> <span class=n>MDAnalysis</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Found existing installation: MDAnalysis 2.0.0b0
 Uninstalling MDAnalysis-2.0.0b0:
@@ -663,9 +667,9 @@ Uninstalling MDAnalysis-2.0.0b0:
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code><span class=ansi-yellow-fg>WARNING: Skipping mpmorph as it is not installed.</span>
 </code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-conda>Introduction to Conda<a class=headerlink href=#introduction-to-conda title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Much like pip, conda is a program writen in python for the purpose of managing packages. However, using conda, managed packages and software are not limited to python. Conda is a general-purpose package manager and enables installation of C libraries or R packages. Additionally, conda installs pre-built binaries, although it is possible to build packages from the source.</p> <p>Conda also allows for the creation of virtual environments. Environments are very powerful and allow us to install a local collection of packages isolated from system packages or other environments. Unlike pip, conda can also install or manage different versions of python.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>conda</span> <span class=o>-</span><span class=n>h</span>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-conda-and-mamba>Introduction to Conda (and Mamba)<a class=headerlink href=#introduction-to-conda-and-mamba title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Much like pip, conda is a program writen in python for the purpose of managing packages. However, using conda, managed packages and software are not limited to python. Conda is a general-purpose package manager and enables installation of C libraries or R packages. Additionally, conda installs pre-built binaries, although it is possible to build packages from the source.</p> <p>Conda also allows for the creation of virtual environments. Environments are very powerful and allow us to install a local collection of packages isolated from system packages or other environments. Unlike pip, conda can also install or manage different versions of python. Conda and pip are usually used in conjunction.</p> <p>While conda is written in python, a mamba has recently been released and reimplements the functionality of conda using C++. Mamba offers parallel downloading of repository data and package files and a faster dependency solver. We will be using mamba in the workshop, however the two are interchangeable - that is, all <code>mamba</code> commands we use can be directly replaced with <code>conda</code> (i.e. <code>mamba install -y pymatgen</code> and <code>conda install -y pymatgen</code> both work) unless otherwise noted.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>mamba</span> <span class=o>-</span><span class=n>h</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
-<code>usage: conda [-h] [-V] command ...
+<code>usage: mamba [-h] [-V] command ...
 
 conda is a tool for managing and deploying applications, environments and packages.
 
@@ -696,6 +700,7 @@ positional arguments:
                  See examples below.
     update       Updates conda packages to the latest compatible version.
     upgrade      Alias for conda update.
+    repoquery    Query repositories using mamba.
 
 optional arguments:
   -h, --help     Show this help message and exit.
@@ -704,12 +709,14 @@ optional arguments:
 conda commands available from other packages:
   env
 </code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can get a list of the available conda environments using the <code>conda env list</code> command</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>conda</span> <span class=n>env</span> <span class=nb>list</span>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can get a list of the available conda environments using the <code>conda env list</code> command</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!mamba env --help</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!mamba env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=creating-conda-environments>Creating Conda Environments<a class=headerlink href=#creating-conda-environments title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Create a new conda environment using the <code>conda create</code> command. We use the -y flag, since we cannot provide confirmation to the running code. We specify the environment to be created with a installation of python 3.9</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!mamba create -y --name temp_env python=3.9</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Our new environment shows up under our list of conda environments. However it is not the active environment (does not have a * next to it).</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!mamba env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=using-and-interacting-with-conda-environments>Using and interacting with Conda environments<a class=headerlink href=#using-and-interacting-with-conda-environments title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We must activate our environment to install python packages and run python code using the new environment. Since we are interacting with our environment from jupyter notebook, we must activate our environment within each cell before we use any bash commands.</p> <p>To do this, use the <code>%%bash</code> command to create a multi-line bash cell, then activate the environment using <code>source activate &lt;env_name&gt;</code></p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>mamba env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, using the <code>conda env list</code> command, we see our new environment is active, as denoted by the *</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>mamba list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=installing-from-conda-forge>Installing from conda-forge<a class=headerlink href=#installing-from-conda-forge title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>When using conda to install or search for packages, the standard behaviour is to search the <a href=https://repo.anaconda.com/pkgs/ >default repositories</a>. These are packages provided by Anaconda, Inc. for free. To access third-party software, we can use the conda-forge channel. <a href=https://conda-forge.org/index.html>Conda-Forge</a> is a community effort to provide conda packages for a wide range of software.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>To install software from the conda-forge channel, simply add <code>-c conda-forge</code> to the <code>conda install</code> command. This will tell conda to include the packages in conda-forge when searching for packages and dependencies.</p> <p>Many Materials Project codes (such as pymatgen, fireworks, custodian, atomate, and matminer) are available through the conda-forge channel.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>* Note: repoquery is not available in conda. In conda, you must use <code>conda search numpy</code> and its equivalent command in mamba is <code>mamba search numpy</code>. We use the <code>repoquery</code> command, as it offers improved speed over the default search.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>mamba repoquery search numpy</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>mamba install -y numpy -c conda-forge</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can add conda-forge to the list of channels (to avoid adding <code>-c conda-forge</code> to every installation line)</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>* mamba does not currently support changing configuration files. We use conda for this, although the config changes also apply to mamba</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>conda config --add channels conda-forge conda config --set channel_priority strict</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now we can install packages using less arguments</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>mamba install -y scipy</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=creating-a-custom-kernel-for-jupyteripython>Creating a Custom Kernel for Jupyter/IPython<a class=headerlink href=#creating-a-custom-kernel-for-jupyteripython title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While our environment is ready for command-line use, there are additional steps to use it with jupyter. </p> <ol> <li>First, we will install "ipykernel"</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_env</p> <p>mamba install -y ipykernel</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>We will create a jupyter kernelspec for our environment</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!jupyter kernelspec list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We will create a kernelspec (a pointer to our environment) using the python in our environment and add it to the list of kernels for our base environment.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>mamba</span> <span class=n>env</span> <span class=nb>list</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code># conda environments:
 #
-base                  *  /usr/share/miniconda
+                         /usr/share/miniconda
+base                  *  /usr/share/miniconda/envs/workshop
 
 </code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=creating-conda-environments>Creating Conda Environments<a class=headerlink href=#creating-conda-environments title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Create a new conda environment using the <code>conda create</code> command. We use the -y flag, since we cannot provide confirmation to the running code. We specify the environment to be created with a installation of python 3.9</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!conda create -y --name temp_workshop_env python=3.9</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Our new environment shows up under our list of conda environments. However it is not the active environment (does not have a * next to it).</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!conda env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=using-and-interacting-with-conda-environments>Using and interacting with Conda environments<a class=headerlink href=#using-and-interacting-with-conda-environments title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We must activate our environment to install python packages and run python code using the new environment. Since we are interacting with our environment from jupyter notebook, we must activate our environment within each cell before we use any bash commands.</p> <p>To do this, use the <code>%%bash</code> command to create a multi-line bash cell, then activate the environment using <code>source activate &lt;env_name&gt;</code></p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>conda env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, using the <code>conda env list</code> command, we see our new environment is active, as denoted by the *</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>pip freeze</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While our environment is ready for command-line use, there are additional steps to use it with jupyter. </p> <ol> <li>First, we will install "ipykernel"</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>conda install -y pip conda install -y ipykernel</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>pip freeze</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>We will create a jupyter kernelspec for our environment</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!jupyter kernelspec list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!/Users/esivonxay/anaconda3/envs/temp_workshop_env/bin/python -m ipykernel install --prefix=/Users/esivonxay/anaconda3/envs/mp_workshop_2021 --name 'temp_workshop_env'</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!jupyter kernelspec list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=installing-from-conda-forge>Installing from conda-forge<a class=headerlink href=#installing-from-conda-forge title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>When using conda to install or search for packages, the standard behaviour is to search the <a href=https://repo.anaconda.com/pkgs/ >default repositories</a>. These are packages provided by Anaconda, Inc. for free. To access third-party software, we can use the conda-forge channel. <a href=https://conda-forge.org/index.html>Conda-Forge</a> is a community effort to provide conda packages for a wide range of software.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>To install software from the conda-forge channel, simply add <code>-c conda-forge</code> to the <code>conda install</code> command. This will tell conda to include the packages in conda-forge when searching for packages and dependencies.</p> <p>Many Materials Project codes (such as pymatgen, fireworks, custodian, atomate, and matminer) are available through the conda-forge channel.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>conda install -y pymatgen -c conda-forge</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can add conda-forge to the list of channels (to avoid adding <code>-c conda-forge</code> to every installation line)</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>conda config --add channels conda-forge conda config --set channel_priority strict</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now we can install packages using less arguments</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>%%bash source activate temp_workshop_env</p> <p>conda install -y fireworks</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=removedelete-conda-environment>Remove/Delete Conda environment<a class=headerlink href=#removedelete-conda-environment title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>When a conda environment is no longer useful or needs to be uninstalled, remove it with <code>conda remove</code>.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!conda remove -y --name temp_workshop_env --all</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!conda env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>If we created a kernelspec, we'll want to remove it (not done by default)</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!jupyter kernelspec remove -f temp_workshop_env</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!/home/user/.conda/envs/temp_env/bin/python -m ipykernel install --user --name 'temp_env_kernel'</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!jupyter kernelspec list</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>numpy</span><span class=o>,</span> <span class=nn>scipy</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=removedelete-conda-environment>Remove/Delete Conda environment<a class=headerlink href=#removedelete-conda-environment title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>When a conda environment is no longer useful or needs to be uninstalled, remove it with <code>conda remove</code>.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!mamba remove -y --name temp_env --all</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!mamba env list</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>If we created a kernelspec, we'll want to remove it (not done by default)</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered celltag_no-execute"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>!jupyter kernelspec remove -f temp_env_kernel</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
 </code></pre></div> </div> </div> </article> </div> </div> </main> <footer class=md-footer> <nav class="md-footer__inner md-grid" aria-label=Footer> <a href=../../03_MongoDB_part1/lessons_filled/ class="md-footer__link md-footer__link--prev" aria-label="Previous: Intro to MongoDB" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> Intro to MongoDB </div> </div> </a> <a href=../2_google_colab/ class="md-footer__link md-footer__link--next" aria-label="Next: Intro to Google Colab" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> Intro to Google Colab </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Built by The Materials Project </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../../..", "features": ["instant", "tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script> <script src=../../../assets/javascripts/bundle.2b46852b.min.js></script> <script src=../../../assets/config.js></script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> </body> </html>
