@@ -71,7 +71,7 @@ Successfully installed numpy-1.21.1
 <span class=ansi-yellow-fg>WARNING: Ignoring invalid distribution -umpy (/Users/esivonxay/anaconda3/envs/mp_workshop_2021/lib/python3.9/site-packages)</span>
 <span class=ansi-yellow-fg>WARNING: Ignoring invalid distribution -umpy (/Users/esivonxay/anaconda3/envs/mp_workshop_2021/lib/python3.9/site-packages)</span>
 </code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=conda>Conda<a class=headerlink href=#conda title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=exercise-try-using-creating-a-conda-environment-with-a-name-of-your-choice-and-install-enumlib-version-104-from-the-matsci-channel>Exercise: Try using creating a conda environment (with a name of your choice) and install enumlib version 1.0.4 from the <code>matsci</code> channel<a class=headerlink href=#exercise-try-using-creating-a-conda-environment-with-a-name-of-your-choice-and-install-enumlib-version-104-from-the-matsci-channel title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>conda</span> <span class=n>search</span> <span class=n>enumlib</span> <span class=o>-</span><span class=n>c</span> <span class=n>matsci</span>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=conda>Conda<a class=headerlink href=#conda title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=exercise-try-using-creating-a-conda-environment-with-a-name-of-your-choice-and-install-enumlib-version-104-from-the-matsci-channel>Exercise: Try using creating a conda environment (with a name of your choice) and install enumlib version 1.0.4 from the <code>matsci</code> channel<a class=headerlink href=#exercise-try-using-creating-a-conda-environment-with-a-name-of-your-choice-and-install-enumlib-version-104-from-the-matsci-channel title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>mamba</span> <span class=n>repoquery</span> <span class=n>search</span> <span class=n>enumlib</span> <span class=o>-</span><span class=n>c</span> <span class=n>matsci</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Loading channels: done
 # Name                       Version           Build  Channel             
@@ -80,7 +80,7 @@ enumlib                        1.0.4               1  matsci
 enumlib                        2.0.4      h6818c3e_0  conda-forge         
 enumlib                        2.0.4      h6818c3e_1  conda-forge         
 </code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>conda</span> <span class=n>create</span> <span class=o>-</span><span class=n>y</span> <span class=o>--</span><span class=n>name</span> <span class=n>enumlib_env</span>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>mamba</span> <span class=n>create</span> <span class=o>-</span><span class=n>y</span> <span class=o>--</span><span class=n>name</span> <span class=n>enumlib_env</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting package metadata (current_repodata.json): done
 Solving environment: done
@@ -117,7 +117,7 @@ Executing transaction: done
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code>%%bash
 <span class=nb>source</span> activate enumlib_env
-conda install -y <span class=nv>enumlib</span><span class=o>=</span><span class=m>1</span>.0.4 -c matsci
+mamba install -y <span class=nv>enumlib</span><span class=o>=</span><span class=m>1</span>.0.4 -c matsci
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting package metadata (current_repodata.json): ...working... done
 Solving environment: ...working... done
