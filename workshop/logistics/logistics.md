@@ -26,11 +26,11 @@ We'll host the lightning-videos on our YouTube Channel and publish the PDFs on F
 
 An important aspect of the Materials Project API is the use of API keys to ensure we can control the amount of traffic that comes to the API. Otherwise, it's very easy for someone to take down the MP servers, making them unavailable for anyone. Your API key can be accessed via the Dashboard on <https://next-gen.materialsproject.org>:
 
-1. Login to your Materials Project account and find the API page in the top right hand corner
+1\. Got to <https://next-gen.materialsproject.org> and find the API page in the top right hand corner
 
 ![MP Dashboard](/logistics/mp_api_page.png)
 
-2. Your API is displayed in the middle under the `Your API Key` button after logging in. Keep this to yourself.
+2\. Your API is displayed in the middle under the `Your API Key` heading after logging in. Keep this to yourself.
 
 ![API Key](/logistics/api_key.png)
 
@@ -43,7 +43,7 @@ Currently the API key for MPContribs is separate from Materials Project. In orde
 
 ![MP Contribs More](/logistics/mpcontribs_more.png)
 
-3. Click the `API Key` button to copy your API key to your clipboard. You can now paste this into your notebook during the MPContribs lesson.
+3\. Click the `API Key` button to copy your API key to your clipboard. You can now paste this into your notebook during the MPContribs lesson.
 
 ![MP Contrib API Key](/logistics/mpcontribs_more_dropdown.png)
 
