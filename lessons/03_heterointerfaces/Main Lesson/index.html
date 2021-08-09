@@ -1,0 +1,1480 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Lessons for the Materials Project Workshop"><link href=https://workshop.materialsproject.org/lessons/03_heterointerfaces/Main%20Lesson/ rel=canonical><link rel=icon href=../../../assets/images/favicon.png><meta name=generator content="mkdocs-1.2.2, mkdocs-material-7.2.2"><title>Working with Surfaces and Interfaces - The Materials Project Workshop</title><link rel=stylesheet href=../../../assets/stylesheets/main.1118c9be.min.css><link rel=stylesheet href=../../../assets/stylesheets/palette.ba0d045b.min.css><meta name=theme-color content=#546d78><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style><link rel=stylesheet href=../../../assets/workshop.css><link rel=stylesheet href=../../../css/ansi-colours.css><link rel=stylesheet href=../../../css/jupyter-cells.css><link rel=stylesheet href=../../../css/pandas-dataframe.css></head> <body dir=ltr data-md-color-scheme data-md-color-primary=blue-grey data-md-color-accent> <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#heterointerfaces-interfaces-between-two-different-materials class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=../../.. title="The Materials Project Workshop" class="md-header__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> The Materials Project Workshop </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Working with Surfaces and Interfaces </span> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </nav> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../../.. title="The Materials Project Workshop" class="md-nav__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> The Materials Project Workshop </label> <div class=md-nav__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../.. class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../../logistics/logistics/ class=md-nav__link> Logistics </a> </li> <li class=md-nav__item> <a href=../../../people/people/ class=md-nav__link> People </a> </li> <li class=md-nav__item> <a href=../../../code_of_conduct/ class=md-nav__link> Code of Conduct </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5> Primer <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Primer data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Primer </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../primer/01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/ class=md-nav__link> Intro </a> </li> <li class=md-nav__item> <a href=../../../primer/01_basic_python/1%20-%20Python%20Primer/ class=md-nav__link> Basic Python </a> </li> <li class=md-nav__item> <a href=../../../primer/02_python_part2/lessons/ class=md-nav__link> Advanced Python </a> </li> <li class=md-nav__item> <a href=../../../primer/03_MongoDB_part1/lessons_filled/ class=md-nav__link> Intro to MongoDB </a> </li> <li class=md-nav__item> <a href=../../../primer/04_Python_environments/1_pip_and_conda/ class=md-nav__link> Intro to Python Environments </a> </li> <li class=md-nav__item> <a href=../../../primer/04_Python_environments/2_google_colab/ class=md-nav__link> Intro to Google Colab </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6 checked> <label class=md-nav__link for=__nav_6> Workshop <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Workshop data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> Workshop </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_1 type=checkbox id=__nav_6_1 checked> <label class=md-nav__link for=__nav_6_1> Day 1 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 1" data-md-level=2> <label class=md-nav__title for=__nav_6_1> <span class="md-nav__icon md-icon"></span> Day 1 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../01_website_walkthrough/website_walkthrough/ class=md-nav__link> The Materials Project Website </a> </li> <li class=md-nav__item> <a href=../../02_intro_pymatgen/1%20-%20pymatgen%20foundations/ class=md-nav__link> Intro to Pymatgen </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Working with Surfaces and Interfaces <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> Working with Surfaces and Interfaces </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#definitions class=md-nav__link> Definitions </a> </li> <li class=md-nav__item> <a href=#lesson-1-surfaces class=md-nav__link> Lesson 1: Surfaces </a> <nav class=md-nav aria-label="Lesson 1: Surfaces"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#exercise-1 class=md-nav__link> Exercise 1: </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#lesson-2-epitaxial-matching class=md-nav__link> Lesson 2: Epitaxial Matching </a> <nav class=md-nav aria-label="Lesson 2: Epitaxial Matching"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#exercise-2 class=md-nav__link> Exercise 2: </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#building-and-manipulating-heterointerfaces class=md-nav__link> Building and Manipulating heterointerfaces </a> </li> <li class=md-nav__item> <a href=#exercise-3 class=md-nav__link> Exercise 3: </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../04_materials_api/MAPI%20Lesson%20%28filled%29/ class=md-nav__link> The Materials API </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_2 type=checkbox id=__nav_6_2> <label class=md-nav__link for=__nav_6_2> Day 2 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 2" data-md-level=2> <label class=md-nav__title for=__nav_6_2> <span class="md-nav__icon md-icon"></span> Day 2 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../05_automated_dft/Lesson/ class=md-nav__link> Automated DFT </a> </li> <li class=md-nav__item> <a href=../../07_mpcontribs/contribute/ class=md-nav__link> MPContribs </a> </li> <li class=md-nav__item> <a href=../../06_exploring_synthesis/Exploring%20Synthesis%20%28filled%29/ class=md-nav__link> Exploring Synthesis </a> </li> <li class=md-nav__item> <a href=../../08_ml_matminer/matminer-notes/ class=md-nav__link> Machine Learning with MatMiner </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#definitions class=md-nav__link> Definitions </a> </li> <li class=md-nav__item> <a href=#lesson-1-surfaces class=md-nav__link> Lesson 1: Surfaces </a> <nav class=md-nav aria-label="Lesson 1: Surfaces"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#exercise-1 class=md-nav__link> Exercise 1: </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#lesson-2-epitaxial-matching class=md-nav__link> Lesson 2: Epitaxial Matching </a> <nav class=md-nav aria-label="Lesson 2: Epitaxial Matching"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#exercise-2 class=md-nav__link> Exercise 2: </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#building-and-manipulating-heterointerfaces class=md-nav__link> Building and Manipulating heterointerfaces </a> </li> <li class=md-nav__item> <a href=#exercise-3 class=md-nav__link> Exercise 3: </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href="https://github.com/materialsproject/workshop/edit/master/docs/lessons/03_heterointerfaces/Main Lesson.ipynb" title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <script src=https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js></script> <script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=heterointerfaces-interfaces-between-two-different-materials>Heterointerfaces (Interfaces between two different materials)<a class=headerlink href=#heterointerfaces-interfaces-between-two-different-materials title="Permanent link">&para;</a></h1> <p>This lesson focuses on a new feature in pymatgen, which is the construction of heterointerface structures. Heterointerfaces are interfaces between two materials that don't have to share chemistry or structure. They are particularly difficult to model due to the number of different ways in which they can be constructed. In some ways, crystalline features such as stacking faults and grain boundaries represent the simplest type of heterointerface. </p> <p>To teach students how to build and manipulat heterointerfaces, we'll begin by focusing on building surfaces, move to understanding epitaxial matching, a critical algorithmic capability for heterointerface generation and finally finish by building some heterointerfaces ourselves.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=definitions>Definitions<a class=headerlink href=#definitions title="Permanent link">&para;</a></h2> <p><strong>Miller Index</strong>: a direction in a crystal typically referenced by 3 integers such as (1,1,1), often quoted without the comma such as "111" or "100". The integers represent 1/N in 3D space, that is "200" is the real-space direction (1/2,0,0) and "121" is the real-space direction (1,1/2,1). This is because any direction beyond the boundaries of crystalline boundary wrap back around, so it's not useful to have a direction outside of the cell itself. Negative directions are allowed. Many crystalline systems have symmetries that make various directions equivalent. For instance, in a cubic system "100", "010" and "001" are all equivalent. </p> <p><strong>Coherent Interface</strong>: A coherent interface has matching lattices from both sides of the interface. This means there is a repeat along the interface that lets build periodicity along the interface surface. </p> <p><strong>Incoherent Interface</strong>: This is opposed to an incoherent interface in which there is no matching and as a result its not possible to define a repeat distance. This is akin to crystalline vs amorphous materials. </p> <p><strong>Semi-Coherent Interface</strong>: This is an interface where a coherent match is possible if special defects are allowed. The conventional way to think about this is as needing line dislocations or screw defects to fix the "gap" in making a true coherent match. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=lesson-1-surfaces>Lesson 1: Surfaces<a class=headerlink href=#lesson-1-surfaces title="Permanent link">&para;</a></h2> <p>One way to construct an interface is to take two surfaces and join them together. We'll begin by focusing on the tools in pymatgen that let us construct and manipulate surfaces. Since crystal structures in <code>pymatgen</code> are periodic all directions, surface structures are also technically in all dimensions. In order to build a free surface we introduce free space or "vacuum" into the cell so that there is a break in the periodicity and this "free surface" is now something we can compute properties of using DFT. We call this type of structure a <code>Slab</code>. <code>Slab</code>s are not easy to make, so most of the time we'll beging by using the <code>SlabGenerator</code> to construct slabs</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's start by importing the LiFePO4 structure</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.core.structure</span> <span class=kn>import</span> <span class=n>Structure</span>
+<span class=n>LiFePO4</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;LiFePO4.cif&quot;</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's import the crystal_toolkit extension to view 3d structures in the Jupyterlab notebook. This only works with JupyterLab and any compatible environment, so it unfortunateyl doesn't work in the collaborative CoCalc environment for now. Hopefully next year it will!</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>crystal_toolkit</span>
+<span class=n>LiFePO4</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 4.746441 6.090226 10.44373
+ angles : 90.0 90.0 90.0
+ volume : 301.8958418773316
+      A : 4.746441 0.0 2.906356888995881e-16
+      B : 9.793830372249544e-16 6.090226 3.7291878884919943e-16
+      C : 0.0 0.0 10.44373
+PeriodicSite: Li (0.0000, 0.0000, 5.2219) [0.0000, 0.0000, 0.5000]
+PeriodicSite: Li (2.3732, 0.0000, 0.0000) [0.5000, 0.0000, 0.0000]
+PeriodicSite: Li (2.3732, 3.0451, 0.0000) [0.5000, 0.5000, 0.0000]
+PeriodicSite: Li (0.0000, 3.0451, 5.2219) [0.0000, 0.5000, 0.5000]
+PeriodicSite: Fe (2.2557, 4.5677, 7.4988) [0.4752, 0.7500, 0.7180]
+PeriodicSite: Fe (0.1175, 4.5677, 2.2770) [0.0248, 0.7500, 0.2180]
+PeriodicSite: Fe (4.6290, 1.5226, 8.1668) [0.9752, 0.2500, 0.7820]
+PeriodicSite: Fe (2.4907, 1.5226, 2.9449) [0.5248, 0.2500, 0.2820]
+PeriodicSite: P (1.9831, 1.5226, 6.2115) [0.4178, 0.2500, 0.5948]
+PeriodicSite: P (4.3564, 4.5677, 9.4541) [0.9178, 0.7500, 0.9052]
+PeriodicSite: P (0.3901, 1.5226, 0.9896) [0.0822, 0.2500, 0.0948]
+PeriodicSite: P (2.7633, 4.5677, 4.2323) [0.5822, 0.7500, 0.4052]
+PeriodicSite: O (3.5212, 1.5226, 6.2320) [0.7419, 0.2500, 0.5967]
+PeriodicSite: O (1.1480, 4.5677, 9.4336) [0.2419, 0.7500, 0.9033]
+PeriodicSite: O (3.5984, 1.5226, 1.0101) [0.7581, 0.2500, 0.0967]
+PeriodicSite: O (1.2252, 4.5677, 4.2117) [0.2581, 0.7500, 0.4033]
+PeriodicSite: O (0.9823, 1.5226, 9.9954) [0.2069, 0.2500, 0.9571]
+PeriodicSite: O (3.3555, 4.5677, 5.6702) [0.7069, 0.7500, 0.5429]
+PeriodicSite: O (1.3910, 1.5226, 4.7735) [0.2931, 0.2500, 0.4571]
+PeriodicSite: O (3.7642, 4.5677, 0.4484) [0.7931, 0.7500, 0.0429]
+PeriodicSite: O (1.3504, 0.2863, 6.9502) [0.2845, 0.0470, 0.6655]
+PeriodicSite: O (3.7236, 5.8040, 8.7154) [0.7845, 0.9530, 0.8345]
+PeriodicSite: O (3.7236, 3.3314, 8.7154) [0.7845, 0.5470, 0.8345]
+PeriodicSite: O (1.3504, 2.7589, 6.9502) [0.2845, 0.4530, 0.6655]
+PeriodicSite: O (1.0228, 2.7589, 1.7283) [0.2155, 0.4530, 0.1655]
+PeriodicSite: O (3.3960, 3.3314, 3.4936) [0.7155, 0.5470, 0.3345]
+PeriodicSite: O (3.3960, 5.8040, 3.4936) [0.7155, 0.9530, 0.3345]
+PeriodicSite: O (1.0228, 0.2863, 1.7283) [0.2155, 0.0470, 0.1655]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's add some oxidation states to LiFePO<sub>4</sub>, this will be important when we want to take surface polarity into consideration:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>LiFePO4</span><span class=o>.</span><span class=n>add_oxidation_state_by_element</span><span class=p>({</span><span class=s2>&quot;Fe&quot;</span><span class=p>:</span> <span class=mi>2</span><span class=p>,</span> <span class=s2>&quot;Li&quot;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=s2>&quot;P&quot;</span><span class=p>:</span> <span class=mi>5</span><span class=p>,</span> <span class=s2>&quot;O&quot;</span><span class=p>:</span> <span class=o>-</span><span class=mi>2</span><span class=p>})</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's now try to generate surfaces using the <em>SlabGenerator</em> class.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.core.surface</span> <span class=kn>import</span> <span class=n>SlabGenerator</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now initialize an instance of the <em>SlabGenerator</em>class, let's choose a Miller index of (0, 0, 1), a minimum slab height of 10 Å, and minimum 10 Å of vacuum.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>slabgen</span> <span class=o>=</span> <span class=n>SlabGenerator</span><span class=p>(</span><span class=n>LiFePO4</span><span class=p>,</span>
+                        <span class=n>miller_index</span><span class=o>=</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>),</span>
+                        <span class=n>min_slab_size</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span>
+                        <span class=n>min_vacuum_size</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span>
+                        <span class=n>center_slab</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now use the <em>get_slabs()</em> method of the <em>SlabGenerator</em> class to create a list of <em>Slab</em> objects. The slabs returned by <em>get_slabs()</em> in this case correspond to all the unique terminations along the normal to the Miller plane we are interested in. The different resulting slabs are characterized by different c shifts:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>slabs</span> <span class=o>=</span> <span class=n>slabgen</span><span class=o>.</span><span class=n>get_slabs</span><span class=p>()</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=nb>len</span><span class=p>(</span><span class=n>slabs</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>5</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's print this slab object and see what it looks like:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=nb>print</span><span class=p>(</span><span class=n>slabs</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Slab Summary (Li4 Fe4 P4 O16)
+Reduced Formula: LiFePO4
+Miller index: (0, 0, 1)
+Shift: 0.0215, Scale Factor: [[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+abc   :   4.746441   6.090226  20.887460
+angles:  90.000000  90.000000  90.000000
+Sites (28)
+1 Li+     0.000000     0.000000     0.482143
+2 Li+     0.500000     0.000000     0.732143
+3 Li+     0.500000     0.500000     0.732143
+4 Li+     0.000000     0.500000     0.482143
+5 Fe2+     0.475247     0.750000     0.591155
+6 Fe2+     0.024753     0.750000     0.341155
+7 Fe2+     0.975247     0.250000     0.623131
+8 Fe2+     0.524753     0.250000     0.373131
+9 P5+     0.417816     0.250000     0.529520
+10 P5+     0.917816     0.750000     0.684766
+11 P5+     0.082184     0.250000     0.279520
+12 P5+     0.582184     0.750000     0.434766
+13 O2-     0.741866     0.250000     0.530504
+14 O2-     0.241866     0.750000     0.683782
+15 O2-     0.758134     0.250000     0.280504
+16 O2-     0.258134     0.750000     0.433782
+17 O2-     0.206946     0.250000     0.710677
+18 O2-     0.706946     0.750000     0.503609
+19 O2-     0.293054     0.250000     0.460677
+20 O2-     0.793054     0.750000     0.253609
+21 O2-     0.284512     0.047003     0.564887
+22 O2-     0.784512     0.952997     0.649399
+23 O2-     0.784512     0.547003     0.649399
+24 O2-     0.284512     0.452997     0.564887
+25 O2-     0.215488     0.452997     0.314887
+26 O2-     0.715488     0.547003     0.399399
+27 O2-     0.715488     0.952997     0.399399
+28 O2-     0.215488     0.047003     0.314887
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p><em>Slab</em> is just another form of a <em>Structure</em> with extra data, so we can use the tools we already have to mainpulate them. This includes using them to produce inputs for various DFT codes such as VASP, Quantum Espresso, and CASTEP, as well as using our jupyter-lab crystal viewer: crystal_toolkit. Let's try that out:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>slabs</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 4.746441 6.090226 20.88746
+ angles : 90.0 90.0 90.0
+ volume : 603.7916837546632
+      A : 4.746441 0.0 2.906356888995881e-16
+      B : 9.793830372249544e-16 6.090226 3.7291878884919943e-16
+      C : 0.0 0.0 20.88746
+PeriodicSite: Li+ (0.0000, 0.0000, 10.0707) [0.0000, 0.0000, 0.4821]
+PeriodicSite: Li+ (2.3732, 0.0000, 15.2926) [0.5000, 0.0000, 0.7321]
+PeriodicSite: Li+ (2.3732, 3.0451, 15.2926) [0.5000, 0.5000, 0.7321]
+PeriodicSite: Li+ (0.0000, 3.0451, 10.0707) [0.0000, 0.5000, 0.4821]
+PeriodicSite: Fe2+ (2.2557, 4.5677, 12.3477) [0.4752, 0.7500, 0.5912]
+PeriodicSite: Fe2+ (0.1175, 4.5677, 7.1259) [0.0248, 0.7500, 0.3412]
+PeriodicSite: Fe2+ (4.6290, 1.5226, 13.0156) [0.9752, 0.2500, 0.6231]
+PeriodicSite: Fe2+ (2.4907, 1.5226, 7.7938) [0.5248, 0.2500, 0.3731]
+PeriodicSite: P5+ (1.9831, 1.5226, 11.0603) [0.4178, 0.2500, 0.5295]
+PeriodicSite: P5+ (4.3564, 4.5677, 14.3030) [0.9178, 0.7500, 0.6848]
+PeriodicSite: P5+ (0.3901, 1.5226, 5.8385) [0.0822, 0.2500, 0.2795]
+PeriodicSite: P5+ (2.7633, 4.5677, 9.0811) [0.5822, 0.7500, 0.4348]
+PeriodicSite: O2- (3.5212, 1.5226, 11.0809) [0.7419, 0.2500, 0.5305]
+PeriodicSite: O2- (1.1480, 4.5677, 14.2825) [0.2419, 0.7500, 0.6838]
+PeriodicSite: O2- (3.5984, 1.5226, 5.8590) [0.7581, 0.2500, 0.2805]
+PeriodicSite: O2- (1.2252, 4.5677, 9.0606) [0.2581, 0.7500, 0.4338]
+PeriodicSite: O2- (0.9823, 1.5226, 14.8442) [0.2069, 0.2500, 0.7107]
+PeriodicSite: O2- (3.3555, 4.5677, 10.5191) [0.7069, 0.7500, 0.5036]
+PeriodicSite: O2- (1.3910, 1.5226, 9.6224) [0.2931, 0.2500, 0.4607]
+PeriodicSite: O2- (3.7642, 4.5677, 5.2972) [0.7931, 0.7500, 0.2536]
+PeriodicSite: O2- (1.3504, 0.2863, 11.7990) [0.2845, 0.0470, 0.5649]
+PeriodicSite: O2- (3.7236, 5.8040, 13.5643) [0.7845, 0.9530, 0.6494]
+PeriodicSite: O2- (3.7236, 3.3314, 13.5643) [0.7845, 0.5470, 0.6494]
+PeriodicSite: O2- (1.3504, 2.7589, 11.7990) [0.2845, 0.4530, 0.5649]
+PeriodicSite: O2- (1.0228, 2.7589, 6.5772) [0.2155, 0.4530, 0.3149]
+PeriodicSite: O2- (3.3960, 3.3314, 8.3424) [0.7155, 0.5470, 0.3994]
+PeriodicSite: O2- (3.3960, 5.8040, 8.3424) [0.7155, 0.9530, 0.3994]
+PeriodicSite: O2- (1.0228, 0.2863, 6.5772) [0.2155, 0.0470, 0.3149]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p><em>Slab</em>s also have a number of unique properties that are important when simulating them. Two very important properties are whether they are symmetric and polar. <strong>Polar</strong> surfaces can be more difficult to relax and compute because they naturally have a redistribution of charge. There are tricks that can be played in many DFT codes to fix this, but all cause other problems. <strong>Non-symmetric</strong> slabs make computing surface energies more difficult, as you can only compute the average surface energy of the two surfaces together. Let's run a loop over our surfaces and see which ones are polar and which ones are symmetric.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=k>for</span> <span class=n>n</span><span class=p>,</span> <span class=n>slab</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>slabs</span><span class=p>):</span>
+    <span class=nb>print</span><span class=p>(</span><span class=n>n</span><span class=p>,</span> <span class=s2>&quot;Polar:&quot;</span> <span class=p>,</span><span class=n>slab</span><span class=o>.</span><span class=n>is_polar</span><span class=p>(),</span> <span class=s2>&quot;Symmetric: &quot;</span><span class=p>,</span> <span class=n>slab</span><span class=o>.</span><span class=n>is_symmetric</span><span class=p>())</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>0 Polar: True Symmetric:  False
+1 Polar: True Symmetric:  False
+2 Polar: True Symmetric:  False
+3 Polar: True Symmetric:  False
+4 Polar: False Symmetric:  True
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=exercise-1>Exercise 1:<a class=headerlink href=#exercise-1 title="Permanent link">&para;</a></h3> <p>Try getting the (111) slabs for Si. How many are there? </p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1># Solution</span>
+<span class=n>silicon</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;Si.cif&quot;</span><span class=p>)</span>
+<span class=n>slabgen</span> <span class=o>=</span> <span class=n>SlabGenerator</span><span class=p>(</span><span class=n>silicon</span><span class=p>,</span> <span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>),</span> <span class=mi>10</span><span class=p>,</span> <span class=mi>10</span><span class=p>)</span>
+<span class=n>slabs</span> <span class=o>=</span> <span class=n>slabgen</span><span class=o>.</span><span class=n>get_slabs</span><span class=p>()</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&quot;Number of slabs:&quot;</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>slabs</span><span class=p>))</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Number of slabs: 2
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now let's visualize the slabs to see what they look like</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>slabs</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 3.866974653264745 3.8669746532647444 25.357448563817616
+ angles : 85.6269933583793 85.6269933583793 59.99999999999999
+ volume : 327.1063427893186
+      A : 3.855717061245752 0.0 0.29485405306764534
+      B : 1.9165845041280052 3.3456326598893043 0.29485405306764534
+      C : 0.0 0.0 25.357448563817616
+PeriodicSite: Si (5.5017, 3.1888, 23.1460) [0.9531, 0.9531, 0.8906]
+PeriodicSite: Si (5.3213, 3.0843, 25.5049) [0.9219, 0.9219, 0.9844]
+PeriodicSite: Si (1.8940, 1.0978, 19.6078) [0.3281, 0.3281, 0.7656]
+PeriodicSite: Si (1.7137, 0.9932, 21.9666) [0.2969, 0.2969, 0.8594]
+PeriodicSite: Si (4.0586, 2.3524, 16.6593) [0.7031, 0.7031, 0.6406]
+PeriodicSite: Si (3.8783, 2.2478, 19.0181) [0.6719, 0.6719, 0.7344]
+PeriodicSite: Si (0.4510, 0.2614, 13.1210) [0.0781, 0.0781, 0.5156]
+PeriodicSite: Si (0.2706, 0.1568, 15.4798) [0.0469, 0.0469, 0.6094]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>slabs</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 3.866974653264745 3.8669746532647444 25.357448563817616
+ angles : 85.6269933583793 85.6269933583793 59.99999999999999
+ volume : 327.1063427893186
+      A : 3.855717061245752 0.0 0.29485405306764534
+      B : 1.9165845041280052 3.3456326598893043 0.29485405306764534
+      C : 0.0 0.0 25.357448563817616
+PeriodicSite: Si (1.5333, 0.8887, 24.3255) [0.2656, 0.2656, 0.9531]
+PeriodicSite: Si (3.5175, 2.0387, 23.7358) [0.6094, 0.6094, 0.9219]
+PeriodicSite: Si (3.6979, 2.1433, 21.3769) [0.6406, 0.6406, 0.8281]
+PeriodicSite: Si (5.6821, 3.2934, 20.7872) [0.9844, 0.9844, 0.7969]
+PeriodicSite: Si (0.0902, 0.0523, 17.8387) [0.0156, 0.0156, 0.7031]
+PeriodicSite: Si (2.0744, 1.2023, 17.2490) [0.3594, 0.3594, 0.6719]
+PeriodicSite: Si (2.2548, 1.3069, 14.8901) [0.3906, 0.3906, 0.5781]
+PeriodicSite: Si (4.2390, 2.4569, 14.3004) [0.7344, 0.7344, 0.5469]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=lesson-2-epitaxial-matching>Lesson 2: Epitaxial Matching<a class=headerlink href=#lesson-2-epitaxial-matching title="Permanent link">&para;</a></h2> <p>Now that we can enumerate surfaces to compute, we have a dilema. We can get several unique surfaces per miller index. There are easily tens of unique and important miller indicies per material. There are hundreds of thousands of materials to chose from when making a heterointerface. This already yields over 10^15 combinations to choose from, which is not something we can compute. How do we reduce this?</p> <p>One option is to limit ourselves to coherent interfaces. Since coherent interfaces have to repeat along the interface, they need to maintain a condition called the epitaxial constraint. This means that lattice vectors for the surfaces that come together have to repeat by some integer multiple. This is a math problem we can solve and reduce our choices!</p> <p>It turns out there is a practical use for this kind of math. Often, when we want to grow a really nice high quality film of a material, we'll use the epitaxial constraint to preferably orient and align the growing film. Obviously this isn't easy and only works for some systems, so we have to find out which ones. Pymatgen has a nice tool called the substrate analyzer to do this. Let's try using it:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.analysis.interfaces.substrate_analyzer</span> <span class=kn>import</span> <span class=n>SubstrateAnalyzer</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, we need two structures to check for a substrate match. One is the film that we want to grow and another is the potential substrate. For this exercise, let's use the Silicon structure that is already in this folder:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>silicon</span> <span class=o>=</span> <span class=n>Structure</span><span class=o>.</span><span class=n>from_file</span><span class=p>(</span><span class=s2>&quot;Si.cif&quot;</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Now, let's make a substrate analyzer object and calculate some matches</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>sub_analyzer</span> <span class=o>=</span> <span class=n>SubstrateAnalyzer</span><span class=p>()</span>
+<span class=n>sub_analyzer</span><span class=o>.</span><span class=n>calculate</span><span class=p>(</span><span class=n>film</span><span class=o>=</span><span class=n>LiFePO4</span><span class=p>,</span><span class=n>substrate</span><span class=o>=</span><span class=n>silicon</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>&lt;generator object SubstrateAnalyzer.calculate at 0x7faaf0a66eb0&gt;</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The substrate analyzer uses a python generator which is an efficient way of getting just one match if we want any match or a the full list of matches if we want all of them. The computational time required will scale with the number of matches we want to evaluate, so we can choose to be as computationally stringest as necessary. </p> <p>For the purpose of this example, let's get them all by turning the generator into a list</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>matches</span> <span class=o>=</span> <span class=nb>list</span><span class=p>(</span><span class=n>sub_analyzer</span><span class=o>.</span><span class=n>calculate</span><span class=p>(</span><span class=n>film</span><span class=o>=</span><span class=n>LiFePO4</span><span class=p>,</span><span class=n>substrate</span><span class=o>=</span><span class=n>silicon</span><span class=p>))</span>
+<span class=nb>len</span><span class=p>(</span><span class=n>matches</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>6</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>These matches have different matching area and strains, which we can print out</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=k>for</span> <span class=n>match</span> <span class=ow>in</span> <span class=n>matches</span><span class=p>:</span>
+    <span class=nb>print</span><span class=p>(</span><span class=n>match</span><span class=o>.</span><span class=n>match_area</span><span class=p>,</span><span class=n>match</span><span class=o>.</span><span class=n>von_mises_strain</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>289.06898385666 0.017056087472307125
+289.06898385666 0.017056087472307337
+289.06898385666 0.017056087472307014
+289.06898385666 0.01705608747230727
+241.91971097798265 0.008953220319809196
+241.91971097798265 0.008953220319809045
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's look at the first two matches to see if we can figure out what is different. </p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>matches</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>as_dict</span><span class=p>()</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{&#39;@module&#39;: &#39;pymatgen.analysis.interfaces.substrate_analyzer&#39;,
+ &#39;@class&#39;: &#39;SubstrateMatch&#39;,
+ &#39;@version&#39;: None,
+ &#39;film_sl_vectors&#39;: [array([4.74644100e+00, 1.21804520e+01, 1.03647327e-15]),
+  array([-1.89857640e+01,  1.21804520e+01, -4.16705178e-16])],
+ &#39;substrate_sl_vectors&#39;: [array([-10.937456,   5.468728,  -5.468728]),
+  array([-16.406184, -10.937456,  10.937456])],
+ &#39;film_vectors&#39;: [array([4.74644100e+00, 0.00000000e+00, 2.90635689e-16]),
+  array([9.79383037e-16, 6.09022600e+00, 3.72918789e-16])],
+ &#39;substrate_vectors&#39;: [array([5.46872800e+00, 0.00000000e+00, 3.34863012e-16]),
+  array([ 8.79438536e-16,  5.46872800e+00, -5.46872800e+00])],
+ &#39;film_transformation&#39;: array([[ 1.,  2.],
+        [ 0., 10.]]),
+ &#39;substrate_transformation&#39;: array([[1., 3.],
+        [0., 7.]]),
+ &#39;film_miller&#39;: [0, 0, 1],
+ &#39;substrate_miller&#39;: [1, 1, 0],
+ &#39;strain&#39;: {&#39;@module&#39;: &#39;pymatgen.analysis.elasticity.strain&#39;,
+  &#39;@class&#39;: &#39;Strain&#39;,
+  &#39;input_array&#39;: [[0.020074479545137084,
+    -3.3477325344072135e-17,
+    -0.010345968474021139],
+   [-3.3477325344072135e-17, 1.1102230246251565e-16, 7.44405927229998e-17],
+   [-0.010345968474021139, 7.44405927229998e-17, 0.00445225705645191]]},
+ &#39;von_mises_strain&#39;: 0.017056087472307125,
+ &#39;ground_state_energy&#39;: 0,
+ &#39;elastic_energy&#39;: 0}</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>matches</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>as_dict</span><span class=p>()</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{&#39;@module&#39;: &#39;pymatgen.analysis.interfaces.substrate_analyzer&#39;,
+ &#39;@class&#39;: &#39;SubstrateMatch&#39;,
+ &#39;@version&#39;: None,
+ &#39;film_sl_vectors&#39;: [array([4.74644100e+00, 1.21804520e+01, 1.03647327e-15]),
+  array([-1.89857640e+01,  1.21804520e+01, -4.16705178e-16])],
+ &#39;substrate_sl_vectors&#39;: [array([10.937456,  5.468728, -5.468728]),
+  array([ 16.406184, -10.937456,  10.937456])],
+ &#39;film_vectors&#39;: [array([4.74644100e+00, 0.00000000e+00, 2.90635689e-16]),
+  array([9.79383037e-16, 6.09022600e+00, 3.72918789e-16])],
+ &#39;substrate_vectors&#39;: [array([5.46872800e+00, 0.00000000e+00, 3.34863012e-16]),
+  array([ 8.79438536e-16,  5.46872800e+00, -5.46872800e+00])],
+ &#39;film_transformation&#39;: array([[ 1.,  2.],
+        [ 0., 10.]]),
+ &#39;substrate_transformation&#39;: array([[1., 4.],
+        [0., 7.]]),
+ &#39;film_miller&#39;: [0, 0, 1],
+ &#39;substrate_miller&#39;: [1, 1, 0],
+ &#39;strain&#39;: {&#39;@module&#39;: &#39;pymatgen.analysis.elasticity.strain&#39;,
+  &#39;@class&#39;: &#39;Strain&#39;,
+  &#39;input_array&#39;: [[0.020074479545137195,
+    5.074455831160435e-20,
+    -0.010345968474021255],
+   [5.074455831160435e-20, -5.551115123125783e-17, -3.937617445157472e-18],
+   [-0.010345968474021255, -3.937617445157472e-18, 0.004452257056451799]]},
+ &#39;von_mises_strain&#39;: 0.017056087472307337,
+ &#39;ground_state_energy&#39;: 0,
+ &#39;elastic_energy&#39;: 0}</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Note that these two matches have different <code>substrate_transformation</code>s. That means the interface between these two is made up of a diffferent set of rotations.</p> <p>Now let's see what else can provide the substrate analyzer to understand how we can use it.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>SubstrateAnalyzer</span><span class=o>.</span><span class=n>calculate</span><span class=err>?</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>This doesn't tell us how we can change the tolerances <code>SubstrateAnalyzer</code> uses. For that we need to figure out how <code>SubstrateAnalyzer</code>s are made. Let's run <code>help</code> on the classs itself.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's get more detailed help to see if we can figure out how to change the settings in <code>SubstrateAnalyzer</code>. To do this we can run: <div class=highlight><pre><span></span><code>help(SubstrateAnalyzer)
+</code></pre></div></p> <p>Note we don't run it in this lesson notebook, since the output is very long. It's most useful if you do this in your own notebook. The other option is type in: <code>interface.</code> and then press `tab</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can see from the help text that SubstrateAnayzer inherits from ZSLGenerator, maybe we can understand from that how to tweak the parameters:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.analysis.interfaces.zsl</span> <span class=kn>import</span> <span class=n>ZSLGenerator</span>
+
+<span class=n>ZSLGenerator</span><span class=err>?</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The ZSL algorithm is the heart of the <code>SubstrateAnalyzer</code> so all the tolerances we need to tweak are in that. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=exercise-2>Exercise 2:<a class=headerlink href=#exercise-2 title="Permanent link">&para;</a></h3> <p>Try using the substrate analyzer to look at a specific substrate and film orientation:</p> <p>(1,0,0) LiFePO4 on (1,1,1) Si</p> <p>Note the default tolerances aren't big enough to get any matches here. You'll need to increase them as follows: - max_area: 800</p> <p>Try increasing the <code>max_area</code>, <code>max_length_tol</code> and <code>max_angle_tol</code>. How does these seem to affect the results?</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1># Solution:</span>
+<span class=n>sub_analyzer</span> <span class=o>=</span> <span class=n>SubstrateAnalyzer</span><span class=p>(</span><span class=n>max_area_ratio_tol</span><span class=o>=</span><span class=mf>0.09</span><span class=p>,</span>
+                                 <span class=n>max_area</span><span class=o>=</span><span class=mi>800</span><span class=p>,</span>
+                                 <span class=n>max_length_tol</span><span class=o>=</span><span class=mf>0.03</span><span class=p>,</span>
+                                 <span class=n>max_angle_tol</span><span class=o>=</span><span class=mf>0.01</span><span class=p>,</span>
+                                 <span class=n>bidirectional</span><span class=o>=</span><span class=kc>False</span>
+                                <span class=p>)</span>
+
+<span class=n>matches</span> <span class=o>=</span> <span class=nb>list</span><span class=p>(</span><span class=n>sub_analyzer</span><span class=o>.</span><span class=n>calculate</span><span class=p>(</span><span class=n>film</span><span class=o>=</span><span class=n>LiFePO4</span><span class=p>,</span>
+                                      <span class=n>substrate</span><span class=o>=</span><span class=n>silicon</span><span class=p>,</span>
+                                      <span class=n>film_millers</span><span class=o>=</span><span class=p>[(</span><span class=mi>1</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>)],</span>
+                                      <span class=n>substrate_millers</span><span class=o>=</span><span class=p>[(</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>)]))</span>
+<span class=nb>len</span><span class=p>(</span><span class=n>matches</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>2</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=building-and-manipulating-heterointerfaces>Building and Manipulating heterointerfaces<a class=headerlink href=#building-and-manipulating-heterointerfaces title="Permanent link">&para;</a></h2> <p>Pymatgen has some capabillitis to build coherent heterointerfaces. This enables us to directly simulate the properties of heterointerfaces. Currently this capabilty is limited to coherent heterointerfaces using the epitaxial constraint to find matching lattices. While this does reduce the number of choices by focusing only on systems that can build a matching repeat within specific tolerances. It's often possible to find hundreds of matches. </p> <p>Typically lower match area is a good thing as it means that the repeats are closer together and more likely to force the interface to stay coherent. If the repeat distance is large, there are no short to medium range interactions that the two surfaces feel to force coherency. The other issue is epitaxial strain. Typically when synthesizing a thin film, this epitaxial strain has a natural limitation because it costs energy to maintain. If the elastic tensor of the film is already known, it's possible to compute this "elastic energy", whcih can easily be on the order of a 10's of meV, which is inline with polymorph selection. Thus at some point the epitaxial strain is too costly, so the film changes phase or loses coherency.</p> <p>With these guidelines in place, let's build a heterointerface</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>pymatgen.analysis.interfaces.coherent_interfaces</span> <span class=kn>import</span> <span class=n>CoherentInterfaceBuilder</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's build an interface builder for our LiFePO4 and silicon, using the information we learned from the substrate analyzer. That means we need to use the ZSL generator from the exercise to get some matches.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>zsl</span> <span class=o>=</span> <span class=n>ZSLGenerator</span><span class=p>(</span><span class=n>max_area</span><span class=o>=</span><span class=mi>800</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>cib</span> <span class=o>=</span> <span class=n>CoherentInterfaceBuilder</span><span class=p>(</span><span class=n>film_structure</span><span class=o>=</span><span class=n>LiFePO4</span><span class=p>,</span>
+                               <span class=n>substrate_structure</span><span class=o>=</span><span class=n>silicon</span><span class=p>,</span>
+                               <span class=n>film_miller</span><span class=o>=</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>),</span>
+                               <span class=n>substrate_miller</span><span class=o>=</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>),</span>
+                               <span class=n>zslgen</span><span class=o>=</span><span class=n>zsl</span><span class=p>)</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The <code>CoherentInterfaceBuilder</code> first finds all the unique terminations that can be exposed. Let's look at those first:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>cib</span><span class=o>.</span><span class=n>terminations</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>[(&#39;Li2Fe3O5_P1_10&#39;, &#39;Si_P4/mmm_1&#39;),
+ (&#39;Li2Fe4O5_P1_11&#39;, &#39;Si_P4/mmm_1&#39;),
+ (&#39;LiFe2O3_P-1_12&#39;, &#39;Si_P4/mmm_1&#39;),
+ (&#39;O2_P-1_1&#39;, &#39;Si_P4/mmm_1&#39;),
+ (&#39;P_P-1_1&#39;, &#39;Si_P4/mmm_1&#39;),
+ (&#39;PO4_P1_5&#39;, &#39;Si_P4/mmm_1&#39;)]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Once we've chosen a termination for both surfaces at the interface, we simply ask the <code>CoherentInterfaceBuilder</code> to give an interface:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>cib</span><span class=o>.</span><span class=n>get_interfaces</span><span class=err>?</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interfaces</span><span class=o>=</span><span class=nb>list</span><span class=p>(</span><span class=n>cib</span><span class=o>.</span><span class=n>get_interfaces</span><span class=p>(</span><span class=n>termination</span><span class=o>=</span> <span class=p>(</span><span class=s1>&#39;O2_P-1_1&#39;</span><span class=p>,</span> <span class=s1>&#39;Si_P4/mmm_1&#39;</span><span class=p>)))</span>
+<span class=nb>len</span><span class=p>(</span><span class=n>interfaces</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>30</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span> <span class=o>=</span> <span class=n>interfaces</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+<span class=c1># This just fixes the atomic coordinates so that structure looks nice in the 3D Viewer</span>
+<span class=n>interface</span><span class=o>.</span><span class=n>translate_sites</span><span class=p>(</span><span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>interface</span><span class=p>)),[</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>])</span> 
+<span class=n>interface</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 7.733949306529491 54.137645145706436 29.285478443623763
+ angles : 90.0 90.0 90.0
+ volume : 12261.76548800825
+      A : 7.733949306529491 0.0 4.735678131504616e-16
+      B : 8.705997335896692e-15 54.137645145706436 3.3149746920532316e-15
+      C : 0.0 0.0 29.285478443623763
+PeriodicSite: Li+ (4.1323, 50.8815, 17.9757) [0.5343, 0.9399, 0.6138]
+PeriodicSite: Li+ (5.6791, 18.3989, 17.9757) [0.7343, 0.3399, 0.6138]
+PeriodicSite: Li+ (1.0388, 7.5714, 17.9757) [0.1343, 0.1399, 0.6138]
+PeriodicSite: Li+ (7.2259, 40.0539, 17.9757) [0.9343, 0.7399, 0.6138]
+PeriodicSite: Li+ (2.5855, 29.2264, 17.9757) [0.3343, 0.5399, 0.6138]
+PeriodicSite: Li+ (2.5855, 2.1576, 17.9757) [0.3343, 0.0399, 0.6138]
+PeriodicSite: Li+ (4.1323, 23.8126, 17.9757) [0.5343, 0.4399, 0.6138]
+PeriodicSite: Li+ (7.2259, 12.9851, 17.9757) [0.9343, 0.2399, 0.6138]
+PeriodicSite: Li+ (5.6791, 45.4677, 17.9757) [0.7343, 0.8399, 0.6138]
+PeriodicSite: Li+ (1.0388, 34.6402, 17.9757) [0.1343, 0.6399, 0.6138]
+PeriodicSite: Li+ (4.9815, 2.7740, 16.2137) [0.6441, 0.0512, 0.5536]
+PeriodicSite: Li+ (6.5283, 24.4291, 16.2137) [0.8441, 0.4512, 0.5536]
+PeriodicSite: Li+ (1.8880, 13.6016, 16.2137) [0.2441, 0.2512, 0.5536]
+PeriodicSite: Li+ (0.3412, 46.0842, 16.2137) [0.0441, 0.8512, 0.5536]
+PeriodicSite: Li+ (3.4348, 35.2566, 16.2137) [0.4441, 0.6512, 0.5536]
+PeriodicSite: Li+ (6.5283, 51.4979, 16.2137) [0.8441, 0.9512, 0.5536]
+PeriodicSite: Li+ (0.3412, 19.0153, 16.2137) [0.0441, 0.3512, 0.5536]
+PeriodicSite: Li+ (3.4348, 8.1878, 16.2137) [0.4441, 0.1512, 0.5536]
+PeriodicSite: Li+ (1.8880, 40.6704, 16.2137) [0.2441, 0.7512, 0.5536]
+PeriodicSite: Li+ (4.9815, 29.8429, 16.2137) [0.6441, 0.5512, 0.5536]
+PeriodicSite: Fe2+ (1.5692, 49.0673, 16.4136) [0.2029, 0.9063, 0.5605]
+PeriodicSite: Fe2+ (3.1160, 16.5847, 16.4136) [0.4029, 0.3063, 0.5605]
+PeriodicSite: Fe2+ (6.2096, 5.7572, 16.4136) [0.8029, 0.1063, 0.5605]
+PeriodicSite: Fe2+ (4.6628, 38.2398, 16.4136) [0.6029, 0.7063, 0.5605]
+PeriodicSite: Fe2+ (0.0225, 27.4123, 16.4136) [0.0029, 0.5063, 0.5605]
+PeriodicSite: Fe2+ (7.6108, 0.4045, 16.2391) [0.9841, 0.0075, 0.5545]
+PeriodicSite: Fe2+ (1.4236, 22.0595, 16.2391) [0.1841, 0.4075, 0.5545]
+PeriodicSite: Fe2+ (4.5172, 11.2320, 16.2391) [0.5841, 0.2075, 0.5545]
+PeriodicSite: Fe2+ (2.9704, 43.7146, 16.2391) [0.3841, 0.8075, 0.5545]
+PeriodicSite: Fe2+ (6.0640, 32.8871, 16.2391) [0.7841, 0.6075, 0.5545]
+PeriodicSite: Fe2+ (5.4459, 48.4537, 16.1882) [0.7042, 0.8950, 0.5528]
+PeriodicSite: Fe2+ (6.9927, 15.9711, 16.1882) [0.9042, 0.2950, 0.5528]
+PeriodicSite: Fe2+ (2.3523, 5.1436, 16.1882) [0.3042, 0.0950, 0.5528]
+PeriodicSite: Fe2+ (0.8055, 37.6262, 16.1882) [0.1042, 0.6950, 0.5528]
+PeriodicSite: Fe2+ (3.8991, 26.7987, 16.1882) [0.5042, 0.4950, 0.5528]
+PeriodicSite: Fe2+ (3.7535, 53.9285, 16.0137) [0.4853, 0.9961, 0.5468]
+PeriodicSite: Fe2+ (5.3003, 21.4459, 16.0137) [0.6853, 0.3961, 0.5468]
+PeriodicSite: Fe2+ (0.6599, 10.6184, 16.0137) [0.0853, 0.1961, 0.5468]
+PeriodicSite: Fe2+ (6.8471, 43.1010, 16.0137) [0.8853, 0.7961, 0.5468]
+PeriodicSite: Fe2+ (2.2067, 32.2735, 16.0137) [0.2853, 0.5961, 0.5468]
+PeriodicSite: Si (3.8670, 1.9335, 13.6286) [0.5000, 0.0357, 0.4654]
+PeriodicSite: Si (3.8670, 5.8005, 13.6286) [0.5000, 0.1071, 0.4654]
+PeriodicSite: Si (3.8670, 9.6674, 13.6286) [0.5000, 0.1786, 0.4654]
+PeriodicSite: Si (3.8670, 13.5344, 13.6286) [0.5000, 0.2500, 0.4654]
+PeriodicSite: Si (3.8670, 17.4014, 13.6286) [0.5000, 0.3214, 0.4654]
+PeriodicSite: Si (3.8670, 21.2684, 13.6286) [0.5000, 0.3929, 0.4654]
+PeriodicSite: Si (3.8670, 25.1353, 13.6286) [0.5000, 0.4643, 0.4654]
+PeriodicSite: Si (3.8670, 29.0023, 13.6286) [0.5000, 0.5357, 0.4654]
+PeriodicSite: Si (3.8670, 32.8693, 13.6286) [0.5000, 0.6071, 0.4654]
+PeriodicSite: Si (3.8670, 36.7363, 13.6286) [0.5000, 0.6786, 0.4654]
+PeriodicSite: Si (3.8670, 40.6032, 13.6286) [0.5000, 0.7500, 0.4654]
+PeriodicSite: Si (3.8670, 44.4702, 13.6286) [0.5000, 0.8214, 0.4654]
+PeriodicSite: Si (3.8670, 48.3372, 13.6286) [0.5000, 0.8929, 0.4654]
+PeriodicSite: Si (3.8670, 52.2042, 13.6286) [0.5000, 0.9643, 0.4654]
+PeriodicSite: Si (0.0000, 1.9335, 13.6286) [0.0000, 0.0357, 0.4654]
+PeriodicSite: Si (0.0000, 5.8005, 13.6286) [0.0000, 0.1071, 0.4654]
+PeriodicSite: Si (0.0000, 9.6674, 13.6286) [0.0000, 0.1786, 0.4654]
+PeriodicSite: Si (7.7339, 13.5344, 13.6286) [1.0000, 0.2500, 0.4654]
+PeriodicSite: Si (7.7339, 17.4014, 13.6286) [1.0000, 0.3214, 0.4654]
+PeriodicSite: Si (7.7339, 21.2684, 13.6286) [1.0000, 0.3929, 0.4654]
+PeriodicSite: Si (7.7339, 25.1353, 13.6286) [1.0000, 0.4643, 0.4654]
+PeriodicSite: Si (7.7339, 29.0023, 13.6286) [1.0000, 0.5357, 0.4654]
+PeriodicSite: Si (7.7339, 32.8693, 13.6286) [1.0000, 0.6071, 0.4654]
+PeriodicSite: Si (7.7339, 36.7363, 13.6286) [1.0000, 0.6786, 0.4654]
+PeriodicSite: Si (7.7339, 40.6032, 13.6286) [1.0000, 0.7500, 0.4654]
+PeriodicSite: Si (7.7339, 44.4702, 13.6286) [1.0000, 0.8214, 0.4654]
+PeriodicSite: Si (7.7339, 48.3372, 13.6286) [1.0000, 0.8929, 0.4654]
+PeriodicSite: Si (7.7339, 52.2042, 13.6286) [1.0000, 0.9643, 0.4654]
+PeriodicSite: Si (1.9335, 1.9335, 9.5270) [0.2500, 0.0357, 0.3253]
+PeriodicSite: Si (1.9335, 5.8005, 9.5270) [0.2500, 0.1071, 0.3253]
+PeriodicSite: Si (1.9335, 9.6674, 9.5270) [0.2500, 0.1786, 0.3253]
+PeriodicSite: Si (1.9335, 13.5344, 9.5270) [0.2500, 0.2500, 0.3253]
+PeriodicSite: Si (1.9335, 17.4014, 9.5270) [0.2500, 0.3214, 0.3253]
+PeriodicSite: Si (1.9335, 21.2684, 9.5270) [0.2500, 0.3929, 0.3253]
+PeriodicSite: Si (1.9335, 25.1353, 9.5270) [0.2500, 0.4643, 0.3253]
+PeriodicSite: Si (1.9335, 29.0023, 9.5270) [0.2500, 0.5357, 0.3253]
+PeriodicSite: Si (1.9335, 32.8693, 9.5270) [0.2500, 0.6071, 0.3253]
+PeriodicSite: Si (1.9335, 36.7363, 9.5270) [0.2500, 0.6786, 0.3253]
+PeriodicSite: Si (1.9335, 40.6032, 9.5270) [0.2500, 0.7500, 0.3253]
+PeriodicSite: Si (1.9335, 44.4702, 9.5270) [0.2500, 0.8214, 0.3253]
+PeriodicSite: Si (1.9335, 48.3372, 9.5270) [0.2500, 0.8929, 0.3253]
+PeriodicSite: Si (1.9335, 52.2042, 9.5270) [0.2500, 0.9643, 0.3253]
+PeriodicSite: Si (5.8005, 1.9335, 9.5270) [0.7500, 0.0357, 0.3253]
+PeriodicSite: Si (5.8005, 5.8005, 9.5270) [0.7500, 0.1071, 0.3253]
+PeriodicSite: Si (5.8005, 9.6674, 9.5270) [0.7500, 0.1786, 0.3253]
+PeriodicSite: Si (5.8005, 13.5344, 9.5270) [0.7500, 0.2500, 0.3253]
+PeriodicSite: Si (5.8005, 17.4014, 9.5270) [0.7500, 0.3214, 0.3253]
+PeriodicSite: Si (5.8005, 21.2684, 9.5270) [0.7500, 0.3929, 0.3253]
+PeriodicSite: Si (5.8005, 25.1353, 9.5270) [0.7500, 0.4643, 0.3253]
+PeriodicSite: Si (5.8005, 29.0023, 9.5270) [0.7500, 0.5357, 0.3253]
+PeriodicSite: Si (5.8005, 32.8693, 9.5270) [0.7500, 0.6071, 0.3253]
+PeriodicSite: Si (5.8005, 36.7363, 9.5270) [0.7500, 0.6786, 0.3253]
+PeriodicSite: Si (5.8005, 40.6032, 9.5270) [0.7500, 0.7500, 0.3253]
+PeriodicSite: Si (5.8005, 44.4702, 9.5270) [0.7500, 0.8214, 0.3253]
+PeriodicSite: Si (5.8005, 48.3372, 9.5270) [0.7500, 0.8929, 0.3253]
+PeriodicSite: Si (5.8005, 52.2042, 9.5270) [0.7500, 0.9643, 0.3253]
+PeriodicSite: Si (1.9335, 0.0000, 10.8942) [0.2500, 0.0000, 0.3720]
+PeriodicSite: Si (1.9335, 3.8670, 10.8942) [0.2500, 0.0714, 0.3720]
+PeriodicSite: Si (1.9335, 7.7339, 10.8942) [0.2500, 0.1429, 0.3720]
+PeriodicSite: Si (1.9335, 11.6009, 10.8942) [0.2500, 0.2143, 0.3720]
+PeriodicSite: Si (1.9335, 15.4679, 10.8942) [0.2500, 0.2857, 0.3720]
+PeriodicSite: Si (1.9335, 19.3349, 10.8942) [0.2500, 0.3571, 0.3720]
+PeriodicSite: Si (1.9335, 23.2018, 10.8942) [0.2500, 0.4286, 0.3720]
+PeriodicSite: Si (1.9335, 27.0688, 10.8942) [0.2500, 0.5000, 0.3720]
+PeriodicSite: Si (1.9335, 30.9358, 10.8942) [0.2500, 0.5714, 0.3720]
+PeriodicSite: Si (1.9335, 34.8028, 10.8942) [0.2500, 0.6429, 0.3720]
+PeriodicSite: Si (1.9335, 38.6697, 10.8942) [0.2500, 0.7143, 0.3720]
+PeriodicSite: Si (1.9335, 42.5367, 10.8942) [0.2500, 0.7857, 0.3720]
+PeriodicSite: Si (1.9335, 46.4037, 10.8942) [0.2500, 0.8571, 0.3720]
+PeriodicSite: Si (1.9335, 50.2707, 10.8942) [0.2500, 0.9286, 0.3720]
+PeriodicSite: Si (5.8005, 0.0000, 10.8942) [0.7500, 0.0000, 0.3720]
+PeriodicSite: Si (5.8005, 3.8670, 10.8942) [0.7500, 0.0714, 0.3720]
+PeriodicSite: Si (5.8005, 7.7339, 10.8942) [0.7500, 0.1429, 0.3720]
+PeriodicSite: Si (5.8005, 11.6009, 10.8942) [0.7500, 0.2143, 0.3720]
+PeriodicSite: Si (5.8005, 15.4679, 10.8942) [0.7500, 0.2857, 0.3720]
+PeriodicSite: Si (5.8005, 19.3349, 10.8942) [0.7500, 0.3571, 0.3720]
+PeriodicSite: Si (5.8005, 23.2018, 10.8942) [0.7500, 0.4286, 0.3720]
+PeriodicSite: Si (5.8005, 27.0688, 10.8942) [0.7500, 0.5000, 0.3720]
+PeriodicSite: Si (5.8005, 30.9358, 10.8942) [0.7500, 0.5714, 0.3720]
+PeriodicSite: Si (5.8005, 34.8028, 10.8942) [0.7500, 0.6429, 0.3720]
+PeriodicSite: Si (5.8005, 38.6697, 10.8942) [0.7500, 0.7143, 0.3720]
+PeriodicSite: Si (5.8005, 42.5367, 10.8942) [0.7500, 0.7857, 0.3720]
+PeriodicSite: Si (5.8005, 46.4037, 10.8942) [0.7500, 0.8571, 0.3720]
+PeriodicSite: Si (5.8005, 50.2707, 10.8942) [0.7500, 0.9286, 0.3720]
+PeriodicSite: Si (0.0000, 0.0000, 12.2614) [0.0000, 0.0000, 0.4187]
+PeriodicSite: Si (0.0000, 3.8670, 12.2614) [0.0000, 0.0714, 0.4187]
+PeriodicSite: Si (0.0000, 7.7339, 12.2614) [0.0000, 0.1429, 0.4187]
+PeriodicSite: Si (0.0000, 11.6009, 12.2614) [0.0000, 0.2143, 0.4187]
+PeriodicSite: Si (7.7339, 15.4679, 12.2614) [1.0000, 0.2857, 0.4187]
+PeriodicSite: Si (0.0000, 19.3349, 12.2614) [0.0000, 0.3571, 0.4187]
+PeriodicSite: Si (7.7339, 23.2018, 12.2614) [1.0000, 0.4286, 0.4187]
+PeriodicSite: Si (7.7339, 27.0688, 12.2614) [1.0000, 0.5000, 0.4187]
+PeriodicSite: Si (7.7339, 30.9358, 12.2614) [1.0000, 0.5714, 0.4187]
+PeriodicSite: Si (7.7339, 34.8028, 12.2614) [1.0000, 0.6429, 0.4187]
+PeriodicSite: Si (7.7339, 38.6697, 12.2614) [1.0000, 0.7143, 0.4187]
+PeriodicSite: Si (7.7339, 42.5367, 12.2614) [1.0000, 0.7857, 0.4187]
+PeriodicSite: Si (7.7339, 46.4037, 12.2614) [1.0000, 0.8571, 0.4187]
+PeriodicSite: Si (7.7339, 50.2707, 12.2614) [1.0000, 0.9286, 0.4187]
+PeriodicSite: Si (3.8670, 0.0000, 12.2614) [0.5000, 0.0000, 0.4187]
+PeriodicSite: Si (3.8670, 3.8670, 12.2614) [0.5000, 0.0714, 0.4187]
+PeriodicSite: Si (3.8670, 7.7339, 12.2614) [0.5000, 0.1429, 0.4187]
+PeriodicSite: Si (3.8670, 11.6009, 12.2614) [0.5000, 0.2143, 0.4187]
+PeriodicSite: Si (3.8670, 15.4679, 12.2614) [0.5000, 0.2857, 0.4187]
+PeriodicSite: Si (3.8670, 19.3349, 12.2614) [0.5000, 0.3571, 0.4187]
+PeriodicSite: Si (3.8670, 23.2018, 12.2614) [0.5000, 0.4286, 0.4187]
+PeriodicSite: Si (3.8670, 27.0688, 12.2614) [0.5000, 0.5000, 0.4187]
+PeriodicSite: Si (3.8670, 30.9358, 12.2614) [0.5000, 0.5714, 0.4187]
+PeriodicSite: Si (3.8670, 34.8028, 12.2614) [0.5000, 0.6429, 0.4187]
+PeriodicSite: Si (3.8670, 38.6697, 12.2614) [0.5000, 0.7143, 0.4187]
+PeriodicSite: Si (3.8670, 42.5367, 12.2614) [0.5000, 0.7857, 0.4187]
+PeriodicSite: Si (3.8670, 46.4037, 12.2614) [0.5000, 0.8571, 0.4187]
+PeriodicSite: Si (3.8670, 50.2707, 12.2614) [0.5000, 0.9286, 0.4187]
+PeriodicSite: P5+ (7.0575, 49.5628, 18.8125) [0.9125, 0.9155, 0.6424]
+PeriodicSite: P5+ (0.8703, 17.0802, 18.8125) [0.1125, 0.3155, 0.6424]
+PeriodicSite: P5+ (3.9639, 6.2527, 18.8125) [0.5125, 0.1155, 0.6424]
+PeriodicSite: P5+ (2.4171, 38.7353, 18.8125) [0.3125, 0.7155, 0.6424]
+PeriodicSite: P5+ (5.5107, 27.9077, 18.8125) [0.7125, 0.5155, 0.6424]
+PeriodicSite: P5+ (3.2376, 46.5837, 17.7183) [0.4186, 0.8605, 0.6050]
+PeriodicSite: P5+ (4.7844, 14.1012, 17.7183) [0.6186, 0.2605, 0.6050]
+PeriodicSite: P5+ (0.1440, 3.2736, 17.7183) [0.0186, 0.0605, 0.6050]
+PeriodicSite: P5+ (6.3311, 35.7562, 17.7183) [0.8186, 0.6605, 0.6050]
+PeriodicSite: P5+ (1.6908, 24.9287, 17.7183) [0.2186, 0.4605, 0.6050]
+PeriodicSite: P5+ (5.0271, 1.0416, 18.2332) [0.6500, 0.0192, 0.6226]
+PeriodicSite: P5+ (6.5739, 22.6966, 18.2332) [0.8500, 0.4192, 0.6226]
+PeriodicSite: P5+ (1.9335, 11.8691, 18.2332) [0.2500, 0.2192, 0.6226]
+PeriodicSite: P5+ (0.3867, 44.3517, 18.2332) [0.0500, 0.8192, 0.6226]
+PeriodicSite: P5+ (3.4803, 33.5241, 18.2332) [0.4500, 0.6192, 0.6226]
+PeriodicSite: P5+ (1.2072, 52.2002, 17.1390) [0.1561, 0.9642, 0.5852]
+PeriodicSite: P5+ (2.7540, 19.7176, 17.1390) [0.3561, 0.3642, 0.5852]
+PeriodicSite: P5+ (5.8476, 8.8900, 17.1390) [0.7561, 0.1642, 0.5852]
+PeriodicSite: P5+ (4.3008, 41.3726, 17.1390) [0.5561, 0.7642, 0.5852]
+PeriodicSite: P5+ (7.3944, 30.5451, 17.1390) [0.9561, 0.5642, 0.5852]
+PeriodicSite: O2- (6.1044, 49.9434, 17.6635) [0.7893, 0.9225, 0.6032]
+PeriodicSite: O2- (7.6512, 17.4608, 17.6635) [0.9893, 0.3225, 0.6032]
+PeriodicSite: O2- (3.0108, 6.6333, 17.6635) [0.3893, 0.1225, 0.6032]
+PeriodicSite: O2- (1.4640, 39.1159, 17.6635) [0.1893, 0.7225, 0.6032]
+PeriodicSite: O2- (4.5576, 28.2884, 17.6635) [0.5893, 0.5225, 0.6032]
+PeriodicSite: O2- (2.2839, 47.0021, 16.5832) [0.2953, 0.8682, 0.5663]
+PeriodicSite: O2- (3.8307, 14.5196, 16.5832) [0.4953, 0.2682, 0.5663]
+PeriodicSite: O2- (6.9243, 3.6920, 16.5832) [0.8953, 0.0682, 0.5663]
+PeriodicSite: O2- (5.3775, 36.1746, 16.5832) [0.6953, 0.6682, 0.5663]
+PeriodicSite: O2- (0.7371, 25.3471, 16.5832) [0.0953, 0.4682, 0.5663]
+PeriodicSite: O2- (3.0388, 1.8561, 15.8441) [0.3929, 0.0343, 0.5410]
+PeriodicSite: O2- (4.5856, 23.5111, 15.8441) [0.5929, 0.4343, 0.5410]
+PeriodicSite: O2- (7.6792, 12.6836, 15.8441) [0.9929, 0.2343, 0.5410]
+PeriodicSite: O2- (6.1324, 45.1662, 15.8441) [0.7929, 0.8343, 0.5410]
+PeriodicSite: O2- (1.4920, 34.3386, 15.8441) [0.1929, 0.6343, 0.5410]
+PeriodicSite: O2- (2.1602, 51.8195, 18.2879) [0.2793, 0.9572, 0.6245]
+PeriodicSite: O2- (3.7070, 19.3369, 18.2879) [0.4793, 0.3572, 0.6245]
+PeriodicSite: O2- (6.8006, 8.5094, 18.2879) [0.8793, 0.1572, 0.6245]
+PeriodicSite: O2- (5.2538, 40.9920, 18.2879) [0.6793, 0.7572, 0.6245]
+PeriodicSite: O2- (0.6135, 30.1645, 18.2879) [0.0793, 0.5572, 0.6245]
+PeriodicSite: O2- (7.7328, 45.8265, 18.2788) [0.9998, 0.8465, 0.6242]
+PeriodicSite: O2- (1.5456, 13.3439, 18.2788) [0.1998, 0.2465, 0.6242]
+PeriodicSite: O2- (4.6392, 2.5164, 18.2788) [0.5998, 0.0465, 0.6242]
+PeriodicSite: O2- (3.0924, 34.9990, 18.2788) [0.3998, 0.6465, 0.6242]
+PeriodicSite: O2- (6.1860, 24.1715, 18.2788) [0.7998, 0.4465, 0.6242]
+PeriodicSite: O2- (0.8610, 51.0329, 16.2141) [0.1113, 0.9427, 0.5537]
+PeriodicSite: O2- (2.4078, 18.5503, 16.2141) [0.3113, 0.3427, 0.5537]
+PeriodicSite: O2- (5.5014, 7.7228, 16.2141) [0.7113, 0.1427, 0.5537]
+PeriodicSite: O2- (3.9546, 40.2054, 16.2141) [0.5113, 0.7427, 0.5537]
+PeriodicSite: O2- (7.0482, 29.3779, 16.2141) [0.9113, 0.5427, 0.5537]
+PeriodicSite: O2- (4.4617, 51.9629, 16.2132) [0.5769, 0.9598, 0.5536]
+PeriodicSite: O2- (6.0085, 19.4803, 16.2132) [0.7769, 0.3598, 0.5536]
+PeriodicSite: O2- (1.3681, 8.6528, 16.2132) [0.1769, 0.1598, 0.5536]
+PeriodicSite: O2- (7.5553, 41.1354, 16.2132) [0.9769, 0.7598, 0.5536]
+PeriodicSite: O2- (2.9149, 30.3079, 16.2132) [0.3769, 0.5598, 0.5536]
+PeriodicSite: O2- (0.5319, 1.7988, 17.6727) [0.0688, 0.0332, 0.6035]
+PeriodicSite: O2- (2.0787, 23.4538, 17.6727) [0.2688, 0.4332, 0.6035]
+PeriodicSite: O2- (5.1723, 12.6263, 17.6727) [0.6688, 0.2332, 0.6035]
+PeriodicSite: O2- (3.6255, 45.1089, 17.6727) [0.4688, 0.8332, 0.6035]
+PeriodicSite: O2- (6.7191, 34.2813, 17.6727) [0.8688, 0.6332, 0.6035]
+PeriodicSite: O2- (3.5456, 49.7024, 16.2242) [0.4585, 0.9181, 0.5540]
+PeriodicSite: O2- (5.0924, 17.2198, 16.2242) [0.6585, 0.3181, 0.5540]
+PeriodicSite: O2- (0.4521, 6.3923, 16.2242) [0.0585, 0.1181, 0.5540]
+PeriodicSite: O2- (6.6392, 38.8749, 16.2242) [0.8585, 0.7181, 0.5540]
+PeriodicSite: O2- (1.9989, 28.0474, 16.2242) [0.2585, 0.5181, 0.5540]
+PeriodicSite: O2- (4.5918, 47.3483, 17.7219) [0.5937, 0.8746, 0.6051]
+PeriodicSite: O2- (6.1386, 14.8657, 17.7219) [0.7937, 0.2746, 0.6051]
+PeriodicSite: O2- (1.4982, 4.0382, 17.7219) [0.1937, 0.0746, 0.6051]
+PeriodicSite: O2- (7.6854, 36.5208, 17.7219) [0.9937, 0.6746, 0.6051]
+PeriodicSite: O2- (3.0450, 25.6933, 17.7219) [0.3937, 0.4746, 0.6051]
+PeriodicSite: O2- (7.4383, 48.0807, 15.6286) [0.9618, 0.8881, 0.5337]
+PeriodicSite: O2- (1.2511, 15.5981, 15.6286) [0.1618, 0.2881, 0.5337]
+PeriodicSite: O2- (4.3447, 4.7706, 15.6286) [0.5618, 0.0881, 0.5337]
+PeriodicSite: O2- (2.7979, 37.2531, 15.6286) [0.3618, 0.6881, 0.5337]
+PeriodicSite: O2- (5.8915, 26.4256, 15.6286) [0.7618, 0.4881, 0.5337]
+PeriodicSite: O2- (0.6992, 48.9701, 18.3176) [0.0904, 0.9045, 0.6255]
+PeriodicSite: O2- (2.2460, 16.4875, 18.3176) [0.2904, 0.3045, 0.6255]
+PeriodicSite: O2- (5.3395, 5.6599, 18.3176) [0.6904, 0.1045, 0.6255]
+PeriodicSite: O2- (3.7927, 38.1425, 18.3176) [0.4904, 0.7045, 0.6255]
+PeriodicSite: O2- (6.8863, 27.3150, 18.3176) [0.8904, 0.5045, 0.6255]
+PeriodicSite: O2- (5.6184, 0.7775, 16.7988) [0.7265, 0.0144, 0.5736]
+PeriodicSite: O2- (7.1652, 22.4326, 16.7988) [0.9265, 0.4144, 0.5736]
+PeriodicSite: O2- (2.5248, 11.6051, 16.7988) [0.3265, 0.2144, 0.5736]
+PeriodicSite: O2- (0.9780, 44.0876, 16.7988) [0.1265, 0.8144, 0.5736]
+PeriodicSite: O2- (4.0716, 33.2601, 16.7988) [0.5265, 0.6144, 0.5736]
+PeriodicSite: O2- (7.5655, 52.7929, 17.6339) [0.9782, 0.9752, 0.6021]
+PeriodicSite: O2- (1.3783, 20.3103, 17.6339) [0.1782, 0.3752, 0.6021]
+PeriodicSite: O2- (4.4719, 9.4828, 17.6339) [0.5782, 0.1752, 0.6021]
+PeriodicSite: O2- (2.9251, 41.9654, 17.6339) [0.3782, 0.7752, 0.6021]
+PeriodicSite: O2- (6.0187, 31.1378, 17.6339) [0.7782, 0.5752, 0.6021]
+PeriodicSite: O2- (1.7771, 53.2934, 16.2031) [0.2298, 0.9844, 0.5533]
+PeriodicSite: O2- (3.3239, 20.8109, 16.2031) [0.4298, 0.3844, 0.5533]
+PeriodicSite: O2- (6.4174, 9.9833, 16.2031) [0.8298, 0.1844, 0.5533]
+PeriodicSite: O2- (4.8707, 42.4659, 16.2031) [0.6298, 0.7844, 0.5533]
+PeriodicSite: O2- (0.2303, 31.6384, 16.2031) [0.0298, 0.5844, 0.5533]
+PeriodicSite: O2- (3.6729, 0.2770, 18.2296) [0.4749, 0.0051, 0.6225]
+PeriodicSite: O2- (5.2197, 21.9320, 18.2296) [0.6749, 0.4051, 0.6225]
+PeriodicSite: O2- (0.5793, 11.1045, 18.2296) [0.0749, 0.2051, 0.6225]
+PeriodicSite: O2- (6.7665, 43.5871, 18.2296) [0.8749, 0.8051, 0.6225]
+PeriodicSite: O2- (2.1261, 32.7596, 18.2296) [0.2749, 0.6051, 0.6225]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now look at this interface class to see what we can do with it by running: <div class=highlight><pre><span></span><code>help(interface)
+</code></pre></div></p> <p>Note we don't run it in this lesson notebook, since the output is very long. It's most useful if you do this in your own notebook. From this list we can see three interesting properties: <code>gap</code>, <code>in_plane_offset</code> and <code>vacuum_over_film</code>. Let's play with the gap and vacuum to seee what they do:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span><span class=o>.</span><span class=n>gap</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>2.0</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span><span class=o>.</span><span class=n>gap</span><span class=o>=</span><span class=mf>5.0</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 7.733949306529491 54.137645145706436 32.28547844362376
+ angles : 90.0 90.0 90.0
+ volume : 13517.858897403576
+      A : 7.733949306529491 0.0 4.735678131504616e-16
+      B : 8.705997335896692e-15 54.137645145706436 3.3149746920532316e-15
+      C : 0.0 0.0 32.28547844362376
+PeriodicSite: Li+ (4.1323, 50.8815, 20.9757) [0.5343, 0.9399, 0.6497]
+PeriodicSite: Li+ (5.6791, 18.3989, 20.9757) [0.7343, 0.3399, 0.6497]
+PeriodicSite: Li+ (1.0388, 7.5714, 20.9757) [0.1343, 0.1399, 0.6497]
+PeriodicSite: Li+ (7.2259, 40.0539, 20.9757) [0.9343, 0.7399, 0.6497]
+PeriodicSite: Li+ (2.5855, 29.2264, 20.9757) [0.3343, 0.5399, 0.6497]
+PeriodicSite: Li+ (2.5855, 2.1576, 20.9757) [0.3343, 0.0399, 0.6497]
+PeriodicSite: Li+ (4.1323, 23.8126, 20.9757) [0.5343, 0.4399, 0.6497]
+PeriodicSite: Li+ (7.2259, 12.9851, 20.9757) [0.9343, 0.2399, 0.6497]
+PeriodicSite: Li+ (5.6791, 45.4677, 20.9757) [0.7343, 0.8399, 0.6497]
+PeriodicSite: Li+ (1.0388, 34.6402, 20.9757) [0.1343, 0.6399, 0.6497]
+PeriodicSite: Li+ (4.9815, 2.7740, 19.2137) [0.6441, 0.0512, 0.5951]
+PeriodicSite: Li+ (6.5283, 24.4291, 19.2137) [0.8441, 0.4512, 0.5951]
+PeriodicSite: Li+ (1.8880, 13.6016, 19.2137) [0.2441, 0.2512, 0.5951]
+PeriodicSite: Li+ (0.3412, 46.0842, 19.2137) [0.0441, 0.8512, 0.5951]
+PeriodicSite: Li+ (3.4348, 35.2566, 19.2137) [0.4441, 0.6512, 0.5951]
+PeriodicSite: Li+ (6.5283, 51.4979, 19.2137) [0.8441, 0.9512, 0.5951]
+PeriodicSite: Li+ (0.3412, 19.0153, 19.2137) [0.0441, 0.3512, 0.5951]
+PeriodicSite: Li+ (3.4348, 8.1878, 19.2137) [0.4441, 0.1512, 0.5951]
+PeriodicSite: Li+ (1.8880, 40.6704, 19.2137) [0.2441, 0.7512, 0.5951]
+PeriodicSite: Li+ (4.9815, 29.8429, 19.2137) [0.6441, 0.5512, 0.5951]
+PeriodicSite: Fe2+ (1.5692, 49.0673, 19.4136) [0.2029, 0.9063, 0.6013]
+PeriodicSite: Fe2+ (3.1160, 16.5847, 19.4136) [0.4029, 0.3063, 0.6013]
+PeriodicSite: Fe2+ (6.2096, 5.7572, 19.4136) [0.8029, 0.1063, 0.6013]
+PeriodicSite: Fe2+ (4.6628, 38.2398, 19.4136) [0.6029, 0.7063, 0.6013]
+PeriodicSite: Fe2+ (0.0225, 27.4123, 19.4136) [0.0029, 0.5063, 0.6013]
+PeriodicSite: Fe2+ (7.6108, 0.4045, 19.2391) [0.9841, 0.0075, 0.5959]
+PeriodicSite: Fe2+ (1.4236, 22.0595, 19.2391) [0.1841, 0.4075, 0.5959]
+PeriodicSite: Fe2+ (4.5172, 11.2320, 19.2391) [0.5841, 0.2075, 0.5959]
+PeriodicSite: Fe2+ (2.9704, 43.7146, 19.2391) [0.3841, 0.8075, 0.5959]
+PeriodicSite: Fe2+ (6.0640, 32.8871, 19.2391) [0.7841, 0.6075, 0.5959]
+PeriodicSite: Fe2+ (5.4459, 48.4537, 19.1882) [0.7042, 0.8950, 0.5943]
+PeriodicSite: Fe2+ (6.9927, 15.9711, 19.1882) [0.9042, 0.2950, 0.5943]
+PeriodicSite: Fe2+ (2.3523, 5.1436, 19.1882) [0.3042, 0.0950, 0.5943]
+PeriodicSite: Fe2+ (0.8055, 37.6262, 19.1882) [0.1042, 0.6950, 0.5943]
+PeriodicSite: Fe2+ (3.8991, 26.7987, 19.1882) [0.5042, 0.4950, 0.5943]
+PeriodicSite: Fe2+ (3.7535, 53.9285, 19.0137) [0.4853, 0.9961, 0.5889]
+PeriodicSite: Fe2+ (5.3003, 21.4459, 19.0137) [0.6853, 0.3961, 0.5889]
+PeriodicSite: Fe2+ (0.6599, 10.6184, 19.0137) [0.0853, 0.1961, 0.5889]
+PeriodicSite: Fe2+ (6.8471, 43.1010, 19.0137) [0.8853, 0.7961, 0.5889]
+PeriodicSite: Fe2+ (2.2067, 32.2735, 19.0137) [0.2853, 0.5961, 0.5889]
+PeriodicSite: Si (3.8670, 1.9335, 13.6286) [0.5000, 0.0357, 0.4221]
+PeriodicSite: Si (3.8670, 5.8005, 13.6286) [0.5000, 0.1071, 0.4221]
+PeriodicSite: Si (3.8670, 9.6674, 13.6286) [0.5000, 0.1786, 0.4221]
+PeriodicSite: Si (3.8670, 13.5344, 13.6286) [0.5000, 0.2500, 0.4221]
+PeriodicSite: Si (3.8670, 17.4014, 13.6286) [0.5000, 0.3214, 0.4221]
+PeriodicSite: Si (3.8670, 21.2684, 13.6286) [0.5000, 0.3929, 0.4221]
+PeriodicSite: Si (3.8670, 25.1353, 13.6286) [0.5000, 0.4643, 0.4221]
+PeriodicSite: Si (3.8670, 29.0023, 13.6286) [0.5000, 0.5357, 0.4221]
+PeriodicSite: Si (3.8670, 32.8693, 13.6286) [0.5000, 0.6071, 0.4221]
+PeriodicSite: Si (3.8670, 36.7363, 13.6286) [0.5000, 0.6786, 0.4221]
+PeriodicSite: Si (3.8670, 40.6032, 13.6286) [0.5000, 0.7500, 0.4221]
+PeriodicSite: Si (3.8670, 44.4702, 13.6286) [0.5000, 0.8214, 0.4221]
+PeriodicSite: Si (3.8670, 48.3372, 13.6286) [0.5000, 0.8929, 0.4221]
+PeriodicSite: Si (3.8670, 52.2042, 13.6286) [0.5000, 0.9643, 0.4221]
+PeriodicSite: Si (0.0000, 1.9335, 13.6286) [0.0000, 0.0357, 0.4221]
+PeriodicSite: Si (0.0000, 5.8005, 13.6286) [0.0000, 0.1071, 0.4221]
+PeriodicSite: Si (0.0000, 9.6674, 13.6286) [0.0000, 0.1786, 0.4221]
+PeriodicSite: Si (7.7339, 13.5344, 13.6286) [1.0000, 0.2500, 0.4221]
+PeriodicSite: Si (7.7339, 17.4014, 13.6286) [1.0000, 0.3214, 0.4221]
+PeriodicSite: Si (7.7339, 21.2684, 13.6286) [1.0000, 0.3929, 0.4221]
+PeriodicSite: Si (7.7339, 25.1353, 13.6286) [1.0000, 0.4643, 0.4221]
+PeriodicSite: Si (7.7339, 29.0023, 13.6286) [1.0000, 0.5357, 0.4221]
+PeriodicSite: Si (7.7339, 32.8693, 13.6286) [1.0000, 0.6071, 0.4221]
+PeriodicSite: Si (7.7339, 36.7363, 13.6286) [1.0000, 0.6786, 0.4221]
+PeriodicSite: Si (7.7339, 40.6032, 13.6286) [1.0000, 0.7500, 0.4221]
+PeriodicSite: Si (7.7339, 44.4702, 13.6286) [1.0000, 0.8214, 0.4221]
+PeriodicSite: Si (7.7339, 48.3372, 13.6286) [1.0000, 0.8929, 0.4221]
+PeriodicSite: Si (7.7339, 52.2042, 13.6286) [1.0000, 0.9643, 0.4221]
+PeriodicSite: Si (1.9335, 1.9335, 9.5270) [0.2500, 0.0357, 0.2951]
+PeriodicSite: Si (1.9335, 5.8005, 9.5270) [0.2500, 0.1071, 0.2951]
+PeriodicSite: Si (1.9335, 9.6674, 9.5270) [0.2500, 0.1786, 0.2951]
+PeriodicSite: Si (1.9335, 13.5344, 9.5270) [0.2500, 0.2500, 0.2951]
+PeriodicSite: Si (1.9335, 17.4014, 9.5270) [0.2500, 0.3214, 0.2951]
+PeriodicSite: Si (1.9335, 21.2684, 9.5270) [0.2500, 0.3929, 0.2951]
+PeriodicSite: Si (1.9335, 25.1353, 9.5270) [0.2500, 0.4643, 0.2951]
+PeriodicSite: Si (1.9335, 29.0023, 9.5270) [0.2500, 0.5357, 0.2951]
+PeriodicSite: Si (1.9335, 32.8693, 9.5270) [0.2500, 0.6071, 0.2951]
+PeriodicSite: Si (1.9335, 36.7363, 9.5270) [0.2500, 0.6786, 0.2951]
+PeriodicSite: Si (1.9335, 40.6032, 9.5270) [0.2500, 0.7500, 0.2951]
+PeriodicSite: Si (1.9335, 44.4702, 9.5270) [0.2500, 0.8214, 0.2951]
+PeriodicSite: Si (1.9335, 48.3372, 9.5270) [0.2500, 0.8929, 0.2951]
+PeriodicSite: Si (1.9335, 52.2042, 9.5270) [0.2500, 0.9643, 0.2951]
+PeriodicSite: Si (5.8005, 1.9335, 9.5270) [0.7500, 0.0357, 0.2951]
+PeriodicSite: Si (5.8005, 5.8005, 9.5270) [0.7500, 0.1071, 0.2951]
+PeriodicSite: Si (5.8005, 9.6674, 9.5270) [0.7500, 0.1786, 0.2951]
+PeriodicSite: Si (5.8005, 13.5344, 9.5270) [0.7500, 0.2500, 0.2951]
+PeriodicSite: Si (5.8005, 17.4014, 9.5270) [0.7500, 0.3214, 0.2951]
+PeriodicSite: Si (5.8005, 21.2684, 9.5270) [0.7500, 0.3929, 0.2951]
+PeriodicSite: Si (5.8005, 25.1353, 9.5270) [0.7500, 0.4643, 0.2951]
+PeriodicSite: Si (5.8005, 29.0023, 9.5270) [0.7500, 0.5357, 0.2951]
+PeriodicSite: Si (5.8005, 32.8693, 9.5270) [0.7500, 0.6071, 0.2951]
+PeriodicSite: Si (5.8005, 36.7363, 9.5270) [0.7500, 0.6786, 0.2951]
+PeriodicSite: Si (5.8005, 40.6032, 9.5270) [0.7500, 0.7500, 0.2951]
+PeriodicSite: Si (5.8005, 44.4702, 9.5270) [0.7500, 0.8214, 0.2951]
+PeriodicSite: Si (5.8005, 48.3372, 9.5270) [0.7500, 0.8929, 0.2951]
+PeriodicSite: Si (5.8005, 52.2042, 9.5270) [0.7500, 0.9643, 0.2951]
+PeriodicSite: Si (1.9335, 0.0000, 10.8942) [0.2500, 0.0000, 0.3374]
+PeriodicSite: Si (1.9335, 3.8670, 10.8942) [0.2500, 0.0714, 0.3374]
+PeriodicSite: Si (1.9335, 7.7339, 10.8942) [0.2500, 0.1429, 0.3374]
+PeriodicSite: Si (1.9335, 11.6009, 10.8942) [0.2500, 0.2143, 0.3374]
+PeriodicSite: Si (1.9335, 15.4679, 10.8942) [0.2500, 0.2857, 0.3374]
+PeriodicSite: Si (1.9335, 19.3349, 10.8942) [0.2500, 0.3571, 0.3374]
+PeriodicSite: Si (1.9335, 23.2018, 10.8942) [0.2500, 0.4286, 0.3374]
+PeriodicSite: Si (1.9335, 27.0688, 10.8942) [0.2500, 0.5000, 0.3374]
+PeriodicSite: Si (1.9335, 30.9358, 10.8942) [0.2500, 0.5714, 0.3374]
+PeriodicSite: Si (1.9335, 34.8028, 10.8942) [0.2500, 0.6429, 0.3374]
+PeriodicSite: Si (1.9335, 38.6697, 10.8942) [0.2500, 0.7143, 0.3374]
+PeriodicSite: Si (1.9335, 42.5367, 10.8942) [0.2500, 0.7857, 0.3374]
+PeriodicSite: Si (1.9335, 46.4037, 10.8942) [0.2500, 0.8571, 0.3374]
+PeriodicSite: Si (1.9335, 50.2707, 10.8942) [0.2500, 0.9286, 0.3374]
+PeriodicSite: Si (5.8005, 0.0000, 10.8942) [0.7500, 0.0000, 0.3374]
+PeriodicSite: Si (5.8005, 3.8670, 10.8942) [0.7500, 0.0714, 0.3374]
+PeriodicSite: Si (5.8005, 7.7339, 10.8942) [0.7500, 0.1429, 0.3374]
+PeriodicSite: Si (5.8005, 11.6009, 10.8942) [0.7500, 0.2143, 0.3374]
+PeriodicSite: Si (5.8005, 15.4679, 10.8942) [0.7500, 0.2857, 0.3374]
+PeriodicSite: Si (5.8005, 19.3349, 10.8942) [0.7500, 0.3571, 0.3374]
+PeriodicSite: Si (5.8005, 23.2018, 10.8942) [0.7500, 0.4286, 0.3374]
+PeriodicSite: Si (5.8005, 27.0688, 10.8942) [0.7500, 0.5000, 0.3374]
+PeriodicSite: Si (5.8005, 30.9358, 10.8942) [0.7500, 0.5714, 0.3374]
+PeriodicSite: Si (5.8005, 34.8028, 10.8942) [0.7500, 0.6429, 0.3374]
+PeriodicSite: Si (5.8005, 38.6697, 10.8942) [0.7500, 0.7143, 0.3374]
+PeriodicSite: Si (5.8005, 42.5367, 10.8942) [0.7500, 0.7857, 0.3374]
+PeriodicSite: Si (5.8005, 46.4037, 10.8942) [0.7500, 0.8571, 0.3374]
+PeriodicSite: Si (5.8005, 50.2707, 10.8942) [0.7500, 0.9286, 0.3374]
+PeriodicSite: Si (0.0000, 0.0000, 12.2614) [0.0000, 0.0000, 0.3798]
+PeriodicSite: Si (0.0000, 3.8670, 12.2614) [0.0000, 0.0714, 0.3798]
+PeriodicSite: Si (0.0000, 7.7339, 12.2614) [0.0000, 0.1429, 0.3798]
+PeriodicSite: Si (0.0000, 11.6009, 12.2614) [-0.0000, 0.2143, 0.3798]
+PeriodicSite: Si (7.7339, 15.4679, 12.2614) [1.0000, 0.2857, 0.3798]
+PeriodicSite: Si (0.0000, 19.3349, 12.2614) [0.0000, 0.3571, 0.3798]
+PeriodicSite: Si (7.7339, 23.2018, 12.2614) [1.0000, 0.4286, 0.3798]
+PeriodicSite: Si (7.7339, 27.0688, 12.2614) [1.0000, 0.5000, 0.3798]
+PeriodicSite: Si (7.7339, 30.9358, 12.2614) [1.0000, 0.5714, 0.3798]
+PeriodicSite: Si (7.7339, 34.8028, 12.2614) [1.0000, 0.6429, 0.3798]
+PeriodicSite: Si (7.7339, 38.6697, 12.2614) [1.0000, 0.7143, 0.3798]
+PeriodicSite: Si (7.7339, 42.5367, 12.2614) [1.0000, 0.7857, 0.3798]
+PeriodicSite: Si (7.7339, 46.4037, 12.2614) [1.0000, 0.8571, 0.3798]
+PeriodicSite: Si (7.7339, 50.2707, 12.2614) [1.0000, 0.9286, 0.3798]
+PeriodicSite: Si (3.8670, 0.0000, 12.2614) [0.5000, 0.0000, 0.3798]
+PeriodicSite: Si (3.8670, 3.8670, 12.2614) [0.5000, 0.0714, 0.3798]
+PeriodicSite: Si (3.8670, 7.7339, 12.2614) [0.5000, 0.1429, 0.3798]
+PeriodicSite: Si (3.8670, 11.6009, 12.2614) [0.5000, 0.2143, 0.3798]
+PeriodicSite: Si (3.8670, 15.4679, 12.2614) [0.5000, 0.2857, 0.3798]
+PeriodicSite: Si (3.8670, 19.3349, 12.2614) [0.5000, 0.3571, 0.3798]
+PeriodicSite: Si (3.8670, 23.2018, 12.2614) [0.5000, 0.4286, 0.3798]
+PeriodicSite: Si (3.8670, 27.0688, 12.2614) [0.5000, 0.5000, 0.3798]
+PeriodicSite: Si (3.8670, 30.9358, 12.2614) [0.5000, 0.5714, 0.3798]
+PeriodicSite: Si (3.8670, 34.8028, 12.2614) [0.5000, 0.6429, 0.3798]
+PeriodicSite: Si (3.8670, 38.6697, 12.2614) [0.5000, 0.7143, 0.3798]
+PeriodicSite: Si (3.8670, 42.5367, 12.2614) [0.5000, 0.7857, 0.3798]
+PeriodicSite: Si (3.8670, 46.4037, 12.2614) [0.5000, 0.8571, 0.3798]
+PeriodicSite: Si (3.8670, 50.2707, 12.2614) [0.5000, 0.9286, 0.3798]
+PeriodicSite: P5+ (7.0575, 49.5628, 21.8125) [0.9125, 0.9155, 0.6756]
+PeriodicSite: P5+ (0.8703, 17.0802, 21.8125) [0.1125, 0.3155, 0.6756]
+PeriodicSite: P5+ (3.9639, 6.2527, 21.8125) [0.5125, 0.1155, 0.6756]
+PeriodicSite: P5+ (2.4171, 38.7353, 21.8125) [0.3125, 0.7155, 0.6756]
+PeriodicSite: P5+ (5.5107, 27.9077, 21.8125) [0.7125, 0.5155, 0.6756]
+PeriodicSite: P5+ (3.2376, 46.5837, 20.7183) [0.4186, 0.8605, 0.6417]
+PeriodicSite: P5+ (4.7844, 14.1012, 20.7183) [0.6186, 0.2605, 0.6417]
+PeriodicSite: P5+ (0.1440, 3.2736, 20.7183) [0.0186, 0.0605, 0.6417]
+PeriodicSite: P5+ (6.3311, 35.7562, 20.7183) [0.8186, 0.6605, 0.6417]
+PeriodicSite: P5+ (1.6908, 24.9287, 20.7183) [0.2186, 0.4605, 0.6417]
+PeriodicSite: P5+ (5.0271, 1.0416, 21.2332) [0.6500, 0.0192, 0.6577]
+PeriodicSite: P5+ (6.5739, 22.6966, 21.2332) [0.8500, 0.4192, 0.6577]
+PeriodicSite: P5+ (1.9335, 11.8691, 21.2332) [0.2500, 0.2192, 0.6577]
+PeriodicSite: P5+ (0.3867, 44.3517, 21.2332) [0.0500, 0.8192, 0.6577]
+PeriodicSite: P5+ (3.4803, 33.5241, 21.2332) [0.4500, 0.6192, 0.6577]
+PeriodicSite: P5+ (1.2072, 52.2002, 20.1390) [0.1561, 0.9642, 0.6238]
+PeriodicSite: P5+ (2.7540, 19.7176, 20.1390) [0.3561, 0.3642, 0.6238]
+PeriodicSite: P5+ (5.8476, 8.8900, 20.1390) [0.7561, 0.1642, 0.6238]
+PeriodicSite: P5+ (4.3008, 41.3726, 20.1390) [0.5561, 0.7642, 0.6238]
+PeriodicSite: P5+ (7.3944, 30.5451, 20.1390) [0.9561, 0.5642, 0.6238]
+PeriodicSite: O2- (6.1044, 49.9434, 20.6635) [0.7893, 0.9225, 0.6400]
+PeriodicSite: O2- (7.6512, 17.4608, 20.6635) [0.9893, 0.3225, 0.6400]
+PeriodicSite: O2- (3.0108, 6.6333, 20.6635) [0.3893, 0.1225, 0.6400]
+PeriodicSite: O2- (1.4640, 39.1159, 20.6635) [0.1893, 0.7225, 0.6400]
+PeriodicSite: O2- (4.5576, 28.2884, 20.6635) [0.5893, 0.5225, 0.6400]
+PeriodicSite: O2- (2.2839, 47.0021, 19.5832) [0.2953, 0.8682, 0.6066]
+PeriodicSite: O2- (3.8307, 14.5196, 19.5832) [0.4953, 0.2682, 0.6066]
+PeriodicSite: O2- (6.9243, 3.6920, 19.5832) [0.8953, 0.0682, 0.6066]
+PeriodicSite: O2- (5.3775, 36.1746, 19.5832) [0.6953, 0.6682, 0.6066]
+PeriodicSite: O2- (0.7371, 25.3471, 19.5832) [0.0953, 0.4682, 0.6066]
+PeriodicSite: O2- (3.0388, 1.8561, 18.8441) [0.3929, 0.0343, 0.5837]
+PeriodicSite: O2- (4.5856, 23.5111, 18.8441) [0.5929, 0.4343, 0.5837]
+PeriodicSite: O2- (7.6792, 12.6836, 18.8441) [0.9929, 0.2343, 0.5837]
+PeriodicSite: O2- (6.1324, 45.1662, 18.8441) [0.7929, 0.8343, 0.5837]
+PeriodicSite: O2- (1.4920, 34.3386, 18.8441) [0.1929, 0.6343, 0.5837]
+PeriodicSite: O2- (2.1602, 51.8195, 21.2879) [0.2793, 0.9572, 0.6594]
+PeriodicSite: O2- (3.7070, 19.3369, 21.2879) [0.4793, 0.3572, 0.6594]
+PeriodicSite: O2- (6.8006, 8.5094, 21.2879) [0.8793, 0.1572, 0.6594]
+PeriodicSite: O2- (5.2538, 40.9920, 21.2879) [0.6793, 0.7572, 0.6594]
+PeriodicSite: O2- (0.6135, 30.1645, 21.2879) [0.0793, 0.5572, 0.6594]
+PeriodicSite: O2- (7.7328, 45.8265, 21.2788) [0.9998, 0.8465, 0.6591]
+PeriodicSite: O2- (1.5456, 13.3439, 21.2788) [0.1998, 0.2465, 0.6591]
+PeriodicSite: O2- (4.6392, 2.5164, 21.2788) [0.5998, 0.0465, 0.6591]
+PeriodicSite: O2- (3.0924, 34.9990, 21.2788) [0.3998, 0.6465, 0.6591]
+PeriodicSite: O2- (6.1860, 24.1715, 21.2788) [0.7998, 0.4465, 0.6591]
+PeriodicSite: O2- (0.8610, 51.0329, 19.2141) [0.1113, 0.9427, 0.5951]
+PeriodicSite: O2- (2.4078, 18.5503, 19.2141) [0.3113, 0.3427, 0.5951]
+PeriodicSite: O2- (5.5014, 7.7228, 19.2141) [0.7113, 0.1427, 0.5951]
+PeriodicSite: O2- (3.9546, 40.2054, 19.2141) [0.5113, 0.7427, 0.5951]
+PeriodicSite: O2- (7.0482, 29.3779, 19.2141) [0.9113, 0.5427, 0.5951]
+PeriodicSite: O2- (4.4617, 51.9629, 19.2132) [0.5769, 0.9598, 0.5951]
+PeriodicSite: O2- (6.0085, 19.4803, 19.2132) [0.7769, 0.3598, 0.5951]
+PeriodicSite: O2- (1.3681, 8.6528, 19.2132) [0.1769, 0.1598, 0.5951]
+PeriodicSite: O2- (7.5553, 41.1354, 19.2132) [0.9769, 0.7598, 0.5951]
+PeriodicSite: O2- (2.9149, 30.3079, 19.2132) [0.3769, 0.5598, 0.5951]
+PeriodicSite: O2- (0.5319, 1.7988, 20.6727) [0.0688, 0.0332, 0.6403]
+PeriodicSite: O2- (2.0787, 23.4538, 20.6727) [0.2688, 0.4332, 0.6403]
+PeriodicSite: O2- (5.1723, 12.6263, 20.6727) [0.6688, 0.2332, 0.6403]
+PeriodicSite: O2- (3.6255, 45.1089, 20.6727) [0.4688, 0.8332, 0.6403]
+PeriodicSite: O2- (6.7191, 34.2813, 20.6727) [0.8688, 0.6332, 0.6403]
+PeriodicSite: O2- (3.5456, 49.7024, 19.2242) [0.4585, 0.9181, 0.5954]
+PeriodicSite: O2- (5.0924, 17.2198, 19.2242) [0.6585, 0.3181, 0.5954]
+PeriodicSite: O2- (0.4521, 6.3923, 19.2242) [0.0585, 0.1181, 0.5954]
+PeriodicSite: O2- (6.6392, 38.8749, 19.2242) [0.8585, 0.7181, 0.5954]
+PeriodicSite: O2- (1.9989, 28.0474, 19.2242) [0.2585, 0.5181, 0.5954]
+PeriodicSite: O2- (4.5918, 47.3483, 20.7219) [0.5937, 0.8746, 0.6418]
+PeriodicSite: O2- (6.1386, 14.8657, 20.7219) [0.7937, 0.2746, 0.6418]
+PeriodicSite: O2- (1.4982, 4.0382, 20.7219) [0.1937, 0.0746, 0.6418]
+PeriodicSite: O2- (7.6854, 36.5208, 20.7219) [0.9937, 0.6746, 0.6418]
+PeriodicSite: O2- (3.0450, 25.6933, 20.7219) [0.3937, 0.4746, 0.6418]
+PeriodicSite: O2- (7.4383, 48.0807, 18.6286) [0.9618, 0.8881, 0.5770]
+PeriodicSite: O2- (1.2511, 15.5981, 18.6286) [0.1618, 0.2881, 0.5770]
+PeriodicSite: O2- (4.3447, 4.7706, 18.6286) [0.5618, 0.0881, 0.5770]
+PeriodicSite: O2- (2.7979, 37.2531, 18.6286) [0.3618, 0.6881, 0.5770]
+PeriodicSite: O2- (5.8915, 26.4256, 18.6286) [0.7618, 0.4881, 0.5770]
+PeriodicSite: O2- (0.6992, 48.9701, 21.3176) [0.0904, 0.9045, 0.6603]
+PeriodicSite: O2- (2.2460, 16.4875, 21.3176) [0.2904, 0.3045, 0.6603]
+PeriodicSite: O2- (5.3395, 5.6599, 21.3176) [0.6904, 0.1045, 0.6603]
+PeriodicSite: O2- (3.7927, 38.1425, 21.3176) [0.4904, 0.7045, 0.6603]
+PeriodicSite: O2- (6.8863, 27.3150, 21.3176) [0.8904, 0.5045, 0.6603]
+PeriodicSite: O2- (5.6184, 0.7775, 19.7988) [0.7265, 0.0144, 0.6132]
+PeriodicSite: O2- (7.1652, 22.4326, 19.7988) [0.9265, 0.4144, 0.6132]
+PeriodicSite: O2- (2.5248, 11.6051, 19.7988) [0.3265, 0.2144, 0.6132]
+PeriodicSite: O2- (0.9780, 44.0876, 19.7988) [0.1265, 0.8144, 0.6132]
+PeriodicSite: O2- (4.0716, 33.2601, 19.7988) [0.5265, 0.6144, 0.6132]
+PeriodicSite: O2- (7.5655, 52.7929, 20.6339) [0.9782, 0.9752, 0.6391]
+PeriodicSite: O2- (1.3783, 20.3103, 20.6339) [0.1782, 0.3752, 0.6391]
+PeriodicSite: O2- (4.4719, 9.4828, 20.6339) [0.5782, 0.1752, 0.6391]
+PeriodicSite: O2- (2.9251, 41.9654, 20.6339) [0.3782, 0.7752, 0.6391]
+PeriodicSite: O2- (6.0187, 31.1378, 20.6339) [0.7782, 0.5752, 0.6391]
+PeriodicSite: O2- (1.7771, 53.2934, 19.2031) [0.2298, 0.9844, 0.5948]
+PeriodicSite: O2- (3.3239, 20.8109, 19.2031) [0.4298, 0.3844, 0.5948]
+PeriodicSite: O2- (6.4174, 9.9833, 19.2031) [0.8298, 0.1844, 0.5948]
+PeriodicSite: O2- (4.8707, 42.4659, 19.2031) [0.6298, 0.7844, 0.5948]
+PeriodicSite: O2- (0.2303, 31.6384, 19.2031) [0.0298, 0.5844, 0.5948]
+PeriodicSite: O2- (3.6729, 0.2770, 21.2296) [0.4749, 0.0051, 0.6576]
+PeriodicSite: O2- (5.2197, 21.9320, 21.2296) [0.6749, 0.4051, 0.6576]
+PeriodicSite: O2- (0.5793, 11.1045, 21.2296) [0.0749, 0.2051, 0.6576]
+PeriodicSite: O2- (6.7665, 43.5871, 21.2296) [0.8749, 0.8051, 0.6576]
+PeriodicSite: O2- (2.1261, 32.7596, 21.2296) [0.2749, 0.6051, 0.6576]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>As we can see, that opened up a lot of space in between the two slabs. We can also modify <code>inplane_offset</code> to control how the two slabs are oriented along each other in the directions perpendicular to the surfaces. Notice that the size of the box didn't change. What if we change the vacuum.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span><span class=o>.</span><span class=n>vacuum_over_film</span> 
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>20.0</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span><span class=o>.</span><span class=n>vacuum_over_film</span> <span class=o>=</span> <span class=mi>100</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>interface</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 7.733949306529491 54.137645145706436 112.28547844362376
+ angles : 90.0 90.0 90.0
+ volume : 47013.68314794565
+      A : 7.733949306529491 0.0 4.735678131504616e-16
+      B : 8.705997335896692e-15 54.137645145706436 3.3149746920532316e-15
+      C : 0.0 0.0 112.28547844362376
+PeriodicSite: Li+ (4.1323, 50.8815, 20.9757) [0.5343, 0.9399, 0.1868]
+PeriodicSite: Li+ (5.6791, 18.3989, 20.9757) [0.7343, 0.3399, 0.1868]
+PeriodicSite: Li+ (1.0388, 7.5714, 20.9757) [0.1343, 0.1399, 0.1868]
+PeriodicSite: Li+ (7.2259, 40.0539, 20.9757) [0.9343, 0.7399, 0.1868]
+PeriodicSite: Li+ (2.5855, 29.2264, 20.9757) [0.3343, 0.5399, 0.1868]
+PeriodicSite: Li+ (2.5855, 2.1576, 20.9757) [0.3343, 0.0399, 0.1868]
+PeriodicSite: Li+ (4.1323, 23.8126, 20.9757) [0.5343, 0.4399, 0.1868]
+PeriodicSite: Li+ (7.2259, 12.9851, 20.9757) [0.9343, 0.2399, 0.1868]
+PeriodicSite: Li+ (5.6791, 45.4677, 20.9757) [0.7343, 0.8399, 0.1868]
+PeriodicSite: Li+ (1.0388, 34.6402, 20.9757) [0.1343, 0.6399, 0.1868]
+PeriodicSite: Li+ (4.9815, 2.7740, 19.2137) [0.6441, 0.0512, 0.1711]
+PeriodicSite: Li+ (6.5283, 24.4291, 19.2137) [0.8441, 0.4512, 0.1711]
+PeriodicSite: Li+ (1.8880, 13.6016, 19.2137) [0.2441, 0.2512, 0.1711]
+PeriodicSite: Li+ (0.3412, 46.0842, 19.2137) [0.0441, 0.8512, 0.1711]
+PeriodicSite: Li+ (3.4348, 35.2566, 19.2137) [0.4441, 0.6512, 0.1711]
+PeriodicSite: Li+ (6.5283, 51.4979, 19.2137) [0.8441, 0.9512, 0.1711]
+PeriodicSite: Li+ (0.3412, 19.0153, 19.2137) [0.0441, 0.3512, 0.1711]
+PeriodicSite: Li+ (3.4348, 8.1878, 19.2137) [0.4441, 0.1512, 0.1711]
+PeriodicSite: Li+ (1.8880, 40.6704, 19.2137) [0.2441, 0.7512, 0.1711]
+PeriodicSite: Li+ (4.9815, 29.8429, 19.2137) [0.6441, 0.5512, 0.1711]
+PeriodicSite: Fe2+ (1.5692, 49.0673, 19.4136) [0.2029, 0.9063, 0.1729]
+PeriodicSite: Fe2+ (3.1160, 16.5847, 19.4136) [0.4029, 0.3063, 0.1729]
+PeriodicSite: Fe2+ (6.2096, 5.7572, 19.4136) [0.8029, 0.1063, 0.1729]
+PeriodicSite: Fe2+ (4.6628, 38.2398, 19.4136) [0.6029, 0.7063, 0.1729]
+PeriodicSite: Fe2+ (0.0225, 27.4123, 19.4136) [0.0029, 0.5063, 0.1729]
+PeriodicSite: Fe2+ (7.6108, 0.4045, 19.2391) [0.9841, 0.0075, 0.1713]
+PeriodicSite: Fe2+ (1.4236, 22.0595, 19.2391) [0.1841, 0.4075, 0.1713]
+PeriodicSite: Fe2+ (4.5172, 11.2320, 19.2391) [0.5841, 0.2075, 0.1713]
+PeriodicSite: Fe2+ (2.9704, 43.7146, 19.2391) [0.3841, 0.8075, 0.1713]
+PeriodicSite: Fe2+ (6.0640, 32.8871, 19.2391) [0.7841, 0.6075, 0.1713]
+PeriodicSite: Fe2+ (5.4459, 48.4537, 19.1882) [0.7042, 0.8950, 0.1709]
+PeriodicSite: Fe2+ (6.9927, 15.9711, 19.1882) [0.9042, 0.2950, 0.1709]
+PeriodicSite: Fe2+ (2.3523, 5.1436, 19.1882) [0.3042, 0.0950, 0.1709]
+PeriodicSite: Fe2+ (0.8055, 37.6262, 19.1882) [0.1042, 0.6950, 0.1709]
+PeriodicSite: Fe2+ (3.8991, 26.7987, 19.1882) [0.5042, 0.4950, 0.1709]
+PeriodicSite: Fe2+ (3.7535, 53.9285, 19.0137) [0.4853, 0.9961, 0.1693]
+PeriodicSite: Fe2+ (5.3003, 21.4459, 19.0137) [0.6853, 0.3961, 0.1693]
+PeriodicSite: Fe2+ (0.6599, 10.6184, 19.0137) [0.0853, 0.1961, 0.1693]
+PeriodicSite: Fe2+ (6.8471, 43.1010, 19.0137) [0.8853, 0.7961, 0.1693]
+PeriodicSite: Fe2+ (2.2067, 32.2735, 19.0137) [0.2853, 0.5961, 0.1693]
+PeriodicSite: Si (3.8670, 1.9335, 13.6286) [0.5000, 0.0357, 0.1214]
+PeriodicSite: Si (3.8670, 5.8005, 13.6286) [0.5000, 0.1071, 0.1214]
+PeriodicSite: Si (3.8670, 9.6674, 13.6286) [0.5000, 0.1786, 0.1214]
+PeriodicSite: Si (3.8670, 13.5344, 13.6286) [0.5000, 0.2500, 0.1214]
+PeriodicSite: Si (3.8670, 17.4014, 13.6286) [0.5000, 0.3214, 0.1214]
+PeriodicSite: Si (3.8670, 21.2684, 13.6286) [0.5000, 0.3929, 0.1214]
+PeriodicSite: Si (3.8670, 25.1353, 13.6286) [0.5000, 0.4643, 0.1214]
+PeriodicSite: Si (3.8670, 29.0023, 13.6286) [0.5000, 0.5357, 0.1214]
+PeriodicSite: Si (3.8670, 32.8693, 13.6286) [0.5000, 0.6071, 0.1214]
+PeriodicSite: Si (3.8670, 36.7363, 13.6286) [0.5000, 0.6786, 0.1214]
+PeriodicSite: Si (3.8670, 40.6032, 13.6286) [0.5000, 0.7500, 0.1214]
+PeriodicSite: Si (3.8670, 44.4702, 13.6286) [0.5000, 0.8214, 0.1214]
+PeriodicSite: Si (3.8670, 48.3372, 13.6286) [0.5000, 0.8929, 0.1214]
+PeriodicSite: Si (3.8670, 52.2042, 13.6286) [0.5000, 0.9643, 0.1214]
+PeriodicSite: Si (0.0000, 1.9335, 13.6286) [0.0000, 0.0357, 0.1214]
+PeriodicSite: Si (0.0000, 5.8005, 13.6286) [0.0000, 0.1071, 0.1214]
+PeriodicSite: Si (0.0000, 9.6674, 13.6286) [0.0000, 0.1786, 0.1214]
+PeriodicSite: Si (7.7339, 13.5344, 13.6286) [1.0000, 0.2500, 0.1214]
+PeriodicSite: Si (7.7339, 17.4014, 13.6286) [1.0000, 0.3214, 0.1214]
+PeriodicSite: Si (7.7339, 21.2684, 13.6286) [1.0000, 0.3929, 0.1214]
+PeriodicSite: Si (7.7339, 25.1353, 13.6286) [1.0000, 0.4643, 0.1214]
+PeriodicSite: Si (7.7339, 29.0023, 13.6286) [1.0000, 0.5357, 0.1214]
+PeriodicSite: Si (7.7339, 32.8693, 13.6286) [1.0000, 0.6071, 0.1214]
+PeriodicSite: Si (7.7339, 36.7363, 13.6286) [1.0000, 0.6786, 0.1214]
+PeriodicSite: Si (7.7339, 40.6032, 13.6286) [1.0000, 0.7500, 0.1214]
+PeriodicSite: Si (7.7339, 44.4702, 13.6286) [1.0000, 0.8214, 0.1214]
+PeriodicSite: Si (7.7339, 48.3372, 13.6286) [1.0000, 0.8929, 0.1214]
+PeriodicSite: Si (7.7339, 52.2042, 13.6286) [1.0000, 0.9643, 0.1214]
+PeriodicSite: Si (1.9335, 1.9335, 9.5270) [0.2500, 0.0357, 0.0848]
+PeriodicSite: Si (1.9335, 5.8005, 9.5270) [0.2500, 0.1071, 0.0848]
+PeriodicSite: Si (1.9335, 9.6674, 9.5270) [0.2500, 0.1786, 0.0848]
+PeriodicSite: Si (1.9335, 13.5344, 9.5270) [0.2500, 0.2500, 0.0848]
+PeriodicSite: Si (1.9335, 17.4014, 9.5270) [0.2500, 0.3214, 0.0848]
+PeriodicSite: Si (1.9335, 21.2684, 9.5270) [0.2500, 0.3929, 0.0848]
+PeriodicSite: Si (1.9335, 25.1353, 9.5270) [0.2500, 0.4643, 0.0848]
+PeriodicSite: Si (1.9335, 29.0023, 9.5270) [0.2500, 0.5357, 0.0848]
+PeriodicSite: Si (1.9335, 32.8693, 9.5270) [0.2500, 0.6071, 0.0848]
+PeriodicSite: Si (1.9335, 36.7363, 9.5270) [0.2500, 0.6786, 0.0848]
+PeriodicSite: Si (1.9335, 40.6032, 9.5270) [0.2500, 0.7500, 0.0848]
+PeriodicSite: Si (1.9335, 44.4702, 9.5270) [0.2500, 0.8214, 0.0848]
+PeriodicSite: Si (1.9335, 48.3372, 9.5270) [0.2500, 0.8929, 0.0848]
+PeriodicSite: Si (1.9335, 52.2042, 9.5270) [0.2500, 0.9643, 0.0848]
+PeriodicSite: Si (5.8005, 1.9335, 9.5270) [0.7500, 0.0357, 0.0848]
+PeriodicSite: Si (5.8005, 5.8005, 9.5270) [0.7500, 0.1071, 0.0848]
+PeriodicSite: Si (5.8005, 9.6674, 9.5270) [0.7500, 0.1786, 0.0848]
+PeriodicSite: Si (5.8005, 13.5344, 9.5270) [0.7500, 0.2500, 0.0848]
+PeriodicSite: Si (5.8005, 17.4014, 9.5270) [0.7500, 0.3214, 0.0848]
+PeriodicSite: Si (5.8005, 21.2684, 9.5270) [0.7500, 0.3929, 0.0848]
+PeriodicSite: Si (5.8005, 25.1353, 9.5270) [0.7500, 0.4643, 0.0848]
+PeriodicSite: Si (5.8005, 29.0023, 9.5270) [0.7500, 0.5357, 0.0848]
+PeriodicSite: Si (5.8005, 32.8693, 9.5270) [0.7500, 0.6071, 0.0848]
+PeriodicSite: Si (5.8005, 36.7363, 9.5270) [0.7500, 0.6786, 0.0848]
+PeriodicSite: Si (5.8005, 40.6032, 9.5270) [0.7500, 0.7500, 0.0848]
+PeriodicSite: Si (5.8005, 44.4702, 9.5270) [0.7500, 0.8214, 0.0848]
+PeriodicSite: Si (5.8005, 48.3372, 9.5270) [0.7500, 0.8929, 0.0848]
+PeriodicSite: Si (5.8005, 52.2042, 9.5270) [0.7500, 0.9643, 0.0848]
+PeriodicSite: Si (1.9335, 0.0000, 10.8942) [0.2500, 0.0000, 0.0970]
+PeriodicSite: Si (1.9335, 3.8670, 10.8942) [0.2500, 0.0714, 0.0970]
+PeriodicSite: Si (1.9335, 7.7339, 10.8942) [0.2500, 0.1429, 0.0970]
+PeriodicSite: Si (1.9335, 11.6009, 10.8942) [0.2500, 0.2143, 0.0970]
+PeriodicSite: Si (1.9335, 15.4679, 10.8942) [0.2500, 0.2857, 0.0970]
+PeriodicSite: Si (1.9335, 19.3349, 10.8942) [0.2500, 0.3571, 0.0970]
+PeriodicSite: Si (1.9335, 23.2018, 10.8942) [0.2500, 0.4286, 0.0970]
+PeriodicSite: Si (1.9335, 27.0688, 10.8942) [0.2500, 0.5000, 0.0970]
+PeriodicSite: Si (1.9335, 30.9358, 10.8942) [0.2500, 0.5714, 0.0970]
+PeriodicSite: Si (1.9335, 34.8028, 10.8942) [0.2500, 0.6429, 0.0970]
+PeriodicSite: Si (1.9335, 38.6697, 10.8942) [0.2500, 0.7143, 0.0970]
+PeriodicSite: Si (1.9335, 42.5367, 10.8942) [0.2500, 0.7857, 0.0970]
+PeriodicSite: Si (1.9335, 46.4037, 10.8942) [0.2500, 0.8571, 0.0970]
+PeriodicSite: Si (1.9335, 50.2707, 10.8942) [0.2500, 0.9286, 0.0970]
+PeriodicSite: Si (5.8005, 0.0000, 10.8942) [0.7500, 0.0000, 0.0970]
+PeriodicSite: Si (5.8005, 3.8670, 10.8942) [0.7500, 0.0714, 0.0970]
+PeriodicSite: Si (5.8005, 7.7339, 10.8942) [0.7500, 0.1429, 0.0970]
+PeriodicSite: Si (5.8005, 11.6009, 10.8942) [0.7500, 0.2143, 0.0970]
+PeriodicSite: Si (5.8005, 15.4679, 10.8942) [0.7500, 0.2857, 0.0970]
+PeriodicSite: Si (5.8005, 19.3349, 10.8942) [0.7500, 0.3571, 0.0970]
+PeriodicSite: Si (5.8005, 23.2018, 10.8942) [0.7500, 0.4286, 0.0970]
+PeriodicSite: Si (5.8005, 27.0688, 10.8942) [0.7500, 0.5000, 0.0970]
+PeriodicSite: Si (5.8005, 30.9358, 10.8942) [0.7500, 0.5714, 0.0970]
+PeriodicSite: Si (5.8005, 34.8028, 10.8942) [0.7500, 0.6429, 0.0970]
+PeriodicSite: Si (5.8005, 38.6697, 10.8942) [0.7500, 0.7143, 0.0970]
+PeriodicSite: Si (5.8005, 42.5367, 10.8942) [0.7500, 0.7857, 0.0970]
+PeriodicSite: Si (5.8005, 46.4037, 10.8942) [0.7500, 0.8571, 0.0970]
+PeriodicSite: Si (5.8005, 50.2707, 10.8942) [0.7500, 0.9286, 0.0970]
+PeriodicSite: Si (0.0000, 0.0000, 12.2614) [0.0000, 0.0000, 0.1092]
+PeriodicSite: Si (0.0000, 3.8670, 12.2614) [0.0000, 0.0714, 0.1092]
+PeriodicSite: Si (0.0000, 7.7339, 12.2614) [0.0000, 0.1429, 0.1092]
+PeriodicSite: Si (0.0000, 11.6009, 12.2614) [-0.0000, 0.2143, 0.1092]
+PeriodicSite: Si (7.7339, 15.4679, 12.2614) [1.0000, 0.2857, 0.1092]
+PeriodicSite: Si (0.0000, 19.3349, 12.2614) [0.0000, 0.3571, 0.1092]
+PeriodicSite: Si (7.7339, 23.2018, 12.2614) [1.0000, 0.4286, 0.1092]
+PeriodicSite: Si (7.7339, 27.0688, 12.2614) [1.0000, 0.5000, 0.1092]
+PeriodicSite: Si (7.7339, 30.9358, 12.2614) [1.0000, 0.5714, 0.1092]
+PeriodicSite: Si (7.7339, 34.8028, 12.2614) [1.0000, 0.6429, 0.1092]
+PeriodicSite: Si (7.7339, 38.6697, 12.2614) [1.0000, 0.7143, 0.1092]
+PeriodicSite: Si (7.7339, 42.5367, 12.2614) [1.0000, 0.7857, 0.1092]
+PeriodicSite: Si (7.7339, 46.4037, 12.2614) [1.0000, 0.8571, 0.1092]
+PeriodicSite: Si (7.7339, 50.2707, 12.2614) [1.0000, 0.9286, 0.1092]
+PeriodicSite: Si (3.8670, 0.0000, 12.2614) [0.5000, 0.0000, 0.1092]
+PeriodicSite: Si (3.8670, 3.8670, 12.2614) [0.5000, 0.0714, 0.1092]
+PeriodicSite: Si (3.8670, 7.7339, 12.2614) [0.5000, 0.1429, 0.1092]
+PeriodicSite: Si (3.8670, 11.6009, 12.2614) [0.5000, 0.2143, 0.1092]
+PeriodicSite: Si (3.8670, 15.4679, 12.2614) [0.5000, 0.2857, 0.1092]
+PeriodicSite: Si (3.8670, 19.3349, 12.2614) [0.5000, 0.3571, 0.1092]
+PeriodicSite: Si (3.8670, 23.2018, 12.2614) [0.5000, 0.4286, 0.1092]
+PeriodicSite: Si (3.8670, 27.0688, 12.2614) [0.5000, 0.5000, 0.1092]
+PeriodicSite: Si (3.8670, 30.9358, 12.2614) [0.5000, 0.5714, 0.1092]
+PeriodicSite: Si (3.8670, 34.8028, 12.2614) [0.5000, 0.6429, 0.1092]
+PeriodicSite: Si (3.8670, 38.6697, 12.2614) [0.5000, 0.7143, 0.1092]
+PeriodicSite: Si (3.8670, 42.5367, 12.2614) [0.5000, 0.7857, 0.1092]
+PeriodicSite: Si (3.8670, 46.4037, 12.2614) [0.5000, 0.8571, 0.1092]
+PeriodicSite: Si (3.8670, 50.2707, 12.2614) [0.5000, 0.9286, 0.1092]
+PeriodicSite: P5+ (7.0575, 49.5628, 21.8125) [0.9125, 0.9155, 0.1943]
+PeriodicSite: P5+ (0.8703, 17.0802, 21.8125) [0.1125, 0.3155, 0.1943]
+PeriodicSite: P5+ (3.9639, 6.2527, 21.8125) [0.5125, 0.1155, 0.1943]
+PeriodicSite: P5+ (2.4171, 38.7353, 21.8125) [0.3125, 0.7155, 0.1943]
+PeriodicSite: P5+ (5.5107, 27.9077, 21.8125) [0.7125, 0.5155, 0.1943]
+PeriodicSite: P5+ (3.2376, 46.5837, 20.7183) [0.4186, 0.8605, 0.1845]
+PeriodicSite: P5+ (4.7844, 14.1012, 20.7183) [0.6186, 0.2605, 0.1845]
+PeriodicSite: P5+ (0.1440, 3.2736, 20.7183) [0.0186, 0.0605, 0.1845]
+PeriodicSite: P5+ (6.3311, 35.7562, 20.7183) [0.8186, 0.6605, 0.1845]
+PeriodicSite: P5+ (1.6908, 24.9287, 20.7183) [0.2186, 0.4605, 0.1845]
+PeriodicSite: P5+ (5.0271, 1.0416, 21.2332) [0.6500, 0.0192, 0.1891]
+PeriodicSite: P5+ (6.5739, 22.6966, 21.2332) [0.8500, 0.4192, 0.1891]
+PeriodicSite: P5+ (1.9335, 11.8691, 21.2332) [0.2500, 0.2192, 0.1891]
+PeriodicSite: P5+ (0.3867, 44.3517, 21.2332) [0.0500, 0.8192, 0.1891]
+PeriodicSite: P5+ (3.4803, 33.5241, 21.2332) [0.4500, 0.6192, 0.1891]
+PeriodicSite: P5+ (1.2072, 52.2002, 20.1390) [0.1561, 0.9642, 0.1794]
+PeriodicSite: P5+ (2.7540, 19.7176, 20.1390) [0.3561, 0.3642, 0.1794]
+PeriodicSite: P5+ (5.8476, 8.8900, 20.1390) [0.7561, 0.1642, 0.1794]
+PeriodicSite: P5+ (4.3008, 41.3726, 20.1390) [0.5561, 0.7642, 0.1794]
+PeriodicSite: P5+ (7.3944, 30.5451, 20.1390) [0.9561, 0.5642, 0.1794]
+PeriodicSite: O2- (6.1044, 49.9434, 20.6635) [0.7893, 0.9225, 0.1840]
+PeriodicSite: O2- (7.6512, 17.4608, 20.6635) [0.9893, 0.3225, 0.1840]
+PeriodicSite: O2- (3.0108, 6.6333, 20.6635) [0.3893, 0.1225, 0.1840]
+PeriodicSite: O2- (1.4640, 39.1159, 20.6635) [0.1893, 0.7225, 0.1840]
+PeriodicSite: O2- (4.5576, 28.2884, 20.6635) [0.5893, 0.5225, 0.1840]
+PeriodicSite: O2- (2.2839, 47.0021, 19.5832) [0.2953, 0.8682, 0.1744]
+PeriodicSite: O2- (3.8307, 14.5196, 19.5832) [0.4953, 0.2682, 0.1744]
+PeriodicSite: O2- (6.9243, 3.6920, 19.5832) [0.8953, 0.0682, 0.1744]
+PeriodicSite: O2- (5.3775, 36.1746, 19.5832) [0.6953, 0.6682, 0.1744]
+PeriodicSite: O2- (0.7371, 25.3471, 19.5832) [0.0953, 0.4682, 0.1744]
+PeriodicSite: O2- (3.0388, 1.8561, 18.8441) [0.3929, 0.0343, 0.1678]
+PeriodicSite: O2- (4.5856, 23.5111, 18.8441) [0.5929, 0.4343, 0.1678]
+PeriodicSite: O2- (7.6792, 12.6836, 18.8441) [0.9929, 0.2343, 0.1678]
+PeriodicSite: O2- (6.1324, 45.1662, 18.8441) [0.7929, 0.8343, 0.1678]
+PeriodicSite: O2- (1.4920, 34.3386, 18.8441) [0.1929, 0.6343, 0.1678]
+PeriodicSite: O2- (2.1602, 51.8195, 21.2879) [0.2793, 0.9572, 0.1896]
+PeriodicSite: O2- (3.7070, 19.3369, 21.2879) [0.4793, 0.3572, 0.1896]
+PeriodicSite: O2- (6.8006, 8.5094, 21.2879) [0.8793, 0.1572, 0.1896]
+PeriodicSite: O2- (5.2538, 40.9920, 21.2879) [0.6793, 0.7572, 0.1896]
+PeriodicSite: O2- (0.6135, 30.1645, 21.2879) [0.0793, 0.5572, 0.1896]
+PeriodicSite: O2- (7.7328, 45.8265, 21.2788) [0.9998, 0.8465, 0.1895]
+PeriodicSite: O2- (1.5456, 13.3439, 21.2788) [0.1998, 0.2465, 0.1895]
+PeriodicSite: O2- (4.6392, 2.5164, 21.2788) [0.5998, 0.0465, 0.1895]
+PeriodicSite: O2- (3.0924, 34.9990, 21.2788) [0.3998, 0.6465, 0.1895]
+PeriodicSite: O2- (6.1860, 24.1715, 21.2788) [0.7998, 0.4465, 0.1895]
+PeriodicSite: O2- (0.8610, 51.0329, 19.2141) [0.1113, 0.9427, 0.1711]
+PeriodicSite: O2- (2.4078, 18.5503, 19.2141) [0.3113, 0.3427, 0.1711]
+PeriodicSite: O2- (5.5014, 7.7228, 19.2141) [0.7113, 0.1427, 0.1711]
+PeriodicSite: O2- (3.9546, 40.2054, 19.2141) [0.5113, 0.7427, 0.1711]
+PeriodicSite: O2- (7.0482, 29.3779, 19.2141) [0.9113, 0.5427, 0.1711]
+PeriodicSite: O2- (4.4617, 51.9629, 19.2132) [0.5769, 0.9598, 0.1711]
+PeriodicSite: O2- (6.0085, 19.4803, 19.2132) [0.7769, 0.3598, 0.1711]
+PeriodicSite: O2- (1.3681, 8.6528, 19.2132) [0.1769, 0.1598, 0.1711]
+PeriodicSite: O2- (7.5553, 41.1354, 19.2132) [0.9769, 0.7598, 0.1711]
+PeriodicSite: O2- (2.9149, 30.3079, 19.2132) [0.3769, 0.5598, 0.1711]
+PeriodicSite: O2- (0.5319, 1.7988, 20.6727) [0.0688, 0.0332, 0.1841]
+PeriodicSite: O2- (2.0787, 23.4538, 20.6727) [0.2688, 0.4332, 0.1841]
+PeriodicSite: O2- (5.1723, 12.6263, 20.6727) [0.6688, 0.2332, 0.1841]
+PeriodicSite: O2- (3.6255, 45.1089, 20.6727) [0.4688, 0.8332, 0.1841]
+PeriodicSite: O2- (6.7191, 34.2813, 20.6727) [0.8688, 0.6332, 0.1841]
+PeriodicSite: O2- (3.5456, 49.7024, 19.2242) [0.4585, 0.9181, 0.1712]
+PeriodicSite: O2- (5.0924, 17.2198, 19.2242) [0.6585, 0.3181, 0.1712]
+PeriodicSite: O2- (0.4521, 6.3923, 19.2242) [0.0585, 0.1181, 0.1712]
+PeriodicSite: O2- (6.6392, 38.8749, 19.2242) [0.8585, 0.7181, 0.1712]
+PeriodicSite: O2- (1.9989, 28.0474, 19.2242) [0.2585, 0.5181, 0.1712]
+PeriodicSite: O2- (4.5918, 47.3483, 20.7219) [0.5937, 0.8746, 0.1845]
+PeriodicSite: O2- (6.1386, 14.8657, 20.7219) [0.7937, 0.2746, 0.1845]
+PeriodicSite: O2- (1.4982, 4.0382, 20.7219) [0.1937, 0.0746, 0.1845]
+PeriodicSite: O2- (7.6854, 36.5208, 20.7219) [0.9937, 0.6746, 0.1845]
+PeriodicSite: O2- (3.0450, 25.6933, 20.7219) [0.3937, 0.4746, 0.1845]
+PeriodicSite: O2- (7.4383, 48.0807, 18.6286) [0.9618, 0.8881, 0.1659]
+PeriodicSite: O2- (1.2511, 15.5981, 18.6286) [0.1618, 0.2881, 0.1659]
+PeriodicSite: O2- (4.3447, 4.7706, 18.6286) [0.5618, 0.0881, 0.1659]
+PeriodicSite: O2- (2.7979, 37.2531, 18.6286) [0.3618, 0.6881, 0.1659]
+PeriodicSite: O2- (5.8915, 26.4256, 18.6286) [0.7618, 0.4881, 0.1659]
+PeriodicSite: O2- (0.6992, 48.9701, 21.3176) [0.0904, 0.9045, 0.1899]
+PeriodicSite: O2- (2.2460, 16.4875, 21.3176) [0.2904, 0.3045, 0.1899]
+PeriodicSite: O2- (5.3395, 5.6599, 21.3176) [0.6904, 0.1045, 0.1899]
+PeriodicSite: O2- (3.7927, 38.1425, 21.3176) [0.4904, 0.7045, 0.1899]
+PeriodicSite: O2- (6.8863, 27.3150, 21.3176) [0.8904, 0.5045, 0.1899]
+PeriodicSite: O2- (5.6184, 0.7775, 19.7988) [0.7265, 0.0144, 0.1763]
+PeriodicSite: O2- (7.1652, 22.4326, 19.7988) [0.9265, 0.4144, 0.1763]
+PeriodicSite: O2- (2.5248, 11.6051, 19.7988) [0.3265, 0.2144, 0.1763]
+PeriodicSite: O2- (0.9780, 44.0876, 19.7988) [0.1265, 0.8144, 0.1763]
+PeriodicSite: O2- (4.0716, 33.2601, 19.7988) [0.5265, 0.6144, 0.1763]
+PeriodicSite: O2- (7.5655, 52.7929, 20.6339) [0.9782, 0.9752, 0.1838]
+PeriodicSite: O2- (1.3783, 20.3103, 20.6339) [0.1782, 0.3752, 0.1838]
+PeriodicSite: O2- (4.4719, 9.4828, 20.6339) [0.5782, 0.1752, 0.1838]
+PeriodicSite: O2- (2.9251, 41.9654, 20.6339) [0.3782, 0.7752, 0.1838]
+PeriodicSite: O2- (6.0187, 31.1378, 20.6339) [0.7782, 0.5752, 0.1838]
+PeriodicSite: O2- (1.7771, 53.2934, 19.2031) [0.2298, 0.9844, 0.1710]
+PeriodicSite: O2- (3.3239, 20.8109, 19.2031) [0.4298, 0.3844, 0.1710]
+PeriodicSite: O2- (6.4174, 9.9833, 19.2031) [0.8298, 0.1844, 0.1710]
+PeriodicSite: O2- (4.8707, 42.4659, 19.2031) [0.6298, 0.7844, 0.1710]
+PeriodicSite: O2- (0.2303, 31.6384, 19.2031) [0.0298, 0.5844, 0.1710]
+PeriodicSite: O2- (3.6729, 0.2770, 21.2296) [0.4749, 0.0051, 0.1891]
+PeriodicSite: O2- (5.2197, 21.9320, 21.2296) [0.6749, 0.4051, 0.1891]
+PeriodicSite: O2- (0.5793, 11.1045, 21.2296) [0.0749, 0.2051, 0.1891]
+PeriodicSite: O2- (6.7665, 43.5871, 21.2296) [0.8749, 0.8051, 0.1891]
+PeriodicSite: O2- (2.1261, 32.7596, 21.2296) [0.2749, 0.6051, 0.1891]</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Ok, that added a lot of space, so now we can do more things like add adsorbates or in the future make multiple layers. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The other option is type in: <code>interface.</code> and then press <code>tab</code>. What's clear is that there are a lot of things we can do to an interface. Infact, <code>Interface</code> is just a fancy version of <code>Structure</code>, so where ever you can use <code>Structure</code>, you can use <code>Interface</code>. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=exercise-3>Exercise 3:<a class=headerlink href=#exercise-3 title="Permanent link">&para;</a></h2> <p>Just for fun, let's make ANOTHER slab from our interface structure along it's (1,0,0) direction. This should put another break along the short direction of the surface. Make sure to return the <code>gap</code> back to 2.0, so that structure doesn't look too crazy. Note that this new slab looks no different than the slabs we made in lesson 1. These structures can all be used later on in generating DFT calculations to investigate heterointerfaces.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1># solution</span>
+<span class=n>interface</span><span class=o>.</span><span class=n>gap</span> <span class=o>=</span> <span class=mf>2.0</span>
+<span class=n>slabgen</span> <span class=o>=</span> <span class=n>SlabGenerator</span><span class=p>(</span><span class=n>interface</span><span class=p>,</span><span class=n>miller_index</span><span class=o>=</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>),</span><span class=n>min_slab_size</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span><span class=n>min_vacuum_size</span><span class=o>=</span><span class=mi>20</span><span class=p>)</span>
+<span class=n>slabs</span> <span class=o>=</span> <span class=nb>list</span><span class=p>(</span><span class=n>slabgen</span><span class=o>.</span><span class=n>get_slabs</span><span class=p>())</span>
+<span class=nb>len</span><span class=p>(</span><span class=n>slabs</span><span class=p>)</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>12</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>slabs</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea "> <pre>
+<code>If you see this text, the Crystal Toolkit Jupyter Lab 
+
+extension is not installed. You can install it by running 
+
+&#34;pip install crystaltoolkit-extension&#34; 
+
+from the same environment you run &#34;jupyter lab&#34;. 
+
+This only works in Jupyter Lab 3.x or above.
+
+
+Structure Summary
+Lattice
+    abc : 54.137645145706436 109.28547844362376 30.935797226117963
+ angles : 90.0 90.0 90.0
+ volume : 183030.3589542013
+      A : 54.137645145706436 0.0 3.3149746920532316e-15
+      B : 1.7574445316593915e-14 109.28547844362376 6.691805568463545e-15
+      C : 0.0 0.0 30.935797226117963
+PeriodicSite: Li+ (50.8815, 17.9757, 4.1014) [0.9399, 0.1645, 0.1326]
+PeriodicSite: Li+ (18.3989, 17.9757, 5.6482) [0.3399, 0.1645, 0.1826]
+PeriodicSite: Li+ (7.5714, 17.9757, 1.0078) [0.1399, 0.1645, 0.0326]
+PeriodicSite: Li+ (40.0539, 17.9757, 7.1950) [0.7399, 0.1645, 0.2326]
+PeriodicSite: Li+ (29.2264, 17.9757, 2.5546) [0.5399, 0.1645, 0.0826]
+PeriodicSite: Li+ (2.1576, 17.9757, 2.5546) [0.0399, 0.1645, 0.0826]
+PeriodicSite: Li+ (23.8126, 17.9757, 4.1014) [0.4399, 0.1645, 0.1326]
+PeriodicSite: Li+ (12.9851, 17.9757, 7.1950) [0.2399, 0.1645, 0.2326]
+PeriodicSite: Li+ (45.4677, 17.9757, 5.6482) [0.8399, 0.1645, 0.1826]
+PeriodicSite: Li+ (34.6402, 17.9757, 1.0078) [0.6399, 0.1645, 0.0326]
+PeriodicSite: Li+ (2.7740, 16.2137, 4.9506) [0.0512, 0.1484, 0.1600]
+PeriodicSite: Li+ (24.4291, 16.2137, 6.4974) [0.4512, 0.1484, 0.2100]
+PeriodicSite: Li+ (13.6016, 16.2137, 1.8570) [0.2512, 0.1484, 0.0600]
+PeriodicSite: Li+ (46.0842, 16.2137, 0.3103) [0.8512, 0.1484, 0.0100]
+PeriodicSite: Li+ (35.2566, 16.2137, 3.4038) [0.6512, 0.1484, 0.1100]
+PeriodicSite: Li+ (51.4979, 16.2137, 6.4974) [0.9512, 0.1484, 0.2100]
+PeriodicSite: Li+ (19.0153, 16.2137, 0.3103) [0.3512, 0.1484, 0.0100]
+PeriodicSite: Li+ (8.1878, 16.2137, 3.4038) [0.1512, 0.1484, 0.1100]
+PeriodicSite: Li+ (40.6704, 16.2137, 1.8570) [0.7512, 0.1484, 0.0600]
+PeriodicSite: Li+ (29.8429, 16.2137, 4.9506) [0.5512, 0.1484, 0.1600]
+PeriodicSite: Fe2+ (49.0673, 16.4136, 1.5383) [0.9063, 0.1502, 0.0497]
+PeriodicSite: Fe2+ (16.5847, 16.4136, 3.0851) [0.3063, 0.1502, 0.0997]
+PeriodicSite: Fe2+ (5.7572, 16.4136, 6.1787) [0.1063, 0.1502, 0.1997]
+PeriodicSite: Fe2+ (38.2398, 16.4136, 4.6319) [0.7063, 0.1502, 0.1497]
+PeriodicSite: Fe2+ (27.4123, 16.4136, 7.7255) [0.5063, 0.1502, 0.2497]
+PeriodicSite: Fe2+ (0.4045, 16.2391, 7.5798) [0.0075, 0.1486, 0.2450]
+PeriodicSite: Fe2+ (22.0595, 16.2391, 1.3927) [0.4075, 0.1486, 0.0450]
+PeriodicSite: Fe2+ (11.2320, 16.2391, 4.4863) [0.2075, 0.1486, 0.1450]
+PeriodicSite: Fe2+ (43.7146, 16.2391, 2.9395) [0.8075, 0.1486, 0.0950]
+PeriodicSite: Fe2+ (32.8871, 16.2391, 6.0330) [0.6075, 0.1486, 0.1950]
+PeriodicSite: Fe2+ (48.4537, 16.1882, 5.4150) [0.8950, 0.1481, 0.1750]
+PeriodicSite: Fe2+ (15.9711, 16.1882, 6.9618) [0.2950, 0.1481, 0.2250]
+PeriodicSite: Fe2+ (5.1436, 16.1882, 2.3214) [0.0950, 0.1481, 0.0750]
+PeriodicSite: Fe2+ (37.6262, 16.1882, 0.7746) [0.6950, 0.1481, 0.0250]
+PeriodicSite: Fe2+ (26.7987, 16.1882, 3.8682) [0.4950, 0.1481, 0.1250]
+PeriodicSite: Fe2+ (53.9285, 16.0137, 3.7226) [0.9961, 0.1465, 0.1203]
+PeriodicSite: Fe2+ (21.4459, 16.0137, 5.2694) [0.3961, 0.1465, 0.1703]
+PeriodicSite: Fe2+ (10.6184, 16.0137, 0.6290) [0.1961, 0.1465, 0.0203]
+PeriodicSite: Fe2+ (43.1010, 16.0137, 6.8161) [0.7961, 0.1465, 0.2203]
+PeriodicSite: Fe2+ (32.2735, 16.0137, 2.1758) [0.5961, 0.1465, 0.0703]
+PeriodicSite: Si (1.9335, 13.6286, 3.8361) [0.0357, 0.1247, 0.1240]
+PeriodicSite: Si (5.8005, 13.6286, 3.8361) [0.1071, 0.1247, 0.1240]
+PeriodicSite: Si (9.6674, 13.6286, 3.8361) [0.1786, 0.1247, 0.1240]
+PeriodicSite: Si (13.5344, 13.6286, 3.8361) [0.2500, 0.1247, 0.1240]
+PeriodicSite: Si (17.4014, 13.6286, 3.8361) [0.3214, 0.1247, 0.1240]
+PeriodicSite: Si (21.2684, 13.6286, 3.8361) [0.3929, 0.1247, 0.1240]
+PeriodicSite: Si (25.1353, 13.6286, 3.8361) [0.4643, 0.1247, 0.1240]
+PeriodicSite: Si (29.0023, 13.6286, 3.8361) [0.5357, 0.1247, 0.1240]
+PeriodicSite: Si (32.8693, 13.6286, 3.8361) [0.6071, 0.1247, 0.1240]
+PeriodicSite: Si (36.7363, 13.6286, 3.8361) [0.6786, 0.1247, 0.1240]
+PeriodicSite: Si (40.6032, 13.6286, 3.8361) [0.7500, 0.1247, 0.1240]
+PeriodicSite: Si (44.4702, 13.6286, 3.8361) [0.8214, 0.1247, 0.1240]
+PeriodicSite: Si (48.3372, 13.6286, 3.8361) [0.8929, 0.1247, 0.1240]
+PeriodicSite: Si (52.2042, 13.6286, 3.8361) [0.9643, 0.1247, 0.1240]
+PeriodicSite: Si (1.9335, 13.6286, 7.7030) [0.0357, 0.1247, 0.2490]
+PeriodicSite: Si (5.8005, 13.6286, 7.7030) [0.1071, 0.1247, 0.2490]
+PeriodicSite: Si (9.6674, 13.6286, 7.7030) [0.1786, 0.1247, 0.2490]
+PeriodicSite: Si (13.5344, 13.6286, 7.7030) [0.2500, 0.1247, 0.2490]
+PeriodicSite: Si (17.4014, 13.6286, 7.7030) [0.3214, 0.1247, 0.2490]
+PeriodicSite: Si (21.2684, 13.6286, 7.7030) [0.3929, 0.1247, 0.2490]
+PeriodicSite: Si (25.1353, 13.6286, 7.7030) [0.4643, 0.1247, 0.2490]
+PeriodicSite: Si (29.0023, 13.6286, 7.7030) [0.5357, 0.1247, 0.2490]
+PeriodicSite: Si (32.8693, 13.6286, 7.7030) [0.6071, 0.1247, 0.2490]
+PeriodicSite: Si (36.7363, 13.6286, 7.7030) [0.6786, 0.1247, 0.2490]
+PeriodicSite: Si (40.6032, 13.6286, 7.7030) [0.7500, 0.1247, 0.2490]
+PeriodicSite: Si (44.4702, 13.6286, 7.7030) [0.8214, 0.1247, 0.2490]
+PeriodicSite: Si (48.3372, 13.6286, 7.7030) [0.8929, 0.1247, 0.2490]
+PeriodicSite: Si (52.2042, 13.6286, 7.7030) [0.9643, 0.1247, 0.2490]
+PeriodicSite: Si (1.9335, 9.5270, 1.9026) [0.0357, 0.0872, 0.0615]
+PeriodicSite: Si (5.8005, 9.5270, 1.9026) [0.1071, 0.0872, 0.0615]
+PeriodicSite: Si (9.6674, 9.5270, 1.9026) [0.1786, 0.0872, 0.0615]
+PeriodicSite: Si (13.5344, 9.5270, 1.9026) [0.2500, 0.0872, 0.0615]
+PeriodicSite: Si (17.4014, 9.5270, 1.9026) [0.3214, 0.0872, 0.0615]
+PeriodicSite: Si (21.2684, 9.5270, 1.9026) [0.3929, 0.0872, 0.0615]
+PeriodicSite: Si (25.1353, 9.5270, 1.9026) [0.4643, 0.0872, 0.0615]
+PeriodicSite: Si (29.0023, 9.5270, 1.9026) [0.5357, 0.0872, 0.0615]
+PeriodicSite: Si (32.8693, 9.5270, 1.9026) [0.6071, 0.0872, 0.0615]
+PeriodicSite: Si (36.7363, 9.5270, 1.9026) [0.6786, 0.0872, 0.0615]
+PeriodicSite: Si (40.6032, 9.5270, 1.9026) [0.7500, 0.0872, 0.0615]
+PeriodicSite: Si (44.4702, 9.5270, 1.9026) [0.8214, 0.0872, 0.0615]
+PeriodicSite: Si (48.3372, 9.5270, 1.9026) [0.8929, 0.0872, 0.0615]
+PeriodicSite: Si (52.2042, 9.5270, 1.9026) [0.9643, 0.0872, 0.0615]
+PeriodicSite: Si (1.9335, 9.5270, 5.7695) [0.0357, 0.0872, 0.1865]
+PeriodicSite: Si (5.8005, 9.5270, 5.7695) [0.1071, 0.0872, 0.1865]
+PeriodicSite: Si (9.6674, 9.5270, 5.7695) [0.1786, 0.0872, 0.1865]
+PeriodicSite: Si (13.5344, 9.5270, 5.7695) [0.2500, 0.0872, 0.1865]
+PeriodicSite: Si (17.4014, 9.5270, 5.7695) [0.3214, 0.0872, 0.1865]
+PeriodicSite: Si (21.2684, 9.5270, 5.7695) [0.3929, 0.0872, 0.1865]
+PeriodicSite: Si (25.1353, 9.5270, 5.7695) [0.4643, 0.0872, 0.1865]
+PeriodicSite: Si (29.0023, 9.5270, 5.7695) [0.5357, 0.0872, 0.1865]
+PeriodicSite: Si (32.8693, 9.5270, 5.7695) [0.6071, 0.0872, 0.1865]
+PeriodicSite: Si (36.7363, 9.5270, 5.7695) [0.6786, 0.0872, 0.1865]
+PeriodicSite: Si (40.6032, 9.5270, 5.7695) [0.7500, 0.0872, 0.1865]
+PeriodicSite: Si (44.4702, 9.5270, 5.7695) [0.8214, 0.0872, 0.1865]
+PeriodicSite: Si (48.3372, 9.5270, 5.7695) [0.8929, 0.0872, 0.1865]
+PeriodicSite: Si (52.2042, 9.5270, 5.7695) [0.9643, 0.0872, 0.1865]
+PeriodicSite: Si (0.0000, 10.8942, 1.9026) [0.0000, 0.0997, 0.0615]
+PeriodicSite: Si (3.8670, 10.8942, 1.9026) [0.0714, 0.0997, 0.0615]
+PeriodicSite: Si (7.7339, 10.8942, 1.9026) [0.1429, 0.0997, 0.0615]
+PeriodicSite: Si (11.6009, 10.8942, 1.9026) [0.2143, 0.0997, 0.0615]
+PeriodicSite: Si (15.4679, 10.8942, 1.9026) [0.2857, 0.0997, 0.0615]
+PeriodicSite: Si (19.3349, 10.8942, 1.9026) [0.3571, 0.0997, 0.0615]
+PeriodicSite: Si (23.2018, 10.8942, 1.9026) [0.4286, 0.0997, 0.0615]
+PeriodicSite: Si (27.0688, 10.8942, 1.9026) [0.5000, 0.0997, 0.0615]
+PeriodicSite: Si (30.9358, 10.8942, 1.9026) [0.5714, 0.0997, 0.0615]
+PeriodicSite: Si (34.8028, 10.8942, 1.9026) [0.6429, 0.0997, 0.0615]
+PeriodicSite: Si (38.6697, 10.8942, 1.9026) [0.7143, 0.0997, 0.0615]
+PeriodicSite: Si (42.5367, 10.8942, 1.9026) [0.7857, 0.0997, 0.0615]
+PeriodicSite: Si (46.4037, 10.8942, 1.9026) [0.8571, 0.0997, 0.0615]
+PeriodicSite: Si (50.2707, 10.8942, 1.9026) [0.9286, 0.0997, 0.0615]
+PeriodicSite: Si (0.0000, 10.8942, 5.7695) [0.0000, 0.0997, 0.1865]
+PeriodicSite: Si (3.8670, 10.8942, 5.7695) [0.0714, 0.0997, 0.1865]
+PeriodicSite: Si (7.7339, 10.8942, 5.7695) [0.1429, 0.0997, 0.1865]
+PeriodicSite: Si (11.6009, 10.8942, 5.7695) [0.2143, 0.0997, 0.1865]
+PeriodicSite: Si (15.4679, 10.8942, 5.7695) [0.2857, 0.0997, 0.1865]
+PeriodicSite: Si (19.3349, 10.8942, 5.7695) [0.3571, 0.0997, 0.1865]
+PeriodicSite: Si (23.2018, 10.8942, 5.7695) [0.4286, 0.0997, 0.1865]
+PeriodicSite: Si (27.0688, 10.8942, 5.7695) [0.5000, 0.0997, 0.1865]
+PeriodicSite: Si (30.9358, 10.8942, 5.7695) [0.5714, 0.0997, 0.1865]
+PeriodicSite: Si (34.8028, 10.8942, 5.7695) [0.6429, 0.0997, 0.1865]
+PeriodicSite: Si (38.6697, 10.8942, 5.7695) [0.7143, 0.0997, 0.1865]
+PeriodicSite: Si (42.5367, 10.8942, 5.7695) [0.7857, 0.0997, 0.1865]
+PeriodicSite: Si (46.4037, 10.8942, 5.7695) [0.8571, 0.0997, 0.1865]
+PeriodicSite: Si (50.2707, 10.8942, 5.7695) [0.9286, 0.0997, 0.1865]
+PeriodicSite: Si (0.0000, 12.2614, 7.7030) [0.0000, 0.1122, 0.2490]
+PeriodicSite: Si (3.8670, 12.2614, 7.7030) [0.0714, 0.1122, 0.2490]
+PeriodicSite: Si (7.7339, 12.2614, 7.7030) [0.1429, 0.1122, 0.2490]
+PeriodicSite: Si (11.6009, 12.2614, 7.7030) [0.2143, 0.1122, 0.2490]
+PeriodicSite: Si (15.4679, 12.2614, 7.7030) [0.2857, 0.1122, 0.2490]
+PeriodicSite: Si (19.3349, 12.2614, 7.7030) [0.3571, 0.1122, 0.2490]
+PeriodicSite: Si (23.2018, 12.2614, 7.7030) [0.4286, 0.1122, 0.2490]
+PeriodicSite: Si (27.0688, 12.2614, 7.7030) [0.5000, 0.1122, 0.2490]
+PeriodicSite: Si (30.9358, 12.2614, 7.7030) [0.5714, 0.1122, 0.2490]
+PeriodicSite: Si (34.8028, 12.2614, 7.7030) [0.6429, 0.1122, 0.2490]
+PeriodicSite: Si (38.6697, 12.2614, 7.7030) [0.7143, 0.1122, 0.2490]
+PeriodicSite: Si (42.5367, 12.2614, 7.7030) [0.7857, 0.1122, 0.2490]
+PeriodicSite: Si (46.4037, 12.2614, 7.7030) [0.8571, 0.1122, 0.2490]
+PeriodicSite: Si (50.2707, 12.2614, 7.7030) [0.9286, 0.1122, 0.2490]
+PeriodicSite: Si (0.0000, 12.2614, 3.8361) [0.0000, 0.1122, 0.1240]
+PeriodicSite: Si (3.8670, 12.2614, 3.8361) [0.0714, 0.1122, 0.1240]
+PeriodicSite: Si (7.7339, 12.2614, 3.8361) [0.1429, 0.1122, 0.1240]
+PeriodicSite: Si (11.6009, 12.2614, 3.8361) [0.2143, 0.1122, 0.1240]
+PeriodicSite: Si (15.4679, 12.2614, 3.8361) [0.2857, 0.1122, 0.1240]
+PeriodicSite: Si (19.3349, 12.2614, 3.8361) [0.3571, 0.1122, 0.1240]
+PeriodicSite: Si (23.2018, 12.2614, 3.8361) [0.4286, 0.1122, 0.1240]
+PeriodicSite: Si (27.0688, 12.2614, 3.8361) [0.5000, 0.1122, 0.1240]
+PeriodicSite: Si (30.9358, 12.2614, 3.8361) [0.5714, 0.1122, 0.1240]
+PeriodicSite: Si (34.8028, 12.2614, 3.8361) [0.6429, 0.1122, 0.1240]
+PeriodicSite: Si (38.6697, 12.2614, 3.8361) [0.7143, 0.1122, 0.1240]
+PeriodicSite: Si (42.5367, 12.2614, 3.8361) [0.7857, 0.1122, 0.1240]
+PeriodicSite: Si (46.4037, 12.2614, 3.8361) [0.8571, 0.1122, 0.1240]
+PeriodicSite: Si (50.2707, 12.2614, 3.8361) [0.9286, 0.1122, 0.1240]
+PeriodicSite: P5+ (49.5628, 18.8125, 7.0265) [0.9155, 0.1721, 0.2271]
+PeriodicSite: P5+ (17.0802, 18.8125, 0.8394) [0.3155, 0.1721, 0.0271]
+PeriodicSite: P5+ (6.2527, 18.8125, 3.9330) [0.1155, 0.1721, 0.1271]
+PeriodicSite: P5+ (38.7353, 18.8125, 2.3862) [0.7155, 0.1721, 0.0771]
+PeriodicSite: P5+ (27.9077, 18.8125, 5.4797) [0.5155, 0.1721, 0.1771]
+PeriodicSite: P5+ (46.5837, 17.7183, 3.2066) [0.8605, 0.1621, 0.1037]
+PeriodicSite: P5+ (14.1012, 17.7183, 4.7534) [0.2605, 0.1621, 0.1537]
+PeriodicSite: P5+ (3.2736, 17.7183, 0.1131) [0.0605, 0.1621, 0.0037]
+PeriodicSite: P5+ (35.7562, 17.7183, 6.3002) [0.6605, 0.1621, 0.2037]
+PeriodicSite: P5+ (24.9287, 17.7183, 1.6599) [0.4605, 0.1621, 0.0537]
+PeriodicSite: P5+ (1.0416, 18.2332, 4.9962) [0.0192, 0.1668, 0.1615]
+PeriodicSite: P5+ (22.6966, 18.2332, 6.5430) [0.4192, 0.1668, 0.2115]
+PeriodicSite: P5+ (11.8691, 18.2332, 1.9026) [0.2192, 0.1668, 0.0615]
+PeriodicSite: P5+ (44.3517, 18.2332, 0.3558) [0.8192, 0.1668, 0.0115]
+PeriodicSite: P5+ (33.5241, 18.2332, 3.4494) [0.6192, 0.1668, 0.1115]
+PeriodicSite: P5+ (52.2002, 17.1390, 1.1763) [0.9642, 0.1568, 0.0380]
+PeriodicSite: P5+ (19.7176, 17.1390, 2.7231) [0.3642, 0.1568, 0.0880]
+PeriodicSite: P5+ (8.8900, 17.1390, 5.8167) [0.1642, 0.1568, 0.1880]
+PeriodicSite: P5+ (41.3726, 17.1390, 4.2699) [0.7642, 0.1568, 0.1380]
+PeriodicSite: P5+ (30.5451, 17.1390, 7.3635) [0.5642, 0.1568, 0.2380]
+PeriodicSite: O2- (49.9434, 17.6635, 6.0735) [0.9225, 0.1616, 0.1963]
+PeriodicSite: O2- (17.4608, 17.6635, 7.6203) [0.3225, 0.1616, 0.2463]
+PeriodicSite: O2- (6.6333, 17.6635, 2.9799) [0.1225, 0.1616, 0.0963]
+PeriodicSite: O2- (39.1159, 17.6635, 1.4331) [0.7225, 0.1616, 0.0463]
+PeriodicSite: O2- (28.2884, 17.6635, 4.5267) [0.5225, 0.1616, 0.1463]
+PeriodicSite: O2- (47.0021, 16.5832, 2.2530) [0.8682, 0.1517, 0.0728]
+PeriodicSite: O2- (14.5196, 16.5832, 3.7998) [0.2682, 0.1517, 0.1228]
+PeriodicSite: O2- (3.6920, 16.5832, 6.8934) [0.0682, 0.1517, 0.2228]
+PeriodicSite: O2- (36.1746, 16.5832, 5.3466) [0.6682, 0.1517, 0.1728]
+PeriodicSite: O2- (25.3471, 16.5832, 0.7062) [0.4682, 0.1517, 0.0228]
+PeriodicSite: O2- (1.8561, 15.8441, 3.0079) [0.0343, 0.1450, 0.0972]
+PeriodicSite: O2- (23.5111, 15.8441, 4.5547) [0.4343, 0.1450, 0.1472]
+PeriodicSite: O2- (12.6836, 15.8441, 7.6482) [0.2343, 0.1450, 0.2472]
+PeriodicSite: O2- (45.1662, 15.8441, 6.1015) [0.8343, 0.1450, 0.1972]
+PeriodicSite: O2- (34.3386, 15.8441, 1.4611) [0.6343, 0.1450, 0.0472]
+PeriodicSite: O2- (51.8195, 18.2879, 2.1293) [0.9572, 0.1673, 0.0688]
+PeriodicSite: O2- (19.3369, 18.2879, 3.6761) [0.3572, 0.1673, 0.1188]
+PeriodicSite: O2- (8.5094, 18.2879, 6.7697) [0.1572, 0.1673, 0.2188]
+PeriodicSite: O2- (40.9920, 18.2879, 5.2229) [0.7572, 0.1673, 0.1688]
+PeriodicSite: O2- (30.1645, 18.2879, 0.5825) [0.5572, 0.1673, 0.0188]
+PeriodicSite: O2- (45.8265, 18.2788, 7.7018) [0.8465, 0.1673, 0.2490]
+PeriodicSite: O2- (13.3439, 18.2788, 1.5147) [0.2465, 0.1673, 0.0490]
+PeriodicSite: O2- (2.5164, 18.2788, 4.6083) [0.0465, 0.1673, 0.1490]
+PeriodicSite: O2- (34.9990, 18.2788, 3.0615) [0.6465, 0.1673, 0.0990]
+PeriodicSite: O2- (24.1715, 18.2788, 6.1551) [0.4465, 0.1673, 0.1990]
+PeriodicSite: O2- (51.0329, 16.2141, 0.8301) [0.9427, 0.1484, 0.0268]
+PeriodicSite: O2- (18.5503, 16.2141, 2.3769) [0.3427, 0.1484, 0.0768]
+PeriodicSite: O2- (7.7228, 16.2141, 5.4705) [0.1427, 0.1484, 0.1768]
+PeriodicSite: O2- (40.2054, 16.2141, 3.9237) [0.7427, 0.1484, 0.1268]
+PeriodicSite: O2- (29.3779, 16.2141, 7.0173) [0.5427, 0.1484, 0.2268]
+PeriodicSite: O2- (51.9629, 16.2132, 4.4308) [0.9598, 0.1484, 0.1432]
+PeriodicSite: O2- (19.4803, 16.2132, 5.9775) [0.3598, 0.1484, 0.1932]
+PeriodicSite: O2- (8.6528, 16.2132, 1.3372) [0.1598, 0.1484, 0.0432]
+PeriodicSite: O2- (41.1354, 16.2132, 7.5243) [0.7598, 0.1484, 0.2432]
+PeriodicSite: O2- (30.3079, 16.2132, 2.8840) [0.5598, 0.1484, 0.0932]
+PeriodicSite: O2- (1.7988, 17.6727, 0.5010) [0.0332, 0.1617, 0.0162]
+PeriodicSite: O2- (23.4538, 17.6727, 2.0478) [0.4332, 0.1617, 0.0662]
+PeriodicSite: O2- (12.6263, 17.6727, 5.1414) [0.2332, 0.1617, 0.1662]
+PeriodicSite: O2- (45.1089, 17.6727, 3.5946) [0.8332, 0.1617, 0.1162]
+PeriodicSite: O2- (34.2813, 17.6727, 6.6881) [0.6332, 0.1617, 0.2162]
+PeriodicSite: O2- (49.7024, 16.2242, 3.5147) [0.9181, 0.1485, 0.1136]
+PeriodicSite: O2- (17.2198, 16.2242, 5.0615) [0.3181, 0.1485, 0.1636]
+PeriodicSite: O2- (6.3923, 16.2242, 0.4211) [0.1181, 0.1485, 0.0136]
+PeriodicSite: O2- (38.8749, 16.2242, 6.6083) [0.7181, 0.1485, 0.2136]
+PeriodicSite: O2- (28.0474, 16.2242, 1.9679) [0.5181, 0.1485, 0.0636]
+PeriodicSite: O2- (47.3483, 17.7219, 4.5609) [0.8746, 0.1622, 0.1474]
+PeriodicSite: O2- (14.8657, 17.7219, 6.1076) [0.2746, 0.1622, 0.1974]
+PeriodicSite: O2- (4.0382, 17.7219, 1.4673) [0.0746, 0.1622, 0.0474]
+PeriodicSite: O2- (36.5208, 17.7219, 7.6544) [0.6746, 0.1622, 0.2474]
+PeriodicSite: O2- (25.6933, 17.7219, 3.0141) [0.4746, 0.1622, 0.0974]
+PeriodicSite: O2- (48.0807, 15.6286, 7.4073) [0.8881, 0.1430, 0.2394]
+PeriodicSite: O2- (15.5981, 15.6286, 1.2202) [0.2881, 0.1430, 0.0394]
+PeriodicSite: O2- (4.7706, 15.6286, 4.3138) [0.0881, 0.1430, 0.1394]
+PeriodicSite: O2- (37.2531, 15.6286, 2.7670) [0.6881, 0.1430, 0.0894]
+PeriodicSite: O2- (26.4256, 15.6286, 5.8605) [0.4881, 0.1430, 0.1894]
+PeriodicSite: O2- (48.9701, 18.3176, 0.6683) [0.9045, 0.1676, 0.0216]
+PeriodicSite: O2- (16.4875, 18.3176, 2.2150) [0.3045, 0.1676, 0.0716]
+PeriodicSite: O2- (5.6599, 18.3176, 5.3086) [0.1045, 0.1676, 0.1716]
+PeriodicSite: O2- (38.1425, 18.3176, 3.7618) [0.7045, 0.1676, 0.1216]
+PeriodicSite: O2- (27.3150, 18.3176, 6.8554) [0.5045, 0.1676, 0.2216]
+PeriodicSite: O2- (0.7775, 16.7988, 5.5875) [0.0144, 0.1537, 0.1806]
+PeriodicSite: O2- (22.4326, 16.7988, 7.1343) [0.4144, 0.1537, 0.2306]
+PeriodicSite: O2- (11.6051, 16.7988, 2.4939) [0.2144, 0.1537, 0.0806]
+PeriodicSite: O2- (44.0876, 16.7988, 0.9471) [0.8144, 0.1537, 0.0306]
+PeriodicSite: O2- (33.2601, 16.7988, 4.0407) [0.6144, 0.1537, 0.1306]
+PeriodicSite: O2- (52.7929, 17.6339, 7.5346) [0.9752, 0.1614, 0.2436]
+PeriodicSite: O2- (20.3103, 17.6339, 1.3474) [0.3752, 0.1614, 0.0436]
+PeriodicSite: O2- (9.4828, 17.6339, 4.4410) [0.1752, 0.1614, 0.1436]
+PeriodicSite: O2- (41.9654, 17.6339, 2.8942) [0.7752, 0.1614, 0.0936]
+PeriodicSite: O2- (31.1378, 17.6339, 5.9878) [0.5752, 0.1614, 0.1936]
+PeriodicSite: O2- (53.2934, 16.2031, 1.7462) [0.9844, 0.1483, 0.0564]
+PeriodicSite: O2- (20.8109, 16.2031, 3.2929) [0.3844, 0.1483, 0.1064]
+PeriodicSite: O2- (9.9833, 16.2031, 6.3865) [0.1844, 0.1483, 0.2064]
+PeriodicSite: O2- (42.4659, 16.2031, 4.8397) [0.7844, 0.1483, 0.1564]
+PeriodicSite: O2- (31.6384, 16.2031, 0.1994) [0.5844, 0.1483, 0.0064]
+PeriodicSite: O2- (0.2770, 18.2296, 3.6420) [0.0051, 0.1668, 0.1177]
+PeriodicSite: O2- (21.9320, 18.2296, 5.1888) [0.4051, 0.1668, 0.1677]
+PeriodicSite: O2- (11.1045, 18.2296, 0.5484) [0.2051, 0.1668, 0.0177]
+PeriodicSite: O2- (43.5871, 18.2296, 6.7356) [0.8051, 0.1668, 0.2177]
+PeriodicSite: O2- (32.7596, 18.2296, 2.0952) [0.6051, 0.1668, 0.0677]</code>
+</pre> </div> </div> </div> </div> </div> </article> </div> </div> </main> <footer class=md-footer> <nav class="md-footer__inner md-grid" aria-label=Footer> <a href=../../02_intro_pymatgen/1%20-%20pymatgen%20foundations/ class="md-footer__link md-footer__link--prev" aria-label="Previous: Intro to Pymatgen" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> Intro to Pymatgen </div> </div> </a> <a href=../../04_materials_api/MAPI%20Lesson%20%28filled%29/ class="md-footer__link md-footer__link--next" aria-label="Next: The Materials API" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> The Materials API </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Built by The Materials Project </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../../..", "features": ["instant", "tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script> <script src=../../../assets/javascripts/bundle.2b46852b.min.js></script> <script src=../../../assets/config.js></script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> </body> </html>
