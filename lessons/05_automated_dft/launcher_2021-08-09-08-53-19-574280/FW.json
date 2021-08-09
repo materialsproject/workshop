@@ -401,8 +401,7 @@
                             }
                         ]
                     },
-                    "force_gamma": true,
-                    "user_incar_settings": null
+                    "force_gamma": true
                 },
                 "_fw_name": "{{atomate.vasp.firetasks.write_inputs.WriteVaspFromIOSet}}"
             },
@@ -438,9 +437,9 @@
             }
         ]
     },
-    "fw_id": 1,
-    "created_on": "2021-08-07T00:34:46.043784",
-    "updated_on": "2021-08-07T00:34:48.514748",
+    "fw_id": 5,
+    "created_on": "2021-08-09T08:53:13.069376",
+    "updated_on": "2021-08-09T08:53:19.582348",
     "launches": [
         {
             "fworker": {
@@ -453,21 +452,21 @@
                     "vasp_cmd": null
                 }
             },
-            "fw_id": 1,
-            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-07-00-34-48-507818",
-            "host": "fv-az198-413",
-            "ip": "10.1.1.126",
+            "fw_id": 5,
+            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-08-53-19-574280",
+            "host": "fv-az216-25",
+            "ip": "10.1.1.177",
             "trackers": [],
             "action": null,
             "state": "RUNNING",
             "state_history": [
                 {
                     "state": "RUNNING",
-                    "created_on": "2021-08-07T00:34:48.513844",
-                    "updated_on": "2021-08-07T00:34:48.513847"
+                    "created_on": "2021-08-09T08:53:19.581328",
+                    "updated_on": "2021-08-09T08:53:19.581331"
                 }
             ],
-            "launch_id": 1
+            "launch_id": 2
         }
     ],
     "state": "RUNNING",

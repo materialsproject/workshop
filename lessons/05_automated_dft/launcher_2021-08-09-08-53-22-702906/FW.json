@@ -4,7 +4,7 @@
             {
                 "files_to_write": [
                     {
-                        "filename": "FW--Si-static",
+                        "filename": "FW--Si-nscf_uniform",
                         "contents": ""
                     }
                 ],
@@ -12,19 +12,22 @@
             },
             {
                 "calc_loc": true,
-                "contcar_to_poscar": true,
+                "additional_files": [
+                    "CHGCAR"
+                ],
                 "_fw_name": "{{atomate.vasp.firetasks.glue_tasks.CopyVaspOutputs}}"
             },
             {
-                "other_params": {},
+                "prev_calc_dir": ".",
+                "mode": "uniform",
                 "small_gap_multiply": [
                     0.5,
                     5
                 ],
-                "_fw_name": "{{atomate.vasp.firetasks.write_inputs.WriteVaspStaticFromPrev}}"
+                "_fw_name": "{{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}}"
             },
             {
-                "ref_dir": "/home/runner/work/workshop/workshop/python_module/mp_workshop/atomate/fake_vasp/Si_static",
+                "ref_dir": "/home/runner/work/workshop/workshop/python_module/mp_workshop/atomate/fake_vasp/Si_nscf_line",
                 "params_to_check": [
                     "ISPIN",
                     "ENCUT",
@@ -43,14 +46,16 @@
                 "_fw_name": "{{atomate.vasp.firetasks.run_calc.RunVaspFake}}"
             },
             {
-                "name": "static",
+                "name": "nscf",
                 "_fw_name": "{{atomate.common.firetasks.glue_tasks.PassCalcLocs}}"
             },
             {
                 "db_file": ">>db_file<<",
                 "additional_fields": {
-                    "task_label": "static"
+                    "task_label": "nscf uniform"
                 },
+                "parse_dos": true,
+                "bandstructure_mode": "uniform",
                 "_fw_name": "{{atomate.vasp.firetasks.parse_outputs.VaspToDb}}"
             }
         ],
@@ -58,13 +63,18 @@
             {
                 "name": "structure optimization",
                 "filesystem": null,
-                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-07-00-34-51-907548"
+                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-08-53-19-574280"
+            },
+            {
+                "name": "static",
+                "filesystem": null,
+                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-08-53-20-394953"
             }
         ]
     },
-    "fw_id": 4,
-    "created_on": "2021-08-07T00:34:46.054040",
-    "updated_on": "2021-08-07T00:34:52.670539",
+    "fw_id": 3,
+    "created_on": "2021-08-09T08:53:13.069616",
+    "updated_on": "2021-08-09T08:53:22.707886",
     "launches": [
         {
             "fworker": {
@@ -77,23 +87,23 @@
                     "vasp_cmd": null
                 }
             },
-            "fw_id": 4,
-            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-07-00-34-52-666181",
-            "host": "fv-az198-413",
-            "ip": "10.1.1.126",
+            "fw_id": 3,
+            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-08-53-22-702906",
+            "host": "fv-az216-25",
+            "ip": "10.1.1.177",
             "trackers": [],
             "action": null,
             "state": "RUNNING",
             "state_history": [
                 {
                     "state": "RUNNING",
-                    "created_on": "2021-08-07T00:34:52.669760",
-                    "updated_on": "2021-08-07T00:34:52.669763"
+                    "created_on": "2021-08-09T08:53:22.706949",
+                    "updated_on": "2021-08-09T08:53:22.706952"
                 }
             ],
-            "launch_id": 3
+            "launch_id": 5
         }
     ],
     "state": "RUNNING",
-    "name": "Si-static"
+    "name": "Si-nscf uniform"
 }
