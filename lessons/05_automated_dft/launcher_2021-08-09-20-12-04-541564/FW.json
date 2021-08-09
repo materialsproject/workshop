@@ -4,7 +4,7 @@
             {
                 "files_to_write": [
                     {
-                        "filename": "FW--Si-nscf_uniform",
+                        "filename": "FW--Si-nscf_line",
                         "contents": ""
                     }
                 ],
@@ -19,7 +19,7 @@
             },
             {
                 "prev_calc_dir": ".",
-                "mode": "uniform",
+                "mode": "line",
                 "small_gap_multiply": [
                     0.5,
                     5
@@ -27,7 +27,7 @@
                 "_fw_name": "{{atomate.vasp.firetasks.write_inputs.WriteVaspNSCFFromPrev}}"
             },
             {
-                "ref_dir": "/home/runner/work/workshop/workshop/python_module/mp_workshop/atomate/fake_vasp/Si_nscf_line",
+                "ref_dir": "/home/runner/work/workshop/workshop/python_module/mp_workshop/atomate/fake_vasp/Si_nscf_uniform",
                 "params_to_check": [
                     "ISPIN",
                     "ENCUT",
@@ -52,10 +52,10 @@
             {
                 "db_file": ">>db_file<<",
                 "additional_fields": {
-                    "task_label": "nscf uniform"
+                    "task_label": "nscf line"
                 },
-                "parse_dos": true,
-                "bandstructure_mode": "uniform",
+                "parse_dos": false,
+                "bandstructure_mode": "line",
                 "_fw_name": "{{atomate.vasp.firetasks.parse_outputs.VaspToDb}}"
             }
         ],
@@ -63,18 +63,18 @@
             {
                 "name": "structure optimization",
                 "filesystem": null,
-                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-18-52-26-816107"
+                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-20-12-02-543169"
             },
             {
                 "name": "static",
                 "filesystem": null,
-                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-18-52-27-504516"
+                "path": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-20-12-03-385180"
             }
         ]
     },
-    "fw_id": 3,
-    "created_on": "2021-08-09T18:52:21.006794",
-    "updated_on": "2021-08-09T18:52:29.560936",
+    "fw_id": 2,
+    "created_on": "2021-08-09T20:11:55.877400",
+    "updated_on": "2021-08-09T20:12:04.546278",
     "launches": [
         {
             "fworker": {
@@ -87,23 +87,23 @@
                     "vasp_cmd": null
                 }
             },
-            "fw_id": 3,
-            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-18-52-29-557066",
-            "host": "fv-az290-964",
-            "ip": "10.1.1.83",
+            "fw_id": 2,
+            "launch_dir": "/home/runner/work/workshop/workshop/workshop/lessons/05_automated_dft/launcher_2021-08-09-20-12-04-541564",
+            "host": "fv-az207-527",
+            "ip": "10.1.0.111",
             "trackers": [],
             "action": null,
             "state": "RUNNING",
             "state_history": [
                 {
                     "state": "RUNNING",
-                    "created_on": "2021-08-09T18:52:29.560281",
-                    "updated_on": "2021-08-09T18:52:29.560284"
+                    "created_on": "2021-08-09T20:12:04.545461",
+                    "updated_on": "2021-08-09T20:12:04.545465"
                 }
             ],
-            "launch_id": 5
+            "launch_id": 4
         }
     ],
     "state": "RUNNING",
-    "name": "Si-nscf uniform"
+    "name": "Si-nscf line"
 }
