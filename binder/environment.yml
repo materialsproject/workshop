@@ -2,7 +2,10 @@ name: workshop
 channels:
   - conda-forge
 dependencies:
-  - python==3.8
+  - python==3.9
+  - graph-tool
+  - mamba
   - pip
   - pip:
     - "-r ../requirements.txt"
+  - openbabel
