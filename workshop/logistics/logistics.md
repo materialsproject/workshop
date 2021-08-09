@@ -13,8 +13,8 @@ We'll host the lightning-videos on our YouTube Channel and publish the PDFs on F
 
 ### Setup Instructions
 
-1. [Sign in](https://materialsproject.org/) to your MP account online. Register for an account first if needed.
-2. [Sign in](https://cocalc.org) to an account on CoCalc using the same email address you registered with. This will be the online python service we'll use to work interactively. If you don't use the email you registered for the workshop with to register on CoCalc.com, please send me an [email](mailto:shyamd@lbl.gov) so that I know. We'll use CoCalc as an interactive python environment where you can code alongside the lessons, work on exercises, and get live-help and feedback from our helpers.
+1. [Sign in](https://next-gen.materialsproject.org/) to your MP account online.
+2. [Sign in](https://cocalc.com) to an account on CoCalc using the same email address you registered with. This will be the online python service we'll use to work interactively. If you don't use the email you registered for the workshop with to register on CoCalc.com, please send us an [email](mailto:phuck@lbl.gov) to let us know. We'll use CoCalc as an interactive python environment where you can code alongside the lessons, work on exercises, and get live-help and feedback from our helpers.
 
 ### Lesson Format
 
@@ -26,7 +26,7 @@ We'll host the lightning-videos on our YouTube Channel and publish the PDFs on F
 
 An important aspect of the Materials Project API is the use of API keys to ensure we can control the amount of traffic that comes to the API. Otherwise, it's very easy for someone to take down the MP servers, making them unavailable for anyone. Your API key can be accessed via the Dashboard on <https://next-gen.materialsproject.org>:
 
-1\. Got to <https://next-gen.materialsproject.org> and find the API page in the top right hand corner
+1\. Go to <https://next-gen.materialsproject.org> and find the API page in the top right hand corner
 
 ![MP Dashboard](/logistics/mp_api_page.png)
 
@@ -34,24 +34,11 @@ An important aspect of the Materials Project API is the use of API keys to ensur
 
 ![API Key](/logistics/api_key.png)
 
-#### Finding your MPContribs API Key:
-
-Currently the API key for MPContribs is separate from Materials Project. In order to get your MPContribs API key.
-
-1. Login to portal.mpcontribs.org
-2. Hover over the `More` drop-down in the top right hand corner
-
-![MP Contribs More](/logistics/mpcontribs_more.png)
-
-3\. Click the `API Key` button to copy your API key to your clipboard. You can now paste this into your notebook during the MPContribs lesson.
-
-![MP Contrib API Key](/logistics/mpcontribs_more_dropdown.png)
-
 ## During the Workshop
 
 ### Start of the Day Instructions
 
-1. [Sign in](https://cocalc.org) to CoCalc
+1. [Sign in](https://cocalc.com) to CoCalc
 2. Sign in to the Zoom Link
 3. Sign in to the MP Workshop slack
 
