@@ -32,7 +32,8 @@ nav:
     - Basic Python: primer/01_basic_python/1 - Python Primer.ipynb
     - Advanced Python: primer/02_python_part2/lessons.ipynb
     - Intro to MongoDB: primer/03_MongoDB_part1/lessons_filled.ipynb
-    - Advanced MongoDB: primer/04_MongoDB_part2/lesson.ipynb
+    - Intro to Python Environments: primer/04_Python_environments/1_pip_and_conda.ipynb
+    - Intro to Google Colab: primer/04_Python_environments/2_google_colab.ipynb
   - Workshop:
     - Day 1:
       - The Materials Project Website: lessons/01_website_walkthrough/website_walkthrough.md
@@ -41,7 +42,7 @@ nav:
       - The Materials API: lessons/04_materials_api/MAPI Lesson (filled).ipynb
     - Day 2:
       - Automated DFT: lessons/05_automated_dft/Lesson.ipynb
-      - Exploring New Systems: lessons/06_new_systems/06 - New Systems - filled.ipynb
+      - Exploring Synthesis: lessons/06_exploring_synthesis/Exploring Synthesis (filled).ipynb
       - MPContribs: lessons/07_mpcontribs/contribute.ipynb
       - Machine Learning with MatMiner: lessons/08_ml_matminer/matminer-notes.ipynb
 
