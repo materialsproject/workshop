@@ -61,7 +61,7 @@
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=searching-for-documents-with-find_one>Searching for documents with find_one()<a class=headerlink href=#searching-for-documents-with-find_one title="Permanent link">&para;</a></h3> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Let's see what a document looks like in the <code>prizes</code> collection using the <code>find_one()</code> method. This takes an optional <code>filter</code> argument. Passing an empty filter (<code>{}</code>) is the same as passing no filter. In Python, the returned document takes the form of a dictionary. The keys of the dictionary are the (root-level) "fields" of the document.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>prizes</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;6111b03172f21e87311baa2d&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;6111cbe44971cfcb3e19aece&#39;),
  &#39;year&#39;: &#39;2020&#39;,
  &#39;category&#39;: &#39;chemistry&#39;,
  &#39;laureates&#39;: [{&#39;id&#39;: &#39;991&#39;,
@@ -77,7 +77,7 @@
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now add a filter to our search to ensure that the returned <code>prizes</code> document contains data for a physics nobel prize.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>criteria</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&quot;category&quot;</span><span class=p>:</span> <span class=s2>&quot;physics&quot;</span><span class=p>}</span>
 <span class=n>db</span><span class=o>.</span><span class=n>prizes</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;6111b03172f21e87311baa31&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;6111cbe44971cfcb3e19aed2&#39;),
  &#39;year&#39;: &#39;2020&#39;,
  &#39;category&#39;: &#39;physics&#39;,
  &#39;laureates&#39;: [{&#39;id&#39;: &#39;988&#39;,
@@ -97,7 +97,7 @@
    &#39;share&#39;: &#39;4&#39;}]}</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=iterating-through-documents-with-find>Iterating through documents with find()<a class=headerlink href=#iterating-through-documents-with-find title="Permanent link">&para;</a></h3> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>A collection is not a list, so we can't write <code>for doc in &lt;collection&gt;</code> to iterate over documents. Instead, we use the <code>find()</code> method to produce an iterable called a <em>cursor</em>, and instead write <code>for doc in &lt;collection&gt;.find()</code> to iterate over documents.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Example: Using <code>find()</code> to iterate over documents in the <code>laureates</code> collection, sum the total number of laureate prizes. The length of <code>doc["prizes"]</code> for a laureate document <code>doc</code> is the number of prizes won by that laureate. Store the sum in the variable <code>count</code>.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;6111b03172f21e87311bacb9&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;6111cbe44971cfcb3e19b15a&#39;),
  &#39;id&#39;: &#39;1&#39;,
  &#39;firstname&#39;: &#39;Wilhelm Conrad&#39;,
  &#39;surname&#39;: &#39;Röntgen&#39;,
@@ -146,29 +146,29 @@
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h3 id=counting-documents>Counting documents<a class=headerlink href=#counting-documents title="Permanent link">&para;</a></h3> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1># Connect to our &quot;nobel&quot; database</span>
 <span class=n>db</span> <span class=o>=</span> <span class=n>client</span><span class=o>.</span><span class=n>nobel</span>
-</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The <code>count_documents()</code> method of a collection can be used to count the number of documents matching a particular filter. Let's use the method to count the total number of nobel laureates who were born in Egypt.</p> <p>An example <code>laureates</code> document:</p> <div class=highlight><pre><span></span><code>{&#39;_id&#39;: ObjectId(&#39;5b9ac94ff35b63cf5231ccb1&#39;),
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The <code>count_documents()</code> method of a collection can be used to count the number of documents matching a particular filter. Let's use the method to count the total number of nobel laureates who were born in Egypt.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{&#39;_id&#39;: ObjectId(&#39;6111cbe44971cfcb3e19b15a&#39;),
+ &#39;id&#39;: &#39;1&#39;,
+ &#39;firstname&#39;: &#39;Wilhelm Conrad&#39;,
+ &#39;surname&#39;: &#39;Röntgen&#39;,
  &#39;born&#39;: &#39;1845-03-27&#39;,
- &#39;bornCity&#39;: &#39;Lennep (now Remscheid)&#39;,
+ &#39;died&#39;: &#39;1923-02-10&#39;,
  &#39;bornCountry&#39;: &#39;Prussia (now Germany)&#39;,
  &#39;bornCountryCode&#39;: &#39;DE&#39;,
- &#39;died&#39;: &#39;1923-02-10&#39;,
- &#39;diedCity&#39;: &#39;Munich&#39;,
+ &#39;bornCity&#39;: &#39;Lennep (now Remscheid)&#39;,
  &#39;diedCountry&#39;: &#39;Germany&#39;,
  &#39;diedCountryCode&#39;: &#39;DE&#39;,
- &#39;firstname&#39;: &#39;Wilhelm Conrad&#39;,
+ &#39;diedCity&#39;: &#39;Munich&#39;,
  &#39;gender&#39;: &#39;male&#39;,
- &#39;id&#39;: &#39;1&#39;,
- &#39;prizes&#39;: [{&#39;affiliations&#39;: [{&#39;city&#39;: &#39;Munich&#39;,
-                               &#39;country&#39;: &#39;Germany&#39;,
-                               &#39;name&#39;: &#39;Munich University&#39;}],
-             &#39;category&#39;: &#39;physics&#39;,
-             &#39;motivation&#39;: &#39;&quot;in recognition of the extraordinary services &#39;
-                           &#39;he has rendered by the discovery of the &#39;
-                           &#39;remarkable rays subsequently named after him&quot;&#39;,
-             &#39;share&#39;: &#39;1&#39;,
-             &#39;year&#39;: &#39;1901&#39;}],
- &#39;surname&#39;: &#39;Röntgen&#39;}
-</code></pre></div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>count_documents</span><span class=p>({</span><span class=s2>&quot;bornCountry&quot;</span><span class=p>:</span> <span class=s2>&quot;Egypt&quot;</span><span class=p>})</span>
+ &#39;prizes&#39;: [{&#39;year&#39;: &#39;1901&#39;,
+   &#39;category&#39;: &#39;physics&#39;,
+   &#39;share&#39;: &#39;1&#39;,
+   &#39;motivation&#39;: &#39;&#34;in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him&#34;&#39;,
+   &#39;affiliations&#39;: [{&#39;name&#39;: &#39;Munich University&#39;,
+     &#39;city&#39;: &#39;Munich&#39;,
+     &#39;country&#39;: &#39;Germany&#39;}]}]}</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>count_documents</span><span class=p>({</span><span class=s2>&quot;bornCountry&quot;</span><span class=p>:</span> <span class=s2>&quot;Egypt&quot;</span><span class=p>})</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
 <code>6</code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We can now build out our filter to reduce the total number of matching documents:</p> <ul> <li>Create a filter <code>criteria</code> to count the number of laureates who died in the United Kingdom but were born (<code>"bornCountry"</code>) in Egypt.</li> </ul> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1># Create a filter for laureates who died in the USA but were born in Germany</span>
@@ -217,7 +217,29 @@ Database(MongoClient(host=[&#39;localhost:27017&#39;], document_class=dict, tz_a
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>60
 </code>
-</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Below is a list of <em>logical</em> query operators that are available in MongoDB:</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p><code>$and</code> -- Joins query clauses with a logical AND returns all documents that match the conditions of both clauses. <br> <code>$not</code> -- Inverts the effect of a query expression and returns documents that do not match the query expression. <br> <code>$nor</code> -- Joins query clauses with a logical NOR returns all documents that fail to match both clauses. <br> <code>$or</code> -- Joins query clauses with a logical OR returns all documents that match the conditions of either clause. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The $regex operator can be used for text searching within values. Regex is short for regular expressions and is a powerful text searching technique with pattern recognition far beyond what we discuss here.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ul> <li>How many laureates were born in 1879?</li> </ul> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1>#Save a filter for laureates who were born in 1879.</span>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Below is a list of <em>logical</em> query operators that are available in MongoDB:</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p><code>$and</code> -- Joins query clauses with a logical AND returns all documents that match the conditions of both clauses. <br> <code>$not</code> -- Inverts the effect of a query expression and returns documents that do not match the query expression. <br> <code>$nor</code> -- Joins query clauses with a logical NOR returns all documents that fail to match both clauses. <br> <code>$or</code> -- Joins query clauses with a logical OR returns all documents that match the conditions of either clause. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The $regex operator can be used for text searching within values. Regex is short for regular expressions and is a powerful text searching technique with pattern recognition far beyond what we discuss here.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ul> <li>How many laureates were born in 1879?</li> </ul> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>({})</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
+<code>{&#39;_id&#39;: ObjectId(&#39;6111cbe44971cfcb3e19b15a&#39;),
+ &#39;id&#39;: &#39;1&#39;,
+ &#39;firstname&#39;: &#39;Wilhelm Conrad&#39;,
+ &#39;surname&#39;: &#39;Röntgen&#39;,
+ &#39;born&#39;: &#39;1845-03-27&#39;,
+ &#39;died&#39;: &#39;1923-02-10&#39;,
+ &#39;bornCountry&#39;: &#39;Prussia (now Germany)&#39;,
+ &#39;bornCountryCode&#39;: &#39;DE&#39;,
+ &#39;bornCity&#39;: &#39;Lennep (now Remscheid)&#39;,
+ &#39;diedCountry&#39;: &#39;Germany&#39;,
+ &#39;diedCountryCode&#39;: &#39;DE&#39;,
+ &#39;diedCity&#39;: &#39;Munich&#39;,
+ &#39;gender&#39;: &#39;male&#39;,
+ &#39;prizes&#39;: [{&#39;year&#39;: &#39;1901&#39;,
+   &#39;category&#39;: &#39;physics&#39;,
+   &#39;share&#39;: &#39;1&#39;,
+   &#39;motivation&#39;: &#39;&#34;in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him&#34;&#39;,
+   &#39;affiliations&#39;: [{&#39;name&#39;: &#39;Munich University&#39;,
+     &#39;city&#39;: &#39;Munich&#39;,
+     &#39;country&#39;: &#39;Germany&#39;}]}]}</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=c1>#Save a filter for laureates who were born in 1879.</span>
 <span class=n>criteria</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&quot;born&quot;</span><span class=p>:{</span><span class=s2>&quot;$regex&quot;</span><span class=p>:</span><span class=s2>&quot;1879-&quot;</span><span class=p>}}</span>
 
 <span class=c1># Count them and save the count.</span>
@@ -271,7 +293,7 @@ Database(MongoClient(host=[&#39;localhost:27017&#39;], document_class=dict, tz_a
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=n>db</span><span class=o>.</span><span class=n>laureates</span><span class=o>.</span><span class=n>find_one</span><span class=p>(</span><span class=n>criteria</span><span class=p>)</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_text output_subarea output_execute_result"> <pre>
-<code>{&#39;_id&#39;: ObjectId(&#39;6111b03172f21e87311bacf9&#39;),
+<code>{&#39;_id&#39;: ObjectId(&#39;6111cbe44971cfcb3e19b19a&#39;),
  &#39;id&#39;: &#39;66&#39;,
  &#39;firstname&#39;: &#39;John&#39;,
  &#39;surname&#39;: &#39;Bardeen&#39;,
