@@ -58,7 +58,7 @@ All times are in Pacific Daylight Time.
 - 09:00-09:20 Intro
 - 09:20-10:20 Automating DFT
 - 10:20-10:40 Break
-- 10:40-11:40 [MPContribs](https://mpcontribs.org): Share You Data via MPContribs
+- 10:40-11:40 Share Your Data via [MPContribs](https://mpcontribs.org)
 - 11:40-12:00 Open Discussion
 - 12:00-13:00 Lunch
 

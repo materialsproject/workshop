@@ -38,12 +38,12 @@ nav:
     - Day 1:
       - The Materials Project Website: lessons/01_website_walkthrough/website_walkthrough.md
       - Intro to Pymatgen: lessons/02_intro_pymatgen/1 - pymatgen foundations.ipynb
-      - Working with Surfaces: lessons/03_surfaces/Working With Surfaces_lesson.ipynb
+      - Working with Surfaces and Interfaces: lessons/03_heterointerfaces/Main Lesson.ipynb
       - The Materials API: lessons/04_materials_api/MAPI Lesson (filled).ipynb
     - Day 2:
       - Automated DFT: lessons/05_automated_dft/Lesson.ipynb
-      - Exploring New Systems: lessons/06_new_systems/06 - New Systems - filled.ipynb
       - MPContribs: lessons/07_mpcontribs/contribute.ipynb
+      - Exploring Synthesis: lessons/06_exploring_synthesis/Exploring Synthesis (filled).ipynb
       - Machine Learning with MatMiner: lessons/08_ml_matminer/matminer-notes.ipynb
 
 markdown_extensions:
