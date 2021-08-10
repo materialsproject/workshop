@@ -7,7 +7,7 @@ from nbclient import NotebookClient
 from nbclient.exceptions import CellExecutionError
 
 
-run_on_master_only = ["04_materials_api", "06_new_systems"]
+run_on_master_only = ["04_materials_api", "06_exploring_synthesis"]
 
 
 def recursive_get(items):
