@@ -226,6 +226,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://workshop.materialsproject.org/primer/04_Python_environments/2_google_colab_blank/</loc>
+         <lastmod>2021-08-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://workshop.materialsproject.org/primer/04_Python_environments/Exercises-Blank/</loc>
          <lastmod>2021-08-10</lastmod>
          <changefreq>daily</changefreq>

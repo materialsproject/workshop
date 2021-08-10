@@ -21,7 +21,7 @@
 
   document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
 }());
-</script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-package-managers-and-environments>Introduction to Package Managers and Environments<a class=headerlink href=#introduction-to-package-managers-and-environments title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While many programming languages exist, Python has risen to the top amongst the scientific and data science community. Python is simple to learn and use, is platform independent, and most importantly has access to a wide range of open source packages and libraries that aid in data analysis. While many of these packages are open source and readily available, in order to leverage these libraries in our code, we must use package managers to install and manage the packages. There are two common package management systems used - pip and conda.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <hr> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While it is easiest to work with pip and conda in the command line/terminal, for ease of demonstration, we will use ipython notebooks (in Co-calc) for the workshop. </p> <p>Most of the commands (especially those starting with <code>pip</code> or <code>conda</code>) used in this section are to be executed in a command-line. Within an ipython notebook, we use the <code>!</code> to run a single line of code in the command-line. Additionally, if we wish to execute the entirety of a cell as command-line, we can use the <code>%%bash</code> magic command. We will see examples of these later in the notebook.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-pip>Introduction to pip<a class=headerlink href=#introduction-to-pip title="Permanent link">&para;</a></h1> <p>pip is a package management system for python that is used to install and manage additional libraries and dependencies. pip typically comes pre-installed by alongside python. </p> <p>Let's verify that pip is installed:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=o>--</span><span class=n>version</span>
+</script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-package-managers-and-environments>Introduction to Package Managers and Environments<a class=headerlink href=#introduction-to-package-managers-and-environments title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While many programming languages exist, Python has risen to the top amongst the scientific and data science community. Python is simple to learn and use, is platform independent, and most importantly has access to a wide range of open source packages and libraries that aid in data analysis. While many of these packages are open source and readily available, in order to leverage these libraries in our code, we must use package managers to install and manage the packages. There are two common package management systems used - pip and conda.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <hr> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>While it is easiest to work with pip and conda in the command line/terminal, for ease of demonstration, we will use ipython notebooks (in Co-calc) for the workshop. </p> <p>Most of the commands (especially those starting with <code>pip</code>,<code>conda</code>, or <code>mamba</code>) used in this section are meant to be directly executed in a command-line. Within an ipython notebook, we use the <code>!</code> to run a single line of code in the command-line. Additionally, if we wish to execute the entirety of a cell as command-line, we can use the <code>%%bash</code> magic command. We will see examples of these later in the notebook.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=introduction-to-pip>Introduction to pip<a class=headerlink href=#introduction-to-pip title="Permanent link">&para;</a></h1> <p>pip is a package management system for python that is used to install and manage additional libraries and dependencies. pip typically comes pre-installed by alongside python. </p> <p>Let's verify that pip is installed:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=o>--</span><span class=n>version</span>
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>pip 21.2.3 from /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages/pip (python 3.9)
 </code>
@@ -199,7 +199,7 @@ monotonic                  1.6
 monty                      2021.7.8
 mp-api                     0.7.1
 mp-pyrho                   0.0.14
-mp-workshop                0.1.dev1+g19948ed   /home/runner/work/workshop/workshop/python_module
+mp-workshop                0.1.dev1+g8a2d3aa   /home/runner/work/workshop/workshop/python_module
 mpcontribs-client          3.13.0
 mpmath                     1.2.1
 msgpack                    1.0.2
@@ -424,7 +424,7 @@ monotonic==1.6
 monty==2021.7.8
 mp-api==0.7.1
 mp-pyrho==0.0.14
--e git+https://github.com/materialsproject/workshop@19948ede82373bfb5f259461049d15239a0243bd#egg=mp_workshop
+-e git+https://github.com/materialsproject/workshop@8a2d3aa3529ee6c2266004be9ee84431dd57b062#egg=mp_workshop
 mpcontribs-client==3.13.0
 mpmath==1.2.1
 msgpack==1.0.2
@@ -549,15 +549,15 @@ zstandard @ file:///home/conda/feedstock_root/build_artifacts/zstandard_16149548
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting MDAnalysis
   Downloading MDAnalysis-1.0.0.tar.gz (19.6 MB)
-     |████████████████████████████████| 19.6 MB 32.6 MB/s 
+     |████████████████████████████████| 19.6 MB 16.8 MB/s 
 Requirement already satisfied: numpy&gt;=1.13.3 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (1.21.1)
 Collecting biopython&gt;=1.71
   Downloading biopython-1.79-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (2.3 MB)
-     |████████████████████████████████| 2.3 MB 103.2 MB/s 
+     |████████████████████████████████| 2.3 MB 79.5 MB/s 
 Requirement already satisfied: networkx&gt;=1.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (2.6.2)
 Collecting GridDataFormats&gt;=0.4.0
   Downloading GridDataFormats-0.5.0-py2.py3-none-any.whl (2.0 MB)
-     |████████████████████████████████| 2.0 MB 100.8 MB/s 
+     |████████████████████████████████| 2.0 MB 112.1 MB/s 
 Requirement already satisfied: six&gt;=1.4.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (1.16.0)
 Collecting mmtf-python&gt;=1.0.0
   Downloading mmtf_python-1.1.2-py2.py3-none-any.whl (21 kB)
@@ -569,16 +569,16 @@ Collecting mock
 Requirement already satisfied: tqdm&gt;=4.43.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis) (4.62.0)
 Collecting gsd&gt;=1.4.0
   Downloading gsd-2.4.2-cp39-cp39-manylinux2010_x86_64.whl (354 kB)
-     |████████████████████████████████| 354 kB 96.2 MB/s 
-Requirement already satisfied: pillow&gt;=6.2.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (8.3.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (1.3.1)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (0.10.0)
+     |████████████████████████████████| 354 kB 78.3 MB/s 
 Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (2.8.2)
 Requirement already satisfied: pyparsing&gt;=2.2.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (2.4.7)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (0.10.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (1.3.1)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis) (8.3.1)
 Requirement already satisfied: msgpack&gt;=0.5.6 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis) (1.0.2)
 Building wheels for collected packages: MDAnalysis
   Building wheel for MDAnalysis (setup.py) ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / done
-  Created wheel for MDAnalysis: filename=MDAnalysis-1.0.0-cp39-cp39-linux_x86_64.whl size=2122190 sha256=9a6382850c7f702ff88512b10e6a2c8a234b6da2f77f188b8d297509ea162618
+  Created wheel for MDAnalysis: filename=MDAnalysis-1.0.0-cp39-cp39-linux_x86_64.whl size=2122190 sha256=332acdb1b0611aba1a75f990e4af6707461f2e88a345bde92ae160a4f74c51b6
   Stored in directory: /home/runner/.cache/pip/wheels/50/9f/9e/803a0fafc253694711c79fb2940e717d32cf5114719a444cc5
 Successfully built MDAnalysis
 Installing collected packages: mock, mmtf-python, gsd, GridDataFormats, biopython, MDAnalysis
@@ -594,7 +594,7 @@ Author: Naveen Michaud-Agrawal
 Author-email: naveen.michaudagrawal@gmail.com
 License: GPL 2
 Location: /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages
-Requires: joblib, matplotlib, mock, numpy, scipy, gsd, tqdm, networkx, six, mmtf-python, biopython, GridDataFormats
+Requires: mmtf-python, GridDataFormats, biopython, scipy, joblib, gsd, networkx, numpy, matplotlib, six, tqdm, mock
 Required-by: 
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>After installing the package, we must reload the notebook kernel to load the newly installed package. To do this, click Kernel -&gt; Restart Kernel</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>MDAnalysis</span>
@@ -605,7 +605,7 @@ Required-by:
 </code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
 <code>Collecting MDAnalysis==2.0.0b0
   Downloading MDAnalysis-2.0.0b0.tar.gz (3.4 MB)
-     |████████████████████████████████| 3.4 MB 28.2 MB/s 
+     |████████████████████████████████| 3.4 MB 7.1 MB/s 
 Requirement already satisfied: numpy&gt;=1.16.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.21.1)
 Requirement already satisfied: biopython&gt;=1.71 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (1.79)
 Requirement already satisfied: networkx&gt;=1.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from MDAnalysis==2.0.0b0) (2.6.2)
@@ -620,13 +620,13 @@ Requirement already satisfied: gsd&gt;=1.4.0 in /usr/share/miniconda/envs/worksh
 Requirement already satisfied: six in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from GridDataFormats&gt;=0.4.0-&gt;MDAnalysis==2.0.0b0) (1.16.0)
 Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (1.3.1)
 Requirement already satisfied: pyparsing&gt;=2.2.1 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.4.7)
-Requirement already satisfied: pillow&gt;=6.2.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (8.3.1)
 Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (2.8.2)
 Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (0.10.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from matplotlib&gt;=1.5.1-&gt;MDAnalysis==2.0.0b0) (8.3.1)
 Requirement already satisfied: msgpack&gt;=0.5.6 in /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages (from mmtf-python&gt;=1.0.0-&gt;MDAnalysis==2.0.0b0) (1.0.2)
 Building wheels for collected packages: MDAnalysis
   Building wheel for MDAnalysis (setup.py) ... - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
-  Created wheel for MDAnalysis: filename=MDAnalysis-2.0.0b0-cp39-cp39-linux_x86_64.whl size=2128678 sha256=9c6a713e44121faf347e158570bc0a8253d1b031775e16d9691b20e4118d0a9c
+  Created wheel for MDAnalysis: filename=MDAnalysis-2.0.0b0-cp39-cp39-linux_x86_64.whl size=2128678 sha256=286c3f3999cc0048338213524891883889f117d6a17e633426590fc6b3ac3832
   Stored in directory: /home/runner/.cache/pip/wheels/5e/a7/28/1c392640be72c44d40adeefd5ea798b0e67d685eca30c253e9
 Successfully built MDAnalysis
 Installing collected packages: MDAnalysis
@@ -646,7 +646,7 @@ Author: MDAnalysis Development Team
 Author-email: mdanalysis@numfocus.org
 License: GPL 2
 Location: /usr/share/miniconda/envs/workshop/lib/python3.9/site-packages
-Requires: gsd, biopython, scipy, networkx, joblib, threadpoolctl, mmtf-python, GridDataFormats, matplotlib, numpy, tqdm
+Requires: joblib, tqdm, numpy, threadpoolctl, mmtf-python, gsd, networkx, matplotlib, scipy, biopython, GridDataFormats
 Required-by: 
 </code>
 </pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Again, we must restart our kernel to reset our ipython runtime environment.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>MDAnalysis</span>

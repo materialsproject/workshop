@@ -1,0 +1,416 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Lessons for the Materials Project Workshop"><link href=https://workshop.materialsproject.org/primer/04_Python_environments/2_google_colab_blank/ rel=canonical><link rel=icon href=../../../assets/images/favicon.png><meta name=generator content="mkdocs-1.2.2, mkdocs-material-7.2.2"><title>2 google colab blank - The Materials Project Workshop</title><link rel=stylesheet href=../../../assets/stylesheets/main.1118c9be.min.css><link rel=stylesheet href=../../../assets/stylesheets/palette.ba0d045b.min.css><meta name=theme-color content=#546d78><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style><link rel=stylesheet href=../../../assets/workshop.css><link rel=stylesheet href=../../../css/ansi-colours.css><link rel=stylesheet href=../../../css/jupyter-cells.css><link rel=stylesheet href=../../../css/pandas-dataframe.css></head> <body dir=ltr data-md-color-scheme data-md-color-primary=blue-grey data-md-color-accent> <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#getting-started-on-colab class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=../../.. title="The Materials Project Workshop" class="md-header__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> The Materials Project Workshop </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> 2 google colab blank </span> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </nav> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../../.. title="The Materials Project Workshop" class="md-nav__button md-logo" aria-label="The Materials Project Workshop" data-md-component=logo> <img src=../../../assets/materials_project_logo_white.svg alt=logo> </a> The Materials Project Workshop </label> <div class=md-nav__source> <a href=https://github.com/materialsproject/workshop/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../.. class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../../logistics/logistics/ class=md-nav__link> Logistics </a> </li> <li class=md-nav__item> <a href=../../../people/people/ class=md-nav__link> People </a> </li> <li class=md-nav__item> <a href=../../../code_of_conduct/ class=md-nav__link> Code of Conduct </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5> Primer <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Primer data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Primer </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../01_basic_python/0%20-%20Introduction%20and%20Jupyter%20Use/ class=md-nav__link> Intro </a> </li> <li class=md-nav__item> <a href=../../01_basic_python/1%20-%20Python%20Primer/ class=md-nav__link> Basic Python </a> </li> <li class=md-nav__item> <a href=../../02_python_part2/lessons/ class=md-nav__link> Advanced Python </a> </li> <li class=md-nav__item> <a href=../../03_MongoDB_part1/lessons_filled/ class=md-nav__link> Intro to MongoDB </a> </li> <li class=md-nav__item> <a href=../1_pip_and_conda/ class=md-nav__link> Intro to Python Environments </a> </li> <li class=md-nav__item> <a href=../2_google_colab/ class=md-nav__link> Intro to Google Colab </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6> Workshop <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Workshop data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> Workshop </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_1 type=checkbox id=__nav_6_1> <label class=md-nav__link for=__nav_6_1> Day 1 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 1" data-md-level=2> <label class=md-nav__title for=__nav_6_1> <span class="md-nav__icon md-icon"></span> Day 1 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../lessons/01_website_walkthrough/website_walkthrough/ class=md-nav__link> The Materials Project Website </a> </li> <li class=md-nav__item> <a href=../../../lessons/02_intro_pymatgen/1%20-%20pymatgen%20foundations/ class=md-nav__link> Intro to Pymatgen </a> </li> <li class=md-nav__item> <a href=../../../lessons/03_heterointerfaces/Main%20Lesson/ class=md-nav__link> Working with Surfaces and Interfaces </a> </li> <li class=md-nav__item> <a href=../../../lessons/04_materials_api/MAPI%20Lesson%20%28filled%29/ class=md-nav__link> The Materials API </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6_2 type=checkbox id=__nav_6_2> <label class=md-nav__link for=__nav_6_2> Day 2 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Day 2" data-md-level=2> <label class=md-nav__title for=__nav_6_2> <span class="md-nav__icon md-icon"></span> Day 2 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../../lessons/05_automated_dft/Lesson/ class=md-nav__link> Automated DFT </a> </li> <li class=md-nav__item> <a href=../../../lessons/07_mpcontribs/contribute/ class=md-nav__link> MPContribs </a> </li> <li class=md-nav__item> <a href=../../../lessons/06_exploring_synthesis/Exploring%20Synthesis%20%28filled%29/ class=md-nav__link> Exploring Synthesis </a> </li> <li class=md-nav__item> <a href=../../../lessons/08_ml_matminer/matminer-notes/ class=md-nav__link> Machine Learning with MatMiner </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#executing-python-code class=md-nav__link> Executing Python Code </a> </li> <li class=md-nav__item> <a href=#add-code-snippets class=md-nav__link> Add code snippets </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/materialsproject/workshop/edit/master/docs/primer/04_Python_environments/2_google_colab_blank.ipynb title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <script src=https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js></script> <script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=getting-started-on-colab>Getting started on Colab<a class=headerlink href=#getting-started-on-colab title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Colab is a hosted python notebook service, based on Jupyter, that provides free access to computing resources (including GPUs and TPUs). Colab allows for quick and easy sharing with collaborators without requiring downloads or python environment setup.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=executing-python-code>Executing Python Code<a class=headerlink href=#executing-python-code title="Permanent link">&para;</a></h2> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Colab environment comes with a number of pre-installed scientific and machine learning packages such as numpy, scipy, pandas, tensorflow, and pytorch.</p> <p>We can check the installed python packages using <code>pip freeze</code></p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h2 id=add-code-snippets>Add code snippets<a class=headerlink href=#add-code-snippets title="Permanent link">&para;</a></h2> <p>To add pre-written code snippets (useful for plotting), open the code snippets tab</p> <ul> <li>Insert -&gt; Code Snippets</li> </ul> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=runtimes>Runtimes<a class=headerlink href=#runtimes title="Permanent link">&para;</a></h1> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>Each Colab instance (runtime) runs on an individual Virtual Machine(VM). </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>To view active sessions, select Runtime &gt; Manage Sessions. </p> <p>Here you will be able to view all your open notebooks (and terminate them).</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <hr> <p>By Default, Colab instances have access to CPUs, however notebooks have access to GPU and TPU resources. </p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>To initialize a runtime with a GPU, </p> <ol> <li>Select 'Runtime' &gt; 'Change Runtime Type'</li> <li>Select 'GPU' in the drop down menu and click 'Save'</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>We'll test the GPU using the <a href=https://colab.research.google.com/notebooks/gpu.ipynb>example</a> provided by colab.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code><span class=o>%</span><span class=n>tensorflow_version</span> <span class=mf>2.</span><span class=n>x</span>
+<span class=kn>import</span> <span class=nn>tensorflow</span> <span class=k>as</span> <span class=nn>tf</span>
+<span class=kn>import</span> <span class=nn>timeit</span>
+
+<span class=n>device_name</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>test</span><span class=o>.</span><span class=n>gpu_device_name</span><span class=p>()</span>
+<span class=k>if</span> <span class=n>device_name</span> <span class=o>!=</span> <span class=s1>&#39;/device:GPU:0&#39;</span><span class=p>:</span>
+  <span class=nb>print</span><span class=p>(</span>
+      <span class=s1>&#39;</span><span class=se>\n\n</span><span class=s1>This error most likely means that this notebook is not &#39;</span>
+      <span class=s1>&#39;configured to use a GPU.  Change this in Notebook Settings via the &#39;</span>
+      <span class=s1>&#39;command palette (cmd/ctrl-shift-P) or the Edit menu.</span><span class=se>\n\n</span><span class=s1>&#39;</span><span class=p>)</span>
+  <span class=k>raise</span> <span class=ne>SystemError</span><span class=p>(</span><span class=s1>&#39;GPU device not found&#39;</span><span class=p>)</span>
+
+<span class=k>def</span> <span class=nf>cpu</span><span class=p>():</span>
+  <span class=k>with</span> <span class=n>tf</span><span class=o>.</span><span class=n>device</span><span class=p>(</span><span class=s1>&#39;/cpu:0&#39;</span><span class=p>):</span>
+    <span class=n>random_image_cpu</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>normal</span><span class=p>((</span><span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>3</span><span class=p>))</span>
+    <span class=n>net_cpu</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>keras</span><span class=o>.</span><span class=n>layers</span><span class=o>.</span><span class=n>Conv2D</span><span class=p>(</span><span class=mi>32</span><span class=p>,</span> <span class=mi>7</span><span class=p>)(</span><span class=n>random_image_cpu</span><span class=p>)</span>
+    <span class=k>return</span> <span class=n>tf</span><span class=o>.</span><span class=n>math</span><span class=o>.</span><span class=n>reduce_sum</span><span class=p>(</span><span class=n>net_cpu</span><span class=p>)</span>
+
+<span class=k>def</span> <span class=nf>gpu</span><span class=p>():</span>
+  <span class=k>with</span> <span class=n>tf</span><span class=o>.</span><span class=n>device</span><span class=p>(</span><span class=s1>&#39;/device:GPU:0&#39;</span><span class=p>):</span>
+    <span class=n>random_image_gpu</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>normal</span><span class=p>((</span><span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>3</span><span class=p>))</span>
+    <span class=n>net_gpu</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>keras</span><span class=o>.</span><span class=n>layers</span><span class=o>.</span><span class=n>Conv2D</span><span class=p>(</span><span class=mi>32</span><span class=p>,</span> <span class=mi>7</span><span class=p>)(</span><span class=n>random_image_gpu</span><span class=p>)</span>
+    <span class=k>return</span> <span class=n>tf</span><span class=o>.</span><span class=n>math</span><span class=o>.</span><span class=n>reduce_sum</span><span class=p>(</span><span class=n>net_gpu</span><span class=p>)</span>
+
+<span class=c1># We run each op once to warm up; see: https://stackoverflow.com/a/45067900</span>
+<span class=n>cpu</span><span class=p>()</span>
+<span class=n>gpu</span><span class=p>()</span>
+
+<span class=c1># Run the op several times.</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Time (s) to convolve 32x7x7x3 filter over random 100x100x100x3 images &#39;</span>
+      <span class=s1>&#39;(batch x height x width x channel). Sum of five runs.&#39;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;CPU (s):&#39;</span><span class=p>)</span>
+<span class=n>cpu_time</span> <span class=o>=</span> <span class=n>timeit</span><span class=o>.</span><span class=n>timeit</span><span class=p>(</span><span class=s1>&#39;cpu()&#39;</span><span class=p>,</span> <span class=n>number</span><span class=o>=</span><span class=mi>5</span><span class=p>,</span> <span class=n>setup</span><span class=o>=</span><span class=s2>&quot;from __main__ import cpu&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>cpu_time</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;GPU (s):&#39;</span><span class=p>)</span>
+<span class=n>gpu_time</span> <span class=o>=</span> <span class=n>timeit</span><span class=o>.</span><span class=n>timeit</span><span class=p>(</span><span class=s1>&#39;gpu()&#39;</span><span class=p>,</span> <span class=n>number</span><span class=o>=</span><span class=mi>5</span><span class=p>,</span> <span class=n>setup</span><span class=o>=</span><span class=s2>&quot;from __main__ import gpu&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>gpu_time</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;GPU speedup over CPU: </span><span class=si>{}</span><span class=s1>x&#39;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=nb>int</span><span class=p>(</span><span class=n>cpu_time</span><span class=o>/</span><span class=n>gpu_time</span><span class=p>)))</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>Time (s) to convolve 32x7x7x3 filter over random 100x100x100x3 images (batch x height x width x channel). Sum of five runs.
+CPU (s):
+1.650525636999987
+GPU (s):
+0.018746201999988443
+GPU speedup over CPU: 88x
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=install-conda-using-conda-colab>Install Conda using conda-colab<a class=headerlink href=#install-conda-using-conda-colab title="Permanent link">&para;</a></h1> <p>Google Colab does contain a pre-installed version of conda. Conda is a package manager and environment manager.</p> <p>This will allow you to use conda to install packages</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>To simplify the conda installation, we use <a href=https://pypi.org/project/condacolab/ >condacolab</a>. </p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>After running condacolab.install(), conda and mamba are installed. Conda and Mamba are functionally equivalent, however conda is written in python, whilst Mamba is written in C. </p> <p>In our lesson, we use Mamba to leverage its speed (as compared to Conda). However, we note that Mamba can be more prone to bugs, as it is relatively new and less popular.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>For compatibility with colab, we will need to ensure the numpy version is unchanged when we install packages (such as pymatgen).</p> <p>To identify the numpy version factory installed on colab:</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The current version of numpy is v1.19.5, thus we specify mamba to install this specific version.</p> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=setup-environment-using-conda-constructor>Setup environment using conda constructor.<a class=headerlink href=#setup-environment-using-conda-constructor title="Permanent link">&para;</a></h1> <hr> <ol> <li>First, we want to remove our previous installations by resetting our runtime to factory defaults. This process will revert the environment to its original state, removing any added packages or restoring deleted system files.</li> <li>Runtime &gt; Factory reset runtime</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>Next, we install conda colab</li> </ol> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>Finally, we install using the constructor we have built for the <a href=https://github.com/materialsproject/workshop>workshop</a></li> </ol> <p>Link to the <a href=https://github.com/materialsproject/workshop/releases/tag/2021.08.09>release</a></p> <ul> <li>https://github.com/materialsproject/workshop/releases/download/2021.08.09/condacolab-0.1-Linux-x86_64.sh</li> </ul> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <p>The environment is now setup with pymatgen, fireworks, custodian, atomate, and matminer.</p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <h1 id=building-a-conda-constructor>Building a conda constructor<a class=headerlink href=#building-a-conda-constructor title="Permanent link">&para;</a></h1> <p>To build your own environment constructor (to save time when restarting notebook)</p> <p>Adapted from this <a href="https://colab.research.google.com/github/jaimergp/condacolab/blob/main/constructor-example/condacolab_constructor_tutorial.ipynb#scrollTo=-RDpyAYfXk9L">notebook</a></p> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>Download the templates constructor</li> </ol> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>wget</span> <span class=o>-</span><span class=n>q</span> <span class=n>https</span><span class=p>:</span><span class=o>//</span><span class=n>raw</span><span class=o>.</span><span class=n>githubusercontent</span><span class=o>.</span><span class=n>com</span><span class=o>/</span><span class=n>materialsproject</span><span class=o>/</span><span class=n>workshop</span><span class=o>/</span><span class=n>master</span><span class=o>/</span><span class=n>workshop</span><span class=o>/</span><span class=n>primer</span><span class=o>/</span><span class=mi>04</span><span class=n>_Python_environments</span><span class=o>/</span><span class=n>env_installer</span><span class=o>/</span><span class=n>construct</span><span class=o>.</span><span class=n>yaml</span>
+<span class=err>!</span><span class=n>wget</span> <span class=o>-</span><span class=n>q</span> <span class=n>https</span><span class=p>:</span><span class=o>//</span><span class=n>raw</span><span class=o>.</span><span class=n>githubusercontent</span><span class=o>.</span><span class=n>com</span><span class=o>/</span><span class=n>materialsproject</span><span class=o>/</span><span class=n>workshop</span><span class=o>/</span><span class=n>master</span><span class=o>/</span><span class=n>workshop</span><span class=o>/</span><span class=n>primer</span><span class=o>/</span><span class=mi>04</span><span class=n>_Python_environments</span><span class=o>/</span><span class=n>env_installer</span><span class=o>/</span><span class=n>pip</span><span class=o>-</span><span class=n>dependencies</span><span class=o>.</span><span class=n>sh</span>
+</code></pre></div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li> <p>Modify the construct.yaml as desired. Here, we will add: </p> </li> <li> <p>numpy 1.19.5</p> </li> <li>pymatgen</li> <li>custodian</li> <li>fireworks</li> <li>atomate</li> <li>matminer</li> </ol> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>Install condacolab, conda, mamba, and constructor</li> </ol> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>pip</span> <span class=n>install</span> <span class=o>-</span><span class=n>q</span> <span class=n>condacolab</span>
+
+<span class=c1># Install conda and mamba</span>
+<span class=kn>import</span> <span class=nn>condacolab</span>
+<span class=n>condacolab</span><span class=o>.</span><span class=n>install</span><span class=p>()</span>
+
+<span class=c1># Install constructor</span>
+<span class=err>!</span><span class=n>mamba</span> <span class=n>install</span> <span class=o>-</span><span class=n>q</span> <span class=n>constructor</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>⏬ Downloading https://github.com/jaimergp/miniforge/releases/latest/download/Mambaforge-colab-Linux-x86_64.sh...
+📦 Installing...
+📌 Adjusting configuration...
+🩹 Patching environment...
+⏲ Done in 0:00:38
+🔁 Restarting kernel...
+  Package             Version  Build           Channel                    Size
+────────────────────────────────────────────────────────────────────────────────
+  Install:
+────────────────────────────────────────────────────────────────────────────────
+
+<span class=ansi-green-fg>  conda-standalone</span>     4.10.3  ha770c72_0      conda-forge/linux-64       9 MB
+<span class=ansi-green-fg>  constructor     </span>      3.2.1  py37h89c1867_1  conda-forge/linux-64     162 KB
+
+  Upgrade:
+────────────────────────────────────────────────────────────────────────────────
+
+<span class=ansi-red-fg>  ca-certificates </span>  2020.12.5  ha878542_0      installed                      
+<span class=ansi-green-fg>  ca-certificates </span>  2021.5.30  ha878542_0      conda-forge/linux-64     136 KB
+<span class=ansi-red-fg>  certifi         </span>  2020.12.5  py37h89c1867_1  installed                      
+<span class=ansi-green-fg>  certifi         </span>  2021.5.30  py37h89c1867_0  conda-forge/linux-64     141 KB
+<span class=ansi-red-fg>  openssl         </span>     1.1.1j  h7f98852_0      installed                      
+<span class=ansi-green-fg>  openssl         </span>     1.1.1k  h7f98852_0      conda-forge/linux-64       2 MB
+
+  Summary:
+
+  Install: 2 packages
+  Upgrade: 3 packages
+
+  Total download: 12 MB
+
+────────────────────────────────────────────────────────────────────────────────
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>Run constructor to build .sh template file</li> </ol> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code><span class=err>!</span><span class=n>constructor</span> <span class=o>.</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div class="output_subarea output_stream output_stdout output_text"> <pre>
+<code>platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+fetching: python-3.7.0-hd21baee_1006.tar.bz2
+fetching: _libgcc_mutex-0.1-conda_forge.tar.bz2
+fetching: ca-certificates-2021.5.30-ha878542_0.tar.bz2
+fetching: libgfortran4-7.5.0-h14aa051_19.tar.bz2
+fetching: libstdcxx-ng-11.1.0-h56837e0_5.tar.bz2
+fetching: libgfortran-ng-7.5.0-h14aa051_19.tar.bz2
+fetching: libgomp-11.1.0-hc902ee8_5.tar.bz2
+fetching: _openmp_mutex-4.5-1_gnu.tar.bz2
+fetching: libgcc-ng-11.1.0-hc902ee8_5.tar.bz2
+fetching: bzip2-1.0.8-h7f98852_4.tar.bz2
+fetching: expat-2.4.1-h9c3ff4c_0.tar.bz2
+fetching: gmp-6.2.1-h58526e2_0.tar.bz2
+fetching: icu-68.1-h58526e2_0.tar.bz2
+fetching: jpeg-9d-h36c2ea0_0.tar.bz2
+fetching: jsoncpp-1.8.4-hc9558a2_1002.tar.bz2
+fetching: libffi-3.2.1-he1b5a44_1007.tar.bz2
+fetching: libiconv-1.16-h516909a_0.tar.bz2
+fetching: libopenblas-0.3.12-pthreads_hb3c22a3_1.tar.bz2
+fetching: libsodium-1.0.18-h36c2ea0_1.tar.bz2
+fetching: libuuid-2.32.1-h7f98852_1000.tar.bz2
+fetching: lz4-c-1.8.3-he1b5a44_1001.tar.bz2
+fetching: metis-5.1.0-h58526e2_1006.tar.bz2
+fetching: ncurses-6.2-h58526e2_4.tar.bz2
+fetching: openssl-1.0.2u-h516909a_0.tar.bz2
+fetching: pthread-stubs-0.4-h36c2ea0_1001.tar.bz2
+fetching: tbb-2020.2-h4bd325d_4.tar.bz2
+fetching: xorg-kbproto-1.0.7-h7f98852_1002.tar.bz2
+fetching: xorg-libice-1.0.10-h7f98852_0.tar.bz2
+fetching: xorg-libxau-1.0.9-h7f98852_0.tar.bz2
+fetching: xorg-libxdmcp-1.1.3-h7f98852_0.tar.bz2
+fetching: xorg-xproto-7.0.31-h7f98852_1007.tar.bz2
+fetching: xz-5.2.5-h516909a_1.tar.bz2
+fetching: yaml-0.2.5-h516909a_0.tar.bz2
+fetching: zlib-1.2.11-h516909a_1010.tar.bz2
+fetching: glpk-4.65-h9202a9a_1004.tar.bz2
+fetching: hdf4-4.2.15-h10796ff_3.tar.bz2
+fetching: hdf5-1.10.4-nompi_h3c11f04_1106.tar.bz2
+fetching: libblas-3.9.0-8_openblas.tar.bz2
+fetching: libedit-3.1.20191231-he28a2e2_2.tar.bz2
+fetching: libllvm10-10.0.1-he513fc3_3.tar.bz2
+fetching: libpng-1.6.37-h21135ba_2.tar.bz2
+fetching: libsolv-0.7.19-h780b84a_5.tar.bz2
+fetching: libssh2-1.8.0-h1ad7b7a_1003.tar.bz2
+fetching: libxcb-1.13-h7f98852_1003.tar.bz2
+fetching: libxml2-2.9.12-h72842e0_0.tar.bz2
+fetching: mpfr-4.0.2-he80fd80_1.tar.bz2
+fetching: readline-7.0-hf8c457e_1001.tar.bz2
+fetching: tk-8.6.10-h21135ba_1.tar.bz2
+fetching: xorg-libsm-1.2.3-hd9c2040_1000.tar.bz2
+fetching: zstd-1.4.4-h3b9ef0a_2.tar.bz2
+fetching: freetype-2.10.4-h0708190_1.tar.bz2
+fetching: krb5-1.16.3-hc83ff2d_1000.tar.bz2
+fetching: libcblas-3.9.0-8_openblas.tar.bz2
+fetching: liblapack-3.9.0-8_openblas.tar.bz2
+fetching: libtiff-4.1.0-hc3755c2_3.tar.bz2
+fetching: mpc-1.1.0-h04dde30_1009.tar.bz2
+fetching: sqlite-3.28.0-h8b20d00_0.tar.bz2
+fetching: xorg-libx11-1.7.2-h7f98852_0.tar.bz2
+fetching: arpack-3.7.0-hc6cf775_2.tar.bz2
+fetching: lcms2-2.11-hcbb858e_1.tar.bz2
+fetching: libcurl-7.64.0-h01ee5af_0.tar.bz2
+fetching: suitesparse-5.10.1-hd8046ac_0.tar.bz2
+fetching: xorg-libxt-1.2.1-h7f98852_2.tar.bz2
+fetching: asn1crypto-1.4.0-pyh9f0ad1d_0.tar.bz2
+fetching: attrs-21.2.0-pyhd8ed1ab_0.tar.bz2
+fetching: charset-normalizer-2.0.0-pyhd8ed1ab_0.tar.bz2
+fetching: curl-7.64.0-h646f8bb_0.tar.bz2
+fetching: dataclasses-0.8-pyhc8e2a94_1.tar.bz2
+fetching: decorator-5.0.9-pyhd8ed1ab_0.tar.bz2
+fetching: idna-3.1-pyhd3deb0d_0.tar.bz2
+fetching: invoke-1.6.0-pyhd8ed1ab_0.tar.bz2
+fetching: itsdangerous-2.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: jmespath-0.10.0-pyh9f0ad1d_0.tar.bz2
+fetching: monty-2021.7.8-pyhd8ed1ab_0.tar.bz2
+fetching: mpmath-1.2.1-pyhd8ed1ab_0.tar.bz2
+fetching: olefile-0.46-pyh9f0ad1d_1.tar.bz2
+fetching: pycparser-2.20-pyh9f0ad1d_2.tar.bz2
+fetching: pydash-5.0.2-pyh6c4a22f_0.tar.bz2
+fetching: pyparsing-2.4.7-pyh9f0ad1d_0.tar.bz2
+fetching: python_abi-3.7-2_cp37m.tar.bz2
+fetching: pytz-2021.1-pyhd8ed1ab_0.tar.bz2
+fetching: sentinels-1.0.0-py_1.tar.bz2
+fetching: six-1.16.0-pyh6c4a22f_0.tar.bz2
+fetching: soupsieve-2.0.1-py_1.tar.bz2
+fetching: starlette-0.14.2-pyhd8ed1ab_0.tar.bz2
+fetching: tabulate-0.8.9-pyhd8ed1ab_0.tar.bz2
+fetching: tenacity-8.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: termcolor-1.1.0-py_2.tar.bz2
+fetching: texttable-1.6.4-pyhd8ed1ab_0.tar.bz2
+fetching: threadpoolctl-2.2.0-pyh8a188c0_0.tar.bz2
+fetching: tqdm-4.61.2-pyhd8ed1ab_1.tar.bz2
+fetching: typing_extensions-3.10.0.0-pyha770c72_0.tar.bz2
+fetching: wheel-0.36.2-pyhd3deb0d_0.tar.bz2
+fetching: zipp-3.5.0-pyhd8ed1ab_0.tar.bz2
+fetching: aioitertools-0.7.1-pyhd8ed1ab_0.tar.bz2
+fetching: beautifulsoup4-4.9.3-pyhb0f4dca_0.tar.bz2
+fetching: certifi-2021.5.30-py37h89c1867_0.tar.bz2
+fetching: cffi-1.14.4-py37h11fe52a_0.tar.bz2
+fetching: chardet-4.0.0-py37h89c1867_1.tar.bz2
+fetching: conda-package-handling-1.7.3-py37h5e8e339_0.tar.bz2
+fetching: cycler-0.10.0-py_2.tar.bz2
+fetching: ecdsa-0.17.0-pyhd8ed1ab_0.tar.bz2
+fetching: future-0.18.2-py37h89c1867_3.tar.bz2
+fetching: gmpy2-2.1.0b5-py37h025e8b9_0.tar.bz2
+fetching: httplib2-0.19.1-pyhd8ed1ab_0.tar.bz2
+fetching: importlib-metadata-4.6.1-py37h89c1867_0.tar.bz2
+fetching: importlib_resources-5.2.1-pyhd8ed1ab_0.tar.bz2
+fetching: kiwisolver-1.3.1-py37h2527ec5_1.tar.bz2
+fetching: latexcodec-2.0.1-pyh9f0ad1d_0.tar.bz2
+fetching: libnetcdf-4.6.2-hbdf4f91_1001.tar.bz2
+fetching: llvmlite-0.36.0-py37h9d7f4d0_0.tar.bz2
+fetching: markupsafe-2.0.1-py37h5e8e339_0.tar.bz2
+fetching: msgpack-python-1.0.2-py37h2527ec5_1.tar.bz2
+fetching: numpy-1.19.5-py37h038b26d_2.tar.bz2
+fetching: orjson-3.6.0-py37h5e8e339_0.tar.bz2
+fetching: packaging-21.0-pyhd8ed1ab_0.tar.bz2
+fetching: pathlib2-2.3.6-py37h89c1867_0.tar.bz2
+fetching: pillow-8.1.0-py37he6b4880_1.tar.bz2
+fetching: pybind11-global-2.7.0-py37h2527ec5_0.tar.bz2
+fetching: pycosat-0.6.3-py37h5e8e339_1006.tar.bz2
+fetching: pycryptodome-3.10.1-py37ha6ede69_0.tar.bz2
+fetching: pymongo-3.12.0-py37hcd2ae1e_0.tar.bz2
+fetching: pyrsistent-0.17.3-py37h5e8e339_2.tar.bz2
+fetching: pysocks-1.7.1-py37h89c1867_3.tar.bz2
+fetching: python-dateutil-2.8.2-pyhd8ed1ab_0.tar.bz2
+fetching: python-igraph-0.9.6-py37h6c76e3a_0.tar.bz2
+fetching: pyyaml-5.4.1-py37h5e8e339_0.tar.bz2
+fetching: ruamel.yaml.clib-0.2.2-py37h5e8e339_2.tar.bz2
+fetching: ruamel_yaml-0.15.80-py37h5e8e339_1004.tar.bz2
+fetching: sniffio-1.2.0-py37h89c1867_1.tar.bz2
+fetching: tornado-6.1-py37h5e8e339_1.tar.bz2
+fetching: typing-extensions-3.10.0.0-hd8ed1ab_0.tar.bz2
+fetching: tzlocal-2.1-pyh9f0ad1d_0.tar.bz2
+fetching: ujson-4.0.2-py37hcd2ae1e_0.tar.bz2
+fetching: werkzeug-2.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: brotlipy-0.7.0-py37h5e8e339_1001.tar.bz2
+fetching: cftime-1.5.0-py37h6f94858_0.tar.bz2
+fetching: click-8.0.1-py37h89c1867_0.tar.bz2
+fetching: cryptography-2.5-py37hb7f436b_1.tar.bz2
+fetching: dnspython-1.16.0-py_1.tar.bz2
+fetching: h5py-2.9.0-nompi_py37hcafd542_1103.tar.bz2
+fetching: importlib_metadata-4.6.1-hd8ed1ab_0.tar.bz2
+fetching: jinja2-3.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: pandas-1.3.1-py37h219a48f_0.tar.bz2
+fetching: pybind11-2.7.0-py37h2527ec5_0.tar.bz2
+fetching: pydantic-1.8.2-py37h5e8e339_0.tar.bz2
+fetching: pynacl-1.4.0-py37h5e8e339_2.tar.bz2
+fetching: pynng-0.7.1-py37h5e8e339_0.tar.bz2
+fetching: pypif-2.1.1-py_0.tar.bz2
+fetching: scipy-1.5.3-py37h8911b10_0.tar.bz2
+fetching: setuptools-49.6.0-py37h89c1867_3.tar.bz2
+fetching: spglib-1.16.1-py37h902c9e0_0.tar.bz2
+fetching: sympy-1.8-py37h89c1867_0.tar.bz2
+fetching: uncertainties-3.1.6-pyhd8ed1ab_0.tar.bz2
+fetching: vtk-8.2.0-py37ha8e561a_202.tar.bz2
+fetching: apscheduler-3.6.3-py37h89c1867_3.tar.bz2
+fetching: fastapi-0.67.0-pyhd8ed1ab_0.tar.bz2
+fetching: flask-2.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: gunicorn-20.1.0-py37h89c1867_0.tar.bz2
+fetching: joblib-1.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: jsonschema-3.2.0-pyhd8ed1ab_3.tar.bz2
+fetching: matplotlib-base-3.4.2-py37hdd32ed1_0.tar.bz2
+fetching: mongomock-3.22.1-pyh44b312d_0.tar.bz2
+fetching: netcdf4-1.5.1.2-py37had58050_0.tar.bz2
+fetching: networkx-2.5-py_0.tar.bz2
+fetching: numba-0.53.1-py37hb11d6e1_1.tar.bz2
+fetching: palettable-3.3.0-py_0.tar.bz2
+fetching: pint-0.17-pyhd8ed1ab_0.tar.bz2
+fetching: pip-21.2.1-pyhd8ed1ab_0.tar.bz2
+fetching: plotly-5.1.0-pyhd8ed1ab_1.tar.bz2
+fetching: pybtex-0.24.0-py37h89c1867_0.tar.bz2
+fetching: pyjwt-1.7.1-py_0.tar.bz2
+fetching: pyopenssl-19.0.0-py37_0.tar.bz2
+fetching: ruamel.yaml-0.17.10-py37h5e8e339_0.tar.bz2
+fetching: ase-3.22.0-pyhd8ed1ab_0.tar.bz2
+fetching: bcrypt-3.2.0-py37h5e8e339_1.tar.bz2
+fetching: flask-paginate-0.8.1-pyh44b312d_0.tar.bz2
+fetching: phonopy-2.11.0-py37hb1e94ed_1.tar.bz2
+fetching: scikit-learn-0.24.2-py37h18a542f_0.tar.bz2
+fetching: sparse-0.12.0-pyhd8ed1ab_0.tar.bz2
+fetching: urllib3-1.26.6-pyhd8ed1ab_0.tar.bz2
+fetching: aflow-0.0.11-py_0.tar.bz2
+fetching: dscribe-1.1.0-py37h2527ec5_0.tar.bz2
+fetching: paramiko-2.7.2-pyh9f0ad1d_0.tar.bz2
+fetching: requests-2.26.0-pyhd8ed1ab_0.tar.bz2
+fetching: sentry-sdk-1.3.1-pyhd8ed1ab_0.tar.bz2
+fetching: conda-4.10.3-py37h89c1867_0.tar.bz2
+fetching: custodian-2021.2.8-pyh44b312d_0.tar.bz2
+fetching: fabric-2.6.0-pyhd8ed1ab_1.tar.bz2
+fetching: globus-sdk-2.0.1-pyhd8ed1ab_0.tar.bz2
+fetching: mongogrant-0.3.3-pyhd8ed1ab_0.tar.bz2
+fetching: pymatgen-2020.12.31-py37h2527ec5_0.tar.bz2
+fetching: requests-mock-1.9.3-pyhd8ed1ab_0.tar.bz2
+fetching: sshtunnel-0.3.1-pyhd8ed1ab_0.tar.bz2
+fetching: citrination-client-6.5.1-pyh9f0ad1d_0.tar.bz2
+fetching: fair-research-login-0.2.2-pyhd8ed1ab_0.tar.bz2
+fetching: fireworks-1.9.7-pyhd8ed1ab_0.tar.bz2
+fetching: globus-nexus-client-0.3.0-pyhd8ed1ab_1.tar.bz2
+fetching: maggma-0.30.2-pyhd8ed1ab_0.tar.bz2
+fetching: mamba-0.1.2-py37h99015e2_0.tar.bz2
+fetching: pymatgen-diffusion-2020.10.8-pyh9f0ad1d_0.tar.bz2
+fetching: atomate-0.9.9-pyhd8ed1ab_0.tar.bz2
+fetching: mdf_toolbox-0.5.7-pyhd8ed1ab_0.tar.bz2
+fetching: mdf_forge-0.7.6-py_0.tar.bz2
+fetching: matminer-0.7.3-pyhd8ed1ab_0.tar.bz2
+Checking for duplicate files ...
+Warning: Files &#39;share/terminfo/2/2621a&#39;, &#39;share/terminfo/2/2621A&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/e/eterm&#39;, &#39;share/terminfo/E/Eterm&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/E/Eterm-color&#39;, &#39;share/terminfo/e/eterm-color&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/l/lft-pc850&#39;, &#39;share/terminfo/L/LFT-PC850&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/n/ncr260vt300wpp&#39;, &#39;share/terminfo/N/NCR260VT300WPP&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/N/NCRVT100WPP&#39;, &#39;share/terminfo/n/ncrvt100wpp&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p12&#39;, &#39;share/terminfo/P/P12&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P12-M&#39;, &#39;share/terminfo/p/p12-m&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p12-m-w&#39;, &#39;share/terminfo/P/P12-M-W&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P12-W&#39;, &#39;share/terminfo/p/p12-w&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p14&#39;, &#39;share/terminfo/P/P14&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P14-M&#39;, &#39;share/terminfo/p/p14-m&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P14-M-W&#39;, &#39;share/terminfo/p/p14-m-w&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P14-W&#39;, &#39;share/terminfo/p/p14-w&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P4&#39;, &#39;share/terminfo/p/p4&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p5&#39;, &#39;share/terminfo/P/P5&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P7&#39;, &#39;share/terminfo/p/p7&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P8&#39;, &#39;share/terminfo/p/p8&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p8-w&#39;, &#39;share/terminfo/P/P8-W&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p9&#39;, &#39;share/terminfo/P/P9&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p9-8&#39;, &#39;share/terminfo/P/P9-8&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/P/P9-8-W&#39;, &#39;share/terminfo/p/p9-8-w&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/p/p9-w&#39;, &#39;share/terminfo/P/P9-W&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/h/hp2621a&#39;, &#39;share/terminfo/h/hp2621A&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Warning: Files &#39;share/terminfo/h/hp70092a&#39;, &#39;share/terminfo/h/hp70092A&#39; found in the package(s): ncurses-6.2-h58526e2_4.tar.bz2
+Reading: /usr/local/lib/python3.7/site-packages/constructor/header.sh
+Successfully created &#39;/content/condacolab-0.1-Linux-x86_64.sh&#39;.
+</code>
+</pre> </div> </div> </div> </div> </div> <div class="cell border-box-sizing text_cell rendered"> <div class=inner_cell> <div class="text_cell_render border-box-sizing rendered_html"> <ol> <li>Download .sh constructor and upload to any file hosting site (github releases can be used)</li> </ol> </div> </div> </div> <div class="cell border-box-sizing code_cell rendered celltag_no-execute"> <div class=input> <div class=highlight><pre><span></span><code><span class=kn>from</span> <span class=nn>google.colab</span> <span class=kn>import</span> <span class=n>files</span>
+<span class=n>installer</span> <span class=o>=</span> <span class=err>!</span><span class=n>ls</span> <span class=o>*-</span><span class=n>Linux</span><span class=o>-</span><span class=n>x86_64</span><span class=o>.</span><span class=n>sh</span>
+<span class=n>files</span><span class=o>.</span><span class=n>download</span><span class=p>(</span><span class=n>installer</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
+</code></pre></div> </div> <div class=output_wrapper> <div class=output> <div class=output_area> <div id=e2c89663-2276-4ac1-85fa-690099815532></div> <div class="output_subarea output_javascript "> <script type=text/javascript>
+var element = $('#e2c89663-2276-4ac1-85fa-690099815532');
+
+    async function download(id, filename, size) {
+      if (!google.colab.kernel.accessAllowed) {
+        return;
+      }
+      const div = document.createElement('div');
+      const label = document.createElement('label');
+      label.textContent = `Downloading "${filename}": `;
+      div.appendChild(label);
+      const progress = document.createElement('progress');
+      progress.max = size;
+      div.appendChild(progress);
+      document.body.appendChild(div);
+
+      const buffers = [];
+      let downloaded = 0;
+
+      const channel = await google.colab.kernel.comms.open(id);
+      // Send a message to notify the kernel that we're ready.
+      channel.send({})
+
+      for await (const message of channel.messages) {
+        // Send a message to notify the kernel that we're ready.
+        channel.send({})
+        if (message.buffers) {
+          for (const buffer of message.buffers) {
+            buffers.push(buffer);
+            downloaded += buffer.byteLength;
+            progress.value = downloaded;
+          }
+        }
+      }
+      const blob = new Blob(buffers, {type: 'application/binary'});
+      const a = document.createElement('a');
+      a.href = window.URL.createObjectURL(blob);
+      a.download = filename;
+      div.appendChild(a);
+      a.click();
+      div.remove();
+    }
+
+</script> </div> </div> <div class=output_area> <div id=f48872a4-8ae6-4e8c-80e6-6d53637f6098></div> <div class="output_subarea output_javascript "> <script type=text/javascript>
+var element = $('#f48872a4-8ae6-4e8c-80e6-6d53637f6098');
+download("download_2fbcf144-ab1f-4119-85e1-6c750c425b3b", "condacolab-0.1-Linux-x86_64.sh", 299340058)
+</script> </div> </div> </div> </div> </div> </article> </div> </div> </main> <footer class=md-footer> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Built by The Materials Project </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../../..", "features": ["instant", "tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script> <script src=../../../assets/javascripts/bundle.2b46852b.min.js></script> <script src=../../../assets/config.js></script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> </body> </html>
