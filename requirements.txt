@@ -1,5 +1,5 @@
 nbzip==0.1.0
-nbgitpuller==0.10.1
+nbgitpuller==1.0.0
 atomate==0.9.9
 robocrys==0.2.7
 crystal-toolkit==2021.4.29
