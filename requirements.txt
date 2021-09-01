@@ -4,7 +4,7 @@ atomate==0.9.9
 robocrys==0.2.7
 crystal-toolkit==2021.4.29
 ipywidgets==7.6.3
-mpcontribs-client==3.13.0
+mpcontribs-client==3.13.2
 graphviz==0.17
 mp-api==0.7.1
 reaction-network==2.0.3
