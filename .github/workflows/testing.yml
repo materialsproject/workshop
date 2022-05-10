@@ -51,7 +51,6 @@ jobs:
 
     - uses: conda-incubator/setup-miniconda@v2
       with:
-        mamba-version: "*"
         activate-environment: workshop
         environment-file: binder/environment.yml
 
@@ -66,6 +65,7 @@ jobs:
 
     - name: Install workshop data
       run: python ./binder/populate_nobel_database.py
+      continue-on-error: true
 
     - name: Run Notebooks
       env:
@@ -73,6 +73,7 @@ jobs:
         MP_API_KEY: ${{ secrets.MP_API_KEY }}
         PR: ${{ github.event.pull_request.number }}
       run: python .github/run_notebooks.py
+      continue-on-error: true
 
     - name: Build
       run: mkdocs build
