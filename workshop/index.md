@@ -4,9 +4,11 @@ The Materials Project Workshop is two-day interactive workshop to learn to use t
 
 ## Workshop Videos
 
-The lessons for the last virtual workshop (2020) are on [Youtube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE) and [Bilibili](https://www.bilibili.com/video/BV1Uz4y1f7L5/).
+The lessons for the 2021 virtual workshop are on [YouTube](https://www.youtube.com/playlist?list=PLTjFYVNE7LTi6kGvPAF7DDQYj0KDL-vQL)
+and for 2020 are on [YouTube](https://www.youtube.com/watch?v=vga6eV3IAac&list=PLTjFYVNE7LTiuOK8Re7ltY0a3OHFcQhAE) and [Bilibili](https://www.bilibili.com/video/BV1Uz4y1f7L5/).
 
-
+Note that the 2021 workshop introduced a lesson on the **new Materials Project API**. Since this is still in development, some details 
+may have changed. Consult our [API page](https://next-gen.materialsproject.org) and documentation therein for the latest information.
 
 ## Location
 
